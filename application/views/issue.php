@@ -109,7 +109,7 @@
 				<!-- popular articles -->
 				<? foreach($popular as $article): ?>
 				<li class="articletile<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
-					<a href="javascript:window.open('../../../article/view/<?=$article->id?>','_self')">
+					<a href="javascript:window.open('../../../../article/view/<?=$article->id?>','_self')">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
@@ -180,7 +180,7 @@
 			<ul class="articleblock">
 				<? foreach($articles[$section->name] as $article): ?>
 				<li class="articletile<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
-					<a href="javascript:window.open('../../../article/view/<?=$article->id?>','_self')">
+					<a href="javascript:window.open('../../../../article/view/<?=$article->id?>','_self')">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>

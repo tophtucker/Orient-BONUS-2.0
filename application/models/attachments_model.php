@@ -47,7 +47,7 @@ class Attachments_model extends CI_Model {
     	$this->db->from("photo");
     	$this->db->where("article_date", $article_date);
     	$this->db->where("feature", "1");
-    	$this->db->where("feature_section", $section_id)
+    	$this->db->where("feature_section", $section_id);
     	$this->db->order_by("priority", "asc");
     	$query = $this->db->get();
     	if($query->num_rows() > 0)
