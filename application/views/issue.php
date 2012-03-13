@@ -102,16 +102,17 @@
 
 <div id="content">
 	
+	<!--
 	<div id="carousel_wrapper" style="margin-top: 70px; width: 100%;">
 		<div id="carousel_scroller">
-			<ul id="carousel" class=""> <!-- class="articleblock" -->
+			<ul id="carousel" class=""> <!-- class="articleblock" - ->
 				
 				<? if($featurephotos[0]): ?>
 				<li class="articletile backgrounded" style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$featurephotos[0]->filename_small?>')">
 				</li>
 				<? endif; ?>
 				
-				<!-- popular articles -->
+				<!-- popular articles - ->
 				<? foreach($popular as $article): ?>
 				<li class="articletile<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
 					<a href="javascript:window.open('../../../article/view/<?=$article->id?>','_self')">
@@ -123,7 +124,7 @@
 				</a></li>
 				<? endforeach; ?>
 				
-				<!-- tweets -->
+				<!-- tweets - ->
 				<li>
 					<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
 					<script>
@@ -155,7 +156,7 @@
 					</script>
 				</li>
 				
-				<!-- events -->
+				<!-- events - ->
 				<li>
 					<script type="text/javascript" src="http://plancast.com/goodies/widgets/sidebar/1/43729"></script>
 				</li>
@@ -176,6 +177,7 @@
 		</ul>
 		<div id="carousel_next" onclick="myScroll.scrollToPage('next', 0);return false">next &rarr;</div>
 	</div>
+	-->
 	
 	<? foreach($sections as $section): ?>
 		
