@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|js|css|images|robots\.txt)
+RewriteRule ^(.*)$ /~tophtucker/orient/index.php/$1 [L]
