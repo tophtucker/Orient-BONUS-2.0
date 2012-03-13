@@ -104,7 +104,10 @@
 	
 	<div id="carousel_wrapper" style="margin-top: 70px; width: 100%;">
 		<div id="carousel_scroller">
-			<ul id="carousel" class="articleblock">
+			<ul id="carousel" class=""> <!-- class="articleblock" -->
+				
+				<li class="articletile backgrounded" style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$featurephotos[0]->filename_small?>')">
+				</li>
 				
 				<!-- popular articles -->
 				<? foreach($popular as $article): ?>

@@ -6,6 +6,7 @@ class Issue extends CI_Controller {
 		parent::__construct();
 		$this->load->model('issue_model', '', TRUE);
 		$this->load->model('article_model', '', TRUE);
+		$this->load->model('attachments_model', '', TRUE);
 	}
 	
 	public function index($volume = '', $issue_number = '')
@@ -43,6 +44,8 @@ class Issue extends CI_Controller {
 			// get top 4 popular articles (for carousel)
 			$popular = $this->article_model->get_popular_articles($volume, $issue_number, '4'); 
 			
+			$featurephotos = $this->attachments_model->get_feature_photos($issue->issue_date, '0');
+			
 			// get sections
 			$sections = $this->issue_model->get_sections();
 			
@@ -57,6 +60,7 @@ class Issue extends CI_Controller {
 			$data->nextissue = $nextissue;
 			$data->previssue = $previssue;
 			$data->popular = $popular;
+			$data->featurephotos = $featurephotos;
 			$data->sections = $sections;
 			$data->articles = $articles;	
 			$this->load->view('issue', $data);
