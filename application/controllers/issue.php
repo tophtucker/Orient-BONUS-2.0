@@ -44,7 +44,11 @@ class Issue extends CI_Controller {
 			// get top 4 popular articles (for carousel)
 			$popular = $this->article_model->get_popular_articles($volume, $issue_number, '4'); 
 			
+			// get front page (section 0) feature photo
 			$featurephotos = $this->attachments_model->get_feature_photos($issue->issue_date, '0');
+			
+			// get random quote
+			$data->quote = $this->attachments_model->get_random_quote();
 			
 			// get sections
 			$sections = $this->issue_model->get_sections();

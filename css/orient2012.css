@@ -125,10 +125,25 @@ nav input {
 }
 
 footer {
-	padding: 25px 0;
+	padding: 100px 0 25px 0;
 	clear: both;
 	text-align: right;
 }
+
+footer .bonusquoteblock, vcard {
+	float: left;
+	width: 50%;
+}
+
+footer .bonusquote, .bonusquoteattribution {
+	color: gray;
+	font-style: italic;
+}
+
+footer .bonusquote {
+	font-size: 120%;
+}
+
 
 /*
 // BONUS BAR

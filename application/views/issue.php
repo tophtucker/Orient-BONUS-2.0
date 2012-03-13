@@ -106,13 +106,15 @@
 		<div id="carousel_scroller">
 			<ul id="carousel" class=""> <!-- class="articleblock" -->
 				
+				<? if($featurephotos[0]): ?>
 				<li class="articletile backgrounded" style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$featurephotos[0]->filename_small?>')">
 				</li>
+				<? endif; ?>
 				
 				<!-- popular articles -->
 				<? foreach($popular as $article): ?>
 				<li class="articletile<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
-					<a href="javascript:window.open('../../../../article/view/<?=$article->id?>','_self')">
+					<a href="javascript:window.open('../../../article/view/<?=$article->id?>','_self')">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
@@ -183,7 +185,7 @@
 			<ul class="articleblock">
 				<? foreach($articles[$section->name] as $article): ?>
 				<li class="articletile<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
-					<a href="javascript:window.open('../../../../article/view/<?=$article->id?>','_self')">
+					<a href="javascript:window.open('../../../article/view/<?=$article->id?>','_self')">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
@@ -202,13 +204,18 @@
 	
 	<footer>
 		
+		<div class="bonusquoteblock">
+			<p class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</p>
+			<p class="bonusquoteattribution">&mdash; <?=$quote->attribution?></p>
+		</div>
+		
 		<p class="vcard">
 			<a class="fn org url" href="http://orient.bowdoin.edu" title="The Bowdoin Orient"><span class="organization-name">The Bowdoin Orient</span></a><br>
 			<span class="adr">
 				<span class="street-address">6200 College Station</span><br>
 				<span class="locality">Brunswick</span>, <span class="region">Maine</span> <span class="postal-code">04011</span><br>
 				<span class="tel">Telephone: <span class="value">(207) 725-3300</span></span><br>
-				<span class="tel"><span class="type">Business phone</span>: <span class="value">(207) 725-3053</span></span>
+				<span class="tel">Business phone: <span class="value">(207) 725-3053</span></span>
 			</span>
 		</p>
 

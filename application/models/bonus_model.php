@@ -22,21 +22,6 @@ class Bonus_model extends CI_Model {
 			return false;
 		}
 	}
-    
-    function get_random_quote($filter = TRUE, $public = '1')
-    {
-    	$this->db->order_by('id', 'random');
-    	if($filter) $this->db->where('public', $public);
-    	$query = $this->db->get('quote');
-    	if($query->num_rows() > 0)
-    	{
-    		return $query->row();
-    	}
-    	else
-    	{
-    		return false;
-    	}
-    }
-    
+        
 }
 ?>
