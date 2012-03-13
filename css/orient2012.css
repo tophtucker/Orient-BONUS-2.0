@@ -1,0 +1,778 @@
+/*
+//
+//
+// TEMPLATE
+//
+//
+*/
+
+/* 
+// TEMPLATE STRUCTURE
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: minion-pro,Georgia;
+	color: #333;
+}
+
+#mainhead {
+	position: fixed;
+	top: 0;
+	height: 45px;
+	width: 100%;
+	z-index: 99;
+	background: white;
+}
+
+#head-content {
+	width: 95%;
+	margin: auto;
+	height: 45px;
+	border-bottom: solid 2px gray;
+}
+
+#issuedate{
+	position: absolute; 
+	margin: 0 0 0 390px;
+	font-family: minion-pro,Garamond;
+	height: 45px;
+	text-align: center;
+	line-height: 15px;
+}
+
+#issuedate a{
+	display: block;
+	float: left;
+	padding: 8px 10px 2px 10px;
+	height: 35px;
+	color: black;
+}
+
+#issuedate a:hover{
+	background: rgb(245,245,245);
+	box-shadow: 0 0 10px lightgray inset;
+	color: darkblue;
+	text-decoration: none;
+	border-bottom: 2px solid darkblue;
+}
+
+.issuedatedate{
+	font-size: 80%;
+	font-variant: small-caps;
+}
+
+#issue-viewselect{
+	/* */
+}
+
+#content {
+	width: 92%;
+	margin: auto;
+	padding: 0 10px;
+}
+
+#content-scribd {
+	width: 95%;
+	height: 90%;
+	margin: auto;
+	margin-top: 45px;
+	padding: 0;
+}
+
+nav ul {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	height:45px;
+	float: right;
+}
+
+nav ul li {
+	display: block;
+	list-style: none;
+	float: left;
+}
+
+nav ul li a {
+	display: block;
+	height:25px;
+	padding: 15px 10px 5px 10px;
+	font-family: minion-pro,Garamond;
+	font-size: 13px;
+	text-transform: uppercase;
+	color: black;
+}
+
+nav ul li:hover {
+	background: rgb(245,245,245);
+	box-shadow: 0 0 10px lightgray inset;
+	border-bottom: 2px solid darkblue;
+}
+
+nav ul li a:hover {
+	color: darkblue;
+	text-decoration: none;
+}
+
+nav input {
+	width: 100px;
+	height: 19px;
+	margin: 10px;
+	display: block;
+	font-family: minion-pro,Garamond;
+}
+
+footer {
+	padding: 25px 0;
+	clear: both;
+	text-align: right;
+}
+
+/*
+// BONUS BAR
+*/
+
+#bonushook {
+	position: fixed;
+	bottom: 0;
+	height: 25px;
+	padding: 10px;
+}
+
+#bonushook a {
+	color: lightgray;
+}
+
+#bonushook a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+#bonusbar {
+	position: fixed;
+	bottom: 0;
+	height: 25px;
+	width: 100%;
+	z-index: 98;
+	background: url(../images/starring.png);
+	color: white;
+	padding: 10px;
+}
+
+#bonushook p, #bonusbar p {
+	font-size: 32px;
+	font-family:myriad-pro-condensed,helvetica,arial;
+}
+
+#bonusbar a {
+	color: lightblue;
+}
+
+#bonusbar #savearticle {
+	float: right;
+	font-family:myriad-pro-condensed,helvetica,arial;
+	font-size: 16px;
+	margin-right: 20px;
+}
+
+#bonusbar #savenotify {
+	float: right;
+	font-size: 12pt;
+	margin-right: 5px;
+	display: none;
+}
+
+/* 
+// BONUS EDIT INTERFACE
+*/
+
+.ui-autocomplete {
+	font-family:myriad-pro-condensed,helvetica,arial;
+	margin: 0;
+	padding: 5px 0 0 0;
+	width: 125px;
+}
+
+.ui-menu-item {
+	margin: 0;
+	padding: 0;
+	background: white;
+	box-shadow: 0 0 15px rgb(245,245,245);
+	list-style: none;
+	display: block;
+	width: 100%;
+}
+
+.ui-state-hover {
+	background: rgb(245,245,245);
+	color: darkblue;
+	display: block;
+	width: 100%;
+	font-weight: bold;
+}
+
+figcaption.bonus {
+	display: none;
+}
+
+/* 
+// TEMPLATE ELEMENTS 
+*/
+
+p {
+	font-family: minion-pro,Georgia;
+	font-size: 15px;
+	line-height: 24px;
+	margin: 0;
+	padding: 0 0 18px 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#wordmark {
+	position: relative;
+	font-size: 40px;
+	font-family: minion-pro,Garamond;
+	font-variant: small-caps;
+	line-height: 1em;
+}
+
+#head-content #wordmark {
+	margin: 5px 0 0 0;
+	padding: 0;
+	float: left;
+	display: block;
+}
+
+#head-content #wordmark:hover {
+	border-bottom: 2px solid darkblue;
+}
+
+#wordmark .super {
+	position: absolute;
+	font-size: 0.45em;
+	bottom: 1.65ex;
+	left: 1.35em;
+}
+
+#wordmark a {
+	color: #000;	
+} 
+
+#wordmark a:hover {
+	text-decoration: none;
+	text-shadow: 0 0 10px gray;
+	-webkit-transition: all .2s ease-in;
+}
+
+h2 {
+	font-family: minion-pro,Georgia;
+	font-weight: normal;
+	margin: 0;
+	clear: both;
+}
+
+.type, .series {
+	font-family:myriad-pro-condensed,helvetica,arial;
+	font-weight:bold;
+	font-size: 70%;
+	text-transform: uppercase;
+}
+
+.smallcaps {
+	font-variant: small-caps;
+}
+
+.clear {
+	clear: both;
+}
+
+.addissue {
+	color: red !important;
+}
+
+.addissue:hover::after {
+	content: "Add";
+}
+
+.addarticle {
+	color: red !important;
+}
+
+hr {
+	clear: both;
+	width: 1px;
+	background: lightgray;
+	border: 0;
+}
+
+[contenteditable]:hover:not(:focus) {
+  outline: 2px dotted #ccc;
+}
+/*
+[contenteditable]:hover:not(:focus)::before {
+  content: "Edit " attr(title) ": ";
+}
+*/
+
+/*
+//
+//
+// HOME PAGE
+//
+//
+*/
+
+section {
+	clear: both;
+	float: left;
+}
+
+section h2 {
+	margin: 0 0 25px 0;
+	font-variant: small-caps;
+	font-weight: bold;
+	border-bottom: solid 1px lightgray;
+}
+
+.articleblock {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+.articleblock li {
+	display: block;
+	list-style: none;
+	float: left;
+	height: 150px;
+	width: 200px;
+	border-left: solid 1px lightgray;
+	margin: 0 10px 10px 0;
+}
+
+.articleblock li a {
+	display: block;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	font-size: 18px;
+	color: black;
+}
+
+.articleblock li:hover {
+	background: rgb(245,245,245);
+	border-left: solid 1px darkblue;
+	box-shadow: 0 0 15px lightgray inset;
+}
+
+.articleblock li a:hover {
+	color: darkblue;
+	text-decoration: none;
+}
+
+.articletile h3 {
+	margin: 0;
+	padding: 10px;
+	font-family: schoolbook-web-condensed,Georgia;
+	font-weight: normal;
+	font-size: 100%;
+}
+
+.articletile h4 {
+	display: none;
+}
+
+.articletile p {
+	margin: 0;
+	padding: 0 10px;
+	font-size: 60%;
+	line-height: 140%;
+	color:#555;
+}
+
+.articletile {
+	overflow: hidden;  
+    text-overflow: ellipsis;
+}
+
+@media all and (min-width: 1147px) {
+	
+	/* first items */
+	
+	.articleblock li:nth-child(1) {
+		height: 310px;
+		width: 411px;
+	}
+
+	.articleblock li:nth-child(1) a {
+		font-size: 30px;
+	}
+	
+	.articleblock li:nth-child(1) h4 {
+		display: inherit;
+		font-family:myriad-pro-condensed,helvetica,arial;
+		font-weight:normal;
+		font-size:16pt;
+		margin-top:-5px;
+		padding: 0 10px;
+	}
+	
+	/* low-priority items */
+	
+	.articleblock li:nth-child(n+6) {
+		height: 70px;
+		width: 200px;
+		background: white !important;
+	}
+	
+	.articleblock li:nth-child(n+6) h3 {
+		font-size: 12pt;
+	}
+	
+	.articleblock li:nth-child(n+6) p {
+		display: none;
+	}
+	
+}
+
+@media all and (min-width: 481px) {
+	
+	section {
+		padding-top: 65px;
+	}
+	
+	.articleblock li:nth-child(-n+5).backgrounded {
+		background-size:cover;
+	}
+
+	.articleblock li:nth-child(-n+5).backgrounded a {
+		color: white;
+	}
+
+	.articleblock li:nth-child(-n+5).backgrounded h3{
+		background: rgba(50,50,50,.6);
+	}
+	
+	.articleblock li:nth-child(-n+5).backgrounded h4{
+		display: none !important;
+	}
+
+	.articleblock li:nth-child(-n+5).backgrounded a:hover {
+		color: white;
+		background: rgba(100,100,100,.3);
+		text-shadow: 0 0 10px darkblue;
+	}
+
+	.articleblock li:nth-child(-n+5).backgrounded a:hover h3{
+		background: rgba(50,50,50,1);
+	}
+	
+	.articleblock li:nth-child(-n+5).backgrounded p {
+		display: none;
+	}
+}
+
+/* for smartphones (read: iPhones) */
+@media all and (max-width: 480px) {
+
+	.articleblock .articletile {
+		width: 100%;
+		border: 0;
+	}
+	
+	.articleblock .articletile a {
+		width: 100%;
+	}
+	
+	.articleblock .articletile:nth-child(n+4) {
+		display: none;
+	}
+	
+	li {
+		background: none !important;
+		height: auto !important;
+	}
+	
+	h2 {
+		padding: 0 !important;
+		margin: 5px 0 !important;
+	}
+	
+	.articletile p {
+		display: none;
+	}
+	
+	#mainhead {
+		position:relative;
+	}
+
+}
+
+
+/*
+// CAROUSEL
+*/
+
+#carousel_wrapper {
+	width:600px;
+	height:200px;
+
+	float:left;
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
+	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
+	overflow:hidden;
+}
+
+#carousel_scroller {
+	width:2100px;
+	height:100%;
+	float:left;
+	padding:0;
+}
+
+#carousel_scroller ul {
+	list-style:none;
+	display:block;
+	float:left;
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	text-align:left;
+}
+
+#carousel_scroller li {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box;
+	display:block; 
+	float:left;
+	width:300px; 
+	height:300px;
+}
+
+#carousel_nav {
+	width:300px;
+	float:left;
+}
+
+#carousel_prev, #carousel_next {
+	float:left;
+	font-weight:bold;
+	font-size:14px;
+	padding:5px 0;
+	width:80px;
+}
+
+#carousel_next {
+	float:right;
+	text-align:right;
+}
+
+#carousel_indicator, #carousel_indicator > li {
+	display:block; 
+	float:left;
+	list-style:none;
+	padding:0; 
+	margin:0;
+}
+
+#carousel_indicator {
+	width:110px;
+	padding:12px 0 0 30px;
+}
+
+#carousel_indicator > li {
+	text-indent:-9999em;
+	width:8px; 
+	height:8px;
+	background:#ddd;
+	overflow:hidden;
+	margin-right:4px;
+}
+
+#carousel_indicator > li.active {
+	background:#888;
+}
+
+#carousel_indicator > li:last-child {
+	margin:0;
+}
+
+/*
+//
+//
+// ARTICLE PAGE
+//
+//
+*/
+
+#mainstory {
+	width:700px;
+}
+
+article header p {
+	line-height: 10px;
+}
+
+article header {
+	margin: 75px 0 25px 0;
+}
+
+.articletitle {
+	font-family: schoolbook-web-condensed,Georgia;
+	font-size: 36pt;
+}
+
+.articlesubtitle {
+	font-family:myriad-pro-condensed,helvetica,arial;
+	font-weight:normal;
+	font-size:22pt;
+	margin-top:10px;
+}
+
+.authorbox {
+	display: block;
+	float: left;
+	margin-right: 15px;
+}
+
+.articleauthor {
+	font-family:myriad-pro-condensed,helvetica,arial;
+	font-weight:bold;
+	text-transform:uppercase;
+	padding-bottom:6px;
+}
+
+.articleauthorjob {
+	font-family:myriad-pro-condensed,helvetica,arial;
+	font-weight:normal;
+	text-transform:uppercase;
+	color: gray;
+}
+
+.articledate {
+	clear: both;
+	font-family:myriad-pro-condensed,helvetica,arial;
+}
+
+.articlebody h3 {
+	font-variant: small-caps;
+}
+
+figure img {
+	width: 100%;
+}
+
+figure p {
+	margin: 0;
+	padding: 0;
+	line-height: 16px;
+	font-family:myriad-pro-condensed,helvetica,arial;
+}
+
+.photocredit {
+	font-size: 12px;
+	font-style: italic;
+	text-align: right;
+	color: white;
+	margin: -20px 5px 0 0;
+	text-shadow: 0 0 10px black;
+}
+
+.photocaption {
+	font-size: 14px;
+	margin: 5px 0 0 0;
+}
+
+.lede {
+	/*font-variant: small-caps;*/
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+aside {
+	width: 320px;
+	float:right;
+	margin: 25px -100px 25px 25px;
+}
+
+.pullquote .quote {
+	font-size: 20px;
+}
+
+.pullquote .attribution {
+	font-style: italic;
+	font-size: 16px;
+}
+
+@media all and (min-width: 481px) {
+
+	article {
+		margin-left: 30px;
+	}
+
+	figure {
+		width: 500px;
+		float:right;
+		margin: 0 -280px 25px 25px;
+	}
+	
+	aside {
+		width: 320px;
+		float:right;
+		margin: 25px -100px 25px 25px;
+	}
+	
+	.articlebody {
+		margin-left: 80px;
+	}
+	
+	.articlebody h3 {
+		margin-left: -25px;
+	}
+
+}
+
+/* for smartphones (read: iPhones) */
+@media all and (max-width: 480px) {
+
+	#issuedate, #mainnav, footer, #bonushook {
+		display: none;
+	}
+	
+	#mainstory {
+		font-size: 12pt;
+		width: 100%;
+		margin: 0;
+	}
+	
+	article header {
+		margin: 20px 0 0 0;
+	}
+	
+	.articletitle {
+		font-size: 20pt;
+	}
+	
+	figure {
+		width: 100%;
+		margin: 10px 0;
+	}
+	
+	#swipeview_wrapper {
+		width: 100% !important;
+		height: 200px !important;
+	}
+
+}
