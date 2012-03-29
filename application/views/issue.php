@@ -8,11 +8,11 @@
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
 	<!-- for mobile -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!--<meta name="apple-mobile-web-app-capable" content="yes">-->
 	<link rel="apple-touch-icon" href="<?=base_url()?>images/webappicon.png"/>
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
-	<link rel="stylesheet" href="<?=base_url()?>css/add2home.css">
-	<script type="application/javascript" src="<?=base_url()?>js/add2home.js"></script>
+	<!--<link rel="stylesheet" href="<?=base_url()?>css/add2home.css">-->
+	<!--<script type="application/javascript" src="<?=base_url()?>js/add2home.js"></script>-->
 	
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -115,7 +115,7 @@
 				<!-- popular articles - ->
 				<? foreach($popular as $article): ?>
 				<li class="articletile<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
-					<a href="javascript:window.open('../../../article/view/<?=$article->id?>','_self')">
+					<a href="<?=site_url()?>article/view/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
@@ -187,7 +187,7 @@
 			<ul class="articleblock">
 				<? foreach($articles[$section->name] as $article): ?>
 				<li class="articletile<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
-					<a href="javascript:window.open('../../../article/view/<?=$article->id?>','_self')">
+					<a href="<?=site_url()?>article/view/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>

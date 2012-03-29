@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="<?=base_url()?>/js/jquery.scrollTo-min.js"></script>
 	
 	<!-- for mobile -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!--<meta name="apple-mobile-web-app-capable" content="yes">-->
 	<link rel="apple-touch-icon" href="<?=base_url()?>images/webappicon.png"/>
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
 		
