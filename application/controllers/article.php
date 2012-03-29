@@ -4,6 +4,7 @@ class Article extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		date_default_timezone_set('America/New_York');
 		$this->load->model('issue_model', '', TRUE);
 		$this->load->model('article_model', '', TRUE);
 		$this->load->model('attachments_model', '', TRUE);
