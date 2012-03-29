@@ -15,7 +15,7 @@
 |
 */
 //$config['base_url']	= 'http://localhost/~tophtucker/orient/';
-$config['base_url']	= 'http://24.91.36.234/~tophtucker/orient/';
+$config['base_url']	= 'http://dhcp-209-118.wireless.bowdoin.edu/~tophtucker/orient/';
 //$config['base_url']	= 'http://tophs-macbook-air.local/~tophtucker/orient/';
 //$config['base_url']	= 'http://dhcp-211-151.wireless.bowdoin.edu/~tophtucker/orient/';
 //$config['base_url'] = 'http://192.168.1.104/~tophtucker/orient/';
