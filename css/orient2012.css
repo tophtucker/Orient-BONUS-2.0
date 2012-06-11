@@ -423,16 +423,16 @@ section h2 {
 	
 	/* first items */
 	
-	.articleblock li:nth-child(1) {
+	.articleblock li:nth-child(-n+1) {
 		height: 310px;
 		width: 411px;
 	}
 
-	.articleblock li:nth-child(1) a {
+	.articleblock li:nth-child(-n+1) a {
 		font-size: 30px;
 	}
 	
-	.articleblock li:nth-child(1) h4 {
+	.articleblock li:nth-child(-n+1) h4 {
 		display: inherit;
 		font-family:myriad-pro-condensed,helvetica,arial;
 		font-weight:normal;
