@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>The Bowdoin Orient <?=$issue->volume?>.<?=$issue->issue_number?></title>
-	<link rel="shortcut icon" href="<?=base_url()?>images/favicon.png">
+	<link rel="shortcut icon" href="<?=base_url()?>images/favicon-o.png">
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
 	<!-- for mobile -->
