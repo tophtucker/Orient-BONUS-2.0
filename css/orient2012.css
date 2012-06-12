@@ -497,7 +497,11 @@ section h2 {
 
 /* for smartphones (read: iPhones) */
 @media all and (max-width: 480px) {
-
+	
+	#head-content, #content {
+		margin: 0 10px;
+	}
+	
 	.articleblock .articletile {
 		width: 100%;
 		border: 0;
