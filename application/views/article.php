@@ -191,8 +191,20 @@
 		
 		<? if($photos): ?>
 		<figure>
-			<? if(count($photos) == 1): ?><img src="<?=base_url()?>images/<?=$article->date?>/<?=$photos[0]->filename_large?>">
-			<? else: ?><div id="swipeview_wrapper"></div><? endif; ?>
+			<? if(count($photos) == 1): ?>
+				<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photos[0]->filename_large?>">
+			<? else: ?>
+				<div id="swipeview_wrapper"></div>
+				<div id="swipeview_relative_nav">
+					<span id="prev" onclick="carousel.prev()">&laquo;</span>
+					<span id="next" onclick="carousel.next()">&raquo;</span>
+				</div>
+				<ul id="swipeview_nav">
+					<? foreach($photos as $key => $photo): ?>
+					<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>)"></li>
+					<? endforeach; ?>
+				</ul>			
+			<? endif; ?>
 			<figcaption>
 				<p class="photocredit"<? if(count($photos) > 1): ?> style="margin-top: 0;text-shadow:none;color:gray;"<? endif;?>><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
 				<p class="photocaption"><?=$photos[0]->caption?></p>
@@ -264,6 +276,7 @@
 		el,
 		i,
 		page,
+		dots = document.querySelectorAll('#swipeview_nav li'),
 		slides = [
 			<? foreach($photos as $key => $photo): ?>
 				<? if($key > 0): ?>,<? endif; ?>
@@ -298,6 +311,9 @@
 				el.innerHTML = slides[upcoming];
 			}
 		}
+		
+		document.querySelector('#swipeview_nav .selected').className = '';
+		dots[carousel.pageIndex].className = 'selected';
 	});
 	
 	</script>
