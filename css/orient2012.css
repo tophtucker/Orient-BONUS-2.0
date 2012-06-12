@@ -512,7 +512,7 @@ section h2 {
 		display: none;
 	}
 	
-	li {
+	.articleblock li {
 		background: none !important;
 		height: auto !important;
 	}
@@ -762,7 +762,7 @@ aside {
 /* for smartphones (read: iPhones) */
 @media all and (max-width: 480px) {
 
-	#issuedate, #mainnav, footer, #bonushook {
+	#issuedate, #mainnav, footer, #bonushook, #swipeview_relative_nav > #next, #swipeview_relative_nav > #prev {
 		display: none;
 	}
 	
