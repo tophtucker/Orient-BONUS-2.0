@@ -257,6 +257,7 @@ a:hover {
 	font-size: 40px;
 	font-family: minion-pro,Garamond;
 	font-variant: small-caps;
+	font-weight: normal;
 	line-height: 1em;
 }
 
@@ -274,8 +275,8 @@ a:hover {
 #wordmark .super {
 	position: absolute;
 	font-size: 0.45em;
-	bottom: 1.65ex;
-	left: 1.35em;
+	bottom: 1.8ex;
+	left: 1.25em;
 }
 
 #wordmark a {
