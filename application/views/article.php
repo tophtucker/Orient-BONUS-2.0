@@ -196,12 +196,12 @@
 			<? else: ?>
 				<div id="swipeview_wrapper"></div>
 				<div id="swipeview_relative_nav">
-					<span id="prev" onclick="carousel.prev()">&laquo;</span>
-					<span id="next" onclick="carousel.next()">&raquo;</span>
+					<span id="prev" onclick="carousel.prev();hasInteracted=true">&laquo;</span>
+					<span id="next" onclick="carousel.next();hasInteracted=true">&raquo;</span>
 				</div>
 				<ul id="swipeview_nav">
 					<? foreach($photos as $key => $photo): ?>
-					<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>)"></li>
+					<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>);hasInteracted=true"></li>
 					<? endforeach; ?>
 				</ul>			
 			<? endif; ?>
@@ -276,6 +276,7 @@
 		el,
 		i,
 		page,
+		hasInteracted = false,
 		dots = document.querySelectorAll('#swipeview_nav li'),
 		slides = [
 			<? foreach($photos as $key => $photo): ?>
@@ -315,6 +316,16 @@
 		document.querySelector('#swipeview_nav .selected').className = '';
 		dots[carousel.pageIndex].className = 'selected';
 	});
+	
+	
+	// timer for carousel autoplay
+	function loaded() {
+		var interval = setInterval(function () { 
+				if(!hasInteracted) carousel.next(); 
+			}, 5000); 
+		
+	}
+	document.addEventListener('DOMContentLoaded', loaded, false);
 	
 	</script>
 <? endif; ?>
