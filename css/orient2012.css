@@ -27,8 +27,7 @@ body {
 }
 
 #head-content {
-	width: 95%;
-	margin: auto;
+	margin: 0 20px;
 	height: 45px;
 	border-bottom: solid 2px gray;
 }
@@ -68,9 +67,7 @@ body {
 }
 
 #content {
-	width: 92%;
-	margin: auto;
-	padding: 0 10px;
+	margin: 0 40px;
 }
 
 #content-scribd {
@@ -348,6 +345,7 @@ hr {
 */
 
 section {
+	width: 100%;
 	clear: both;
 	float: left;
 }
