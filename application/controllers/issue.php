@@ -43,7 +43,7 @@ class Issue extends CI_Controller {
 			$previssue = $this->issue_model->get_adjacent_issue($volume, $issue_number, -1);
 			
 			// get top 4 popular articles (for carousel)
-			$popular = $this->article_model->get_popular_articles($volume, $issue_number, '4'); 
+			$popular = $this->article_model->get_popular_articles($volume, $issue_number, '10'); 
 			
 			// get front page (section 0) feature photo
 			$featurephotos = $this->attachments_model->get_feature_photos($issue->issue_date, '0');

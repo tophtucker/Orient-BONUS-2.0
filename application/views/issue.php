@@ -3,23 +3,19 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>The Bowdoin Orient <?=$issue->volume?>.<?=$issue->issue_number?></title>
+	<title>The Bowdoin Orient</title>
 	<link rel="shortcut icon" href="<?=base_url()?>images/favicon-o.png">
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
 	<!-- for mobile -->
-	<!--<meta name="apple-mobile-web-app-capable" content="yes">-->
 	<link rel="apple-touch-icon" href="<?=base_url()?>images/webappicon.png"/>
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
-	<!--<link rel="stylesheet" href="<?=base_url()?>css/add2home.css">-->
-	<!--<script type="application/javascript" src="<?=base_url()?>js/add2home.js"></script>-->
 	
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	
 	<!-- jQuery -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>js/iscroll.js"></script>
 
     <!-- for smooth scrolling -->
     <script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
@@ -31,33 +27,12 @@
     // When the document is loaded...
     $(document).ready(function()
     {
-        // Scroll the whole document
+        // Set up localScroll smooth scroller to scroll the whole document
         $('#mainnav').localScroll({
            target:'body'
         });
  		
     });
-    
-    // iscroll carousel
-    var myScroll;	
-	function loaded() {
-		myScroll = new iScroll('carousel_wrapper', {
-			snap: 'li',
-			momentum: false,
-			hScrollbar: false,
-			onScrollEnd: function () {
-				document.querySelector('#carousel_indicator > li.active').className = '';
-				document.querySelector('#carousel_indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-			}
-		 });
-		 
-		var interval = setInterval(function () { 
-				if (myScroll.currPageX == myScroll.pagesX.length-1) myScroll.scrollToPage(0, 0, 1000); 
-				else myScroll.scrollToPage('next', 0, 400); 
-			}, 5000); 
-		
-	}
-	document.addEventListener('DOMContentLoaded', loaded, false);
     
     </script>
 	
@@ -99,21 +74,56 @@
 	</div>
 </header>
 
+<div id="subnavbar">
+<font color="black">June 12, 2012</font> - Vol. 141, No. 12 - Archives
+<span style="float:right">About - Subscribe - Advertise - <font color="darkred">Submit a tip</font></span>
+</div>
+
 <div id="content">
 	
-	<!--
-	<div id="carousel_wrapper" style="margin-top: 70px; width: 100%;">
-		<div id="carousel_scroller">
-			<ul id="carousel" class=""> <!-- class="articleblock" - ->
-				
-				<? if($featurephotos[0]): ?>
-				<li class="articletile backgrounded" style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$featurephotos[0]->filename_small?>')">
-				</li>
-				<? endif; ?>
-				
-				<!-- popular articles - ->
+	<section id="abovethefold" class="">
+		
+		<!-- carousel -->
+		<div id="carousel" style="width:600px;height:400px;border:solid 1px black;float:left;">
+		</div>
+		
+		<!-- tweets -->
+		<div id="twitter-widget">
+			<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+			<script>
+			new TWTR.Widget({
+			  version: 2,
+			  type: 'profile',
+			  rpp: 10,
+			  interval: 30000,
+			  width: 250,
+			  height: 300,
+			  theme: {
+				shell: {
+				  background: '#ffffff',
+				  color: '#000000'
+				},
+				tweets: {
+				  background: '#ffffff',
+				  color: '#000000',
+				  links: '#0000ff'
+				}
+			  },
+			  features: {
+				scrollbar: true,
+				loop: false,
+				live: true,
+				behavior: 'default'
+			  }
+			}).render().setUser('bowdoinorient').start();
+			</script>
+		</div>
+		
+		<!-- popular articles -->
+		<div id="popular">
+			<ul class="articleblock">
 				<? foreach($popular as $article): ?>
-				<li class="articletile<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
+				<li class="littleblock articletile">
 					<a href="<?=site_url()?>article/view/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
@@ -122,61 +132,10 @@
 					<p><?=$article->pullquote?></p>
 				</a></li>
 				<? endforeach; ?>
-				
-				<!-- tweets - ->
-				<li>
-					<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-					<script>
-					new TWTR.Widget({
-					  version: 2,
-					  type: 'profile',
-					  rpp: 6,
-					  interval: 30000,
-					  width: 'auto',
-					  height: 300,
-					  theme: {
-						shell: {
-						  background: '#ffffff',
-						  color: '#000000'
-						},
-						tweets: {
-						  background: '#ffffff',
-						  color: '#000000',
-						  links: '#00008b'
-						}
-					  },
-					  features: {
-						scrollbar: true,
-						loop: false,
-						live: false,
-						behavior: 'all'
-					  }
-					}).render().setUser('bowdoinorient').start();
-					</script>
-				</li>
-				
-				<!-- events - ->
-				<li>
-					<script type="text/javascript" src="http://plancast.com/goodies/widgets/sidebar/1/43729"></script>
-				</li>
-				
 			</ul>
 		</div>
-	</div>
-	<div id="carousel_nav" style="clear:both;">
-		<div id="carousel_prev" onclick="myScroll.scrollToPage('prev', 0);return false">&larr; prev</div>
-		<ul id="carousel_indicator">
-			<li class="active">1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-			<li>5</li>
-			<li>6</li>
-			<li>7</li>
-		</ul>
-		<div id="carousel_next" onclick="myScroll.scrollToPage('next', 0);return false">next &rarr;</div>
-	</div>
-	-->
+		
+	</section>
 	
 	<? foreach($sections as $section): ?>
 		
