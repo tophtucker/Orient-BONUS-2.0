@@ -64,6 +64,21 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['medved']['hostname'] = 'localhost';
+$db['medved']['username'] = 'orientdba';
+$db['medved']['password'] = 'bgtyhn768594';
+$db['medved']['database'] = 'DB02Orient';
+$db['medved']['dbdriver'] = 'mysql';
+$db['medved']['dbprefix'] = '';
+$db['medved']['pconnect'] = TRUE;
+$db['medved']['db_debug'] = TRUE;
+$db['medved']['cache_on'] = FALSE;
+$db['medved']['cachedir'] = '';
+$db['medved']['char_set'] = 'utf8';
+$db['medved']['dbcollat'] = 'utf8_general_ci';
+$db['medved']['swap_pre'] = '';
+$db['medved']['autoinit'] = TRUE;
+$db['medved']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
