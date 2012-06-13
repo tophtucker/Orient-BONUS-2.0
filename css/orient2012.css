@@ -121,6 +121,21 @@ nav input {
 	font-family: minion-pro,Garamond;
 }
 
+nav .oebug {
+	height: 35px;
+	padding: 5px;
+}
+
+.twitter-follow-button {
+	position: absolute !important;
+	margin: 14px 0 0 290px;
+}
+
+.fb-like {
+	position: absolute !important;
+	margin: 12px 0 0 450px;
+}
+
 footer {
 	padding: 100px 0 25px 0;
 	clear: both;
@@ -250,7 +265,7 @@ a:hover {
 }
 
 #wordmark {
-	position: relative;
+	position: absolute;
 	font-size: 40px;
 	font-family: minion-pro,Garamond;
 	font-variant: small-caps;
@@ -306,6 +321,10 @@ h2 {
 
 .clear {
 	clear: both;
+}
+
+.nopad {
+	padding: 0;
 }
 
 .addissue {

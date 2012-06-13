@@ -21,16 +21,14 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript" src="<?=base_url()?>js/iscroll.js"></script>
 
-    <!-- for smooth scrolling [disabled] 
+    <!-- for smooth scrolling -->
     <script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery.localscroll-1.2.7-min.js"></script>
-	-->
 	
 	<!-- initiate jQuery and the LocalScroll plugin -->
     <script>
  
     // When the document is loaded...
-    /*
     $(document).ready(function()
     {
         // Scroll the whole document
@@ -39,7 +37,6 @@
         });
  		
     });
-    */
     
     // iscroll carousel
     var myScroll;	
@@ -68,33 +65,35 @@
 
 <body>
 
+<!-- Facebook JavaScript SDK -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=115180665171978";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- end FB JS SDK -->
+
 <header id="mainhead">
 	<div id="head-content">
 		<h1 id="wordmark"><a href="<?=site_url()?>"><span class="super">The</span> Bowdoin Orient</a></h1>
 		
-		<div id="issuedate">
-			<? if($previssue): ?><a href="<?=site_url()?>issue/view/<?=$previssue->volume?>/<?=$previssue->issue_number?>">&#x25C4;</a><? endif; ?>
-			<a href="#">Vol. <?=$issue->volume?>, No. <?=$issue->issue_number?><br/><span class="issuedatedate"><?=date("M. j, Y",strtotime($issue->issue_date))?></span></a>
-			<span id="issue-viewselect"><a href="#"><img src="<?=base_url()?>/images/view-paper.png"></a></span>
-			<? if($nextissue): ?><a href="<?=site_url()?>issue/view/<?=$nextissue->volume?>/<?=$nextissue->issue_number?>">&#x25BA;</a>
-			<? else: ?><?if(bonus()):?><a href="#" title="Add issue" class="addissue">+</a><? endif;?>
-			<? endif;?>
-		</div>
+		<a href="https://twitter.com/bowdoinorient" class="twitter-follow-button" data-show-count="false">Follow @bowdoinorient</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		
+		<div class="fb-like" data-href="https://www.facebook.com/bowdoinorient" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+				
 		<nav id="mainnav">
 			<ul>
-				<!--
 				<li><a href="#News">News</a></li>
 				<li><a href="#Opinion">Opinion</a></li>
 				<li><a href="#Features">Features</a></li>
 				<li><a href="#Arts & Entertainment">A&E</a></li>
 				<li><a href="#Sports">Sports</a></li>
-				-->
-				<li><a href="#">About</a></li>
-				<li><a href="#">Subscribe</a></li>
-				<li><a href="#">Advertise</a></li>
-				<li><a href="http://bowdoinorientexpress.com" style="font-family:helvetica;font-style:italic;">Express</a></li>
 				<li><input class="filterinput" type="text" placeholder="Search"></li>
+				<li><a href="http://bowdoinorientexpress.com" style="font-family:helvetica;font-style:italic;" class="oebug"><img src="<?=base_url().'images/oe-compass-35.png'?>"></a></li>
 			</ul>
 		</nav>
 	</div>
