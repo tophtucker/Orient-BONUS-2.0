@@ -437,6 +437,7 @@ section h2 {
 	width: 200px;
 	border-left: solid 1px lightgray;
 	margin: 0 10px 10px 0;
+	overflow: hidden;
 }
 
 .articleblock li a {
@@ -459,7 +460,7 @@ section h2 {
 	text-decoration: none;
 }
 
-.articletile h3 {
+.articleblock li h3 {
 	margin: 0;
 	padding: 10px;
 	font-family: schoolbook-web-condensed,Georgia;
@@ -467,21 +468,16 @@ section h2 {
 	font-size: 100%;
 }
 
-.articletile h4 {
+.articleblock li h4 {
 	display: none;
 }
 
-.articletile p {
+.articleblock li p {
 	margin: 0;
 	padding: 0 10px;
 	font-size: 60%;
 	line-height: 140%;
 	color:#555;
-}
-
-.articletile {
-	overflow: hidden;  
-    text-overflow: ellipsis;
 }
 
 /* homepage social media button responses */
@@ -562,7 +558,7 @@ section h2 {
 	}
 	
 	.littleblock h3, .articleblock li:nth-child(n+6) h3 {
-		font-size: 12pt;
+		font-size: 12pt !important;
 	}
 	
 	.littleblock p, .articleblock li:nth-child(n+6) p {
@@ -573,26 +569,12 @@ section h2 {
 /* for smartphones (read: iPhones) */
 @media all and (max-width: 480px) {
 	
+	#mainhead {
+		position:relative;
+	}
+
 	#head-content, #content {
 		margin: 0 10px;
-	}
-	
-	.articleblock .articletile {
-		width: 100%;
-		border: 0;
-	}
-	
-	.articleblock .articletile a {
-		width: 100%;
-	}
-	
-	.articleblock .articletile:nth-child(n+4) {
-		display: none;
-	}
-	
-	.articleblock li {
-		background: none !important;
-		height: auto !important;
 	}
 	
 	h2 {
@@ -600,12 +582,23 @@ section h2 {
 		margin: 5px 0 !important;
 	}
 	
-	.articletile p {
-		display: none;
+	.articleblock li {
+		width: 100%;
+		border: 0;
+		background: none !important;
+		height: auto !important;
 	}
 	
-	#mainhead {
-		position:relative;
+	.articleblock li a {
+		width: 100%;
+	}
+			
+	.articleblock li p {
+		display: none;
+	}
+
+	.articleblock li:nth-child(n+4) {
+		display: none;
 	}
 
 }
