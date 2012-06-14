@@ -393,6 +393,7 @@ hr {
 	float: right;
 	box-sizing: border-box;
 	width: 35%;
+	padding: 0 20px;
 }
 
 #twitter-widget {
@@ -496,7 +497,41 @@ section h2 {
 }
 /* end homepage social media button responses */
 
-@media all and (min-width: 1147px) {
+@media all and (min-width: 481px) {
+	
+	section {
+		padding-top: 65px;
+	}
+	
+	.articleblock li:nth-child(-n+5).backgrounded {
+		background-size:cover;
+	}
+
+	.articleblock li:nth-child(-n+5).backgrounded a {
+		color: white;
+	}
+
+	.articleblock li:nth-child(-n+5).backgrounded h3{
+		background: rgba(50,50,50,.6);
+	}
+	
+	.articleblock li:nth-child(-n+5).backgrounded h4{
+		display: none !important;
+	}
+
+	.articleblock li:nth-child(-n+5).backgrounded a:hover {
+		color: white;
+		background: rgba(100,100,100,.3);
+		text-shadow: 0 0 10px darkblue;
+	}
+
+	.articleblock li:nth-child(-n+5).backgrounded a:hover h3{
+		background: rgba(50,50,50,1);
+	}
+	
+	.articleblock li:nth-child(-n+5).backgrounded p {
+		display: none;
+	}
 	
 	/* first items */
 	
@@ -531,44 +566,6 @@ section h2 {
 	}
 	
 	.littleblock p, .articleblock li:nth-child(n+6) p {
-		display: none;
-	}
-	
-}
-
-@media all and (min-width: 481px) {
-	
-	section {
-		padding-top: 65px;
-	}
-	
-	.articleblock li:nth-child(-n+5).backgrounded {
-		background-size:cover;
-	}
-
-	.articleblock li:nth-child(-n+5).backgrounded a {
-		color: white;
-	}
-
-	.articleblock li:nth-child(-n+5).backgrounded h3{
-		background: rgba(50,50,50,.6);
-	}
-	
-	.articleblock li:nth-child(-n+5).backgrounded h4{
-		display: none !important;
-	}
-
-	.articleblock li:nth-child(-n+5).backgrounded a:hover {
-		color: white;
-		background: rgba(100,100,100,.3);
-		text-shadow: 0 0 10px darkblue;
-	}
-
-	.articleblock li:nth-child(-n+5).backgrounded a:hover h3{
-		background: rgba(50,50,50,1);
-	}
-	
-	.articleblock li:nth-child(-n+5).backgrounded p {
 		display: none;
 	}
 }
