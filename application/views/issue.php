@@ -84,7 +84,7 @@
 	<section id="abovethefold" class="">
 		
 		<!-- carousel -->
-		<div id="carousel" style="width:600px;height:400px;border:solid 1px black;float:left;">
+		<div id="carousel">
 		</div>
 		
 		<!-- tweets -->
@@ -95,18 +95,18 @@
 			  version: 2,
 			  type: 'profile',
 			  rpp: 10,
-			  interval: 30000,
-			  width: 250,
-			  height: 300,
+			  interval: 5000,
+			  width: 'auto',
+			  height: 400,
 			  theme: {
 				shell: {
-				  background: '#ffffff',
+				  background: 'transparent',
 				  color: '#000000'
 				},
 				tweets: {
-				  background: '#ffffff',
-				  color: '#000000',
-				  links: '#0000ff'
+				  background: 'transparent',
+				  color: '#555',
+				  links: '#00008B'
 				}
 			  },
 			  features: {

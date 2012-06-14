@@ -381,20 +381,30 @@ hr {
 }
 
 #carousel {
-	position: relative;
+	float: left;
 	background: lightgray;
+	width: 45%;
+	height: 400px;
+	box-sizing: border-box;
+	border:solid 1px black;
 }
 
 #popular {
-	position: relative;
-	margin: 0 0 0 620px;
+	float: right;
+	box-sizing: border-box;
+	width: 35%;
 }
 
 #twitter-widget {
 	float: right;
-	width: 250;
-	height: 300;
+	box-sizing: border-box;
 	border-left: solid 1px lightgray;
+	width: 20%;
+}
+
+/* strip header and footer from twitter widget */
+.twtr-hd, .twtr-ft{
+	display: none;
 }
 
 /* below the fold */
