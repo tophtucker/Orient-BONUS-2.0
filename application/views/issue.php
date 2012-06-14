@@ -89,6 +89,7 @@
 		
 		<!-- tweets -->
 		<div id="twitter-widget">
+			<h2>Twitter</h2>
 			<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
 			<script>
 			new TWTR.Widget({
@@ -121,9 +122,10 @@
 		
 		<!-- popular articles -->
 		<div id="popular">
+			<h2>Popular</h2>
 			<ul class="articleblock">
 				<? foreach($popular as $article): ?>
-				<li class="smalltile articletile">
+				<li class="smalltile">
 					<a href="<?=site_url()?>article/view/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
@@ -144,7 +146,7 @@
 			
 			<ul class="articleblock">
 				<? foreach($articles[$section->name] as $article): ?>
-				<li class="articletile<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
+				<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
 					<a href="<?=site_url()?>article/view/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
@@ -154,7 +156,7 @@
 				</a></li>
 				<? endforeach; ?>
 				<? if(bonus()): ?>
-				<li class="articletile"><a href="<?=site_url()?>article/add/<?=$issue->volume?>/<?=$issue->issue_number?>/<?=$section->id?>"><h3 class="addarticle">+ Add article</h3></a></li>
+				<li class=""><a href="<?=site_url()?>article/add/<?=$issue->volume?>/<?=$issue->issue_number?>/<?=$section->id?>"><h3 class="addarticle">+ Add article</h3></a></li>
 				<? endif; ?>
 			</ul>
 			

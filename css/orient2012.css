@@ -396,11 +396,18 @@ hr {
 	padding: 0 20px;
 }
 
+#popular .smalltile {
+	width: 47% !important;
+	box-sizing: border-box;
+	margin-right: 3% !important;
+}
+
 #twitter-widget {
 	float: right;
 	box-sizing: border-box;
 	border-left: solid 1px lightgray;
 	width: 20%;
+	padding: 0 0 0 20px;
 }
 
 /* strip header and footer from twitter widget */
@@ -478,10 +485,6 @@ section h2 {
 	font-size: 60%;
 	line-height: 140%;
 	color:#555;
-}
-
-.littletile {
-	
 }
 
 /* homepage social media button responses */
