@@ -123,7 +123,7 @@
 		<div id="popular">
 			<ul class="articleblock">
 				<? foreach($popular as $article): ?>
-				<li class="littleblock articletile">
+				<li class="smalltile articletile">
 					<a href="<?=site_url()?>article/view/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
