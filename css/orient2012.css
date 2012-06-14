@@ -386,12 +386,16 @@ hr {
 	width: 45%;
 	height: 400px;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	border:solid 1px black;
 }
 
 #popular {
 	float: right;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	width: 35%;
 	padding: 0 20px;
 }
@@ -399,12 +403,16 @@ hr {
 #popular .smalltile {
 	width: 47% !important;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	margin-right: 3% !important;
 }
 
 #twitter-widget {
 	float: right;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	border-left: solid 1px lightgray;
 	width: 20%;
 	padding: 0 0 0 20px;
