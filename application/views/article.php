@@ -190,7 +190,7 @@
 		</header>                
 		
 		<? if($photos): ?>
-		<figure>
+		<figure id="articlemedia">
 			<? if(count($photos) == 1): ?>
 				<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photos[0]->filename_large?>">
 			<? else: ?>
@@ -203,7 +203,7 @@
 					<? foreach($photos as $key => $photo): ?>
 					<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>);hasInteracted=true"></li>
 					<? endforeach; ?>
-				</ul>			
+				</ul>
 			<? endif; ?>
 			<figcaption>
 				<p class="photocredit"<? if(count($photos) > 1): ?> style="margin-top: 0;text-shadow:none;color:gray;"<? endif;?>><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
@@ -217,7 +217,7 @@
 					#dnd-holder { border: 2px dashed #ccc; box-sizing: border-box; width: 500px; height: 300px; background-size: cover;}
 					#dnd-holder.hover { border: 10px dashed #333; }
 				</style>
-				<figure>
+				<figure id="articlemedia">
 					<div id="dnd-holder"></div>
 					<figcaption class="bonus">
 						<p id="photocredit" class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;" contenteditable="true">Credit</p>

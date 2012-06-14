@@ -16,6 +16,10 @@
 	
 	<!-- jQuery -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	
+	<!-- SwipeView (for carousel) -->
+	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/swipeview.css?v=1">
+	<script type="text/javascript" src="<?= base_url() ?>js/swipeview.js"></script>
 
     <!-- for smooth scrolling -->
     <script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
@@ -75,7 +79,7 @@
 </header>
 
 <div id="subnavbar">
-<font color="black">June 12, 2012</font> - Vol. 141, No. 12 - Archives
+<font color="black">Last updated June 12, 2012</font> - Vol. 141, No. 12 - Archives
 <span style="float:right">About - Subscribe - Advertise - <font color="darkred">Submit a tip</font></span>
 </div>
 
@@ -85,6 +89,16 @@
 		
 		<!-- carousel -->
 		<div id="carousel">
+			<div id="swipeview_wrapper"></div>
+			<div id="swipeview_relative_nav">
+				<span id="prev" onclick="carousel.prev();hasInteracted=true">&laquo;</span>
+				<span id="next" onclick="carousel.next();hasInteracted=true">&raquo;</span>
+			</div>
+			<ul id="swipeview_nav">
+				<? foreach($popular as $key => $article): ?>
+				<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>);hasInteracted=true"></li>
+				<? endforeach; ?>
+			</ul>			
 		</div>
 		
 		<!-- tweets -->
@@ -188,6 +202,65 @@
 </div>
 
 <? $this->load->view('bonus/bonusbar', TRUE); ?>
+
+<!-- SwipeView. Only needed for slideshows. -->
+<script type="text/javascript">
+var	carousel,
+	el,
+	i,
+	page,
+	hasInteracted = false,
+	dots = document.querySelectorAll('#swipeview_nav li'),
+	slides = [
+		<? foreach($popular as $key => $article): ?>
+			<? if($key > 0): ?>,<? endif; ?>
+			'<div class="carouseltile"><h3><?= $article->title ?></h3></div>'
+		<? endforeach; ?>
+	];
+
+carousel = new SwipeView('#swipeview_wrapper', {
+	numberOfPages: slides.length,
+	hastyPageFlip: true
+});
+
+// Load initial data
+for (i=0; i<3; i++) {
+	page = i==0 ? slides.length-1 : i-1;
+
+	el = document.createElement('span');
+	el.innerHTML = slides[page];
+	carousel.masterPages[i].appendChild(el)
+}
+
+carousel.onFlip(function () {
+	var el,
+		upcoming,
+		i;
+
+	for (i=0; i<3; i++) {
+		upcoming = carousel.masterPages[i].dataset.upcomingPageIndex;
+
+		if (upcoming != carousel.masterPages[i].dataset.pageIndex) {
+			el = carousel.masterPages[i].querySelector('span');
+			el.innerHTML = slides[upcoming];
+		}
+	}
+	
+	document.querySelector('#swipeview_nav .selected').className = '';
+	dots[carousel.pageIndex].className = 'selected';
+});
+
+
+// timer for carousel autoplay
+function loaded() {
+	var interval = setInterval(function () { 
+			if(!hasInteracted) carousel.next(); 
+		}, 5000); 
+	
+}
+document.addEventListener('DOMContentLoaded', loaded, false);
+
+</script>
 
 </body>
 
