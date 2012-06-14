@@ -382,13 +382,13 @@ hr {
 
 #carousel {
 	float: left;
-	background: lightgray;
+	/* background: lightgray; */
 	width: 45%;
 	height: 400px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	border:solid 1px black;
+	/* border:solid 1px black; */
 }
 
 #popular {
@@ -441,7 +441,7 @@ section h2 {
 /* carousel tiles */
 
 .carouseltile {
-	margin: 20px;
+	margin: 0px;
 	height: 100%;
 }
 
@@ -449,6 +449,12 @@ section h2 {
 	font-family: schoolbook-web-condensed,Georgia;
 	font-weight: normal;
 	font-size: 1.8em;
+	margin-top: 0;
+}
+
+.carouseltile img {
+	width: 50% !important;
+	float: right;
 }
 
 /* article block tiles */
@@ -530,7 +536,7 @@ section h2 {
 	}
 	
 	.articleblock li:nth-child(-n+5).backgrounded {
-		background-size:cover;
+		background-size:cover !important;
 	}
 
 	.articleblock li:nth-child(-n+5).backgrounded a {
