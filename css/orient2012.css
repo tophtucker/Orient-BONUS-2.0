@@ -455,6 +455,15 @@ section h2 {
 	float: right;
 }
 
+.carouseltile a {
+	color: black;
+}
+
+.carouseltile a:hover {
+	color: darkblue;
+	text-decoration: none;
+}
+
 /* article block tiles */
 
 .articleblock {

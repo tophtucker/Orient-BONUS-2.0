@@ -159,7 +159,7 @@ var	carousel,
 		<? foreach($popular as $key => $article): ?>
 			<? if($key > 0): ?>,<? endif; ?>
 			'<div class="carouseltile">'+
-				'<h3><?= $article->title ?></h3>'+
+				'<a href="<?=site_url()?>article/view/<?=$article->id?>"><h3><?= $article->title ?></h3></a>'+
 				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>">'+<? endif; ?>
 				'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida rhoncus porta. Suspendisse libero turpis, viverra ut molestie in, varius a erat. Sed condimentum scelerisque elit a fermentum. Nunc malesuada rhoncus urna, quis lobortis ante viverra ut. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur interdum lacinia tempor. Curabitur commodo augue eget urna facilisis scelerisque. Vivamus adipiscing rutrum tristique.</p>'+
 				'<p>Nulla convallis tempor dapibus. Pellentesque ornare enim quis nibh convallis rutrum. Sed eu sapien at felis ultrices semper. Nulla at auctor purus. In sodales tempor nisl sed congue. Suspendisse ut interdum eros. Nulla a massa eget augue sagittis placerat nec in enim. Aenean sed felis et nibh pharetra luctus. Praesent fermentum imperdiet pharetra. Nunc at convallis diam. Phasellus a sem turpis. Aliquam quis mi ut nulla facilisis ultrices.</p>'+
