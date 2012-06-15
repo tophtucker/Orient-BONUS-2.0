@@ -382,13 +382,11 @@ hr {
 
 #carousel {
 	float: left;
-	/* background: lightgray; */
 	width: 45%;
 	height: 400px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	/* border:solid 1px black; */
 }
 
 #popular {
@@ -647,10 +645,6 @@ section h2 {
 //
 */
 
-#mainstory {
-	width:700px;
-}
-
 article header p {
 	line-height: 10px;
 }
@@ -748,14 +742,24 @@ aside {
 
 @media all and (min-width: 481px) {
 
-	article {
-		margin-left: 30px;
+	#mainstory {
+		margin: 0 auto;
+		width: 920px;
+	}
+	
+	#articlebody {
+		width: 620px;
+		margin-left: 80px;
+	}
+
+	#articlebody h3 {
+		margin-left: -25px;
 	}
 
 	figure {
 		width: 500px;
 		float:right;
-		margin: 0 -280px 25px 25px;
+		margin: 0 0 25px 25px;
 	}
 	
 	aside {
@@ -764,14 +768,24 @@ aside {
 		margin: 25px -100px 25px 25px;
 	}
 	
-	.articlebody {
-		margin-left: 80px;
+}
+
+@media all and (max-width: 960px) {
+	
+	#mainstory {
+		width: 100%;
+		margin: 0;
 	}
 	
-	.articlebody h3 {
-		margin-left: -25px;
+	#articlebody {
+		width: 100%;
+		margin: 0;
 	}
-
+	
+	#articlebody h3 {
+		margin: 0;
+	}
+	
 }
 
 /* for smartphones (read: iPhones) */
