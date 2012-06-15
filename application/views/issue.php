@@ -44,44 +44,7 @@
 
 <body>
 
-<!-- Facebook JavaScript SDK -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=115180665171978";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<!-- end FB JS SDK -->
-
-<header id="mainhead">
-	<div id="head-content">
-		<h1 id="wordmark"><a href="<?=site_url()?>"><span class="super">The</span> Bowdoin Orient</a></h1>
-		
-		<a href="https://twitter.com/bowdoinorient" class="twitter-follow-button" data-show-count="false">Follow @bowdoinorient</a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		
-		<div class="fb-like" data-href="https://www.facebook.com/bowdoinorient" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
-				
-		<nav id="mainnav">
-			<ul>
-				<li><a href="#News">News</a></li>
-				<li><a href="#Opinion">Opinion</a></li>
-				<li><a href="#Features">Features</a></li>
-				<li><a href="#Arts & Entertainment">A&E</a></li>
-				<li><a href="#Sports">Sports</a></li>
-				<li><input class="filterinput" type="text" placeholder="Search"></li>
-				<li><a href="http://bowdoinorientexpress.com" style="font-family:helvetica;font-style:italic;" class="oebug"><img src="<?=base_url().'images/oe-compass-35.png'?>"></a></li>
-			</ul>
-		</nav>
-	</div>
-</header>
-
-<div id="subnavbar">
-<font color="black">Last updated June 12, 2012</font> - Vol. 141, No. 12 - Archives
-<span style="float:right">About - Subscribe - Advertise - <font color="darkred">Submit a tip</font></span>
-</div>
+<? $this->load->view('bodyheader'); ?>
 
 <div id="content">
 	
@@ -178,27 +141,8 @@
 	
 	<? endforeach; ?>
 	
-	<footer>
-		
-		<div class="bonusquoteblock">
-			<p class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</p>
-			<p class="bonusquoteattribution">&mdash; <?=$quote->attribution?></p>
-		</div>
-		
-		<p class="vcard">
-			<a class="fn org url" href="http://orient.bowdoin.edu" title="The Bowdoin Orient"><span class="organization-name">The Bowdoin Orient</span></a><br>
-			<span class="adr">
-				<span class="street-address">6200 College Station</span><br>
-				<span class="locality">Brunswick</span>, <span class="region">Maine</span> <span class="postal-code">04011</span><br>
-				<span class="tel">Telephone: <span class="value">(207) 725-3300</span></span><br>
-				<span class="tel">Business phone: <span class="value">(207) 725-3053</span></span>
-			</span>
-		</p>
-
-		<small>&copy; <?=date("Y")?>, The Bowdoin Orient</a></small>
-		
-	</footer>
-
+	<? $this->load->view('bodyfooter', $footerdata); ?>
+	
 </div>
 
 <? $this->load->view('bonus/bonusbar', TRUE); ?>

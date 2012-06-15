@@ -43,6 +43,9 @@ class Article extends CI_Controller {
 			$authors = $this->article_model->get_article_authors($id);
 			$photos = $this->attachments_model->get_photos($id);
 			
+			// get random quote
+			$data->footerdata->quote = $this->attachments_model->get_random_quote();
+			
 			$data->article = $article;
 			$data->body = $body;
 			$data->type = $type;

@@ -142,27 +142,7 @@
 
 <body>
 
-<header id="mainhead">
-	<div id="head-content">
-		<h1 id="wordmark"><a href="<?=site_url()?>"><span class="super">The</span> Bowdoin Orient</a></h1>
-		
-		<div id="issuedate">
-			<a href="<?=site_url()?>issue/view/<?=$article->volume?>/<?=$article->issue_number?>/">Vol. <?=$article->volume?>, No. <?=$article->issue_number?><br/><span class="issuedatedate"><?=date("M. j, Y",strtotime($article->date))?></span></a>
-			<span id="issue-viewselect"><a href="#"><img src="<?=base_url()?>/images/view-paper.png"></a></span>
-		</div>
-		
-		<nav id="mainnav">
-			<ul>
-				<li><a href="<?=site_url()?>issue/view/<?=$article->volume?>/<?=$article->issue_number?>/#News">News</a></li>
-				<li><a href="<?=site_url()?>issue/view/<?=$article->volume?>/<?=$article->issue_number?>/#Opinion">Opinion</a></li>
-				<li><a href="<?=site_url()?>issue/view/<?=$article->volume?>/<?=$article->issue_number?>/#Features">Features</a></li>
-				<li><a href="<?=site_url()?>issue/view/<?=$article->volume?>/<?=$article->issue_number?>/#Arts">A&E</a></li>
-				<li><a href="<?=site_url()?>issue/view/<?=$article->volume?>/<?=$article->issue_number?>/#Sports">Sports</a></li>
-				<li><input class="filterinput" type="text" placeholder="Search"></li>
-			</ul>
-		</nav>
-	</div>
-</header>
+<? $this->load->view('bodyheader'); ?>
 
 <div id="content">
 	
@@ -231,9 +211,7 @@
 	  
 	</article>
 
-	<footer>
-		<small>&copy; <?=date("Y")?>, The Bowdoin Orient</a></small>
-	</footer>
+	<? $this->load->view('bodyfooter', $footerdata); ?>
 
 </div>
 
