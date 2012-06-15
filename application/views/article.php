@@ -23,6 +23,9 @@
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/swipeview.css?v=1">
 	<script type="text/javascript" src="<?= base_url() ?>js/swipeview.js"></script>
 	
+	<!-- MediaBugs script (for reporting errors to third party auditor) -->
+	<script type="text/javascript" src="http://mediabugs.org/widget/widget.js"></script>
+	
 	<? if(bonus()): ?>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.8.17.custom.min.js"></script>
 	<script>
@@ -208,6 +211,29 @@
 		<? endif; ?>
 		
 		<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>><?=$body->body?></div>
+		
+		<div id="articlefooter">
+			<ul>
+				<li>
+					<? //just concatenating authors, messily
+					$authorsString = '';
+					if($authors) { 
+						foreach($authors as $key => $author) {
+							if($key != 0) $authorsString .= ', ';
+							$authorsString .= $author->authorname;
+						} 
+					}
+					?>
+					<a href="#" onclick="reportMediaBug(
+						'<?= $article->title ?>',
+						'The Bowdoin Orient',
+						'<?= $authorsString ?>',
+						'<?= $article->date ?>',
+						'<?= current_url(); ?>');">
+					Report an error</a>
+				</li>
+			</ul>
+		</div>
 	  
 	</article>
 
