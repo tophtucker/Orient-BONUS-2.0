@@ -375,6 +375,18 @@ hr {
 	font-size: 12px;
 }
 
+#subnavbar #lastupdated {
+	color: black;
+}
+
+#subnavbar #pages {
+	float: right;
+}
+
+#subnavbar #submittip {
+	color: darkred;
+}
+
 #abovethefold {
 	padding: 20px 0;
 	border-bottom: double 3px darkgray;
@@ -609,8 +621,33 @@ section h2 {
 	}
 }
 
+/* iPad portrait */
+@media all and (max-width: 768px) {
+	
+	#carousel {
+		width: 50%;
+	}
+	
+	#carousel h3 {
+		font-size: 1.4em;
+	}
+	
+	#popular {
+		width: 50%;
+	}
+	
+	#twitter-widget {
+		display: none;
+	}
+	
+}
+
 /* for smartphones (read: iPhones) */
 @media all and (max-width: 480px) {
+	
+	.hidemobile {
+		display: none !important;
+	}
 	
 	#mainhead {
 		position:relative;
@@ -619,6 +656,35 @@ section h2 {
 	#head-content, #content {
 		margin: 0 10px;
 	}
+	
+	/* above the fold */
+	
+	#subnavbar {
+		margin: 0 10px 0 10px;
+		padding: 3px 0 0 0;
+	}
+	
+	#subnavbar #pages {
+		display: none;
+	}
+	
+	#carousel {
+		width: 100%;
+		height: 300px;
+		margin-bottom: 30px;
+	}
+	
+	#popular {
+		clear: both;
+		padding: 0;
+		width: 100%;
+	}
+	
+	#popular li {
+		height: 92px !important;
+	}
+	
+	/* end above the fold */
 	
 	h2 {
 		padding: 0 !important;
@@ -640,7 +706,7 @@ section h2 {
 		display: none;
 	}
 
-	.articleblock li:nth-child(n+4) {
+	.articleblock li:nth-child(n+5) {
 		display: none;
 	}
 
@@ -823,7 +889,7 @@ aside {
 		margin: 10px 0;
 	}
 	
-	#swipeview_wrapper {
+	#articlemedia #swipeview_wrapper {
 		width: 100% !important;
 		height: 200px !important;
 	}

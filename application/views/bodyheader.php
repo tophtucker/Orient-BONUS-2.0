@@ -33,6 +33,6 @@
 </header>
 
 <div id="subnavbar">
-<font color="black">Last updated June 12, 2012</font> - Vol. 141, No. 12 - Archives
-<span style="float:right">About - Subscribe - Advertise - <font color="darkred">Submit a tip</font></span>
+	<span id="lastupdated">Last updated June 12, 2012</span> <span class="hidemobile">&middot; Vol. 141, No. 12</span> &middot; Archives
+	<span id="pages">About &middot; Subscribe &middot; Advertise &middot; <span id="submittip">Submit a tip</span></span>
 </div>
