@@ -624,6 +624,10 @@ section h2 {
 /* iPad portrait */
 @media all and (max-width: 768px) {
 	
+	.hidetablet {
+		display: none !important;
+	}
+	
 	#carousel {
 		width: 50%;
 	}
@@ -636,10 +640,10 @@ section h2 {
 		width: 50%;
 	}
 	
-	#twitter-widget {
-		display: none;
+	nav input {
+		width: 55px;
 	}
-	
+		
 }
 
 /* for smartphones (read: iPhones) */
