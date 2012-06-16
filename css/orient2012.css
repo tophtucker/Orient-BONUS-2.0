@@ -777,6 +777,11 @@ figure img {
 	width: 100%;
 }
 
+.pin-it-button img {
+	width: inherit;
+	float: right;
+}
+
 figure p {
 	margin: 0;
 	padding: 0;

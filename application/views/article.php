@@ -26,6 +26,9 @@
 	<!-- MediaBugs script (for reporting errors to third party auditor) -->
 	<script type="text/javascript" src="http://mediabugs.org/widget/widget.js"></script>
 	
+	<!-- Pinterest script -->
+	<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+	
 	<? if(bonus()): ?>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.8.17.custom.min.js"></script>
 	<script>
@@ -191,8 +194,10 @@
 			<figcaption>
 				<p class="photocredit"<? if(count($photos) > 1): ?> style="margin-top: 0;text-shadow:none;color:gray;"<? endif;?>><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
 				<p class="photocaption"><?=$photos[0]->caption?></p>
+				
+				<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photos[0]->filename_large) ?>&description=<?= urlencode(strip_tags($photos[0]->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+				
 			</figcaption>
-			</li>
 		</figure>
 		<? else: ?>
 			<? if(bonus()): ?>
