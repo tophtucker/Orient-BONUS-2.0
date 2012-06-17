@@ -137,14 +137,29 @@ nav .oebug {
 }
 
 footer {
-	padding: 100px 0 25px 0;
 	clear: both;
-	text-align: right;
+	position: relative;
+	top: 80px;
+	padding: 20px 0; 
+	border-top: double 3px darkgray;
 }
 
-footer .bonusquoteblock, vcard {
+footer #footerlinks {
 	float: left;
+	width: 25%;
+	text-align: left;
+}
+
+footer #bonusquoteblock {
+	float: right;
 	width: 50%;
+	text-align: center;
+}
+
+footer #vcard {
+	float: right;
+	width: 25%;
+	text-align: right;
 }
 
 footer .bonusquote, .bonusquoteattribution {
@@ -154,6 +169,17 @@ footer .bonusquote, .bonusquoteattribution {
 
 footer .bonusquote {
 	font-size: 120%;
+}
+
+footer .bonusquoteattribution {
+	margin-left: 20%;
+}
+
+footer #copyright {
+	padding-top: 20px;
+	clear: both;
+	width: 100%;
+	text-align: right;
 }
 
 
