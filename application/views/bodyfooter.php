@@ -22,9 +22,13 @@
 			<p class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</p>
 			<p class="bonusquoteattribution">&mdash; <?=$quote->attribution?></p>
 		</div>
-
+		
 		<div id="copyright">
 			<small>&copy; <?=date("Y")?>, The Bowdoin Orient</a></small>
+		</div>
+		
+		<div id="thirty">
+			<small>&ndash;30&ndash;</small>
 		</div>
 		
 	</footer>

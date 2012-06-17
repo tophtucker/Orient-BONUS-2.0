@@ -218,26 +218,25 @@
 		<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>><?=$body->body?></div>
 		
 		<div id="articlefooter">
-			<ul>
-				<li>
-					<? //just concatenating authors, messily
-					$authorsString = '';
-					if($authors) { 
-						foreach($authors as $key => $author) {
-							if($key != 0) $authorsString .= ', ';
-							$authorsString .= $author->authorname;
-						} 
-					}
-					?>
-					<a href="#" onclick="reportMediaBug(
-						'<?= $article->title ?>',
-						'The Bowdoin Orient',
-						'<?= $authorsString ?>',
-						'<?= $article->date ?>',
-						'<?= current_url(); ?>');">
-					Report an error</a>
-				</li>
-			</ul>
+			<? //just concatenating authors, messily
+			$authorsString = '';
+			if($authors) { 
+				foreach($authors as $key => $author) {
+					if($key != 0) $authorsString .= ', ';
+					$authorsString .= $author->authorname;
+				} 
+			}
+			?>
+			<a href="#" onclick="reportMediaBug(
+				'<?= $article->title ?>',
+				'The Bowdoin Orient',
+				'<?= $authorsString ?>',
+				'<?= $article->date ?>',
+				'<?= current_url(); ?>');">
+				<button title="Your report is submitted to an independent third-party auditor, MediaBugs.">
+					<img src="<?=base_url()?>images/reporterror-13-bw.png"><span class="buttontext"> Report an error</span>
+				</button>
+			</a>
 		</div>
 	  
 	</article>

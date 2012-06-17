@@ -182,6 +182,11 @@ footer #copyright {
 	text-align: right;
 }
 
+footer #thirty {
+	float: right;
+	color: lightgray;
+}
+
 
 /*
 // BONUS BAR
@@ -797,6 +802,22 @@ article header {
 
 .articlebody h3 {
 	font-variant: small-caps;
+}
+
+/*
+#articlefooter {
+	border: double 3px lightgray; 
+	padding: 10px 20px;
+}
+*/
+
+button {
+	cursor: pointer;
+}
+button img {
+	margin-top: 2px;
+}
+button .buttontext {
 }
 
 figure img {
