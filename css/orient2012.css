@@ -804,22 +804,6 @@ article header {
 	font-variant: small-caps;
 }
 
-/*
-#articlefooter {
-	border: double 3px lightgray; 
-	padding: 10px 20px;
-}
-*/
-
-button {
-	cursor: pointer;
-}
-button img {
-	margin-top: 2px;
-}
-button .buttontext {
-}
-
 figure img {
 	width: 100%;
 }
@@ -869,6 +853,21 @@ aside {
 .pullquote .attribution {
 	font-style: italic;
 	font-size: 16px;
+}
+
+/*
+#articlefooter {
+	border: double 3px lightgray; 
+	padding: 10px 20px;
+}
+*/
+button {
+	cursor: pointer;
+}
+button img {
+	margin-top: 2px;
+}
+button .buttontext {
 }
 
 @media all and (min-width: 481px) {
