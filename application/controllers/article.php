@@ -28,6 +28,17 @@ class Article extends CI_Controller {
 		$this->load->view('error', $data);
 	}
 	
+	public function testview($date, $section, $priority)
+	{
+		$this->db->where('date', $date);
+		$this->db->where('section_id', $section);
+		$this->db->where('priority', $priority);
+		$query = $this->db->get('article');
+		$article = $query->row();
+		$data->article = $article;
+		$this->load->view('dbtest', $data);
+	}
+	
 	public function view($id)
 	{
 		$article = $this->article_model->get_article($id);
