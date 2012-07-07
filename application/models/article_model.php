@@ -67,6 +67,12 @@ class Article_model extends CI_Model {
 		}
 	}
 	
+	function get_random()
+	{
+		$query = $this->db->query("SELECT * FROM article ORDER BY (RAND() * ln(views)) desc limit 10,1;");
+		return $query->row();
+	}
+	
 	function get_body($id)
 	{
 		$this->db->where("article_id", $id);
