@@ -33,6 +33,6 @@
 </header>
 
 <div id="subnavbar">
-	<span id="lastupdated">Last updated June 12, 2012</span> <span class="hidemobile">&middot; Vol. 141, No. 12</span> &middot; Archives
-	<span id="pages">About &middot; Subscribe &middot; Advertise &middot; <span id="submittip">Submit a tip</span></span>
+	<span id="lastupdated">Last updated June 12, 2012</span> <span class="hidemobile">&middot; Vol. 141, No. 12</span> &middot; Archives &middot; <a href="<?=base_url()?>random">Random</a>
+	<span id="pages">About &middot; Subscribe &middot; Advertise &middot; <span id="submittip"><a href="orient@bowdoin.edu">Submit a tip</a></span></span>
 </div>

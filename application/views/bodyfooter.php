@@ -13,6 +13,7 @@
 			<span class="adr">
 				<span class="street-address">6200 College Station</span><br>
 				<span class="locality">Brunswick</span>, <span class="region">Maine</span> <span class="postal-code">04011</span><br>
+				<span class="email"><a href="mailto:orient@bowdoin.edu">orient@bowdoin.edu</a></span><br>
 				<span class="tel"><span class="hidetablet">Telephone: </span><span class="value">(207) 725-3300</span></span><br>
 				<span class="tel"><span class="hidetablet">Business phone: </span><span class="value">(207) 725-3053</span></span>
 			</span>
