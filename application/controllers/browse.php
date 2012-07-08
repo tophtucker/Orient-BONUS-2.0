@@ -1,5 +1,5 @@
 <?php
-class Issue extends CI_Controller {
+class Browse extends CI_Controller {
 
 	public function __construct()
 	{
@@ -68,7 +68,7 @@ class Issue extends CI_Controller {
 			$data->featurephotos = $featurephotos;
 			$data->sections = $sections;
 			$data->articles = $articles;	
-			$this->load->view('issue', $data);
+			$this->load->view('browse', $data);
 		}
 	}
 }

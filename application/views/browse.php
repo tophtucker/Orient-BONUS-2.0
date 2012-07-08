@@ -16,6 +16,7 @@
 	
 	<!-- jQuery -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.8.17.custom.min.js"></script>
 	
 	<!-- SwipeView (for carousel) -->
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/swipeview.css?v=1">
@@ -120,7 +121,7 @@
 			<ul class="articleblock">
 				<? foreach($popular as $article): ?>
 				<li class="smalltile">
-					<a href="<?=site_url()?>article/view/<?=$article->id?>">
+					<a href="<?=site_url()?>article/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
@@ -141,7 +142,7 @@
 			<ul class="articleblock">
 				<? foreach($articles[$section->name] as $article): ?>
 				<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
-					<a href="<?=site_url()?>article/view/<?=$article->id?>">
+					<a href="<?=site_url()?>article/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
@@ -176,7 +177,7 @@ var	carousel,
 		<? foreach($popular as $key => $article): ?>
 			<? if($key > 0): ?>,<? endif; ?>
 			'<div class="carouseltile">'+
-				'<a href="<?=site_url()?>article/view/<?=$article->id?>"><h3><?= $article->title ?></h3></a>'+
+				'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= $article->title ?></h3></a>'+
 				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>">'+<? endif; ?>
 				'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida rhoncus porta. Suspendisse libero turpis, viverra ut molestie in, varius a erat. Sed condimentum scelerisque elit a fermentum. Nunc malesuada rhoncus urna, quis lobortis ante viverra ut. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur interdum lacinia tempor. Curabitur commodo augue eget urna facilisis scelerisque. Vivamus adipiscing rutrum tristique.</p>'+
 				'<p>Nulla convallis tempor dapibus. Pellentesque ornare enim quis nibh convallis rutrum. Sed eu sapien at felis ultrices semper. Nulla at auctor purus. In sodales tempor nisl sed congue. Suspendisse ut interdum eros. Nulla a massa eget augue sagittis placerat nec in enim. Aenean sed felis et nibh pharetra luctus. Praesent fermentum imperdiet pharetra. Nunc at convallis diam. Phasellus a sem turpis. Aliquam quis mi ut nulla facilisis ultrices.</p>'+

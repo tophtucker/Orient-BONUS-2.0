@@ -35,7 +35,7 @@
 <footer>
 	<p class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</p>
 	<p class="bonusquoteattribution">&mdash; <?=$quote->attribution?></p>
-	<p>&#x2601; <span style="font-size:125%">&#x2600;</span> &#x2601;
+	<p class="sunbug"><a href="<?=base_url()?>">&#x2600;</a></p>
 </footer>
 
 </div>

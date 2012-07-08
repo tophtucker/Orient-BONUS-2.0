@@ -38,9 +38,11 @@
 |
 */
 
-$route['default_controller'] = "issue";
-$route['404_override'] = 'welcome/error';
+$route['default_controller'] = "browse";
+$route['404_override'] = 'pages/error';
 
+$route['article/(:num)'] = "article/view/$1";
+$route['article/(:num)/(:any)'] = "article/view/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

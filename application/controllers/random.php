@@ -13,7 +13,7 @@ class Random extends CI_Controller {
 	public function index()
 	{
 		$random = $this->article_model->get_random();
-		redirect('article/view/'.$random->id, 'refresh');
+		redirect('article/'.$random->id, 'refresh');
 	}
 
 }

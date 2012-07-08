@@ -74,6 +74,15 @@ button {
 	margin-top: -20px;
 }
 
+.sunbug a {
+	color: white;
+}
+
+.sunbug a:hover {
+	text-decoration: none;
+	color: lightblue;
+}
+
 .error {
 	text-align: center;
 	font-size: 150%;
