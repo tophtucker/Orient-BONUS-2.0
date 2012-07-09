@@ -9,6 +9,38 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <!-- end FB JS SDK -->
 
+<script>
+$(function() {
+	$( "#datepicker" ).datepicker();
+});
+</script>
+
+<style>
+
+#datepicker {
+	display: none;
+	background: white;
+	border: solid 1px black;
+	position: absolute;
+	z-index: 99;
+	margin-top: 3px;
+	padding: 5px;
+}
+
+#datepicker a[title="Prev"] {
+	float: left;
+}
+
+#datepicker a[title="Next"] {
+	float: right;
+}
+
+#datepicker .ui-datepicker-title {
+	text-align: center;
+}
+
+</style>
+
 <header id="mainhead">
 	<div id="head-content">
 		<h1 id="wordmark"><a href="<?=site_url()?>"><span class="super">The</span> Bowdoin Orient</a></h1>
@@ -33,6 +65,14 @@
 </header>
 
 <div id="subnavbar">
-	<span id="lastupdated">Last updated June 12, 2012</span> <span class="hidemobile">&middot; Vol. 141, No. 12</span> &middot; Archives &middot; <a href="<?=base_url()?>random">Random</a>
+	<span id="lastupdated">June 12, 2012</span> <div id="datepicker"></div> <span class="hidemobile">&middot; Vol. 141, No. 12</span> &middot; Archives &middot; <a href="<?=base_url()?>random">Random</a>
 	<span id="pages">About &middot; Subscribe &middot; Advertise &middot; <span id="submittip"><a href="orient@bowdoin.edu">Submit a tip</a></span></span>
 </div>
+
+<script>
+
+$("#lastupdated").click(function () {
+	$("#datepicker").toggle();
+});
+
+</script>
