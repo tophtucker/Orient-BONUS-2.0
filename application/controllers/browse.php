@@ -18,7 +18,7 @@ class Browse extends CI_Controller {
 			$volume = $issue->volume;
 			$issue_number = $issue->issue_number;
 		}
-		$this->view($volume,$issue_number);
+		$this->issue($volume,$issue_number);
 	}
 	
 	public function error($message = '')
@@ -27,7 +27,7 @@ class Browse extends CI_Controller {
 		$this->load->view('error', $data);
 	}
 	
-	public function view($volume,$issue_number)
+	public function issue($volume,$issue_number)
 	{
 		// get issue
 		$issue = $this->issue_model->get_issue($volume, $issue_number);
@@ -42,11 +42,8 @@ class Browse extends CI_Controller {
 			$nextissue = $this->issue_model->get_adjacent_issue($volume, $issue_number, 1);
 			$previssue = $this->issue_model->get_adjacent_issue($volume, $issue_number, -1);
 			
-			// get top 4 popular articles (for carousel)
+			// popular articles
 			$popular = $this->article_model->get_popular_articles($volume, $issue_number, '10'); 
-			
-			// get front page (section 0) feature photo
-			$featurephotos = $this->attachments_model->get_feature_photos($issue->issue_date, '0');
 			
 			// get random quote
 			$data->footerdata->quote = $this->attachments_model->get_random_quote();
@@ -65,7 +62,6 @@ class Browse extends CI_Controller {
 			$data->nextissue = $nextissue;
 			$data->previssue = $previssue;
 			$data->popular = $popular;
-			$data->featurephotos = $featurephotos;
 			$data->sections = $sections;
 			$data->articles = $articles;	
 			$this->load->view('browse', $data);

@@ -9,7 +9,7 @@ class Article_model extends CI_Model {
     
     function get_articles($vol, $no, $sec)
     {
-    	$this->db->select("article.id, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
+    	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
 		$this->db->from("article");
 		$this->db->join("series", "series.id=article.series");
 		$this->db->join("articletype", "articletype.id=article.type");
@@ -32,7 +32,7 @@ class Article_model extends CI_Model {
     
     function get_popular_articles($vol, $no, $limit = '10')
     {
-    	$this->db->select("article.id, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
+    	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
 		$this->db->from("article");
 		$this->db->join("series", "series.id=article.series");
 		$this->db->join("articletype", "articletype.id=article.type");

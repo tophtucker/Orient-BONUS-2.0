@@ -432,6 +432,19 @@ hr {
 	-webkit-box-sizing: border-box;
 }
 
+#carousel h3 {
+	margin: 0;
+}
+
+#carousel .series {
+	font-size: 1em;
+}
+
+#carousel #swipeview-slider span {
+	height: 100%;
+	padding-right: 20px !important;
+}
+
 #popular {
 	float: right;
 	box-sizing: border-box;
@@ -797,7 +810,7 @@ article header {
 }
 
 .articledate {
-	clear: both;
+	clear: left;
 	font-family:myriad-pro-condensed,helvetica,arial;
 }
 
