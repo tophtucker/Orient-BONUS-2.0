@@ -11,7 +11,15 @@
 
 <script>
 $(function() {
-	$( "#datepicker" ).datepicker();
+	$( "#datepicker" ).datepicker({
+		//prevText: '<',
+		//nextText: '>',
+		dateFormat: "yy-mm-dd",
+		showButtonPanel: true,
+		onSelect: function(dateText, inst) { 
+			window.location.href = '<?=base_url()?>browse/'+dateText; 
+		}
+	});
 });
 </script>
 
@@ -65,7 +73,7 @@ $(function() {
 </header>
 
 <div id="subnavbar">
-	<span id="lastupdated">June 12, 2012</span> <div id="datepicker"></div> <span class="hidemobile">&middot; Vol. 141, No. 12</span> &middot; Archives &middot; <a href="<?=base_url()?>random">Random</a>
+	<span id="lastupdated">June 12, 2012</span> <div id="datepicker"></div> <span class="hidemobile">&middot; Vol. 141, No. 12</span> &middot; <a href="<?=base_url()?>random">Random</a>
 	<span id="pages">About &middot; Subscribe &middot; Advertise &middot; <span id="submittip"><a href="orient@bowdoin.edu">Submit a tip</a></span></span>
 </div>
 
