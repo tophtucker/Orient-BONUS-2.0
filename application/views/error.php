@@ -22,11 +22,14 @@ body {
 }
 
 header {
-	display: block; width: 440px; margin: 0 auto;
+	display: block; 
+	width: 440px; 
+	margin: 0 auto;
 }
 
 #wordmark {
 	font-size: 4em;
+	position: relative;
 }
 
 #content {
@@ -80,9 +83,6 @@ p {
 	<p>Some things have moved, and some have not yet been upgraded but will come back.</p>
 	<p><a href="mailto:ctucker@bowdoin.edu">Contact the webmaster?</a>
 </div>
-	
-<footer>
-</footer>
 
 </div>
 
