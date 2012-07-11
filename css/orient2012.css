@@ -510,6 +510,8 @@ section h2 {
 .carouseltile img {
 	width: 50% !important;
 	float: right;
+	padding-left: 20px !important;
+	padding-bottom: 20px !important;
 }
 
 .carouseltile a {

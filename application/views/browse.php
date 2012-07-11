@@ -179,8 +179,8 @@ var	carousel,
 			'<div class="carouseltile">'+
 				<? if($article->series): ?>'<div class="series"><?=$article->series?></div>'+<? endif; ?>
 				'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'+
-				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>">'+<? endif; ?>
 				'<p class="articledate"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'+
+				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>">'+<? endif; ?>
 				'<p><?= addslashes(trim($article->pullquote)); ?></p>'+
 			'</div>'
 		<? endforeach; ?>
