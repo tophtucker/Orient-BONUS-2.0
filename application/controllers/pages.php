@@ -2,21 +2,13 @@
 
 class Pages extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+	public function __construct()
+	{
+		parent::__construct();
+		date_default_timezone_set('America/New_York');
+		$this->load->model('attachments_model', '', TRUE);
+	}
+	
 	public function index()
 	{
 		$this->load->view('welcome_message');
@@ -25,6 +17,27 @@ class Pages extends CI_Controller {
 	public function error()
 	{
 		$this->load->view('error');
+	}
+	
+	public function about()
+	{
+		$data->footerdata->quote = $this->attachments_model->get_random_quote();
+		$data->headerdata->date = date("Y-m-d");
+		$this->load->view('about', $data);
+	}
+	
+	public function subscribe()
+	{
+		$data->footerdata->quote = $this->attachments_model->get_random_quote();
+		$data->headerdata->date = date("Y-m-d");
+		$this->load->view('subscribe', $data);
+	}
+	
+	public function advertise()
+	{
+		$data->footerdata->quote = $this->attachments_model->get_random_quote();
+		$data->headerdata->date = date("Y-m-d");
+		$this->load->view('advertise', $data);
 	}
 }
 

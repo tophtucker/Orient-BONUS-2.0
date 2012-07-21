@@ -1,4 +1,4 @@
-	<footer>
+	<footer id="bodyfooter">
 		
 		<div id="footerlinks">
 			About<br/>

@@ -142,6 +142,7 @@ footer {
 	top: 80px;
 	padding: 20px 0; 
 	border-top: double 3px darkgray;
+	margin: 20px;
 }
 
 footer #footerlinks {
@@ -815,8 +816,34 @@ article header {
 	font-family:myriad-pro-condensed,helvetica,arial;
 }
 
+.toolbox {
+	margin-top: -10px;
+	padding: 10px;
+	border: 1px solid lightgray;
+	width: 115px;
+	float: right;
+}
+
+.toolbox button {
+	margin: 0;
+	padding: 2px;
+	height: 20px;
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+	font-size: 11px;
+}
+
+.toolbox button .buttontext {
+	position: relative;
+	bottom: 2px;
+}
+
+.toolbox .fb-like {
+	margin-bottom: 5px;
+}
+
 .articlebody h3 {
 	font-variant: small-caps;
+	clear: both;
 }
 
 figure img {
@@ -964,4 +991,99 @@ button .buttontext {
 		height: 200px !important;
 	}
 
+}
+
+/* /////////// */
+/* CONTACT BOX */
+/* /////////// */
+
+#contactbox {
+	float: right;
+	width: 250px;
+	padding: 20px;
+	margin: 0px 0 20px 20px;
+	border: 1px solid lightgray;
+	text-align: center;
+}
+
+#contactbox .organization-name {
+	font-family: minion-pro,Garamond;
+	font-variant: small-caps;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+#contactbox .adr {
+	margin-top: 20px;
+}
+
+/* //////////////// */
+/*    STAFF TABLE   */
+/* //////////////// */
+
+#stafftable .bigshot, .stafftitle {
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+#stafftable .bigshot-title {
+	font-style: italic;
+}
+
+#stafftable .stafftitle {
+	padding-top: 10px;
+}
+
+#stafftable div {
+	background: white;
+	margin: 0;
+	padding: 0;
+}
+
+#stafftable .clear {
+	clear: both;
+}
+
+#stafftable {
+	width: 100%;
+	text-align: center;
+}
+
+#stafftable #eic, #topeditors {
+	clear: both;
+}
+
+#stafftable #eic div, #topeditors div {
+	width: 50%;
+	float: left;
+	margin: 0 0 10px 0;
+}
+
+#stafftable #topstaff {
+	width: 100%;
+}
+
+#stafftable #lowerstaff {
+	width: 100%;
+}
+
+#stafftable #lowerstaff .column {
+	float: left;
+	width: 33.3%;
+	margin: 0;
+}
+
+#stafftable p {
+	margin: 0;
+	padding: 0;
+}
+
+#stafftable hr {
+	background: #DDD;
+	color: #DDD;
+	clear: both;
+	float: none;
+	width: 100%;
+	border: none;
+	height: 1px;
 }

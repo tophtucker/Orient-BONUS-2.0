@@ -103,7 +103,7 @@ $(function() {
 
 <div id="subnavbar">
 	<?if(isset($date)):?><span id="lastupdated"><?=date("F j, Y",strtotime($date))?></span> <div id="datepicker"></div> <span class="hidemobile">&middot; <?endif;?><?if(isset($volume) && isset($issue_number)):?>&laquo; Vol. <?=$volume?>, No. <?=$issue_number?> &raquo;</span> &middot; <?endif;?><a href="<?=base_url()?>random">Random</a>
-	<span id="pages">About &middot; Subscribe &middot; Advertise &middot; <span id="submittip">Submit a tip</span></span>
+	<span id="pages"><?=anchor('pages/about', 'About'); ?> &middot; <?=anchor('pages/subscribe', 'Subscribe'); ?> &middot; <?=anchor('pages/advertise', 'Advertise'); ?> &middot; <span id="submittip">Submit a tip</span></span>
 </div>
 
 <div id="submittipform">

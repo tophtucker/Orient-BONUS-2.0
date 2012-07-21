@@ -266,42 +266,15 @@
 		
 		<div id="articlefooter">
 			
-			<style>
-			
-			.toolbox {
-				margin-top: -10px;
-				padding: 10px;
-				border: 1px solid lightgray;
-				width: 115px;
-				float: right;
-			}
-			
-			.toolbox button {
-				margin: 0;
-				padding: 2px;
-				height: 20px;
-				font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
-				font-size: 11px;
-			}
-			
-			.toolbox button .buttontext {
-				position: relative;
-				bottom: 2px;
-			}
-			
-			.toolbox .fb-like {
-				margin-bottom: 5px;
-			}
-			
-			</style>
+			<!-- Disqus -->
 			
 		</div>
 	  
 	</article>
 
-	<? $this->load->view('bodyfooter', $footerdata); ?>
-
 </div>
+
+<? $this->load->view('bodyfooter', $footerdata); ?>
 
 <? $this->load->view('bonus/bonusbar', TRUE); ?>
 
