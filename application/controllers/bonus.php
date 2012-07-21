@@ -6,6 +6,7 @@ class Bonus extends CI_Controller {
 		parent::__construct();
 		$this->load->model('bonus_model', '', TRUE);
 		$this->load->model('attachments_model', '', TRUE);
+		$this->load->library('user_agent');
 	}
 	
 	public function index()
@@ -32,10 +33,26 @@ class Bonus extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			redirect('issue', 'refresh');
+			if ($this->agent->is_referral())
+			{
+				redirect($this->agent->referrer(), 'refresh');
+			}
+			else
+			{
+				redirect('browse', 'refresh');
+			}
 		}
 		$this->load->helper(array('form'));
 		$data->quote = $this->attachments_model->get_random_quote();
+		
+		if($this->agent->is_referral()) 
+		{ 
+			$data->referrer = $this->agent->referrer();
+		}
+		else
+		{
+			$data->referrer = '';
+		}
 		$this->load->view('bonus/login', $data);
 	}
 	
@@ -57,7 +74,7 @@ class Bonus extends CI_Controller {
 	{
 		$this->session->unset_userdata('logged_in');
 		$this->session->sess_destroy();
-		redirect('issue', 'refresh');
+		redirect('browse', 'refresh');
 	}
 	
 	
@@ -79,8 +96,15 @@ class Bonus extends CI_Controller {
 		}
 		else
 		{
-			//Go to private area
-			redirect('issue', 'refresh');
+			//Go to private area			
+			if($this->input->post('referrer'))
+			{
+				redirect($this->input->post('referrer'), 'refresh');
+			}
+			else
+			{
+				redirect('browse', 'refresh');
+			}
 		}	
 	}
 	

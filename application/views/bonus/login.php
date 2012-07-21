@@ -24,9 +24,10 @@
 <div id="content">
 	
 	<?= validation_errors('<div class="error">', '</div>'); ?>
-	<?= form_open('bonus/verifylogin'); ?>
+	<?= form_open('bonus/verifylogin/'); ?>
 		<input type="text" size="20" id="username" name="username" placeholder="Username" autofocus/><br/>
 		<input type="password" size="20" id="passowrd" name="password" placeholder="Password"/><br/>
+		<input type="hidden" name="referrer" value="<?=$referrer?>" />
 		<button type="submit">Go</button>
 	</form>
 
