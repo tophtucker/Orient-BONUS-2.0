@@ -126,12 +126,12 @@ nav .oebug {
 	padding: 5px;
 }
 
-.twitter-follow-button {
+#mainhead .twitter-follow-button {
 	position: absolute !important;
 	margin: 14px 0 0 290px;
 }
 
-.fb-like {
+#mainhead .fb-like {
 	position: absolute !important;
 	margin: 12px 0 0 450px;
 }
@@ -253,7 +253,7 @@ footer #thirty {
 	width: 125px;
 }
 
-.ui-menu-item {
+.ui-autocomplete .ui-menu-item {
 	margin: 0;
 	padding: 0;
 	background: white;
@@ -263,7 +263,7 @@ footer #thirty {
 	width: 100%;
 }
 
-.ui-state-hover {
+.ui-autocomplete .ui-state-hover {
 	background: rgb(245,245,245);
 	color: darkblue;
 	display: block;
