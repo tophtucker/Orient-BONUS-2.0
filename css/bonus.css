@@ -104,9 +104,15 @@ h3 {
 	font-size: 20pt
 }
 
+h4 {
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: bold;
+}
+
 p {
 	text-align: center;
-	font-size: 16pt;
+	font-size: 12pt;
 }
 
 /*

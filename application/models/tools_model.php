@@ -14,6 +14,13 @@ class Tools_model extends CI_Model {
 		);
 		$this->db->insert('tips', $data); 
 	}
+	
+	function get_tips()
+	{
+		$this->db->order_by('submitted', 'desc');
+		$query = $this->db->get('tips');
+		return $query->result();
+	}
         
 }
 ?>

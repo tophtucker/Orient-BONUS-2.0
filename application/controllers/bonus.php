@@ -6,6 +6,7 @@ class Bonus extends CI_Controller {
 		parent::__construct();
 		$this->load->model('bonus_model', '', TRUE);
 		$this->load->model('attachments_model', '', TRUE);
+		$this->load->model('tools_model', '', TRUE);
 		$this->load->library('user_agent');
 	}
 	
@@ -61,6 +62,7 @@ class Bonus extends CI_Controller {
 		if($this->session->userdata('logged_in'))
 		{
 			$data->quote = $this->attachments_model->get_random_quote(false);
+			$data->tips = $this->tools_model->get_tips();
 			$this->load->view('bonus/dashboard', $data);
 		}
 		else
