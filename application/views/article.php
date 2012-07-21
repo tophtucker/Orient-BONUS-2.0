@@ -188,6 +188,37 @@
 				</div>
 			<? endif; ?>
 			
+			<div class="toolbox">
+			
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= current_url() ?>" data-via="bowdoinorient" data-lang="en">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				<br/>
+				
+				<div class="fb-like" data-href="<?= current_url() ?>" data-send="false" data-layout="button_count" data-width="115" data-show-faces="false" data-action="recommend"></div>
+				<br/>
+				
+				<? //just concatenating authors, messily
+				$authorsString = '';
+				if($authors) { 
+					foreach($authors as $key => $author) {
+						if($key != 0) $authorsString .= ', ';
+						$authorsString .= $author->authorname;
+					} 
+				}
+				?>
+				<a href="#" onclick="reportMediaBug(
+					'<?= $article->title ?>',
+					'The Bowdoin Orient',
+					'<?= $authorsString ?>',
+					'<?= $article->date ?>',
+					'<?= current_url(); ?>');">
+					<button title="Your report is submitted to an independent third-party auditor, MediaBugs.">
+						<img src="<?=base_url()?>images/reporterror-12-bw.png"><span class="buttontext"> Report an error</span>
+					</button>
+				</a>
+				
+			</div>
+			
 			<p class="articledate"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>
 		</header>                
 		
@@ -238,8 +269,11 @@
 			<style>
 			
 			.toolbox {
+				margin-top: -10px;
 				padding: 10px;
 				border: 1px solid lightgray;
+				width: 115px;
+				float: right;
 			}
 			
 			.toolbox button {
@@ -258,40 +292,6 @@
 			}
 			
 			</style>
-			
-			<div class="toolbox">
-			
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= current_url() ?>" data-via="bowdoinorient" data-lang="en">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-				<br/>
-				
-				<div class="fb-like" data-href="<?= current_url() ?>" data-send="false" data-layout="button_count" data-width="130" data-show-faces="false" data-action="recommend"></div>
-				<br/>
-				
-				<? //just concatenating authors, messily
-				$authorsString = '';
-				if($authors) { 
-					foreach($authors as $key => $author) {
-						if($key != 0) $authorsString .= ', ';
-						$authorsString .= $author->authorname;
-					} 
-				}
-				?>
-				<a href="#" onclick="reportMediaBug(
-					'<?= $article->title ?>',
-					'The Bowdoin Orient',
-					'<?= $authorsString ?>',
-					'<?= $article->date ?>',
-					'<?= current_url(); ?>');">
-					<button title="Your report is submitted to an independent third-party auditor, MediaBugs.">
-						<img src="<?=base_url()?>images/reporterror-12-bw.png"><span class="buttontext"> Report an error</span>
-					</button>
-				</a>
-				<br/>
-				
-				<a href="javascript:function iprl5(){var d=document,z=d.createElement('scr'+'ipt'),b=d.body,l=d.location;try{if(!b)throw(0);d.title='(Saving...) '+d.title;z.setAttribute('src',l.protocol+'//www.instapaper.com/j/WKrH3R7ORD5p?u='+encodeURIComponent(l.href)+'&t='+(new Date().getTime()));b.appendChild(z);}catch(e){alert('Please wait until the page has loaded.');}}iprl5();void(0)" class="bookmarklet" onclick="return explain_bookmarklet();"><button>Read Later</button></a>
-				
-			</div>
 			
 		</div>
 	  
