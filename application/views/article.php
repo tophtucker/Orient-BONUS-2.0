@@ -280,6 +280,8 @@
 				margin: 0;
 				padding: 2px;
 				height: 20px;
+				font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+				font-size: 11px;
 			}
 			
 			.toolbox button .buttontext {
