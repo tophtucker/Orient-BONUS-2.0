@@ -22,8 +22,9 @@ class Issue_model extends CI_Model {
 		}
     }
     
-    function get_latest_issue()
+    function get_latest_issue($date = false)
     {
+    	if($date) $this->db->where('issue_date <=', $date);
     	$this->db->order_by('volume', 'desc');
     	$this->db->order_by('issue_number', 'desc');
     	$this->db->limit(1);

@@ -57,6 +57,10 @@ class Article extends CI_Controller {
 			// get random quote
 			$data->footerdata->quote = $this->attachments_model->get_random_quote();
 			
+			$data->headerdata->date = $article->date;
+			$data->headerdata->volume = $article->volume;
+			$data->headerdata->issue_number = $article->issue_number;
+						
 			$data->article = $article;
 			$data->body = $body;
 			$data->type = $type;

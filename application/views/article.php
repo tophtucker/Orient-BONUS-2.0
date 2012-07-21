@@ -164,7 +164,7 @@
 
 <body>
 
-<? $this->load->view('bodyheader'); ?>
+<? $this->load->view('bodyheader', $headerdata); ?>
 
 <div id="content">
 	

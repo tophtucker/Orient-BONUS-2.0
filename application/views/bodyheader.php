@@ -15,7 +15,6 @@ $(function() {
 		//prevText: '<',
 		//nextText: '>',
 		dateFormat: "yy-mm-dd",
-		showButtonPanel: true,
 		onSelect: function(dateText, inst) { 
 			window.location.href = '<?=base_url()?>browse/'+dateText; 
 		}
@@ -60,11 +59,13 @@ $(function() {
 				
 		<nav id="mainnav">
 			<ul>
+				<? if($this->uri->segment(1) == "" || $this->uri->segment(1) == "browse"): ?>
 				<li><a href="#News">News</a></li>
 				<li><a href="#Opinion">Opinion</a></li>
 				<li><a href="#Features">Features</a></li>
 				<li><a href="#Arts & Entertainment">A&E</a></li>
 				<li><a href="#Sports">Sports</a></li>
+				<? endif; ?>
 				<li><input class="filterinput" type="text" placeholder="Search"></li>
 				<li><a href="http://bowdoinorientexpress.com" style="font-family:helvetica;font-style:italic;" class="oebug"><img src="<?=base_url().'images/oe-compass-35.png'?>"></a></li>
 			</ul>
@@ -73,7 +74,7 @@ $(function() {
 </header>
 
 <div id="subnavbar">
-	<span id="lastupdated">June 12, 2012</span> <div id="datepicker"></div> <span class="hidemobile">&middot; Vol. 141, No. 12</span> &middot; <a href="<?=base_url()?>random">Random</a>
+	<?if(isset($date)):?><span id="lastupdated"><?=date("F j, Y",strtotime($date))?></span> <div id="datepicker"></div> <span class="hidemobile">&middot; <?endif;?><?if(isset($volume) && isset($issue_number)):?>Vol. <?=$volume?>, No. <?=$issue_number?></span> &middot; <?endif;?><a href="<?=base_url()?>random">Random</a>
 	<span id="pages">About &middot; Subscribe &middot; Advertise &middot; <span id="submittip"><a href="orient@bowdoin.edu">Submit a tip</a></span></span>
 </div>
 

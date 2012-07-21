@@ -10,21 +10,68 @@ class Browse extends CI_Controller {
 		$this->load->model('attachments_model', '', TRUE);
 	}
 	
-	public function index($volume = '', $issue_number = '')
+	public function index()
 	{
-		if(empty($volume) || empty($issue_number))
-		{
-			$issue = $this->issue_model->get_latest_issue();
-			$volume = $issue->volume;
-			$issue_number = $issue->issue_number;
-		}
-		$this->issue($volume,$issue_number);
+		$this->date();
 	}
 	
 	public function error($message = '')
 	{
 		$data->message = $message;
 		$this->load->view('error', $data);
+	}
+	
+	public function date($date = '')
+	{
+		// if no date specified, use current date
+		if(!$date) $date = date("Y-m-d");
+		
+		// get latest issue <= date specified
+		$issue = $this->issue_model->get_latest_issue($date);
+				
+		if(!$issue)
+		{
+			$this->error();
+		}
+		else
+		{
+			$volume = $issue->volume;
+			$issue_number = $issue->issue_number;
+			
+			// get adjacent issues (for next/prev buttons)
+			$nextissue = $this->issue_model->get_adjacent_issue($volume, $issue_number, 1);
+			$previssue = $this->issue_model->get_adjacent_issue($volume, $issue_number, -1);
+			
+			// popular articles
+			$popular = $this->article_model->get_popular_articles($volume, $issue_number, '10'); 
+			
+			// get random quote
+			$data->footerdata->quote = $this->attachments_model->get_random_quote();
+			
+			// get sections
+			$sections = $this->issue_model->get_sections();
+			
+			foreach($sections as $section)
+			{
+				// get articles
+				$articles[$section->name] = $this->article_model->get_articles($volume, $issue_number, $section->id);
+			}
+			
+			// load data, view
+			
+			$data->headerdata->date = $date;
+			$data->headerdata->volume = $volume;
+			$data->headerdata->issue_number = $issue_number;
+			
+			$data->date = $date;
+			$data->issue = $issue;
+			$data->nextissue = $nextissue;
+			$data->previssue = $previssue;
+			$data->popular = $popular;
+			$data->sections = $sections;
+			$data->articles = $articles;	
+			$this->load->view('browse', $data);
+		}
 	}
 	
 	public function issue($volume,$issue_number)
