@@ -46,6 +46,34 @@ $(function() {
 	text-align: center;
 }
 
+#submittipform {
+	display: none;
+	position: absolute;
+	background: white;
+	padding: 20px;
+	width: 300px;
+	height: 200px;
+	right: 20px;
+	border: 1px solid black;
+	box-shadow: 0px 0px 10px black;
+	z-index: 1000;
+	font-family:myriad-pro-condensed,helvetica,arial;
+}
+
+#submittipform textarea {
+	width: 290px;
+	height: 140px;
+}
+
+#submittipform button {
+	
+}
+
+#submittipform .closebutton {
+	float: right;
+	cursor: pointer;
+}
+
 </style>
 
 <header id="mainhead">
@@ -75,7 +103,14 @@ $(function() {
 
 <div id="subnavbar">
 	<?if(isset($date)):?><span id="lastupdated"><?=date("F j, Y",strtotime($date))?></span> <div id="datepicker"></div> <span class="hidemobile">&middot; <?endif;?><?if(isset($volume) && isset($issue_number)):?>&laquo; Vol. <?=$volume?>, No. <?=$issue_number?> &raquo;</span> &middot; <?endif;?><a href="<?=base_url()?>random">Random</a>
-	<span id="pages">About &middot; Subscribe &middot; Advertise &middot; <span id="submittip"><a href="orient@bowdoin.edu">Submit a tip</a></span></span>
+	<span id="pages">About &middot; Subscribe &middot; Advertise &middot; <span id="submittip">Submit a tip</span></span>
+</div>
+
+<div id="submittipform">
+	<span class="closebutton">&times;</span>
+	<strong>Submit an anonymous tip.</strong><br/>Please leave contact information if willing.<br/>
+	<textarea name="tip"></textarea>
+	<button id="tipsubmit">Submit</button>
 </div>
 
 <script>
@@ -83,5 +118,41 @@ $(function() {
 $("#lastupdated").click(function () {
 	$("#datepicker").toggle();
 });
+
+$("#submittip").click(function () {
+	$("#submittipform").toggle();
+});
+
+$("#submittipform .closebutton").click(function () {
+	$("#submittipform").hide();
+});
+
+$(document).ready(function() {
+     
+    //if submit button is clicked
+    $('#tipsubmit').click(function () {        
+         
+        var tip = $('textarea[name=tip]');
+         
+        //start the ajax
+        $.ajax({
+            url: "<?=site_url()?>tools/ajax_submittip",
+            type: "POST",
+            data: 'tip=' + encodeURIComponent(tip.val()),
+            cache: false,
+            success: function (result) {
+                //if ajax_submittip returned 1/true (submit success)
+                if (result=='true') {
+                    //hide the form
+                    $('#submittipform').hide();
+                //if process.php returned 0/false (send mail failed)
+                } else alert('Error! Sorry. Try emailing us: orient@bowdoin.edu');
+            }       
+        });
+         
+        //cancel the submit button default behaviours
+        return false;
+    }); 
+}); 
 
 </script>

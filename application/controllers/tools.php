@@ -8,11 +8,19 @@ class Tools extends CI_Controller {
 		$this->load->model('issue_model', '', TRUE);
 		$this->load->model('article_model', '', TRUE);
 		$this->load->model('attachments_model', '', TRUE);
+		$this->load->model('tools_model', '', TRUE);
 	}
 	
 	public function index()
 	{
 		exit("No go!");
+	}
+	
+	public function ajax_submittip()
+	{
+		$tip = $this->input->post('tip');
+		$this->tools_model->submittip($tip);
+		exit("true");
 	}
 	
 	public function legacycommentexport()
