@@ -40,7 +40,10 @@ $(function() {
 				<li><a href="#Arts & Entertainment">A&E</a></li>
 				<li><a href="#Sports">Sports</a></li>
 				<? endif; ?>
-				<li><input class="filterinput" type="text" placeholder="Search"></li>
+				<li>
+					<form action="<?=site_url()?>pages/search" id="cse-search-box" method="get">
+					<input class="filterinput" type="text" placeholder="Search" name="q">
+				</li>
 				<li><a href="http://bowdoinorientexpress.com" style="font-family:helvetica;font-style:italic;" class="oebug"><img src="<?=base_url().'images/oe-compass-35.png'?>"></a></li>
 			</ul>
 		</nav>

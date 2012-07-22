@@ -39,6 +39,13 @@ class Pages extends CI_Controller {
 		$data->headerdata->date = date("Y-m-d");
 		$this->load->view('advertise', $data);
 	}
+	
+	public function search()
+	{
+		$data->footerdata->quote = $this->attachments_model->get_random_quote();
+		$data->headerdata->date = date("Y-m-d");
+		$this->load->view('search', $data);
+	}
 }
 
 /* End of file welcome.php */
