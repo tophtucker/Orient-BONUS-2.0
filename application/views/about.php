@@ -63,6 +63,7 @@
 					<div class="street-address">6200 College Station</div>
 					<div class="locality">Brunswick</span>, <span class="region">Maine</span> <span class="postal-code">04011</div>
 				</div>
+				<div class="staff"><span class="position">Editor in Chief:</span> <br>Linda Kinstler</div>
 			</div>
 		</div>
 		
@@ -70,7 +71,7 @@
 		
 			<p>The Bowdoin Orient is a student newspaper serving the entire Bowdoin community. The paper has an on-campus distribution of over 2,000, and is mailed off-campus to several hundred subscribers. The paper is distributed free-of-charge at various locations on campus, including the student union, several classroom buildings, the admissions office, the dining halls, and the libraries. Published on Fridays, 24 times a year, the Orient is read by students and their families, faculty, staff, alumni, off-campus subscribers, prospective students, and campus visitors.</p>
 			
-			<h3>Mission</h3>
+			<h3 style="clear:none;">Mission</h3>
 			<p>The Bowdoin Orient is a student-run weekly publication dedicated to providing news and information relevant to the College community. Editorially independent of the College and its administrators, the Orient pursues such content freely and thoroughly, following professional journalistic standards in writing and reporting. The Orient is committed to serving as an open forum for thoughtful and diverse discussion and debate on issues of interest to the College community.</p>
 			
 			<h3>Website</h3>

@@ -49,40 +49,30 @@
 		<header>
 			<hgroup>
 				<h2 id="articletitle" class="articletitle">Advertise</h2>
-				<h3 id="articlesubtitle" class="articlesubtitle">The nation&rsquo;s oldest continuously published college weekly</h3>
+				<!--<h3 id="articlesubtitle" class="articlesubtitle"></h3>-->
 			</hgroup>			
 		</header>
 		
+		<div id="contactbox">
+			<div id="vcard" class="vcard">
+				<div class="organization-name">The Bowdoin Orient Business Team</div>
+				<div class="email"><a href="mailto:orientads@bowdoin.edu">orientads@bowdoin.edu</a></div>
+				<div class="tel">Business phone: <span class="value">(207) 725-3053</span></div>
+				<div class="fax">Fax: <span class="value">(207) 725-3975</span></div>
+				<div class="adr">
+					<div class="street-address">6200 College Station</div>
+					<div class="locality">Brunswick</span>, <span class="region">Maine</span> <span class="postal-code">04011</div>
+				</div>
+				<div class="staff"><span class="position">Business Manager:</span> <br>Tarara Deane-Krantz</div>
+				<div class="staff"><span class="position">Assistant Business Managers:</span> <br>Maya Lloyd &amp; Madison Whitley</div>
+			</div>
+		</div>
+		
 		<div id="articlebody" class="articlebody">
 			
-			<div id="contactbox">
-				<div id="vcard" class="vcard">
-					<div class="organization-name">The Bowdoin Orient Business Team</div>
-					<div class="email"><a href="mailto:orient@bowdoin.edu">orient@bowdoin.edu</a></div>
-					<div class="tel">Telephone: <span class="value">(207) 725-3300</span></div>
-					<div class="tel">Business phone: <span class="value">(207) 725-3053</span></div>
-					<div class="adr">
-						<div class="street-address">6200 College Station</div>
-						<div class="locality">Brunswick</span>, <span class="region">Maine</span> <span class="postal-code">04011</div>
-					</div>
-				</div>
-			</div>
-			
-			<div id="contactbox"> 
-			The Bowdoin Orient Business Office
-			6200 College Station <br>
-			Brunswick, ME 04011</p>
-			<p><a href="mailto:orientads@bowdoin.edu">orientads@bowdoin.edu</a> <br>
-				Phone: (207) 725-3053<br>
-				Fax: (207) 725-3975</p>
-			<p>Business Manager: Tarara Deane-Krantz
-			<br>Assistant Business Managers: Maya Lloyd &amp; Madison Whitley</p>
-			</div>
-			
-			<h3>Advertising in the <em>Orient</em></h3>
-				<p><em>The Bowdoin Orient</em> is the student newspaper of Bowdoin College, located in Brunswick, Maine. <em>The Orient</em> has an average circulation of 2300 copies per issue and reaches people of all ages locally, nationally, and internationally. All of the readers are connected to Bowdoin College in one way or another and most will at some point be in the area to use the community's resources—hotels, restaurants, and stores. Your decision to advertise with <em>The Orient</em> will without a doubt help broaden your customer base and open doors for your business in the immediate and distant future.</p>
+			<p><em>The Bowdoin Orient</em> is the student newspaper of Bowdoin College, located in Brunswick, Maine. <em>The Orient</em> has an average circulation of 2300 copies per issue and reaches people of all ages locally, nationally, and internationally. All of the readers are connected to Bowdoin College in one way or another and most will at some point be in the area to use the community's resources—hotels, restaurants, and stores. Your decision to advertise with <em>The Orient</em> will without a doubt help broaden your customer base and open doors for your business in the immediate and distant future.</p>
 	
-			<h3>Advertising Rates</h3>
+			<h3 style="clear:none;">Advertising Rates</h3>
 	
 				<ul>
 					<li><strong>Publication Frequency:</strong> Every Friday while classes are in session (see below for production schedule).</li>
@@ -340,7 +330,10 @@
 						</tbody>
 					</table>
 				</div>
-								
+				
+				
+				<h3>Contacts</h3>
+							
 				<p>For further information involving local ads, please contact our business team. <br>
 				<strong>Tarara Deane-Krantz</strong> <br>
 				<em>Bowdoin Orient Business Team</em> <br>

@@ -12,8 +12,8 @@
 <script>
 $(function() {
 	$( "#datepicker" ).datepicker({
-		//prevText: '<',
-		//nextText: '>',
+		prevText: '&laquo;',
+		nextText: '&raquo;',
 		dateFormat: "yy-mm-dd",
 		onSelect: function(dateText, inst) { 
 			window.location.href = '<?=base_url()?>browse/'+dateText; 
@@ -21,60 +21,6 @@ $(function() {
 	});
 });
 </script>
-
-<style>
-
-#datepicker {
-	display: none;
-	background: white;
-	border: solid 1px black;
-	position: absolute;
-	z-index: 99;
-	margin-top: 3px;
-	padding: 5px;
-}
-
-#datepicker a[title="Prev"] {
-	float: left;
-}
-
-#datepicker a[title="Next"] {
-	float: right;
-}
-
-#datepicker .ui-datepicker-title {
-	text-align: center;
-}
-
-#submittipform {
-	display: none;
-	position: absolute;
-	background: white;
-	padding: 20px;
-	width: 300px;
-	height: 200px;
-	right: 20px;
-	border: 1px solid black;
-	box-shadow: 0px 0px 10px black;
-	z-index: 1000;
-	font-family:myriad-pro-condensed,helvetica,arial;
-}
-
-#submittipform textarea {
-	width: 290px;
-	height: 140px;
-}
-
-#submittipform button {
-	
-}
-
-#submittipform .closebutton {
-	float: right;
-	cursor: pointer;
-}
-
-</style>
 
 <header id="mainhead">
 	<div id="head-content">

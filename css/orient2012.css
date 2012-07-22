@@ -289,6 +289,7 @@ p {
 }
 
 a {
+	color: darkblue;
 	text-decoration: none;
 }
 
@@ -409,6 +410,11 @@ hr {
 
 #subnavbar #lastupdated {
 	color: black;
+	cursor: pointer;
+}
+
+#subnavbar #lastupdated:hover {
+	text-decoration: underline;
 }
 
 #subnavbar #pages {
@@ -417,6 +423,87 @@ hr {
 
 #subnavbar #submittip {
 	color: darkred;
+	cursor: pointer;
+}
+
+#subnavbar #submittip:hover {
+	text-decoration: underline;
+}
+
+#datepicker {
+	display: none;
+	background: white;
+	border: solid 1px black;
+	position: absolute;
+	z-index: 99;
+	margin-top: 3px;
+	padding: 5px;
+	box-shadow: 0px 0px 5px black;
+}
+
+#datepicker td {
+	text-align: right;
+	padding: 3px;
+}
+
+#datepicker td a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#datepicker td a:hover {
+	background: lightgray;
+}
+
+#datepicker a[title="«"] {
+	float: left;
+	cursor: pointer;
+	font-size: 1.5em;
+}
+
+#datepicker a[title="»"] {
+	float: right;
+	cursor: pointer;
+	font-size: 1.5em;
+}
+
+#datepicker .ui-datepicker-title {
+	text-align: center;
+	font-size: 1.5em;
+	font-family:myriad-pro-condensed,helvetica,arial;
+}
+
+#datepicker .ui-datepicker-header {
+	margin-bottom: 10px;
+}
+
+#submittipform {
+	display: none;
+	position: absolute;
+	background: white;
+	padding: 20px;
+	width: 300px;
+	height: 200px;
+	right: 20px;
+	border: 1px solid black;
+	box-shadow: 0px 0px 10px black;
+	z-index: 1000;
+	font-family:myriad-pro-condensed,helvetica,arial;
+}
+
+#submittipform textarea {
+	width: 290px;
+	height: 140px;
+}
+
+#submittipform button {
+	
+}
+
+#submittipform .closebutton {
+	float: right;
+	cursor: pointer;
 }
 
 #abovethefold {
@@ -1014,7 +1101,16 @@ button .buttontext {
 }
 
 #contactbox .adr {
-	margin-top: 20px;
+	margin: 20px 0;
+}
+
+#contactbox .staff {
+	margin-bottom: 10px;
+}
+
+#contactbox .staff .position {
+	font-variant: small-caps;
+	font-weight: bold;
 }
 
 /* //////////////// */
@@ -1086,4 +1182,21 @@ button .buttontext {
 	width: 100%;
 	border: none;
 	height: 1px;
+}
+
+/* ///////// */
+/* SUBSCRIBE */
+/* ///////// */
+
+.subscription-list {
+	margin-top: 0;
+}
+
+.subscription-table {
+	width: 100%;
+	text-align: center;
+}
+
+.subscription-table td {
+	width: 33%;
 }
