@@ -34,14 +34,7 @@ class Bonus extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			if ($this->agent->is_referral())
-			{
-				redirect($this->agent->referrer(), 'refresh');
-			}
-			else
-			{
-				redirect('browse', 'refresh');
-			}
+			redirect('browse', 'refresh');
 		}
 		$this->load->helper(array('form'));
 		$data->quote = $this->attachments_model->get_random_quote();
