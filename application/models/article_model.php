@@ -30,6 +30,50 @@ class Article_model extends CI_Model {
 		}
     }
     
+    function get_articles_by_date($date_up_to, $date_since=false, $sec=false, $limit=false)
+    {
+    	$this->db->select("
+    		article.id, 
+    		article.date, 
+    		article.title, 
+    		article.subhead, 
+    		article.pullquote, 
+    		series.name 'series', 
+    		articletype.name 'type', 
+    		photo.filename_small"
+    		);
+		$this->db->from("article");
+		
+		$this->db->join("series", "series.id=article.series");
+		$this->db->join("articletype", "articletype.id=article.type");
+		$this->db->join("photo", "photo.article_id=article.id", "left");
+		
+		//$this->db->where("article.volume", $vol);
+		//$this->db->where("article.issue_number", $no);
+		
+		// note: date_up_to is inclusive; date_since is exclusive
+		$this->db->where("article.date <=", $date_up_to);
+		if($date_since) $this->db->where("article.date >", $date_since);
+		if($sec) $this->db->where("article.section_id", $sec);
+		if($limit) $this->db->limit($limit);
+		
+		$this->db->group_by("article.id");
+		$this->db->order_by("article.date", "desc");
+		$this->db->order_by("article.priority", "asc");
+
+		
+		$query = $this->db->get();
+		//if($limit) exit($this->db->last_query());
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+    }
+        
     function get_popular_articles($vol, $no, $limit = '10')
     {
     	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
@@ -136,6 +180,10 @@ class Article_model extends CI_Model {
 	
 	function get_suggestions($table, $field, $term)
 	{
+		// boot if trying to access anything other than allowed tables
+		// (this could be a major security risk if we're sloppy)
+		if($table != ('articletype' || 'author' || 'job' || 'series')) return false; 
+		
 		$this->db->select($field." as value");
 		$this->db->like($field, $term);
 		$query = $this->db->get($table);

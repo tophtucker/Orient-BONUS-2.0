@@ -136,12 +136,14 @@
 	
 	<? foreach($sections as $section): ?>
 		
+		<? if(!empty($articles[$section->name])): ?>
+		
 		<section id="<?=$section->name?>" class="issuesection">
 			<h2><?=$section->name?></h2>
 			
 			<ul class="articleblock">
 				<? foreach($articles[$section->name] as $article): ?>
-				<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>')"<? endif; ?>>
+				<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
 					<a href="<?=site_url()?>article/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
@@ -156,6 +158,8 @@
 			</ul>
 			
 		</section>
+		
+		<? endif; ?>
 	
 	<? endforeach; ?>
 	
@@ -180,7 +184,7 @@ var	carousel,
 				<? if($article->series): ?>'<div class="series"><?=$article->series?></div>'+<? endif; ?>
 				'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'+
 				'<p class="articledate"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'+
-				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$issue->issue_date.'/'.$article->filename_small?>">'+<? endif; ?>
+				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>">'+<? endif; ?>
 				'<p><?= addslashes(trim($article->pullquote)); ?></p>'+
 			'</div>'
 		<? endforeach; ?>

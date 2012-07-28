@@ -23,8 +23,12 @@ class Browse extends CI_Controller {
 	
 	public function date($date = '')
 	{
+		// just for testing
+		//$this->output->enable_profiler(TRUE);
+		
 		// if no date specified, use current date
 		if(!$date) $date = date("Y-m-d");
+		$date_week_ago = date("Y-m-d", time()-(7*24*60*60));
 		
 		// get latest issue <= date specified
 		$issue = $this->issue_model->get_latest_issue($date);
@@ -54,7 +58,14 @@ class Browse extends CI_Controller {
 			foreach($sections as $section)
 			{
 				// get articles
-				$articles[$section->name] = $this->article_model->get_articles($volume, $issue_number, $section->id);
+				//$articles[$section->name] = $this->article_model->get_articles($volume, $issue_number, $section->id);
+				
+				
+				$articles[$section->name] = $this->article_model->get_articles_by_date($date, $date_week_ago, $section->id);
+				if(count($articles[$section->name]) < 10) 
+				{
+					$articles[$section->name] = $this->article_model->get_articles_by_date($date, false, $section->id, 10);
+				}
 			}
 			
 			// load data, view
@@ -85,6 +96,9 @@ class Browse extends CI_Controller {
 		}
 		else
 		{
+			redirect('browse/'.$issue->issue_date, 'refresh');
+			
+			/*
 			// get adjacent issues (for next/prev buttons)
 			$nextissue = $this->issue_model->get_adjacent_issue($volume, $issue_number, 1);
 			$previssue = $this->issue_model->get_adjacent_issue($volume, $issue_number, -1);
@@ -112,6 +126,7 @@ class Browse extends CI_Controller {
 			$data->sections = $sections;
 			$data->articles = $articles;	
 			$this->load->view('browse', $data);
+			*/
 		}
 	}
 }
