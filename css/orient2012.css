@@ -148,9 +148,14 @@ footer {
 	clear: both;
 	position: relative;
 	top: 80px;
-	padding: 20px 0; 
+	padding: 20px 0 40px 0; 
 	border-top: double 3px darkgray;
 	margin: 20px;
+	color: gray;
+}
+
+footer a {
+	color: gray;
 }
 
 footer #footerlinks {
@@ -162,13 +167,17 @@ footer #footerlinks {
 footer #bonusquoteblock {
 	float: right;
 	width: 50%;
-	text-align: center;
+	text-align: left;
 }
 
 footer #vcard {
-	float: right;
+	float: left;
 	width: 25%;
-	text-align: right;
+	text-align: left;
+}
+
+footer #copyright {
+	margin: 20px 0;
 }
 
 footer .bonusquote, .bonusquoteattribution {
@@ -181,21 +190,9 @@ footer .bonusquote {
 }
 
 footer .bonusquoteattribution {
-	margin-left: 20%;
-}
-
-footer #copyright {
-	padding-top: 20px;
-	clear: both;
-	width: 100%;
 	text-align: right;
+	margin-right: 20%;
 }
-
-footer #thirty {
-	float: right;
-	color: lightgray;
-}
-
 
 /*
 // BONUS BAR
@@ -209,11 +206,11 @@ footer #thirty {
 }
 
 #bonushook a {
-	color: lightgray;
+	color: white;
 }
 
 #bonushook a:hover {
-	color: black;
+	color: lightgray;
 	text-decoration: none;
 }
 
