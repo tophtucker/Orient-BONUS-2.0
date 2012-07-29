@@ -7,6 +7,17 @@ class Article_model extends CI_Model {
         parent::__construct();
     }
     
+    function get_last_updated()
+    {
+    	$this->db->select("date");
+    	$this->db->from("article");
+    	$this->db->order_by("date", "desc");
+    	$this->db->limit(1);
+    	$query = $this->db->get();
+    	$row = $query->row();
+    	return $row->date;
+    }
+    
     function get_articles($vol, $no, $sec)
     {
     	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
@@ -48,9 +59,6 @@ class Article_model extends CI_Model {
 		$this->db->join("articletype", "articletype.id=article.type");
 		$this->db->join("photo", "photo.article_id=article.id", "left");
 		
-		//$this->db->where("article.volume", $vol);
-		//$this->db->where("article.issue_number", $no);
-		
 		// note: date_up_to is inclusive; date_since is exclusive
 		$this->db->where("article.date <=", $date_up_to);
 		if($date_since) $this->db->where("article.date >", $date_since);
@@ -63,7 +71,7 @@ class Article_model extends CI_Model {
 
 		
 		$query = $this->db->get();
-		//if($limit) exit($this->db->last_query());
+		
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
@@ -95,6 +103,44 @@ class Article_model extends CI_Model {
 		{
 			return false;
 		}
+    }
+    
+    function get_popular_articles_by_date($date_up_to, $date_since = false, $limit = '10')
+    {
+    	$this->db->select("
+    		article.id, 
+    		article.date, 
+    		article.title, 
+    		article.subhead, 
+    		article.pullquote, 
+    		series.name 'series', 
+    		articletype.name 'type', 
+    		photo.filename_small"
+    		);
+		$this->db->from("article");
+		
+		$this->db->join("series", "series.id=article.series");
+		$this->db->join("articletype", "articletype.id=article.type");
+		$this->db->join("photo", "photo.article_id=article.id", "left");
+		
+		// note: date_up_to is inclusive; date_since is exclusive
+		$this->db->where("article.date <=", $date_up_to);
+		if($date_since) $this->db->where("article.date >", $date_since);
+		if($limit) $this->db->limit($limit);
+		
+		$this->db->group_by("article.id");
+		$this->db->order_by("article.views_bowdoin", 'desc');
+		$this->db->limit($limit);
+		
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}    	
     }
     
     function get_article($id)

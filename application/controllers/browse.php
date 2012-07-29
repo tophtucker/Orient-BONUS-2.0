@@ -30,6 +30,10 @@ class Browse extends CI_Controller {
 		if(!$date) $date = date("Y-m-d");
 		$date_week_ago = date("Y-m-d", time()-(7*24*60*60));
 		
+		$last_updated = $this->article_model->get_last_updated();
+		$last_updated_week_ago = date("Y-m-d", strtotime($last_updated)-(7*24*60*60));
+		$last_updated_twomonths_ago = date("Y-m-d", strtotime($last_updated)-(2*4*7*24*60*60));
+		
 		// get latest issue <= date specified
 		$issue = $this->issue_model->get_latest_issue($date);
 				
@@ -47,7 +51,11 @@ class Browse extends CI_Controller {
 			$previssue = $this->issue_model->get_adjacent_issue($volume, $issue_number, -1);
 			
 			// popular articles
-			$popular = $this->article_model->get_popular_articles($volume, $issue_number, '10'); 
+			$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_week_ago, $limit = '10');
+			if(count($popular) < 10)
+			{
+				$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_twomonths_ago, $limit = '10');
+			}
 			
 			// get random quote
 			$data->footerdata->quote = $this->attachments_model->get_random_quote();
@@ -58,9 +66,6 @@ class Browse extends CI_Controller {
 			foreach($sections as $section)
 			{
 				// get articles
-				//$articles[$section->name] = $this->article_model->get_articles($volume, $issue_number, $section->id);
-				
-				
 				$articles[$section->name] = $this->article_model->get_articles_by_date($date, $date_week_ago, $section->id);
 				if(count($articles[$section->name]) < 10) 
 				{
