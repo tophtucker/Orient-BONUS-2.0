@@ -42,6 +42,7 @@ class Article extends CI_Controller {
 	public function view($id)
 	{
 		$article = $this->article_model->get_article($id);
+		
 		if(!$article) 
 		{
 			$this->error("No such article exists.");
@@ -49,8 +50,8 @@ class Article extends CI_Controller {
 		else
 		{
 			$body = $this->article_model->get_body($id);
-			$type = $this->article_model->get_article_type($id);
-			$series = $this->article_model->get_article_series($id);
+			$type = $this->article_model->get_article_type($article->type);
+			$series = $this->article_model->get_article_series($article->series);
 			$authors = $this->article_model->get_article_authors($id);
 			$photos = $this->attachments_model->get_photos($id);
 			
@@ -60,6 +61,7 @@ class Article extends CI_Controller {
 			$data->headerdata->date = $article->date;
 			$data->headerdata->volume = $article->volume;
 			$data->headerdata->issue_number = $article->issue_number;
+			$data->headerdata->section_id = $article->section_id;
 						
 			$data->article = $article;
 			$data->body = $body;

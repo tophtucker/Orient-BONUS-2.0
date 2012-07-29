@@ -21,6 +21,13 @@
 
 #swipeview_wrapper img {
 	width:100%;
+	/*
+	really gotta fix to work with different aspect ratios, probs with divs and background-image:contain
+	height: auto;
+	width: auto;
+	max-height: 300px;
+	max-width: 500px;
+	*/
 }
 
 #carousel #swipeview_nav {

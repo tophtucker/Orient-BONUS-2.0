@@ -109,8 +109,16 @@ nav ul li:hover {
 }
 
 nav ul li a:hover {
-	color: darkblue;
+	color: darkblue !important;
 	text-decoration: none;
+}
+
+nav ul li.active {
+	border-bottom: 2px solid darkblue;
+}
+
+nav ul li.inactive a {
+	color: lightgray;
 }
 
 nav input {
