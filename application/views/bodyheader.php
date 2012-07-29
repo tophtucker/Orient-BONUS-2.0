@@ -59,13 +59,13 @@ $(function() {
 </header>
 
 <div id="subnavbar">
-	<?if(isset($date)):?><span id="lastupdated"><?=date("F j, Y",strtotime($date))?></span> <div id="datepicker"></div> <span class="hidemobile">&middot; <?endif;?><?if(isset($volume) && isset($issue_number)):?>&laquo; Vol. <?=$volume?>, No. <?=$issue_number?> &raquo;</span> &middot; <?endif;?><a href="<?=base_url()?>random">Random</a>
+	<?if(isset($date)):?><span id="lastupdated"><?=date("F j, Y",strtotime($date))?></span> <div id="datepicker"></div> <span class="hidemobile">&middot; <?endif;?><?if(isset($volume) && isset($issue_number)):?><? if(!empty($previssue)):?><a href="<?=site_url()?>browse/<?=$previssue->issue_date?>" class="issue-nav-arrow">&#x25C4;</a> <?endif;?>Vol. <?=$volume?>, No. <?=$issue_number?> <? if(!empty($nextissue)):?><a href="<?=site_url()?>browse/<?=$nextissue->issue_date?>" class="issue-nav-arrow">&#x25BA;</a></span> <?endif;?>&middot; <?endif;?><a href="<?=base_url()?>random">Random</a>
 	<span id="pages"><?=anchor('pages/about', 'About'); ?> &middot; <?=anchor('pages/subscribe', 'Subscribe'); ?> &middot; <?=anchor('pages/advertise', 'Advertise'); ?> &middot; <span id="submittip">Submit a tip</span></span>
 </div>
 
 <div id="submittipform">
 	<span class="closebutton">&times;</span>
-	<strong>Submit an anonymous tip.</strong><br/>Please leave contact information if willing.<br/>
+	<strong>Submit an anonymous tip.</strong> Leave contact information if willing, or email <a href="mailto:orient@bowdoin.edu">orient@bowdoin.edu</a>.<br/>
 	<textarea name="tip"></textarea>
 	<button id="tipsubmit">Submit</button>
 </div>

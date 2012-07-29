@@ -356,6 +356,11 @@ h2 {
 	text-transform: uppercase;
 }
 
+h3.type, h3.series {
+	font-size: 1.2em;
+	color: gray;
+}
+
 .smallcaps {
 	font-variant: small-caps;
 }
@@ -423,6 +428,10 @@ hr {
 
 #subnavbar #lastupdated:hover {
 	text-decoration: underline;
+}
+
+#subnavbar .issue-nav-arrow {
+	color: darkgray;
 }
 
 #subnavbar #pages {
@@ -512,6 +521,8 @@ hr {
 #submittipform .closebutton {
 	float: right;
 	cursor: pointer;
+	margin-top: -20px;
+	margin-right: -15px;
 }
 
 #abovethefold {
@@ -679,7 +690,7 @@ section h2 {
 
 /* homepage social media button responses */
 @media all and (max-width: 1069px) {
-	.fb-like {
+	#mainhead .fb-like {
 		display: none !important;
 	}
 }

@@ -172,11 +172,12 @@
 		
 		<header>
 			<hgroup>
+				
+				<? if($article->type): ?><h3 class="type"><?=$type->name?></h3> <? endif; ?>
+				<? if($article->series): ?><h3 class="series"><?=$series->name?></h3> <? endif; ?>
+				
 				<h2 id="articletitle" class="articletitle"<?if(bonus()):?> contenteditable="true"<?endif;?>><?=$article->title?></h2>
 				<h3 id="articlesubtitle" class="articlesubtitle"<?if(bonus()):?> contenteditable="true"<?endif;?>><? if(isset($article->subhead)): ?><?=$article->subhead?><? endif; ?></h3>
-				
-				<? if($article->type): ?><span class="type"><?=$type->name?></span> <? endif; ?>
-				<? if($article->series): ?><span class="series"><?=$series->name?></span> <? endif; ?>
 				
 			</hgroup>
 			<? if($authors): foreach($authors as $key => $author): ?>
