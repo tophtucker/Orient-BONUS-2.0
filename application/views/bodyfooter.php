@@ -8,19 +8,21 @@
 				<span class="street-address">6200 College Station</span><br>
 				<span class="locality">Brunswick</span>, <span class="region">Maine</span> <span class="postal-code">04011</span><br>
 			</span>
-			<p id="copyright"><small>&copy; <?=date("Y")?>, The Bowdoin Orient</a>. &ndash;30&ndash;</small></p>
+			<div id="copyright"><small>&copy; <?=date("Y")?>, The Bowdoin Orient</a>. &ndash;30&ndash;</small></div>
 		</div>
 		
 		<div id="footerlinks">
-			<a href="<?=site_url()?>/pages/about">About</a><br/>
-			<a href="<?=site_url()?>/pages/archives">Archives</a><br/>
-			<a href="<?=site_url()?>/pages/subscribe">Subscribe</a><br/>
-			<a href="<?=site_url()?>/pages/advertise">Advertise</a><br/>
+			<ul>
+				<li><a href="<?=site_url()?>/pages/about">About</a></li>
+				<li><a href="<?=site_url()?>/pages/archives">Archives</a></li>
+				<li><a href="<?=site_url()?>/pages/subscribe">Subscribe</a></li>
+				<li><a href="<?=site_url()?>/pages/advertise">Advertise</a></li>
+			</ul>
 		</div>
 		
 		<div id="bonusquoteblock">
-			<p class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</p>
-			<p class="bonusquoteattribution">&mdash; <?=$quote->attribution?></p>
+			<div class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</div>
+			<div class="bonusquoteattribution">&mdash; <?=$quote->attribution?><? if(!empty($quote->source)): ?> <a href="<?=$quote->source?>">↬</a><? endif; ?></div>
 		</div>
 		
 	</footer>

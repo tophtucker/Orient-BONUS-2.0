@@ -152,6 +152,8 @@ footer {
 	border-top: double 3px darkgray;
 	margin: 20px;
 	color: gray;
+	font-family:myriad-pro,helvetica,arial;
+	font-size: 10pt;
 }
 
 footer a {
@@ -164,10 +166,19 @@ footer #footerlinks {
 	text-align: left;
 }
 
+footer #footerlinks ul {
+	margin: 0;
+	padding: 0;
+}
+
+footer #footerlinks ul li {
+	list-style: none;
+}
+
 footer #bonusquoteblock {
 	float: right;
 	width: 50%;
-	text-align: left;
+	text-align: right;
 }
 
 footer #vcard {
@@ -177,7 +188,7 @@ footer #vcard {
 }
 
 footer #copyright {
-	margin: 20px 0;
+	margin: 20px 0 40px 0;
 }
 
 footer .bonusquote, .bonusquoteattribution {
@@ -190,8 +201,10 @@ footer .bonusquote {
 }
 
 footer .bonusquoteattribution {
+	margin-top: 10px;
 	text-align: right;
-	margin-right: 20%;
+	font-family:myriad-pro,helvetica,arial;
+	font-size:10pt;
 }
 
 /*
@@ -353,7 +366,7 @@ h2 {
 	text-transform: uppercase;
 }
 
-h3.type, h3.series {
+#carousel .type, #carousel .series, h3.type, h3.series {
 	font-size: 1.2em;
 	color: gray;
 }
@@ -389,6 +402,10 @@ hr {
 	border: 0;
 }
 
+img {
+	border: 0;
+}
+
 [contenteditable]:hover:not(:focus) {
   outline: 2px dotted #ccc;
 }
@@ -411,11 +428,11 @@ hr {
 #subnavbar {
 	margin: 0 20px;
 	padding-top: 50px;
-	height: 17px;
+	height: 18px;
 	border-bottom: solid 1px lightgray;
 	color: darkgray;
-	font-family: helvetica, arial;
-	font-size: 12px;
+	font-family:myriad-pro,helvetica,arial;
+	font-size: 10pt;
 }
 
 #subnavbar #lastupdated {
@@ -530,13 +547,14 @@ hr {
 #carousel {
 	float: left;
 	width: 45%;
-	height: 400px;
+	height: 420px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
 
 #carousel h3 {
+	font-size: 1.9em;
 	margin: 0;
 }
 

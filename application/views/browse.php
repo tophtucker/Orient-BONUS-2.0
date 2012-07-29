@@ -93,7 +93,7 @@
 			  rpp: 10,
 			  interval: 5000,
 			  width: 'auto',
-			  height: 400,
+			  height: 390,
 			  theme: {
 				shell: {
 				  background: 'transparent',
@@ -182,6 +182,7 @@ var	carousel,
 			<? if($key > 0): ?>,<? endif; ?>
 			'<div class="carouseltile">'+
 				<? if($article->series): ?>'<div class="series"><?=$article->series?></div>'+<? endif; ?>
+				<? if($article->type): ?>'<div class="type"><?=$article->type?></div>'+<? endif; ?>
 				'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'+
 				'<p class="articledate"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'+
 				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>">'+<? endif; ?>
