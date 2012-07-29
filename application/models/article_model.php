@@ -7,9 +7,10 @@ class Article_model extends CI_Model {
         parent::__construct();
     }
     
-    function get_last_updated()
+    function get_last_updated($prior_to = false)
     {
     	$this->db->select("date");
+    	if($prior_to) $this->db->where("date <=", $prior_to);
     	$this->db->from("article");
     	$this->db->order_by("date", "desc");
     	$this->db->limit(1);
