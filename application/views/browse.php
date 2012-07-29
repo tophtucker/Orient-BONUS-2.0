@@ -84,7 +84,7 @@
 		
 		<!-- tweets -->
 		<div id="twitter-widget" class="hidetablet">
-			<h2>Twitter</h2>
+			<h2><a href="https://twitter.com/bowdoinorient">Twitter ↦</a></h2>
 			<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
 			<script>
 			new TWTR.Widget({

@@ -544,6 +544,15 @@ img {
 	border-bottom: double 3px darkgray;
 }
 
+#abovethefold h2 a {
+	color: black;
+}
+
+#abovethefold h2 a:hover {
+	text-decoration: none;
+	color: darkblue;
+}
+
 #carousel {
 	float: left;
 	width: 45%;
