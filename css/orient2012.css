@@ -960,6 +960,7 @@ article header {
 	height: 20px;
 	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 	font-size: 11px;
+	text-align: left;
 }
 
 .toolbox button .buttontext {

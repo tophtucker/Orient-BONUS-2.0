@@ -13,10 +13,10 @@
 		
 		<div id="footerlinks">
 			<ul>
-				<li><a href="<?=site_url()?>/pages/about">About</a></li>
-				<li><a href="<?=site_url()?>/pages/archives">Archives</a></li>
-				<li><a href="<?=site_url()?>/pages/subscribe">Subscribe</a></li>
-				<li><a href="<?=site_url()?>/pages/advertise">Advertise</a></li>
+				<li><a href="<?=site_url()?>pages/about">About</a></li>
+				<li><a href="<?=site_url()?>pages/archives">Archives</a></li>
+				<li><a href="<?=site_url()?>pages/subscribe">Subscribe</a></li>
+				<li><a href="<?=site_url()?>pages/advertise">Advertise</a></li>
 			</ul>
 		</div>
 		

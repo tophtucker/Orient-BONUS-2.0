@@ -218,7 +218,7 @@
 					'<?= $article->date ?>',
 					'<?= current_url(); ?>');">
 					<button title="Your report is submitted to an independent third-party auditor, MediaBugs.">
-						<img src="<?=base_url()?>images/reporterror-12-bw.png"><span class="buttontext"> Report an error</span>
+						<img src="<?=base_url()?>images/reporterror-12-bw.png"><span class="buttontext"> Report error</span>
 					</button>
 				</a>
 				
