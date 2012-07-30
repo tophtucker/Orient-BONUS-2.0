@@ -22,7 +22,7 @@
 		
 		<div id="bonusquoteblock">
 			<div class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</div>
-			<div class="bonusquoteattribution">&mdash; <?=$quote->attribution?><? if(!empty($quote->source)): ?> <a href="<?=$quote->source?>">↬</a><? endif; ?></div>
+			<? if(!empty($quote->attribution)): ?><div class="bonusquoteattribution">&mdash; <?=$quote->attribution?><? if(!empty($quote->source)): ?> <a href="<?=$quote->source?>">↬</a><? endif; ?></div><? endif; ?>
 		</div>
 		
 	</footer>
