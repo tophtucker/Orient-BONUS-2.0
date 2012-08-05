@@ -135,32 +135,30 @@
 				</tr></tbody>
 			</table>
 			
-			<h3>Production Schedule <em>(2011–2012)</em></h3>
+			<h3>Production Schedule <em>(2012–2013)</em></h3>
 				<p>Dates in gray are non-publication dates.</p>
 				
 				<style>
-					.schedule table { 
-						float: left;
-						padding: 5px;
-						width: 50%;
+					table {
+						padding: 5px;						
 					}
-					.schedule thead {
+					thead {
 						font-weight: bold;
 						background: lightgray;
 					}
-					.schedule td {
+					td {
 						padding: 5px 10px;
 					}
-					.schedule tbody td {
+					tbody td {
 						background: white !important;
+						font-family: myriad-pro-condensed,helvetica,arial;
+					}
+					.schedule table { 
+						float: left;
+						width: 50%;
 					}
 					.schedule .invalid {
 						color: lightgray;
-					}
-					.divider {
-						clear:both; 
-						border-bottom: 1px solid lightgray;
-						margin: 10px;
 					}
 				</style>
 				
