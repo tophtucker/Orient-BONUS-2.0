@@ -168,78 +168,78 @@
 					<table>
 						<thead>
 							<tr>
-								<td colspan="3">Fall 2011</td>
+								<td colspan="3">Fall 2012</td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>1</td>
-								<td>September 9</td>
+								<td>September 7</td>
 								<td>Back to school</td>
 							</tr>
 							<tr>
 								<td>2</td>
-								<td>September 16</td>
+								<td>September 14</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>3</td>
-								<td>September 23</td>
+								<td>September 21</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>4</td>
-								<td>September 30</td>
-								<td></td>
+								<td>September 28</td>
+								<td>Parents Weekend issue</td>
 							</tr>
 							<tr class="invalid">
 								<td></td>
-								<td>October 7</td>
+								<td>October 5</td>
 								<td>Fall Break</td>
 							</tr>
 							<tr>
 								<td>5</td>
-								<td>October 14</td>
-								<td>Homecoming</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>October 21</td>
+								<td>October 12</td>
 								<td></td>
 							</tr>
 							<tr>
+								<td>6</td>
+								<td>October 19</td>
+								<td>Homecoming</td>
+							</tr>
+							<tr>
 								<td>7</td>
-								<td>October 28</td>
-								<td>Parent's Weekend</td>
+								<td>October 26</td>
+								<td></td>
 							</tr>
 							<tr>
 								<td>8</td>
-								<td>November 4</td>
+								<td>November 2</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>9</td>
-								<td>November 11</td>
+								<td>November 9</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>10</td>
-								<td>November 18</td>
+								<td>November 16</td>
 								<td></td>
 							</tr>
 							<tr class="invalid">
 								<td></td>
-								<td>November 25</td>
+								<td>November 23</td>
 								<td>Thanksgiving Break</td>
 							</tr>
 							<tr>
 								<td>11</td>
-								<td>December 2</td>
+								<td>November 30</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>12</td>
-								<td>December 9</td>
+								<td>December 7</td>
 								<td></td>
 							</tr>
 						</tbody>
@@ -248,83 +248,83 @@
 					<table>
 						<thead>
 							<tr>
-								<td colspan="3">Spring 2012</td>
+								<td colspan="3">Spring 2013</td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>13</td>
-								<td>January 27</td>
+								<td>January 25</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>14</td>
-								<td>February 3</td>
+								<td>February 1</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>15</td>
-								<td>February 10</td>
+								<td>February 8</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>16</td>
-								<td>February 17</td>
+								<td>February 15</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>17</td>
-								<td>February 24</td>
+								<td>February 22</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>18</td>
-								<td>March 2</td>
+								<td>March 1</td>
 								<td></td>
 							</tr>
 							<tr class="invalid">
 								<td></td>
-								<td>March 9</td>
+								<td>March 8</td>
 								<td>Spring Break</td>
 							</tr>
 							<tr class="invalid">
 								<td></td>
-								<td>March 16</td>
+								<td>March 15</td>
 								<td>Spring Break</td>
 							</tr>
 							<tr class="invalid">
 								<td></td>
-								<td>March 23</td>
+								<td>March 22</td>
 								<td>Spring Break</td>
 							</tr>
 							<tr>
 								<td>19</td>
-								<td>March 30</td>
+								<td>March 29</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>20</td>
-								<td>April 6</td>
+								<td>April 5</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>21</td>
-								<td>April 13</td>
+								<td>April 12</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>22</td>
-								<td>April 20</td>
+								<td>April 19</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>23</td>
-								<td>April 27</td>
+								<td>April 26</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>24</td>
-								<td>May 4</td>
+								<td>May 3</td>
 								<td></td>
 							</tr>
 						</tbody>
