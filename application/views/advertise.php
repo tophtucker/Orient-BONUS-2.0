@@ -63,8 +63,7 @@
 					<div class="street-address">6200 College Station</div>
 					<div class="locality">Brunswick</span>, <span class="region">Maine</span> <span class="postal-code">04011</div>
 				</div>
-				<div class="staff"><span class="position">Business Manager:</span> <br>Tarara Deane-Krantz</div>
-				<div class="staff"><span class="position">Assistant Business Managers:</span> <br>Maya Lloyd &amp; Madison Whitley</div>
+				<div class="staff"><span class="position">Business Managers:</span> <br>Madison Whitley &amp; Maya Lloyd</div>
 			</div>
 		</div>
 		
@@ -333,19 +332,18 @@
 				<h3>Contacts</h3>
 							
 				<p>For further information involving local ads, please contact our business team. <br>
-				<strong>Tarara Deane-Krantz</strong> <br>
+				<strong>Madison Whitley</strong> <br>
 				<em>Bowdoin Orient Business Team</em> <br>
 				Phone: (207) 725-3053<br>
 				Email: <a href="mailto: orientads@bowdoin.edu">orientads@bowdoin.edu</a>
 				</p>
 	
 				<p>For further information involving national ads, please contact our representative. <br>
-				<strong>Stacie Anekstein</strong> <br>
+				<strong>Alisha Gianakakis</strong> <br>
 				<em>Account Manager</em> <br>
-				Toll-Free Phone: 1-888-897-7711 x 116 <br>
-				Phone: 1-603-898-7711 x 116 <br>
+				Toll-Free Phone: 1-888-897-7711 x 121 <br>
 				Fax: 978-231-0300<br>
-				Email: <a href="mailto:sanekstein@mymediamate.com">sanekstein@mymediamate.com</a> 
+				Email: <a href="mailto:agianakakis@mymediamate.com">agianakakis@mymediamate.com</a> 
 				</p>
 	
 		</div>
