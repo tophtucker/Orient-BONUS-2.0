@@ -45,5 +45,11 @@ $route['article/(:num)'] = "article/view/$1";
 $route['article/(:num)/(:any)'] = "article/view/$1";
 $route['browse/(:num)-(:num)-(:num)'] = "browse/date/$1-$2-$3";
 
+$route['search'] = "pages/search";
+$route['about'] = "pages/about";
+$route['archives'] = "pages/archives";
+$route['subscribe'] = "pages/subscribe";
+$route['advertise'] = "pages/advertise";
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

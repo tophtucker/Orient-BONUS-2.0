@@ -48,7 +48,7 @@ $(function() {
 					<li class="<?= ($section_id == "5" ? "active" : "inactive"); ?>"><a href="<?=site_url()."browse/".$date?>#Sports">Sports</a></li>
 				<? endif; ?>
 				<li>
-					<form action="<?=site_url()?>pages/search" id="cse-search-box" method="get">
+					<form action="<?=site_url()?>search" id="cse-search-box" method="get">
 						<input class="filterinput" type="text" placeholder="Search" name="q">
 					</form>
 				</li>
@@ -60,7 +60,7 @@ $(function() {
 
 <div id="subnavbar">
 	<?if(isset($date)):?><span id="lastupdated"><?=date("F j, Y",strtotime($date))?></span> <div id="datepicker"></div> <span class="hidemobile">&middot; <?endif;?><?if(isset($volume) && isset($issue_number)):?><? if(!empty($previssue)):?><a href="<?=site_url()?>browse/<?=$previssue->issue_date?>" class="issue-nav-arrow">&#x25C4;</a> <?endif;?>Vol. <?=$volume?>, No. <?=$issue_number?> <? if(!empty($nextissue)):?><a href="<?=site_url()?>browse/<?=$nextissue->issue_date?>" class="issue-nav-arrow">&#x25BA;</a></span> <?endif;?>&middot; <?endif;?><a href="<?=base_url()?>random">Random</a>
-	<span id="pages"><?=anchor('pages/about', 'About'); ?> &middot; <?=anchor('pages/subscribe', 'Subscribe'); ?> &middot; <?=anchor('pages/advertise', 'Advertise'); ?> &middot; <span id="submittip">Submit a tip</span></span>
+	<span id="pages"><?=anchor('about', 'About'); ?> &middot; <?=anchor('subscribe', 'Subscribe'); ?> &middot; <?=anchor('advertise', 'Advertise'); ?> &middot; <span id="submittip">Submit a tip</span></span>
 </div>
 
 <div id="submittipform">
