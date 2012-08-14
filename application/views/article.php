@@ -22,7 +22,6 @@
 	
 	<!-- SwipeView (for slideshows) -->
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/swipeview.css?v=1">
-	<script type="text/javascript" src="<?= base_url() ?>js/swipeview.js"></script>
 	
 	<!-- MediaBugs script (for reporting errors to third party auditor) -->
 	<script type="text/javascript" src="http://mediabugs.org/widget/widget.js"></script>
@@ -315,6 +314,7 @@
 
 <? if(count($photos) > 1): ?>
 	<!-- SwipeView. Only needed for slideshows. -->
+	<script type="text/javascript" src="<?= base_url() ?>js/swipeview-mwidmann.js"></script>
 	<script type="text/javascript">
 	var	carousel,
 		el,

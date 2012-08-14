@@ -20,7 +20,6 @@
 	
 	<!-- SwipeView (for carousel) -->
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/swipeview.css?v=1">
-	<script type="text/javascript" src="<?= base_url() ?>js/swipeview.js"></script>
 
     <!-- for smooth scrolling -->
     <script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
@@ -170,6 +169,7 @@
 <? $this->load->view('bonus/bonusbar', TRUE); ?>
 
 <!-- SwipeView. Only needed for slideshows. -->
+<script type="text/javascript" src="<?= base_url() ?>js/swipeview-mwidmann.js"></script>
 <script type="text/javascript">
 var	carousel,
 	el,
