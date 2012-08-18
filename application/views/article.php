@@ -266,7 +266,13 @@
 			<? endif; ?>
 		<? endif; ?>
 		
-		<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>><?=$body->body?></div>
+		<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>>
+			<? if(!empty($body)): ?>
+				<?=$body->body;?>
+			<? else: ?>
+				<?="<p></p>";?> 
+			<? endif; ?>
+		</div>
 		
 		<div id="articlefooter">
 			

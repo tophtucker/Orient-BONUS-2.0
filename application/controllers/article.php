@@ -171,7 +171,7 @@ class Article extends CI_Controller {
 		$img_fixed = str_replace(' ','+',$img);
 		
 		write_file('images/'.$article_date.'/'.$article_id.'_fullsize.jpg', base64_decode($img_fixed));
-		return $this->attachments_model->add_photo($article_id.'_fullsize.jpg', $article_id.'_fullsize.jpg', $credit, $caption, $article_id);
+		exit($this->attachments_model->add_photo($article_id.'_fullsize.jpg', $article_id.'_fullsize.jpg', $credit, $caption, $article_id));
 	}
 	
 	public function ajax_suggest($table, $field)

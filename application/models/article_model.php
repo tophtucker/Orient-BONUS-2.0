@@ -247,15 +247,14 @@ class Article_model extends CI_Model {
 	function add_blank_article($volume, $issue_number, $section)
 	{
 		$data = array(
-		   'date' => '',
+		   'date' => date("Y-m-d"),
 		   'volume' => $volume,
 		   'issue_number' => $issue_number,
 		   'section_id' => $section,
-		   'priority' => '100',
+		   'priority' => '10',
 		   'title' => "Enter title here",
 		   'subhead' => '',
 		   'pullquote' => '',
-		   'bodybackup' => ''
 		);
 		$query = $this->db->insert('article', $data);
 		return $this->db->insert_id();
@@ -322,7 +321,6 @@ class Article_model extends CI_Model {
 		   'name' => $name,
 		   'photo' => $photo,
 		   'job' => $job,
-		   'classyear' => $classyear,
 		   'bio' => $bio
 		);
 		return $this->db->insert('author', $data);

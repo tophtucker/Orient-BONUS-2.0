@@ -793,6 +793,10 @@ section h2 {
 		font-size: 12pt !important;
 	}
 	
+	.smalltile h4, .articleblock li:nth-child(n+6) h4 {
+		display: none !important;
+	}
+	
 	.smalltile p, .articleblock li:nth-child(n+6) p {
 		display: none;
 	}
