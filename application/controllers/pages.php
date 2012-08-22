@@ -46,6 +46,11 @@ class Pages extends CI_Controller {
 		$data->headerdata->date = date("Y-m-d");
 		$this->load->view('search', $data);
 	}
+	
+	public function phpinfo()
+	{
+		exit(phpinfo());
+	}
 }
 
 /* End of file welcome.php */

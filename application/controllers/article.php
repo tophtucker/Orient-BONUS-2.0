@@ -40,7 +40,7 @@ class Article extends CI_Controller {
 	}
 	
 	public function view($id)
-	{
+	{		
 		$article = $this->article_model->get_article($id);
 		
 		if(!$article) 
@@ -158,6 +158,7 @@ class Article extends CI_Controller {
 		$png_offset = 22;
 		$jpg_offset = 23;
 		
+		// atm we only support jpg :( #todo
 		$offset = $css_offset + $jpg_offset;
 		$offset_tail = $css_offset_tail;
 		$strlen_offset = $offset + $offset_tail;
@@ -170,8 +171,25 @@ class Article extends CI_Controller {
 		// this corrects for it.
 		$img_fixed = str_replace(' ','+',$img);
 		
-		write_file('images/'.$article_date.'/'.$article_id.'_fullsize.jpg', base64_decode($img_fixed));
-		exit($this->attachments_model->add_photo($article_id.'_fullsize.jpg', $article_id.'_fullsize.jpg', $credit, $caption, $article_id));
+		// create directory for relevant date if necessary
+		if(!is_dir('images/'.$article_date))
+		{
+			mkdir('images/'.$article_date);
+		}
+		
+		// so that you can upload multiple photos to an article and the filenames won't collide,
+		// we write it $articleid."_1" for the first photo attached to an article, $articleid."_2", etc.
+		$article_photo_number = $this->attachments_model->count_article_photos($article_id) + 1;
+		
+		$filename_root = $article_id.'_'.$article_photo_number.'.jpg';
+		
+		// at the moment we are not processing & saving different sizes :( #todo
+		//$filename_small = $filename_root.'_small.jpg';
+		//$filename_large = $filename_root.'_large.jpg';
+		//$filename_original = $filename_root.'_original.jpg';
+		
+		write_file('images/'.$article_date.'/'.$filename_root, base64_decode($img_fixed));
+		exit($this->attachments_model->add_photo($filename_root, $filename_root, $filename_root, $credit, $caption, $article_id));
 	}
 	
 	public function ajax_suggest($table, $field)

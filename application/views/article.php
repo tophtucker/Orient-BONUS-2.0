@@ -9,7 +9,8 @@
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
 	<!-- jQuery -->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> -->
+	<script type="text/javascript" src="<?=base_url()?>js/jquery-1.8.0.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.8.17.custom.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
 	
@@ -266,11 +267,24 @@
 			<? endif; ?>
 		<? endif; ?>
 		
+		<? if(bonus()): ?>
+			<figure id="bonusmeta">
+				<ul>
+					<li><input type="checkbox" name="featured" value="featured" checked="checked" /> Featured</li>
+					<li><input type="checkbox" name="published" value="published" checked="checked" /> Published</li>
+					<li><input type="text" name="priority" id="priority" value="10" />Priority</li>
+					<li>Views: <?=$article->views?></li>
+					<li>Bowdoin views: <?=$article->views_bowdoin?></li>
+					<li><a href="#" class="delete">Delete</a></li>
+				</ul>			
+			</figure>
+		<? endif; ?>
+		
 		<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>>
 			<? if(!empty($body)): ?>
 				<?=$body->body;?>
 			<? else: ?>
-				<?="<p></p>";?> 
+				<?="<p>Enter article body here.</p>";?> 
 			<? endif; ?>
 		</div>
 		

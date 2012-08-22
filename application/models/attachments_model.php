@@ -60,7 +60,7 @@ class Attachments_model extends CI_Model {
     	}
     }
     
-    function add_photo($filename_small, $filename_large, $credit, $caption, $article_id)
+    function add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id)
     {
     	$photographer = $this->article_model->get_author_by_name($credit);
 		if(!$photographer)
@@ -72,6 +72,7 @@ class Attachments_model extends CI_Model {
 		$data = array(
 		   'filename_small' => $filename_small,
 		   'filename_large' => $filename_large,
+		   'filename_original' => $filename_original,
 		   'photographer_id' => $photographer->id,
 		   'caption' => $caption,
 		   'article_id' => $article_id
@@ -98,6 +99,15 @@ class Attachments_model extends CI_Model {
     	{
     		return false;
     	}
+    }
+    
+    function count_article_photos($id)
+    {
+    	$this->db->select("count(*) as count");
+    	$this->db->where("article_id", $id);
+    	$query = $this->db->get("photo");
+    	$result = $query->row();
+    	return $result->count;
     }
 
 }

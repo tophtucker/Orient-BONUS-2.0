@@ -167,7 +167,7 @@ class Article_model extends CI_Model {
 	function get_body($id)
 	{
 		$this->db->where("article_id", $id);
-		$this->db->order_by("created", "desc");
+		$this->db->order_by("timestamp", "desc");
 		$query = $this->db->get("articlebody");
 		if($query->num_rows() > 0)
 		{

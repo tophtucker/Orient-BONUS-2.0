@@ -15,7 +15,8 @@
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	
 	<!-- jQuery -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> -->
+	<script type="text/javascript" src="<?=base_url()?>js/jquery-1.8.0.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.8.17.custom.min.js"></script>
 	
 	<!-- SwipeView (for carousel) -->

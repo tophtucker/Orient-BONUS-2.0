@@ -261,6 +261,20 @@ footer .bonusquoteattribution {
 	display: none;
 }
 
+/*
+// BONUS META
+*/
+
+#bonusmeta {
+	background: url(../images/starring.png);
+	color: white;
+	font-family:myriad-pro,helvetica,arial;
+}
+
+#bonusmeta .delete {
+	color: red;
+}
+
 /* 
 // BONUS EDIT INTERFACE
 */
