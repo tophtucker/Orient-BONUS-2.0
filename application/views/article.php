@@ -194,7 +194,7 @@
 			<? endif; ?>
 			
 			<div class="toolbox">
-			
+				
 				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= current_url() ?>" data-via="bowdoinorient" data-lang="en">Tweet</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				<br/>
@@ -221,6 +221,10 @@
 						<img src="<?=base_url()?>images/reporterror-12-bw.png"><span class="buttontext"> Report error</span>
 					</button>
 				</a>
+				
+				<? if(bonus()): ?>
+					Views: <?=$article->views?> (<?=$article->views_bowdoin?>)<br/>
+				<? endif; ?>
 				
 			</div>
 			
@@ -268,15 +272,20 @@
 		<? endif; ?>
 		
 		<? if(bonus()): ?>
-			<figure id="bonusmeta">
-				<ul>
-					<li><input type="checkbox" name="featured" value="featured" checked="checked" /> Featured</li>
-					<li><input type="checkbox" name="published" value="published" checked="checked" /> Published</li>
-					<li><input type="text" name="priority" id="priority" value="10" />Priority</li>
-					<li>Views: <?=$article->views?></li>
-					<li>Bowdoin views: <?=$article->views_bowdoin?></li>
-					<li><a href="#" class="delete">Delete</a></li>
-				</ul>			
+			<figure id="bonus-meta">
+				<ul id="bonus-tools">
+					<li>Volume: <input type="text" name="volume" id="volume" size="2" value="<?=$article->volume?>" /></li>
+					<li>Issue number: <input type="text" name="issuenumber" id="issuenumber" size="2" value="<?=$article->issue_number?>" /></li>
+					<li>Section: <input type="text" name="section" id="section" size="2" value="<?=$article->section_id?>" /></li>
+					<li>Priority: <input type="text" name="priority" id="priority" size="2" value="<?=$article->priority?>" /></li>
+					<li>Published: <input type="checkbox" name="published" value="published" <? if($article->published): ?>checked="checked"<? endif; ?> /></li>
+					<li>Featured: <input type="checkbox" name="featured" value="featured" <? if($article->featured): ?>checked="checked"<? endif; ?> /></li>
+				</ul>
+				<ul id="bonus-stats">
+					<li>Pullquote: <br/><textarea rows="6" cols="30" id="pullquote"><?=$article->pullquote?></textarea></li>
+					<li><a href="#" class="delete">Remove article photos</a></li>
+					<li><a href="#" class="delete">Delete article</a></li>
+				</ul>
 			</figure>
 		<? endif; ?>
 		

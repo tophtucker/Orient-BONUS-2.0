@@ -265,13 +265,46 @@ footer .bonusquoteattribution {
 // BONUS META
 */
 
-#bonusmeta {
+#bonus-meta {
 	background: url(../images/starring.png);
 	color: white;
 	font-family:myriad-pro,helvetica,arial;
+	font-size: 10pt;
 }
 
-#bonusmeta .delete {
+#bonus-meta input, #bonus-meta textarea {
+	background: #333;
+	color: white;
+	border: 1px white solid;
+	font-family:myriad-pro,helvetica,arial;
+	padding: 3px;
+}
+
+#bonus-meta input {
+	text-align: center;
+}
+
+#bonus-meta ul {
+	margin: 0;
+	padding: 5%;
+}
+
+#bonus-meta ul li {
+	list-style: none;
+	margin: 0 0 10px 0;
+}
+
+#bonus-meta #bonus-tools {
+	width: 40%;
+	float: left;
+}
+
+#bonus-meta #bonus-stats {
+	width: 40%;
+	float: right;
+}
+
+#bonus-meta .delete {
 	color: red;
 }
 
@@ -970,6 +1003,8 @@ article header {
 	border: 1px solid lightgray;
 	width: 115px;
 	float: right;
+	font-family: myriad-pro, helvetica, arial;
+	font-size: 13px;
 }
 
 .toolbox button {
@@ -987,7 +1022,7 @@ article header {
 }
 
 .toolbox .fb-like {
-	margin-bottom: 5px;
+	margin-bottom: 2px;
 }
 
 .articlebody h3 {
