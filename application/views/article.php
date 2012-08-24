@@ -305,6 +305,7 @@
 				/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 				var disqus_shortname = 'bowdoinorient'; // required: replace example with your forum shortname
 				var disqus_title = '<?=$article->title?>';
+				var disqus_identifier = '<?=$article->id?>';
 				
 				/* * * DON'T EDIT BELOW THIS LINE * * */
 				(function() {
