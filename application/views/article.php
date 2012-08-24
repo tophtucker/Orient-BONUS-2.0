@@ -305,7 +305,15 @@
 				/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 				var disqus_shortname = 'bowdoinorient'; // required: replace example with your forum shortname
 				var disqus_title = '<?=$article->title?>';
-				var disqus_identifier = '<?=$article->id?>';
+				
+				//disqus_identifier isn't necessary, because it can use the URL. it's preferable, though, because of different URL schemes.
+				//problem is, we used a different scheme (date&section&priority, e.g. 2012-05-04&2&1) on the old site.
+				//on newer articles (>7308), we just use the new unique article id.
+				<? if($article->id <= 7308): ?>
+					var disqus_identifier = '<?=$article->date."?".$article->section_id."?".$article->priority?>';
+				<? else: ?>
+					var disqus_identifier = '<?=$article->id?>';
+				<? endif; ?>
 				
 				/* * * DON'T EDIT BELOW THIS LINE * * */
 				(function() {

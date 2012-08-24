@@ -33,7 +33,7 @@ class Browse extends CI_Controller {
 		// get last updated date, PRIOR TO $date requested.
 		$last_updated = $this->article_model->get_last_updated($date);
 		$last_updated_week_ago = date("Y-m-d", strtotime($last_updated)-(7*24*60*60));
-		$last_updated_fourmonths_ago = date("Y-m-d", strtotime($last_updated)-(4*4*7*24*60*60));
+		$last_updated_fivemonths_ago = date("Y-m-d", strtotime($last_updated)-(5*4*7*24*60*60));
 		
 		// get latest issue <= date specified
 		$issue = $this->issue_model->get_latest_issue($date);
@@ -55,7 +55,7 @@ class Browse extends CI_Controller {
 			$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_week_ago, $limit = '10');
 			if(count($popular) < 10)
 			{
-				$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_fourmonths_ago, $limit = '10');
+				$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_fivemonths_ago, $limit = '10');
 			}
 			
 			// get random quote

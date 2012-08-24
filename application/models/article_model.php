@@ -11,6 +11,12 @@ class Article_model extends CI_Model {
     {
     	$this->db->select("date");
     	if($prior_to) $this->db->where("date <=", $prior_to);
+    	
+    	// "active" basically means "hasn't been deleted". we should almost never show inactive articles.
+		$this->db->where("article.active", "1");
+		// show draft (unpublished) articles only if logged into bonus.
+		if(!bonus()) $this->db->where("article.published", "1");
+    	
     	$this->db->from("article");
     	$this->db->order_by("date", "desc");
     	$this->db->limit(1);
@@ -50,6 +56,8 @@ class Article_model extends CI_Model {
     		article.title, 
     		article.subhead, 
     		article.pullquote, 
+    		article.published,
+    		article.featured,
     		series.name 'series', 
     		articletype.name 'type', 
     		photo.filename_small"
@@ -59,6 +67,11 @@ class Article_model extends CI_Model {
 		$this->db->join("series", "series.id=article.series");
 		$this->db->join("articletype", "articletype.id=article.type");
 		$this->db->join("photo", "photo.article_id=article.id", "left");
+		
+		// "active" basically means "hasn't been deleted". we should almost never show inactive articles.
+		$this->db->where("article.active", "1");
+		// show draft (unpublished) articles only if logged into bonus.
+		if(!bonus()) $this->db->where("article.published", "1");
 		
 		// note: date_up_to is inclusive; date_since is exclusive
 		$this->db->where("article.date <=", $date_up_to);
@@ -113,7 +126,9 @@ class Article_model extends CI_Model {
     		article.date, 
     		article.title, 
     		article.subhead, 
-    		article.pullquote, 
+    		article.pullquote,
+    		article.published,
+    		article.featured,
     		series.name 'series', 
     		articletype.name 'type', 
     		photo.filename_small"
@@ -123,6 +138,11 @@ class Article_model extends CI_Model {
 		$this->db->join("series", "series.id=article.series");
 		$this->db->join("articletype", "articletype.id=article.type");
 		$this->db->join("photo", "photo.article_id=article.id", "left");
+		
+		// "active" basically means "hasn't been deleted". we should almost never show inactive articles.
+		$this->db->where("article.active", "1");
+		// show draft (unpublished) articles only if logged into bonus.
+		if(!bonus()) $this->db->where("article.published", "1");
 		
 		// note: date_up_to is inclusive; date_since is exclusive
 		$this->db->where("article.date <=", $date_up_to);
@@ -160,6 +180,9 @@ class Article_model extends CI_Model {
 	
 	function get_random()
 	{
+		// weighted by popularity; truncates the head of the list (offset of 10) because
+		// it kept returning the same articles too often, even with the natural-log
+		// softening. there's surely a better algorithm, but it works well. 
 		$query = $this->db->query("SELECT * FROM article ORDER BY (RAND() * ln(views)) desc limit 10,1;");
 		return $query->row();
 	}
