@@ -81,7 +81,7 @@ class Article extends CI_Controller {
 			exit("Not logged in!");
 		}
 		$article_id = $this->article_model->add_blank_article($volume, $issue_number, $section);
-		redirect('/article/view/'.$article_id, 'refresh');
+		redirect('/article/'.$article_id, 'refresh');
 		
 		/*
 		$this->load->model('issue_model', '', TRUE);
