@@ -49,7 +49,14 @@ class Pages extends CI_Controller {
 	
 	public function phpinfo()
 	{
-		exit(phpinfo());
+		if(!bonus()) 
+		{
+			$this->load->view('error');
+		}
+		else
+		{
+			exit(phpinfo());
+		}
 	}
 }
 
