@@ -88,12 +88,21 @@
 					"title=" + $("#articletitle").html() + 
 					"&subtitle=" + $("#articlesubtitle").html() +
 					"&author=" + $("#addauthor").html() +
-					"&authorjob=" + $("#addauthorjob").html();
+					"&authorjob=" + $("#addauthorjob").html() +
+					"&volume=" + $('input[name=volume]').val() +
+					"&issue_number=" + $('input[name=issue_number]').val() +
+					"&section_id=" + $('input[name=section_id]').val() +
+					"&priority=" + $('input[name=priority]').val() +
+					"&published=" + $('input[name=published]').prop('checked') +
+					"&featured=" + $('input[name=featured]').prop('checked') +
+					"&pullquote=" + $('textarea[name=pullquote]').val();
 			if(bodyedited) { ajaxrequest += "&body=" + $("#articlebody").html(); }
-			// write photocredit and caption if there's a photo that hasn't just been added and its credit/caption were edited
 			
-			// write title, subtitle, author, authorjob, body
+			// #TODO: if an image already exists, update its credit & caption (if edited).
+			
+			// write title, subtitle, author, authorjob, bonus-meta stuff
 			// (regardless of whether they've been edited. sloppy.)
+			// and body, only if it's been edited
 			$.ajax({
 				type: "POST",
 				url: "<?=site_url()?>article/edit/<?=$article->id?>",
@@ -106,10 +115,50 @@
 				}
 			});
 			
-			// if an image already exists, update its credit & caption.
-			// TO-DO
 									
 		} );
+		
+		$("#removephotos").click(function(event) {
+			event.preventDefault()
+			//note: "data:" is totally unused, but what'd happen if it weren't there??? (well, test!)
+			$.ajax({
+				type: "POST",
+				url: "<?=site_url()?>article/ajax_remove_photos/<?=$article->id?>",
+				data: "remove=true",
+				success: function(result){
+					if(result=="success") {
+						//hide photos (gotta refresh to add again, as it works now)
+						$('#dnd-holder').hide();
+						$('#articlemedia').hide();
+					}
+					//show alert
+					$("#savenotify").html(result);
+					$("#savenotify").show();
+					$("#savenotify").fadeOut(2000);
+				}
+			});
+		} );
+		
+		$("#deletearticle").click(function(event) {
+			event.preventDefault()
+			//note: "data:" is totally unused, but what'd happen if it weren't there??? (well, test!)
+			$.ajax({
+				type: "POST",
+				url: "<?=site_url()?>article/ajax_delete_article/<?=$article->id?>",
+				data: "remove=true",
+				success: function(result){
+					if(result=="success") {
+						//return home
+						window.location = "<?=site_url()?>";
+					}
+					//show alert
+					$("#savenotify").html(result);
+					$("#savenotify").show();
+					$("#savenotify").fadeOut(2000);
+				}
+			});
+		} );
+		
     });
     
     
@@ -275,16 +324,16 @@
 			<figure id="bonus-meta">
 				<ul id="bonus-tools">
 					<li>Volume: <input type="text" name="volume" id="volume" size="2" value="<?=$article->volume?>" /></li>
-					<li>Issue number: <input type="text" name="issuenumber" id="issuenumber" size="2" value="<?=$article->issue_number?>" /></li>
-					<li>Section: <input type="text" name="section" id="section" size="2" value="<?=$article->section_id?>" /></li>
+					<li>Issue number: <input type="text" name="issue_number" id="issue_number" size="2" value="<?=$article->issue_number?>" /></li>
+					<li>Section: <input type="text" name="section_id" id="section_id" size="2" value="<?=$article->section_id?>" /></li>
 					<li>Priority: <input type="text" name="priority" id="priority" size="2" value="<?=$article->priority?>" /></li>
 					<li>Published: <input type="checkbox" name="published" value="published" <? if($article->published): ?>checked="checked"<? endif; ?> /></li>
 					<li>Featured: <input type="checkbox" name="featured" value="featured" <? if($article->featured): ?>checked="checked"<? endif; ?> /></li>
 				</ul>
 				<ul id="bonus-stats">
-					<li>Pullquote: <br/><textarea rows="6" cols="30" id="pullquote"><?=$article->pullquote?></textarea></li>
-					<li><a href="#" class="delete">Remove article photos</a></li>
-					<li><a href="#" class="delete">Delete article</a></li>
+					<li>Pullquote: <br/><textarea rows="6" cols="30" name="pullquote" id="pullquote"><?=$article->pullquote?></textarea></li>
+					<li><a href="#" class="delete" id="removephotos">Remove article photos</a></li>
+					<li><a href="#" class="delete" id="deletearticle">Delete article</a></li>
 				</ul>
 			</figure>
 		<? endif; ?>
@@ -299,31 +348,35 @@
 		
 		<div id="articlefooter">
 			
-			<!-- Disqus -->
-			<div id="disqus_thread"></div>
-			<script type="text/javascript">
-				/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-				var disqus_shortname = 'bowdoinorient'; // required: replace example with your forum shortname
-				var disqus_title = '<?=$article->title?>';
-				
-				//disqus_identifier isn't necessary, because it can use the URL. it's preferable, though, because of different URL schemes.
-				//problem is, we used a different scheme (date&section&priority, e.g. 2012-05-04&2&1) on the old site.
-				//on newer articles (>7308), we just use the new unique article id.
-				<? if($article->id <= 7308): ?>
-					var disqus_identifier = '<?=$article->date."?".$article->section_id."?".$article->priority?>';
-				<? else: ?>
-					var disqus_identifier = '<?=$article->id?>';
-				<? endif; ?>
-				
-				/* * * DON'T EDIT BELOW THIS LINE * * */
-				(function() {
-					var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-					dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-				})();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-			<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			<? if(!bonus()): ?>
+			
+				<!-- Disqus -->
+				<div id="disqus_thread"></div>
+				<script type="text/javascript">
+					/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+					var disqus_shortname = 'bowdoinorient'; // required: replace example with your forum shortname
+					var disqus_title = '<?=$article->title?>';
+					
+					//disqus_identifier isn't necessary, because it can use the URL. it's preferable, though, because of different URL schemes.
+					//problem is, we used a different scheme (date&section&priority, e.g. 2012-05-04&2&1) on the old site.
+					//on newer articles (>7308), we just use the new unique article id.
+					<? if($article->id <= 7308): ?>
+						var disqus_identifier = '<?=$article->date."?".$article->section_id."?".$article->priority?>';
+					<? else: ?>
+						var disqus_identifier = '<?=$article->id?>';
+					<? endif; ?>
+					
+					/* * * DON'T EDIT BELOW THIS LINE * * */
+					(function() {
+						var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+						dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+						(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+					})();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			
+			<? endif; ?>
 			
 		</div>
 	  

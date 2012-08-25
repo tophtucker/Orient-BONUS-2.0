@@ -25,6 +25,7 @@ class Article_model extends CI_Model {
     	return $row->date;
     }
     
+    // fetch by issue. pretty sure this is deprecated/unused.
     function get_articles($vol, $no, $sec)
     {
     	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
@@ -48,7 +49,10 @@ class Article_model extends CI_Model {
 		}
     }
     
-    function get_articles_by_date($date_up_to, $date_since=false, $sec=false, $limit=false)
+    // for the love of god, either use a finite date span or a limit!
+    // i.e. don't let both $date_since and $limit stay false.
+    // maybe this function should control for that ugly possibility.
+    function get_articles_by_date($date_up_to, $date_since=false, $sec=false, $limit=false, $featured=false)
     {
     	$this->db->select("
     		article.id, 
@@ -73,6 +77,9 @@ class Article_model extends CI_Model {
 		// show draft (unpublished) articles only if logged into bonus.
 		if(!bonus()) $this->db->where("article.published", "1");
 		
+		// for carousel or whatever, may choose to just fetch featured articles
+		if($featured) $this->db->where("article.featured", "1");
+		
 		// note: date_up_to is inclusive; date_since is exclusive
 		$this->db->where("article.date <=", $date_up_to);
 		if($date_since) $this->db->where("article.date >", $date_since);
@@ -95,7 +102,8 @@ class Article_model extends CI_Model {
 			return false;
 		}
     }
-        
+    
+    // fetch by issue. pretty sure this is deprecated/unused.
     function get_popular_articles($vol, $no, $limit = '10')
     {
     	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");

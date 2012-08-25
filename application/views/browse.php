@@ -76,7 +76,7 @@
 				<span id="next" onclick="carousel.next();hasInteracted=true">&raquo;</span>
 			</div>
 			<ul id="swipeview_nav">
-				<? foreach($popular as $key => $article): ?>
+				<? foreach($featured as $key => $article): ?>
 				<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>);hasInteracted=true"></li>
 				<? endforeach; ?>
 			</ul>			
@@ -179,7 +179,7 @@ var	carousel,
 	hasInteracted = false,
 	dots = document.querySelectorAll('#swipeview_nav li'),
 	slides = [
-		<? foreach($popular as $key => $article): ?>
+		<? foreach($featured as $key => $article): ?>
 			<? if($key > 0): ?>,<? endif; ?>
 			'<div class="carouseltile <? if(!$article->published): ?>draft<?endif;?>">'+
 				<? if($article->series): ?>'<div class="series"><?=$article->series?></div>'+<? endif; ?>

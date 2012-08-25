@@ -85,7 +85,7 @@ class Attachments_model extends CI_Model {
     {
     	return true;
     }
-    
+        
     function get_random_quote($filter = TRUE, $public = '1')
     {
     	$this->db->order_by('id', 'random');

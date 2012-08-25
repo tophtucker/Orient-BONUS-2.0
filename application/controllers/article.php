@@ -109,15 +109,26 @@ class Article extends CI_Controller {
 		{
 			exit("Not logged in!");
 		}
+		
 		$title = $this->input->post("title");
 		$subtitle = $this->input->post("subtitle");
 		$author = $this->input->post("author");
 		$authorjob = $this->input->post("authorjob");
 		$body = $this->input->post("body");
 		
+		$published = ($this->input->post("published") == 'true' ? '1' : '0');
+		$featured = ($this->input->post("featured") == 'true' ? '1' : '0');
+		
 		$data = array(
-			'title' => $title,
-			'subhead' => $subtitle
+			'title' 		=> $title,
+			'subhead' 		=> $subtitle,
+			'pullquote'		=> $this->input->post("pullquote"),
+			'volume' 		=> $this->input->post("volume"),
+			'issue_number' 	=> $this->input->post("issue_number"),
+			'section_id'	=> $this->input->post("section_id"),
+			'priority'		=> $this->input->post("priority"),
+			'published'		=> $published,
+			'featured'		=> $featured,
 			);
 		$articlesuccess = $this->article_model->edit_article($id, $data);
 		
@@ -151,6 +162,8 @@ class Article extends CI_Controller {
 	  **/
 	public function ajax_add_photo($article_date, $article_id)
 	{
+		if(!bonus()) exit("Permission denied.");
+		
 		$this->load->helper('file');
 		
 		$css_offset = 4;
@@ -192,8 +205,26 @@ class Article extends CI_Controller {
 		exit($this->attachments_model->add_photo($filename_root, $filename_root, $filename_root, $credit, $caption, $article_id));
 	}
 	
+	public function ajax_remove_photos($article_id)
+	{
+		if(!bonus()) exit("Permission denied.");
+		
+		exit("Removing photos doesn't work yet! Ask Toph to do it.");
+		//exit($this->attachments_model->remove_article_photos($article_id));
+	}
+	
+	public function ajax_delete_article($article_id)
+	{
+		if(!bonus()) exit("Permission denied.");
+		
+		exit("Deleting articles doesn't work yet! Ask Toph to do it.");
+		//exit($this->article_model->delete_article($article_id));
+	}
+	
 	public function ajax_suggest($table, $field)
 	{
+		if(!bonus()) exit("Permission denied.");
+
 		// this general-purpose function is potentially wildly insecure.
 		if(!($table == 'author' || $table == 'job' || $table == 'articletype' || $table == 'series')) exit("Disallowed.");
 		

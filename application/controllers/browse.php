@@ -51,6 +51,9 @@ class Browse extends CI_Controller {
 			$nextissue = $this->issue_model->get_adjacent_issue($volume, $issue_number, 1);
 			$previssue = $this->issue_model->get_adjacent_issue($volume, $issue_number, -1);
 			
+			// featured articles for carousel
+			$featured = $this->article_model->get_articles_by_date($date, false, false, '10', true);
+			
 			// popular articles
 			$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_week_ago, $limit = '10');
 			if(count($popular) < 10)
@@ -84,6 +87,7 @@ class Browse extends CI_Controller {
 			$data->issue = $issue;
 			$data->nextissue = $nextissue;
 			$data->previssue = $previssue;
+			$data->featured = $featured;
 			$data->popular = $popular;
 			$data->sections = $sections;
 			$data->articles = $articles;	
