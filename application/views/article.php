@@ -9,8 +9,8 @@
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
 	<!-- jQuery -->
-	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> -->
-	<script type="text/javascript" src="<?=base_url()?>js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="<?=base_url()?>js/jquery-1.8.0.min.js"></script> -->
 	<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.8.17.custom.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
 	
@@ -355,7 +355,7 @@
 				<script type="text/javascript">
 					/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 					var disqus_shortname = 'bowdoinorient'; // required: replace example with your forum shortname
-					var disqus_title = '<?=$article->title?>';
+					var disqus_title = '<?=addslashes($article->title)?>';
 					
 					//disqus_identifier isn't necessary, because it can use the URL. it's preferable, though, because of different URL schemes.
 					//problem is, we used a different scheme (date&section&priority, e.g. 2012-05-04&2&1) on the old site.

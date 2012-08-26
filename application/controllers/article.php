@@ -114,7 +114,7 @@ class Article extends CI_Controller {
 		$subtitle = $this->input->post("subtitle");
 		$author = $this->input->post("author");
 		$authorjob = $this->input->post("authorjob");
-		$body = $this->input->post("body");
+		$body = trim($this->input->post("body"));
 		
 		$published = ($this->input->post("published") == 'true' ? '1' : '0');
 		$featured = ($this->input->post("featured") == 'true' ? '1' : '0');
