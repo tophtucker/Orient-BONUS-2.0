@@ -13,7 +13,7 @@
 /* for article slideshows */
 #articlemedia #swipeview_wrapper {
 	width:500px;
-	height:300px;
+	height:375px;
 	background:#ddd;
 	float: right;
 	/* -webkit-user-select:none; */
