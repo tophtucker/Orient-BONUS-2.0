@@ -5,11 +5,14 @@
 	<meta charset="utf-8" />
 	<title>The Bowdoin Orient</title>
 	<link rel="shortcut icon" href="<?=base_url()?>images/o-32.png">
+	
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
+	
+	<meta name="description" content="The Bowdoin Orient is a student-run publication dedicated to providing news and media relevant to the Bowdoin College community." />
 	
 	<!-- Facebook Open Graph tags -->
 	<meta property="og:title" content="The Bowdoin Orient" />
-	<meta property="og:description" content="The Bowdoin Orient" />
+	<meta property="og:description" content="The Bowdoin Orient is a student-run publication dedicated to providing news and media relevant to the Bowdoin College community." />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="<?=base_url()?>images/o-200.png" />
 	<meta property="og:url" content="http://bowdoinorient.com/" />

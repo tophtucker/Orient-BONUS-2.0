@@ -8,8 +8,11 @@
 	
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
+	<meta name="description" content="<?=htmlentities($article->pullquote)?>" />
+	
 	<!-- Facebook Open Graph tags -->
 	<meta property="og:title" content="<?=htmlentities($article->title)?>" />
+	<meta property="og:description" content="<?=htmlentities($article->pullquote)?>" />
 	<meta property="og:type" content="article" />
 	<? if($photos): ?>
 		<meta property="og:image" content="<?=base_url()?>images/<?=$article->date?>/<?=$photos[0]->filename_large?>" />
@@ -20,7 +23,7 @@
 	<meta property="og:site_name" content="The Bowdoin Orient" />
 	<meta property="fb:admins" content="1233600119" />
 	<meta property="fb:app_id" content="342498109177441" />
-	<meta property="fb:page_id" content="113269185373845" />
+	<!-- <meta property="fb:page_id" content="113269185373845" /> -->
 	
 	<!-- jQuery -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
