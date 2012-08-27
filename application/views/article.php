@@ -8,11 +8,11 @@
 	
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
-	<meta name="description" content="<?=htmlentities($article->pullquote)?>" />
+	<meta name="description" content="<?=htmlspecialchars($article->pullquote)?>" />
 	
 	<!-- Facebook Open Graph tags -->
-	<meta property="og:title" content="<?=htmlentities($article->title)?>" />
-	<meta property="og:description" content="<?=htmlentities($article->pullquote)?>" />
+	<meta property="og:title" content="<?=htmlspecialchars($article->title)?>" />
+	<meta property="og:description" content="<?=htmlspecialchars($article->pullquote)?>" />
 	<meta property="og:type" content="article" />
 	<? if($photos): ?>
 		<meta property="og:image" content="<?=base_url()?>images/<?=$article->date?>/<?=$photos[0]->filename_large?>" />
