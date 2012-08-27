@@ -307,6 +307,23 @@ class Article_model extends CI_Model {
 		return $this->db->insert('articlebody', $data);
 	}
 	
+	function increment_article_views($article_id)
+	{
+		$this->db->where('id', $article_id);
+		$this->db->set('views', 'views+1', FALSE);
+		$this->db->update('article');
+		
+		// Now add to Bowdoin views.
+		// Not sure why this is doing !==, but I guess I trust it. "Is not identical to"?
+		// Code comes directly from the old version of the site. I'm not on-campus
+		// to test atm, lololol.
+		if (strpos(gethostbyaddr($_SERVER['REMOTE_ADDR']), "bowdoin") !== false) {
+			$this->db->where('id', $article_id);
+			$this->db->set('views_bowdoin', 'views_bowdoin+1', FALSE);
+			$this->db->update('article');
+		}
+	}
+	
 	function add_article_author($article_id, $author_name, $authorjob_name)
 	{
 		$author = $this->get_author_by_name($author_name);

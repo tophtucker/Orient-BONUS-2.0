@@ -49,6 +49,9 @@ class Article extends CI_Controller {
 		}
 		else
 		{
+			// add one to article views if not logged in
+			if(!bonus()) $this->article_model->increment_article_views($id);
+			
 			$body = $this->article_model->get_body($id);
 			$type = $this->article_model->get_article_type($article->type);
 			$series = $this->article_model->get_article_series($article->series);
