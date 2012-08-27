@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title><?=$article->title?> - The Bowdoin Orient</title>
-	<link rel="shortcut icon" href="<?=base_url()?>images/favicon-o.png">
+	<link rel="shortcut icon" href="<?=base_url()?>images/o-32.png">
 	
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
@@ -14,7 +14,7 @@
 	<? if($photos): ?>
 		<meta property="og:image" content="<?=base_url()?>images/<?=$article->date?>/<?=$photos[0]->filename_large?>" />
 	<? else: ?>
-		<meta property="og:image" content="<?=base_url()?>images/big-o.png" />
+		<meta property="og:image" content="<?=base_url()?>images/o-200.png" />
 	<? endif; ?>
 	<meta property="og:url" content="http://bowdoinorient.com/article/<?=$article->id?>" />
 	<meta property="og:site_name" content="The Bowdoin Orient" />
@@ -29,7 +29,7 @@
 	<script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
 	
 	<!-- for mobile -->
-	<link rel="apple-touch-icon" href="<?=base_url()?>images/big-o.png"/>
+	<link rel="apple-touch-icon" href="<?=base_url()?>images/o-114.png"/>
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
 		
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
