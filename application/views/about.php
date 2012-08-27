@@ -85,68 +85,64 @@
 
 				<div id="topstaff">
 					<div id="eic">
-						<div><p><span class="bigshot">Nick Daniels,</span> <span class="bigshot-title">Editor in Chief</span></p></div>
-						<div><p><span class="bigshot">Zoë Lescaze,</span> <span class="bigshot-title">Editor in Chief</span></p></div>
+						<div style="width:100%"><p><span class="bigshot">Linda Kinstler,</span> <span class="bigshot-title">Editor in Chief</span></p></div>
 					</div>
 					<div id="topeditors">
-						<div><p><span class="bigshot">Elizabeth Maybank,</span> <span class="bigshot-title">Senior Editor</span></p></div>
-						<div><p><span class="bigshot">Erica Berry,</span> <span class="bigshot-title">Managing Editor</span></p></div>
-						<div style="width:100%"><p><span class="bigshot">Linda Kinstler,</span> <span class="bigshot-title">Managing Editor</span></p></div>
+						<div style="width:33%"><p><span class="bigshot">Erica Berry,</span><br/> <span class="bigshot-title">Executive Editor</span></p></div>
+						<div style="width:33%"><p><span class="bigshot">Claire Aasen,</span><br/> <span class="bigshot-title">Managing Editor</span></p></div>
+						<div style="width:33%"><p><span class="bigshot">Eliza Novick-Smith,</span><br/> <span class="bigshot-title">Managing Editor</span></p></div>
+						<div><p><span class="bigshot">Nora Biette-Timmons,</span><br/> <span class="bigshot-title">Editor-at-Large</span></p></div>
+						<div><p><span class="bigshot">Sam Weyrauch,</span><br/> <span class="bigshot-title">Editor-at-Large</span></p></div>
 					</div>
 				</div>
 				<hr style="width:50%; margin: 0 auto;">
 				<div id="lowerstaff">
 					<div class="column">
-						<p class="stafftitle">News Editors</p>
-						<p>Zohran Mamdani</p>
+						<p class="stafftitle">News Editor</p>
+						<p>Garrett Casey</p>
 						
 						<p class="stafftitle">Features Editor</p>
-						<p>Claire Aasen</p>
+						<p>Kate Witteman</p>
 						
 						<p class="stafftitle">A&amp;E Editor</p>
-						<p>Peter Griesmer</p>
+						<p>Nate Torda</p>
 						
 						<p class="stafftitle">Sports Editor</p>
-						<p>Sam Weyrauch</p>
+						<p>Ron Cervantes</p>
 						
 						<p class="stafftitle">Opinion Editor</p>
-						<p>Nora Biette-Timmons</p>
+						<p>Luke Drabyn</p>
 					</div>
 					<div class="column">
-						<p class="stafftitle">Calendar Editor</p>
-						<p>Garrett Casey</p>
-
-						<p class="stafftitle">Associate Editors</p>
-						<p>Carlo Davis</p>
-						<p>Sam Frizell</p>
-						
 						<p class="stafftitle">Senior Reporters</p>
+						<p>Dylan Hammer</p>
 						<p>Diana Lee</p>
-						<p>Eliza Novick-Smith</p>
+						<p>Zohran Mamdani</p>
+						<p>Sam Miller</p>
+
+						<p class="stafftitle">Layout Editors</p>
+						<p>Ted Clark</p>
+						<p>Leo Shaw</p>
+					</div>
+					<div class="column">
+						<p class="stafftitle">Page Two Editor</p>
+						<p>Sophia Cheng</p>
+						
+						<p class="stafftitle">Photo Editor</p>
+						<p>Kate Featherston</p>
 						
 						<p class="stafftitle">Business Managers</p>
 						<p>Maya Lloyd</p>
 						<p>Madison Whitley</p>
-					</div>
-					<div class="column">
-						<p class="stafftitle">Graphic Designers</p>
-						<p>Leo Shaw</p>
-						
-						<p class="stafftitle">Photo Editor</p>
-						<p>Brian Jacobel</p>
-						
-						<p class="stafftitle">Asst. Photo Editor</p>
-						<p>Kate Featherston</p>
-						
+
 						<p class="stafftitle">Information Architect</p>
 						<p>Toph Tucker</p>
-						
-						<p class="stafftitle">Web Editor</p>
-						<p>Linda Kinstler</p>
 					</div>
 				</div>
 				
 			</div>
+			
+			<div style="clear:both;"></div>
 			
 			<h3>History</h3>
 			<p>The Bowdoin Orient was established in 1871 as Bowdoin College's newspaper and literary magazine. Originally issued bi-weekly, it has been a weekly since April, 1899. It is considered to be the oldest continuously-published college weekly in the U.S., which means that it has been in publication every academic year that Bowdoin has been in session since it began publishing weekly (while other college weeklies stopped printing during certain war years).</p>

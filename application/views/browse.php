@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>The Bowdoin Orient</title>
-	<link rel="shortcut icon" href="<?=base_url()?>images/o-32.png">
+	<link rel="shortcut icon" href="<?=base_url()?>images/o-32-transparent.png">
 	
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
