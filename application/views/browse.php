@@ -7,6 +7,16 @@
 	<link rel="shortcut icon" href="<?=base_url()?>images/favicon-o.png">
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
+	<!-- Facebook Open Graph tags -->
+	<meta property="og:title" content="The Bowdoin Orient" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="<?=base_url()?>images/big-o.png" />
+	<meta property="og:url" content="http://bowdoinorient.com/" />
+	<meta property="og:site_name" content="The Bowdoin Orient" />
+	<meta property="fb:admins" content="1233600119" />
+	<meta property="fb:app_id" content="342498109177441" />
+	<meta property="fb:page_id" content="113269185373845" />
+	
 	<!-- for mobile -->
 	<link rel="apple-touch-icon" href="<?=base_url()?>images/webappicon.png"/>
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">

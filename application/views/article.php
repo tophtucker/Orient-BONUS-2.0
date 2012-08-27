@@ -8,6 +8,20 @@
 	
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
 	
+	<!-- Facebook Open Graph tags -->
+	<meta property="og:title" content="<?=htmlentities($article->title)?>" />
+	<meta property="og:type" content="article" />
+	<? if($photos): ?>
+		<meta property="og:image" content="<?=base_url()?>images/<?=$article->date?>/<?=$photos[0]->filename_large?>" />
+	<? else: ?>
+		<meta property="og:image" content="<?=base_url()?>images/big-o.png" />
+	<? endif; ?>
+	<meta property="og:url" content="http://bowdoinorient.com/article/<?=$article->id?>" />
+	<meta property="og:site_name" content="The Bowdoin Orient" />
+	<meta property="fb:admins" content="1233600119" />
+	<meta property="fb:app_id" content="342498109177441" />
+	<meta property="fb:page_id" content="113269185373845" />
+	
 	<!-- jQuery -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<!-- <script type="text/javascript" src="<?=base_url()?>js/jquery-1.8.0.min.js"></script> -->
@@ -15,7 +29,7 @@
 	<script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
 	
 	<!-- for mobile -->
-	<link rel="apple-touch-icon" href="<?=base_url()?>images/webappicon.png"/>
+	<link rel="apple-touch-icon" href="<?=base_url()?>images/big-o.png"/>
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
 		
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
