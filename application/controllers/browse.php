@@ -82,6 +82,7 @@ class Browse extends CI_Controller {
 			$data->headerdata->date = $date;
 			$data->headerdata->volume = $volume;
 			$data->headerdata->issue_number = $issue_number;
+			$data->headerdata->issue = $issue;
 			
 			$data->date = $date;
 			$data->issue = $issue;

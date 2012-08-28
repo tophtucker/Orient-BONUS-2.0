@@ -395,6 +395,16 @@ class Article_model extends CI_Model {
 		);
 		return $this->db->insert('job', $data);
 	}
-
+	
+	function get_id_by_triplet($date, $section_id, $priority)
+	{
+		$this->db->select('id');
+		$this->db->where('date', $date);
+		$this->db->where('section_id', $section_id);
+		$this->db->where('priority', $priority);
+		$query = $this->db->get('article');
+		$result = $query->row();
+		return $result->id;
+	}
 }
 ?>

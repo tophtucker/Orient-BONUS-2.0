@@ -495,6 +495,10 @@ img {
 	color: darkgray;
 }
 
+#subnavbar .scribd-link {
+	color: darkgray;
+}
+
 #subnavbar #pages {
 	float: right;
 }
@@ -1146,6 +1150,10 @@ button .buttontext {
 		margin: 0;
 	}
 	
+	aside {
+		margin-right: 25px;
+	}
+	
 }
 
 /* for smartphones (read: iPhones) */
@@ -1177,6 +1185,13 @@ button .buttontext {
 	#articlemedia #swipeview_wrapper {
 		width: 100% !important;
 		height: 200px !important;
+	}
+	
+	aside {
+		float: none;
+		width: 100%;
+		margin: 25px 0;
+		text-align: center;
 	}
 
 }

@@ -160,6 +160,13 @@ class Article extends CI_Controller {
 		}
 	}
 	
+	// for forwarding from old site, which doesn't have article_ids
+	public function triplet($date, $section_id, $priority)
+	{
+		$article_id = $this->article_model->get_id_by_triplet($date, $section_id, $priority);
+		redirect('/article/'.$article_id, 'refresh');
+	}
+	
 	/**
 	  * Currently only supports jpg.
 	  **/
