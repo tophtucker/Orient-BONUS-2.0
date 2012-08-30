@@ -91,8 +91,9 @@
 						<div style="width:33%"><p><span class="bigshot">Erica Berry,</span><br/> <span class="bigshot-title">Executive Editor</span></p></div>
 						<div style="width:33%"><p><span class="bigshot">Claire Aasen,</span><br/> <span class="bigshot-title">Managing Editor</span></p></div>
 						<div style="width:33%"><p><span class="bigshot">Eliza Novick-Smith,</span><br/> <span class="bigshot-title">Managing Editor</span></p></div>
-						<div><p><span class="bigshot">Nora Biette-Timmons,</span><br/> <span class="bigshot-title">Editor-at-Large</span></p></div>
-						<div><p><span class="bigshot">Sam Weyrauch,</span><br/> <span class="bigshot-title">Editor-at-Large</span></p></div>
+						<div style="width:33%"><p><span class="bigshot">Diana Lee,</span><br/> <span class="bigshot-title">Associate Editor</span></p></div>
+						<div style="width:33%"><p><span class="bigshot">Nora Biette-Timmons,</span><br/> <span class="bigshot-title">Editor-at-Large</span></p></div>
+						<div style="width:33%"><p><span class="bigshot">Sam Weyrauch,</span><br/> <span class="bigshot-title">Editor-at-Large</span></p></div>
 					</div>
 				</div>
 				<hr style="width:50%; margin: 0 auto;">
@@ -116,7 +117,6 @@
 					<div class="column">
 						<p class="stafftitle">Senior Reporters</p>
 						<p>Dylan Hammer</p>
-						<p>Diana Lee</p>
 						<p>Zohran Mamdani</p>
 						<p>Sam Miller</p>
 
