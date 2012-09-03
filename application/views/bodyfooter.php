@@ -17,6 +17,7 @@
 				<!--<li><a href="<?=site_url()?>archives">Archives</a></li>-->
 				<li><a href="<?=site_url()?>subscribe">Subscribe</a></li>
 				<li><a href="<?=site_url()?>advertise">Advertise</a></li>
+				<li><a href="<?=site_url()?>contact">Contact</a></li>
 			</ul>
 		</div>
 		

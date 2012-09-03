@@ -74,12 +74,6 @@
 
 			<p>The paper has an on-campus distribution of over 2,000, and is mailed off-campus to several hundred subscribers. It is distributed free-of-charge at various locations on campus, including the student union, several classroom buildings, the admissions office, the dining halls, and the libraries. Published on Fridays, 24 times a year, the Orient is read by students and their families, faculty, staff, alumni, off-campus subscribers, prospective students, and campus visitors.</p>
 						
-			<h3>Website</h3>
-			<p>The new bowdoinorient.com has been rebuilt from scratch for a clean, modern experience across all devices, and to support an increasingly digital-first operation. The CMS is custom-built in the CodeIgniter PHP framework. With this redesign, it has moved from its longtime orient.bowdoin.edu address to bowdoinorient.com.</p>
-			<p>The website went online around 2000. It was previously redesigned in 2001, 2004 (becoming database-driven), and 2009 (with a complete visual overhaul).</p>
-			<p>In September 2010, the Orient launched the <a href="http://bowdoinorientexpress.com/">Orient Express</a>, a companion Tumblr blog featuring content beyond the scope, reach, and technical capabilities of the printed Friday paper.</p>
-			<p>Webmasters have included Vic Kotecha &rsquo;05, James Baumberger &rsquo;06, Mark Hendrickson &rsquo;07, Seth Glickman &rsquo;10, and Toph Tucker &rsquo;12. If you aspire to have your name on this prestigious list, <a href="mailto:tophtucker@gmail.com">email Toph</a>.</p>
-			
 			<h3>Staff</h3>
 			<div id="stafftable">
 
@@ -143,6 +137,12 @@
 			</div>
 			
 			<div style="clear:both;"></div>
+			
+			<h3>Website</h3>
+			<p>The new bowdoinorient.com has been rebuilt from scratch for a clean, modern experience across all devices, and to support an increasingly digital-first operation. The CMS is custom-built in the CodeIgniter PHP framework. With this redesign, it has moved from its longtime orient.bowdoin.edu address to bowdoinorient.com.</p>
+			<p>The website went online around 2000. It was previously redesigned in 2001, 2004 (becoming database-driven), and 2009 (with a complete visual overhaul).</p>
+			<p>In September 2010, the Orient launched the <a href="http://bowdoinorientexpress.com/">Orient Express</a>, a companion Tumblr blog featuring content beyond the scope, reach, and technical capabilities of the printed Friday paper.</p>
+			<p>Webmasters have included Vic Kotecha &rsquo;05, James Baumberger &rsquo;06, Mark Hendrickson &rsquo;07, Seth Glickman &rsquo;10, and Toph Tucker &rsquo;12. If you aspire to have your name on this prestigious list, <a href="mailto:tophtucker@gmail.com">email Toph</a>.</p>
 			
 			<h3>History</h3>
 			<p>The Bowdoin Orient was established in 1871 as Bowdoin College's newspaper and literary magazine. Originally issued bi-weekly, it has been a weekly since April, 1899. It is considered to be the oldest continuously-published college weekly in the U.S., which means that it has been in publication every academic year that Bowdoin has been in session since it began publishing weekly (while other college weeklies stopped printing during certain war years).</p>

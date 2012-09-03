@@ -47,6 +47,7 @@ $route['browse/(:num)-(:num)-(:num)'] = "browse/date/$1-$2-$3";
 
 $route['search'] = "pages/search";
 $route['about'] = "pages/about";
+$route['contact'] = "pages/contact";
 $route['archives'] = "pages/archives";
 $route['subscribe'] = "pages/subscribe";
 $route['advertise'] = "pages/advertise";

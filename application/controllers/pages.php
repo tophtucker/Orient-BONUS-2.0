@@ -26,6 +26,13 @@ class Pages extends CI_Controller {
 		$this->load->view('about', $data);
 	}
 	
+	public function contact()
+	{
+		$data->footerdata->quote = $this->attachments_model->get_random_quote();
+		$data->headerdata->date = date("Y-m-d");
+		$this->load->view('contact', $data);
+	}
+	
 	public function subscribe()
 	{
 		$data->footerdata->quote = $this->attachments_model->get_random_quote();
