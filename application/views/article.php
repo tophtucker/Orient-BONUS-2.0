@@ -58,6 +58,13 @@
 	var photocreditedited=false;
 	var photocaptionedited=false;
 	
+	// thanks Mark Seecof!
+	// http://www.php.net/manual/en/function.urlencode.php#85903
+	function urlencode(s) {
+		s = encodeURIComponent(s);
+		return s.replace(/~/g,'%7E').replace(/%20/g,'+');
+	}
+	
 	$(document).ready(function()
     {
     
@@ -102,18 +109,18 @@
 			}
 			
 			var ajaxrequest = 
-					"title=" + $("#articletitle").html() + 
-					"&subtitle=" + $("#articlesubtitle").html() +
-					"&author=" + $("#addauthor").html() +
-					"&authorjob=" + $("#addauthorjob").html() +
-					"&volume=" + $('input[name=volume]').val() +
-					"&issue_number=" + $('input[name=issue_number]').val() +
-					"&section_id=" + $('input[name=section_id]').val() +
-					"&priority=" + $('input[name=priority]').val() +
+					"title=" + urlencode($("#articletitle").html()) + 
+					"&subtitle=" + urlencode($("#articlesubtitle").html()) +
+					"&author=" + urlencode($("#addauthor").html()) +
+					"&authorjob=" + urlencode($("#addauthorjob").html()) +
+					"&volume=" + urlencode($('input[name=volume]').val()) +
+					"&issue_number=" + urlencode($('input[name=issue_number]').val()) +
+					"&section_id=" + urlencode($('input[name=section_id]').val()) +
+					"&priority=" + urlencode($('input[name=priority]').val()) +
 					"&published=" + $('input[name=published]').prop('checked') +
 					"&featured=" + $('input[name=featured]').prop('checked') +
-					"&pullquote=" + $('textarea[name=pullquote]').val();
-			if(bodyedited) { ajaxrequest += "&body=" + $("#articlebody").html(); }
+					"&pullquote=" + urlencode($('textarea[name=pullquote]').val());
+			if(bodyedited) { ajaxrequest += "&body=" + urlencode($("#articlebody").html()); }
 			
 			// #TODO: if an image already exists, update its credit & caption (if edited).
 			

@@ -113,11 +113,11 @@ class Article extends CI_Controller {
 			exit("Not logged in!");
 		}
 		
-		$title = $this->input->post("title");
-		$subtitle = $this->input->post("subtitle");
-		$author = $this->input->post("author");
-		$authorjob = $this->input->post("authorjob");
-		$body = trim($this->input->post("body"));
+		$title 		= trim(urldecode($this->input->post("title")));
+		$subtitle 	= trim(urldecode($this->input->post("subtitle")));
+		$author 	= trim(urldecode($this->input->post("author")));
+		$authorjob 	= trim(urldecode($this->input->post("authorjob")));
+		$body 		= trim(urldecode($this->input->post("body")));
 		
 		$published = ($this->input->post("published") == 'true' ? '1' : '0');
 		$featured = ($this->input->post("featured") == 'true' ? '1' : '0');
@@ -125,11 +125,11 @@ class Article extends CI_Controller {
 		$data = array(
 			'title' 		=> $title,
 			'subhead' 		=> $subtitle,
-			'pullquote'		=> $this->input->post("pullquote"),
-			'volume' 		=> $this->input->post("volume"),
-			'issue_number' 	=> $this->input->post("issue_number"),
-			'section_id'	=> $this->input->post("section_id"),
-			'priority'		=> $this->input->post("priority"),
+			'pullquote'		=> trim(urldecode($this->input->post("pullquote"))),
+			'volume' 		=> trim(urldecode($this->input->post("volume"))),
+			'issue_number' 	=> trim(urldecode($this->input->post("issue_number"))),
+			'section_id'	=> trim(urldecode($this->input->post("section_id"))),
+			'priority'		=> trim(urldecode($this->input->post("priority"))),
 			'published'		=> $published,
 			'featured'		=> $featured,
 			);
