@@ -165,22 +165,26 @@
 		
 		$("#deletearticle").click(function(event) {
 			event.preventDefault()
-			//note: "data:" is totally unused, but what'd happen if it weren't there??? (well, test!)
-			$.ajax({
-				type: "POST",
-				url: "<?=site_url()?>article/ajax_delete_article/<?=$article->id?>",
-				data: "remove=true",
-				success: function(result){
-					if(result=="success") {
-						//return home
-						window.location = "<?=site_url()?>";
+			
+			if(confirm("Are you sure you want to delete this article?")) {
+				//note: "data:" is totally unused, but what'd happen if it weren't there??? (well, test!)
+				$.ajax({
+					type: "POST",
+					url: "<?=site_url()?>article/ajax_delete_article/<?=$article->id?>",
+					data: "remove=true",
+					success: function(result){
+						if(result=="1") {
+							//return home
+							window.location = "<?=site_url()?>";
+						}
+						//show alert
+						$("#savenotify").html(result);
+						$("#savenotify").show();
+						$("#savenotify").fadeOut(2000);
 					}
-					//show alert
-					$("#savenotify").html(result);
-					$("#savenotify").show();
-					$("#savenotify").fadeOut(2000);
-				}
-			});
+				});
+			}
+			
 		} );
 		
     });

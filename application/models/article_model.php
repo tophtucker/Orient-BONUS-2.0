@@ -175,6 +175,10 @@ class Article_model extends CI_Model {
     function get_article($id)
     {
     	$this->db->where("id", $id);
+    	
+    	// "active" basically means "hasn't been deleted". we should almost never show inactive articles.
+		$this->db->where("active", "1");
+    	
 		$query = $this->db->get("article");
 		if($query->num_rows() > 0)
 		{
@@ -295,6 +299,13 @@ class Article_model extends CI_Model {
 	{
 		$this->db->where("id", $id);
 		return $this->db->update("article", $data);
+	}
+	
+	function delete_article($id)
+	{
+		$this->db->set('active', '0');
+		$this->db->where('id', $id);
+		return $this->db->update('article');
 	}
 	
 	function add_articlebody_version($article_id, $body, $creator_id)

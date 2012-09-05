@@ -204,31 +204,53 @@ class Article extends CI_Controller {
 		// we write it $articleid."_1" for the first photo attached to an article, $articleid."_2", etc.
 		$article_photo_number = $this->attachments_model->count_article_photos($article_id) + 1;
 		
-		$filename_root = $article_id.'_'.$article_photo_number.'.jpg';
+		// prepare names
+		$filename_root = $article_id.'_'.$article_photo_number;
+		$filename_original = $filename_root.'.jpg';
+		$filename_small = $filename_root.'_small.jpg'; //width: 400px
+		$filename_large = $filename_root.'_large.jpg'; //width: 1000px
 		
-		// at the moment we are not processing & saving different sizes :( #todo
-		//$filename_small = $filename_root.'_small.jpg';
-		//$filename_large = $filename_root.'_large.jpg';
-		//$filename_original = $filename_root.'_original.jpg';
+		// write full-size image
+		write_file('images/'.$article_date.'/'.$filename_original, base64_decode($img_fixed));
 		
-		write_file('images/'.$article_date.'/'.$filename_root, base64_decode($img_fixed));
-		exit($this->attachments_model->add_photo($filename_root, $filename_root, $filename_root, $credit, $caption, $article_id));
+		// resize to small
+		$img_config['image_library']	= 'gd2';
+		$img_config['source_image']		= 'images/'.$article_date.'/'.$filename_original;
+		$img_config['new_image'] 		= $filename_small;
+		$img_config['maintain_ratio']	= TRUE;
+		$img_config['width'] 			= 400;
+		$img_config['height']			= 400;
+		$this->load->library('image_lib', $img_config);
+		$this->image_lib->resize();
+		
+		// resize to large
+		$img_config2['image_library']	= 'gd2';
+		$img_config2['source_image']	= 'images/'.$article_date.'/'.$filename_original;
+		$img_config2['new_image'] 		= $filename_large;
+		$img_config2['maintain_ratio']	= TRUE;
+		$img_config2['width'] 			= 1000;
+		$img_config2['height']			= 1000;
+		$this->image_lib->clear(); // gotta clear the library config in-between operations
+		$this->image_lib->initialize($img_config2);
+		$this->image_lib->resize();
+		
+		// add photo to database and return the response to the ajax request
+		exit($this->attachments_model->add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id));
 	}
 	
 	public function ajax_remove_photos($article_id)
 	{
 		if(!bonus()) exit("Permission denied.");
 		
-		exit("Removing photos doesn't work yet! Ask Toph to do it.");
-		//exit($this->attachments_model->remove_article_photos($article_id));
+		exit($this->attachments_model->remove_article_photos($article_id));
 	}
 	
 	public function ajax_delete_article($article_id)
 	{
 		if(!bonus()) exit("Permission denied.");
 		
-		exit("Deleting articles doesn't work yet! Ask Toph to do it.");
-		//exit($this->article_model->delete_article($article_id));
+		//exit("Deleting articles doesn't work yet! Ask Toph to do it.");
+		exit($this->article_model->delete_article($article_id));
 	}
 	
 	public function ajax_suggest($table, $field)

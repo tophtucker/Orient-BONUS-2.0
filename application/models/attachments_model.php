@@ -21,6 +21,7 @@ class Attachments_model extends CI_Model {
     	$this->db->join("author", "author.id = photo.photographer_id", 'left');
     	$this->db->from("photo");
     	$this->db->where("article_id", $article_id);
+    	$this->db->where("photo.active", "1");
     	$this->db->order_by("priority", "asc");
     	$query = $this->db->get();
     	if($query->num_rows() > 0)
@@ -48,6 +49,7 @@ class Attachments_model extends CI_Model {
     	$this->db->where("article_date", $article_date);
     	$this->db->where("feature", "1");
     	$this->db->where("feature_section", $section_id);
+    	$this->db->where("active", "1");
     	$this->db->order_by("priority", "asc");
     	$query = $this->db->get();
     	if($query->num_rows() > 0)
@@ -84,6 +86,18 @@ class Attachments_model extends CI_Model {
     function edit_photo($credit, $caption)
     {
     	return true;
+    }
+    
+    function remove_article_photos($article_id)
+    {
+    	$photo_count = $this->count_article_photos($article_id);
+    	if($photo_count == 0) return "No photos to remove.";
+    	
+    	$this->db->set('active','0');
+    	$this->db->where('article_id', $article_id);
+    	$this->db->update('photo');
+    	
+    	return "Photos removed.";
     }
         
     function get_random_quote($filter = TRUE, $public = '1')
