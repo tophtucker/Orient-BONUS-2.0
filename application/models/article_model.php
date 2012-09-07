@@ -335,6 +335,34 @@ class Article_model extends CI_Model {
 		}
 	}
 	
+	function add_article_series($article_id, $series_name)
+	{
+		$series = $this->get_series_by_name($series_name);
+		if(!$series)
+		{
+			$this->add_series($series_name);
+			$series = $get_series_by_name($series_name);
+		}
+		
+		$this->db->where('id',$article_id);
+		$this->db->set('series',$series->id);
+		return $this->db->update('article');
+	}
+	
+	function get_series_by_name($series_name)
+	{
+		$this->db->where('name', $series_name);
+		$query = $this->db->get('series');
+		if($query->num_rows() > 0)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 	function add_article_author($article_id, $author_name, $authorjob_name)
 	{
 		$author = $this->get_author_by_name($author_name);

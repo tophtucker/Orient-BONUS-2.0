@@ -140,6 +140,13 @@ class Article extends CI_Controller {
 			$bodysuccess = $this->article_model->add_articlebody_version($id, $body, userid());
 		}
 		
+		$series = trim(urldecode($this->input->post("series")));
+		$seriessuccess = true;
+		if(strlen($series) > 1)
+		{
+			$seriessuccess = $this->article_model->add_article_series($id, $series);
+		}
+		
 		$authorsuccess = true;
 		if(strlen($author) > 1 && strlen($authorjob) > 1)
 		{
@@ -150,13 +157,13 @@ class Article extends CI_Controller {
 			}
 		}
 		
-		if($articlesuccess && $authorsuccess) 
+		if($articlesuccess && $authorsuccess && $seriessuccess) 
 		{
 			exit("Success!");
 		}
 		else 
 		{
-			exit("Failure."); 
+			exit("Failure.");
 		}
 	}
 	

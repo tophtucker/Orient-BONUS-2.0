@@ -111,6 +111,7 @@
 			var ajaxrequest = 
 					"title=" + urlencode($("#articletitle").html()) + 
 					"&subtitle=" + urlencode($("#articlesubtitle").html()) +
+					"&series=" + urlencode($("#series").html()) +
 					"&author=" + urlencode($("#addauthor").html()) +
 					"&authorjob=" + urlencode($("#addauthorjob").html()) +
 					"&volume=" + urlencode($('input[name=volume]').val()) +
@@ -218,6 +219,12 @@
 		});
 	});
 	
+	$(function() {
+		$( "#series" ).autocomplete({
+			source: "<?=site_url()?>article/ajax_suggest/series/name"
+		});
+	});
+	
 	</script>
 	<? endif; ?>
 
@@ -250,8 +257,8 @@
 		<header>
 			<hgroup>
 				
-				<? if($article->type): ?><h3 class="type"><?=$type->name?></h3> <? endif; ?>
-				<? if($article->series): ?><h3 class="series"><?=$series->name?></h3> <? endif; ?>
+				<? if($article->type): ?><h3 id="type" class="type"><?=$type->name?></h3> <? endif; ?>
+				<? if($article->series || bonus()): ?><h3 id="series" class="series"<?if(bonus()):?> contenteditable="true"<?endif;?>><?=$series->name?></h3> <? endif; ?>
 				
 				<h2 id="articletitle" class="articletitle"<?if(bonus()):?> contenteditable="true"<?endif;?>><?=$article->title?></h2>
 				<h3 id="articlesubtitle" class="articlesubtitle"<?if(bonus()):?> contenteditable="true"<?endif;?>><? if(isset($article->subhead)): ?><?=$article->subhead?><? endif; ?></h3>
