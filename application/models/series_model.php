@@ -25,5 +25,13 @@ class Series_model extends CI_Model {
 		}
 	}
 	
+	function get_all_series_ids()
+	{
+		$this->db->select('id');
+		$this->db->where('active','1');
+		$query = $this->db->get('series');
+		return $query->result();
+	}
+	
 }
 ?>

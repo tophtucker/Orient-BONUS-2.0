@@ -8,6 +8,8 @@ class Tools extends CI_Controller {
 		$this->load->model('issue_model', '', TRUE);
 		$this->load->model('article_model', '', TRUE);
 		$this->load->model('attachments_model', '', TRUE);
+		$this->load->model('series_model', '', TRUE);
+		$this->load->model('author_model', '', TRUE);
 		$this->load->model('tools_model', '', TRUE);
 	}
 	
@@ -21,6 +23,15 @@ class Tools extends CI_Controller {
 		$tip = $this->input->post('tip');
 		$this->tools_model->submittip($tip);
 		exit("true");
+	}
+	
+	public function sitemap()
+	{
+		$data->articles = $this->article_model->get_all_article_ids();
+		$data->authors = $this->author_model->get_all_author_ids();
+		$data->series = $this->series_model->get_all_series_ids();
+		
+		$this->load->view('sitemap', $data);
 	}
 	
 	public function legacycommentexport()

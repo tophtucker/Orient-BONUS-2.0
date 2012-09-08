@@ -25,6 +25,14 @@ class Article_model extends CI_Model {
     	return $row->date;
     }
     
+    function get_all_article_ids()
+	{
+		$this->db->select('id');
+		$this->db->where('active','1');
+		$query = $this->db->get('article');
+		return $query->result();
+	}
+    
     // fetch by issue. pretty sure this is deprecated/unused.
     /*
     function get_articles($vol, $no, $sec)
