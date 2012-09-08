@@ -418,6 +418,10 @@ h2 {
 	color: gray;
 }
 
+#carousel .type a, #carousel .series a, h3.type a, h3.series a {
+	color: gray;
+}
+
 .smallcaps {
 	font-variant: small-caps;
 }
@@ -946,10 +950,12 @@ section h2 {
 	.articleblock li p {
 		display: none;
 	}
-
+	
+	/*
 	.articleblock li:nth-child(n+5) {
 		display: none;
 	}
+	*/
 
 }
 
@@ -992,6 +998,7 @@ article header {
 	font-weight:bold;
 	text-transform:uppercase;
 	padding-bottom:6px;
+	color: #333 !important;
 }
 
 .articleauthorjob {
@@ -1036,7 +1043,7 @@ article header {
 
 .articlebody h3 {
 	font-variant: small-caps;
-	clear: both;
+	clear: left;
 }
 
 figure img {

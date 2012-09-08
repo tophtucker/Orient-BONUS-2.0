@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title><?=$article->title?> - The Bowdoin Orient</title>
+	<title><?=$article->title?> &mdash; The Bowdoin Orient</title>
 	<link rel="shortcut icon" href="<?=base_url()?>images/o-32-transparent.png">
 	
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
@@ -258,7 +258,13 @@
 			<hgroup>
 				
 				<? if($article->type): ?><h3 id="type" class="type"><?=$type->name?></h3> <? endif; ?>
-				<? if($article->series || bonus()): ?><h3 id="series" class="series"<?if(bonus()):?> contenteditable="true"<?endif;?>><?=$series->name?></h3> <? endif; ?>
+				<? if($article->series || bonus()): ?>
+					<h3 id="series" class="series"<?if(bonus()):?> contenteditable="true"<?endif;?>>
+						<? if(!bonus()): ?><a href="<?=site_url()?>series/<?=$series->id?>"><? endif; ?>
+						<?=$series->name?>
+						<? if(!bonus()): ?></a><? endif; ?>
+					</h3>
+				<? endif; ?>
 				
 				<h2 id="articletitle" class="articletitle"<?if(bonus()):?> contenteditable="true"<?endif;?>><?=$article->title?></h2>
 				<h3 id="articlesubtitle" class="articlesubtitle"<?if(bonus()):?> contenteditable="true"<?endif;?>><? if(isset($article->subhead)): ?><?=$article->subhead?><? endif; ?></h3>
@@ -266,7 +272,9 @@
 			</hgroup>
 			<? if($authors): foreach($authors as $key => $author): ?>
 				<div class="authorbox">
+					<? if(!bonus()): ?><a href="<?=site_url()?>author/<?=$author->authorid?>"><? endif; ?>
 					<p class="articleauthor"><?=$author->authorname?></p>
+					<? if(!bonus()): ?></a><? endif; ?>
 					<p class="articleauthorjob"><?=$author->jobname?></p>
 				</div>
 			<? endforeach; endif; ?>

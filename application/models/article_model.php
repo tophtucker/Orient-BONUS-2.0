@@ -26,6 +26,7 @@ class Article_model extends CI_Model {
     }
     
     // fetch by issue. pretty sure this is deprecated/unused.
+    /*
     function get_articles($vol, $no, $sec)
     {
     	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
@@ -48,11 +49,12 @@ class Article_model extends CI_Model {
 			return false;
 		}
     }
+    */
     
     // for the love of god, either use a finite date span or a limit!
     // i.e. don't let both $date_since and $limit stay false.
     // maybe this function should control for that ugly possibility.
-    function get_articles_by_date($date_up_to, $date_since=false, $sec=false, $limit=false, $featured=false)
+    function get_articles_by_date($date_up_to, $date_since=false, $sec=false, $limit=false, $featured=false, $author=false, $series=false)
     {
     	$this->db->select("
     		article.id, 
@@ -80,6 +82,13 @@ class Article_model extends CI_Model {
 		// for carousel or whatever, may choose to just fetch featured articles
 		if($featured) $this->db->where("article.featured", "1");
 		
+		if($series) $this->db->where('article.series', $series);
+		
+		if($author) {
+			$this->db->join("articleauthor", "articleauthor.article_id=article.id");
+			$this->db->where("articleauthor.author_id", $author);
+		}
+		
 		// note: date_up_to is inclusive; date_since is exclusive
 		$this->db->where("article.date <=", $date_up_to);
 		if($date_since) $this->db->where("article.date >", $date_since);
@@ -104,6 +113,7 @@ class Article_model extends CI_Model {
     }
     
     // fetch by issue. pretty sure this is deprecated/unused.
+    /*
     function get_popular_articles($vol, $no, $limit = '10')
     {
     	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
@@ -126,6 +136,7 @@ class Article_model extends CI_Model {
 			return false;
 		}
     }
+    */
     
     function get_popular_articles_by_date($date_up_to, $date_since = false, $limit = '10')
     {

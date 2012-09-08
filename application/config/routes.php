@@ -44,6 +44,8 @@ $route['404_override'] = 'pages/error';
 $route['article/(:num)'] = "article/view/$1";
 $route['article/(:num)/(:any)'] = "article/view/$1";
 $route['browse/(:num)-(:num)-(:num)'] = "browse/date/$1-$2-$3";
+$route['author/(:num)'] = "author/view/$1";
+$route['series/(:num)'] = "series/view/$1";
 
 $route['search'] = "pages/search";
 $route['about'] = "pages/about";
