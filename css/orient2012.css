@@ -1166,10 +1166,35 @@ button .buttontext {
 /* for smartphones (read: iPhones) */
 @media all and (max-width: 480px) {
 
-	#issuedate, #mainnav, footer, #bonushook, #swipeview_relative_nav > #next, #swipeview_relative_nav > #prev {
+	#issuedate, #mainnav, #bonushook, #swipeview_relative_nav > #next, #swipeview_relative_nav > #prev {
 		display: none;
 	}
 	
+	footer #vcard {
+		display: none;
+	}
+	
+	footer #footerlinks, footer #bonusquoteblock {
+		float: none;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	
+	footer #footerlinks ul {
+		display: inline;
+		margin: 0;
+		padding: 0;
+	}
+	
+	footer #footerlinks ul li {
+		width:20%;
+		display: block;
+		list-style: none;
+		float: left;
+		margin-bottom: 20px;
+	}
+		
 	#mainstory {
 		font-size: 12pt;
 		width: 100%;
@@ -1305,6 +1330,38 @@ button .buttontext {
 	width: 100%;
 	border: none;
 	height: 1px;
+}
+
+/* ////// */
+/* SEARCH */
+/* ////// */
+
+#bigsearch {
+	font-size: 14pt;
+	margin: 10px 0;
+	float: right;
+	width: 50%;
+}
+
+#bigsearch input {
+	padding: 10px;
+	font-size: 14pt;
+	width: 100%;
+}
+
+.searchtitle {
+	float: left;
+}
+
+@media all and (max-width: 480px) {
+	#bigsearch {
+		float: none;
+		font-size: 12pt;
+	}
+	
+	#bigsearch input {
+		font-size: 10pt;
+	}
 }
 
 /* ///////// */

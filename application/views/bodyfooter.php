@@ -13,6 +13,7 @@
 		
 		<div id="footerlinks">
 			<ul>
+				<li><a href="<?=site_url()?>search">Search</a></li>
 				<li><a href="<?=site_url()?>about">About</a></li>
 				<!--<li><a href="<?=site_url()?>archives">Archives</a></li>-->
 				<li><a href="<?=site_url()?>subscribe">Subscribe</a></li>

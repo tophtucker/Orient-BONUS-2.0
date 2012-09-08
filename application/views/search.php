@@ -48,14 +48,20 @@
 		
 		<header>
 			<hgroup>
-				<h2 id="articletitle" class="articletitle">Search results</h2>
+				<h2 id="articletitle" class="articletitle searchtitle">Search</h2>
 				<!--<h3 id="articlesubtitle" class="articlesubtitle"></h3>-->
 			</hgroup>			
 		</header>
 		
+		<div id="bigsearch">
+			<form action="<?=site_url()?>search" id="cse-search-box" method="get">
+				<input class="filterinput" type="text" placeholder="<?=$query?>" name="q">
+			</form>
+		</div>
+		
 		<div id="articlebody" class="articlebody">
 		
-			<div id="cse" style="width: 100%;">Loading</div>
+			<div id="cse" style="width: 100%;"></div>
 			<script src="http://www.google.com/jsapi" type="text/javascript"></script>
 			<script type="text/javascript"> 
 			  google.load('search', '1', {language : 'en', style : google.loader.themes.V2_DEFAULT});
