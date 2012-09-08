@@ -59,8 +59,26 @@ $(function() {
 </header>
 
 <div id="subnavbar">
-	<?if(isset($date)):?><span id="lastupdated"><?=date("F j, Y",strtotime($date))?></span> <div id="datepicker"></div> <span class="hidemobile">&middot; <?endif;?><?if(isset($volume) && isset($issue_number)):?><? if(!empty($previssue)):?><a href="<?=site_url()?>browse/<?=$previssue->issue_date?>" class="issue-nav-arrow">&#x25C4;</a> <?endif;?><? if(isset($issue) && !empty($issue->scribd)): ?><a href="<?=$issue->scribd?>" class="scribd-link" target="new"><? endif; ?>Vol. <?=$volume?>, No. <?=$issue_number?><? if(isset($issue) && !empty($issue->scribd)): ?></a><? endif; ?> <? if(!empty($nextissue)):?><a href="<?=site_url()?>browse/<?=$nextissue->issue_date?>" class="issue-nav-arrow">&#x25BA;</a></span> <?endif;?>&middot; <?endif;?><a href="<?=base_url()?>random">Random</a>
-	<span id="pages"><?=anchor('about', 'About'); ?> &middot; <?=anchor('subscribe', 'Subscribe'); ?> &middot; <?=anchor('advertise', 'Advertise'); ?> &middot; <?=anchor('contact', 'Contact'); ?> &middot; <span id="submittip">Submit a tip</span></span>
+	<?if(isset($date)):?>
+		<span id="lastupdated"><?=date("F j, Y",strtotime($date))?></span>
+		<div id="datepicker"></div> &middot; 
+	<?endif;?>
+	<span class="hidemobile">
+	<?if(isset($volume) && isset($issue_number)):?>
+		<? if(!empty($previssue)):?><a href="<?=site_url()?>browse/<?=$previssue->issue_date?>" class="issue-nav-arrow">&#x25C4;</a> <?endif;?>
+		<? if(isset($issue) && !empty($issue->scribd)): ?><a href="<?=$issue->scribd?>" class="scribd-link" target="new"><? endif; ?>Vol. <?=$volume?>, No. <?=$issue_number?><? if(isset($issue) && !empty($issue->scribd)): ?></a><? endif; ?> 
+		<? if(!empty($nextissue)):?><a href="<?=site_url()?>browse/<?=$nextissue->issue_date?>" class="issue-nav-arrow">&#x25BA;</a> <?endif;?>&middot;
+	<?endif;?>
+	</span>
+	<a href="<?=base_url()?>random">Random</a>
+	<span class="onlymobile">&middot; <?=anchor('search', 'Search'); ?></span>
+	<span id="pages" class="hidemobile">
+		<?=anchor('about', 'About'); ?> &middot; 
+		<?=anchor('subscribe', 'Subscribe'); ?> &middot; 
+		<?=anchor('advertise', 'Advertise'); ?> &middot; 
+		<?=anchor('contact', 'Contact'); ?> &middot; 
+		<span id="submittip">Submit a tip</span>
+	</span>
 </div>
 
 <div id="submittipform">

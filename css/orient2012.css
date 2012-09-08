@@ -434,6 +434,10 @@ h2 {
 	padding: 0;
 }
 
+.onlymobile {
+	display: none;
+}
+
 .addissue {
 	color: red !important;
 }
@@ -892,6 +896,10 @@ section h2 {
 	
 	.hidemobile {
 		display: none !important;
+	}
+	
+	.onlymobile {
+		display: inline;
 	}
 	
 	#mainhead {
