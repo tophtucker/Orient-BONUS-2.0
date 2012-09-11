@@ -102,10 +102,16 @@ class Article extends CI_Controller {
 			exit("Not logged in!");
 		}
 		
+		// strip tags where appropriate,
+		// but we want to allow them in title, subtitle, & body.
+		// and no, i don't know why i process the incoming post data in two places
+		// (here and inline in the array definition).
+		
 		$title 		= trim(urldecode($this->input->post("title")));
 		$subtitle 	= trim(urldecode($this->input->post("subtitle")));
-		$author 	= trim(urldecode($this->input->post("author")));
-		$authorjob 	= trim(urldecode($this->input->post("authorjob")));
+		$series 	= trim(strip_tags(urldecode($this->input->post("series"))));
+		$author 	= trim(strip_tags(urldecode($this->input->post("author"))));
+		$authorjob 	= trim(strip_tags(urldecode($this->input->post("authorjob"))));
 		$body 		= trim(urldecode($this->input->post("body")));
 		
 		$published = ($this->input->post("published") == 'true' ? '1' : '0');
@@ -129,9 +135,12 @@ class Article extends CI_Controller {
 			$bodysuccess = $this->article_model->add_articlebody_version($id, $body, userid());
 		}
 		
-		$series = trim(urldecode($this->input->post("series")));
 		$seriessuccess = true;
-		if(strlen($series) > 1)
+		if(empty($series))
+		{
+			$seriessuccess = $this->article_model->remove_article_series($id);
+		}
+		elseif(strlen($series) > 1)
 		{
 			$seriessuccess = $this->article_model->add_article_series($id, $series);
 		}

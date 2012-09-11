@@ -368,6 +368,13 @@ class Article_model extends CI_Model {
 		return $this->db->update('article');
 	}
 	
+	function remove_article_series($article_id)
+	{
+		$this->db->where('id',$article_id);
+		$this->db->set('series','0');
+		return $this->db->update('article');		
+	}
+	
 	function get_series_by_name($series_name)
 	{
 		$this->db->where('name', $series_name);
@@ -380,6 +387,16 @@ class Article_model extends CI_Model {
 		{
 			return false;
 		}
+	}
+	
+	function add_series($name, $photo='', $description='')
+	{
+		$data = array(
+		   'name' => $name,
+		   'photo' => $photo,
+		   'description' => $description
+		);
+		return $this->db->insert('series', $data);
 	}
 	
 	function add_article_author($article_id, $author_name, $authorjob_name)
