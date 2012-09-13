@@ -199,8 +199,9 @@ var	carousel,
 				<? if($article->series): ?>'<div class="series"><?=$article->series?></div>'+<? endif; ?>
 				<? if($article->type): ?>'<div class="type"><?=$article->type?></div>'+<? endif; ?>
 				'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'+
-				'<p class="articledate"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'+
 				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>">'+<? endif; ?>
+				'<div class="authorbox"><p class="articleauthor"><?=$article->author?></p></div>'+
+				'<p class="articledate"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'+
 				'<p><?= addslashes(trim($article->pullquote)); ?></p>'+
 			'</div>'
 		<? endforeach; ?>

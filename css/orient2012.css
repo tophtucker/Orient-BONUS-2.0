@@ -696,11 +696,16 @@ section h2 {
 	/* border-left: solid 1px lightgray; */
 }
 
+.carouseltile .authorbox {
+	margin-top: 20px;
+}
+
 .carouseltile img {
 	width: 50% !important;
 	float: right;
 	padding-left: 20px !important;
 	padding-bottom: 20px !important;
+	padding-top: 20px;
 }
 
 .carouseltile a {

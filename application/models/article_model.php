@@ -46,6 +46,7 @@ class Article_model extends CI_Model {
     		article.pullquote, 
     		article.published,
     		article.featured,
+    		author.name 'author',
     		series.name 'series', 
     		articletype.name 'type', 
     		photo.filename_small"
@@ -55,6 +56,10 @@ class Article_model extends CI_Model {
 		$this->db->join("series", "series.id=article.series");
 		$this->db->join("articletype", "articletype.id=article.type");
 		$this->db->join("photo", "photo.article_id=article.id", "left");
+		
+		// join author
+		$this->db->join("articleauthor", "articleauthor.article_id=article.id");
+		$this->db->join("author", "author.id=articleauthor.author_id");
 		
 		// "active" basically means "hasn't been deleted". we should almost never show inactive articles.
 		$this->db->where("article.active", "1");
