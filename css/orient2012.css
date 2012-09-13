@@ -661,8 +661,8 @@ img {
 	padding: 0 0 0 20px;
 }
 
-/* strip header and footer from twitter widget */
-.twtr-hd, .twtr-ft{
+/* strip header, footer, username from twitter widget */
+.twtr-hd, .twtr-ft, .twtr-user {
 	display: none;
 }
 
@@ -698,6 +698,10 @@ section h2 {
 
 .carouseltile .authorbox {
 	margin-top: 20px;
+}
+
+.carouseltile .authorbox .articleauthor {
+	padding-bottom: 0;
 }
 
 .carouseltile img {
