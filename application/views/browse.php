@@ -200,7 +200,7 @@ var	carousel,
 				<? if($article->type): ?>'<div class="type"><?=$article->type?></div>'+<? endif; ?>
 				'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'+
 				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>">'+<? endif; ?>
-				'<div class="authorbox"><p class="articleauthor"><?=addslashes($article->author)?></p></div>'+
+				<? if(!empty($article->author)): ?>'<div class="authorbox"><p class="articleauthor"><?=addslashes($article->author)?></p></div>'+<? endif; ?>
 				'<p class="articledate"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'+
 				'<p><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$article->pullquote))); ?></p>'+
 			'</div>'
