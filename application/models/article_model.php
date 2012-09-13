@@ -72,7 +72,6 @@ class Article_model extends CI_Model {
 		if($series) $this->db->where('article.series', $series);
 		
 		if($author) {
-			$this->db->join("articleauthor", "articleauthor.article_id=article.id");
 			$this->db->where("articleauthor.author_id", $author);
 		}
 		
