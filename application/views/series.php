@@ -77,6 +77,8 @@
 
 <? $this->load->view('bodyfooter', $footerdata); ?>
 
+<? $this->load->view('bonus/bonusbar', TRUE); ?>
+
 </body>
 
 </html>
