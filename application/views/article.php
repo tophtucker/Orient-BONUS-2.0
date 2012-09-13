@@ -72,19 +72,43 @@
     		titleedited=true;
     		$('#articletitle').css("color", "darkred");
 		});
+		$("#articletitle").bind('paste', function() {
+			titleedited=true;
+    		$('#articletitle').css("color", "darkred");
+		});	
+		
 		$('#articlesubtitle').keydown(function() {
     		subtitleedited=true;
     		$('#articlesubtitle').css("color", "darkred");
 		});
+		$('#articlesubtitle').bind('paste', function() {
+    		subtitleedited=true;
+    		$('#articlesubtitle').css("color", "darkred");
+		});
+		
 		$('#articlebody').keydown(function() {
     		bodyedited=true;
     		$('#articlebody').css("color", "darkred");
 		});
+		$('#articlebody').bind('paste', function() {
+    		bodyedited=true;
+    		$('#articlebody').css("color", "darkred");
+		});
+		
 		$('#photocredit').keydown(function() {
     		photocreditedited=true;
     		$('#photocredit').css("color", "darkred");
 		});
+		$('#photocredit').bind('paste', function() {
+    		photocreditedited=true;
+    		$('#photocredit').css("color", "darkred");
+		});
+		
 		$('#photocaption').keydown(function() {
+    		photocationedited=true;
+    		$('#photocaption').css("color", "darkred");
+		});
+		$('#photocaption').bind('paste', function() {
     		photocationedited=true;
     		$('#photocaption').css("color", "darkred");
 		});
