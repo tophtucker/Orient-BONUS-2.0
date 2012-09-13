@@ -781,6 +781,14 @@ section h2 {
 	color:#555;
 }
 
+.old {
+	opacity: 0.3;
+}
+
+.old:hover {
+	opacity: 1;
+}
+
 /* homepage social media button responses */
 @media all and (max-width: 1069px) {
 	#mainhead .fb-like {

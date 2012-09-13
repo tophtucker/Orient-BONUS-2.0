@@ -34,7 +34,7 @@ class Browse extends CI_Controller {
 		$last_updated = $this->article_model->get_last_updated($date);
 		$last_updated_week_ago = date("Y-m-d", strtotime($last_updated)-(7*24*60*60));
 		$last_updated_fivemonths_ago = date("Y-m-d", strtotime($last_updated)-(5*4*7*24*60*60));
-		
+				
 		// get latest issue <= date specified
 		$issue = $this->issue_model->get_latest_issue($date);
 				
