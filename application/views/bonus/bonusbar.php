@@ -2,7 +2,7 @@
 
 	<div id="bonusbar">
 	<p>&#x235f; BONUS Bar / 
-	<a href="<?=site_url()?>issue/">Home</a> / 
+	<a href="<?=site_url()?>/">Home</a> / 
 	<a href="<?=site_url()?>bonus/dashboard">Dashboard</a> / 
 	<a href="<?=site_url()?>bonus/logout/">Logout of <?=username()?></a>
 	<?if(substr(uri_string(),0,8)=="article/"):?>
