@@ -1016,6 +1016,10 @@ article header {
 	color: gray;
 }
 
+.bonus .articleauthor, .bonus .articleauthorjob {
+	text-transform:none !important;
+}
+
 .articledate {
 	clear: left;
 	font-family:myriad-pro-condensed,helvetica,arial;
