@@ -33,32 +33,6 @@ class Article_model extends CI_Model {
 		return $query->result();
 	}
     
-    // fetch by issue. pretty sure this is deprecated/unused.
-    /*
-    function get_articles($vol, $no, $sec)
-    {
-    	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
-		$this->db->from("article");
-		$this->db->join("series", "series.id=article.series");
-		$this->db->join("articletype", "articletype.id=article.type");
-		$this->db->join("photo", "photo.article_id=article.id", "left");
-		$this->db->where("article.volume", $vol);
-		$this->db->where("article.issue_number", $no);
-		$this->db->where("article.section_id", $sec);
-		$this->db->group_by("article.id");
-		$this->db->order_by("article.priority", 'asc');
-		$query = $this->db->get();
-		if($query->num_rows() > 0)
-		{
-			return $query->result();
-		}
-		else
-		{
-			return false;
-		}
-    }
-    */
-    
     // for the love of god, either use a finite date span or a limit!
     // i.e. don't let both $date_since and $limit stay false.
     // maybe this function should control for that ugly possibility.
@@ -119,32 +93,6 @@ class Article_model extends CI_Model {
 			return false;
 		}
     }
-    
-    // fetch by issue. pretty sure this is deprecated/unused.
-    /*
-    function get_popular_articles($vol, $no, $limit = '10')
-    {
-    	$this->db->select("article.id, article.date, article.title, article.subhead, article.pullquote, series.name 'series', articletype.name 'type', photo.filename_small");
-		$this->db->from("article");
-		$this->db->join("series", "series.id=article.series");
-		$this->db->join("articletype", "articletype.id=article.type");
-		$this->db->join("photo", "photo.article_id=article.id", "left");
-		$this->db->where("article.volume", $vol);
-		$this->db->where("article.issue_number", $no);
-		$this->db->group_by("article.id");
-		$this->db->order_by("article.views_bowdoin", 'desc');
-		$this->db->limit($limit);
-		$query = $this->db->get();
-		if($query->num_rows() > 0)
-		{
-			return $query->result();
-		}
-		else
-		{
-			return false;
-		}
-    }
-    */
     
     function get_popular_articles_by_date($date_up_to, $date_since = false, $limit = '10')
     {

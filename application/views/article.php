@@ -190,7 +190,8 @@
 		
     });
     
-    
+    // ugh, i forget what this is even for.
+    // i think to help autocomplete work on contenteditable?
 	(function ($) {
 		var original = $.fn.val;
 		$.fn.val = function() {
