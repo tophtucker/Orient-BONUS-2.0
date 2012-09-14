@@ -349,7 +349,7 @@
 		</header>                
 		
 		<? if($photos): ?>
-		<figure id="articlemedia">
+		<figure id="articlemedia" <?= (empty($body->body) ? 'class="bigphoto"' : '') ?>>
 			<? if(count($photos) == 1 || bonus()): ?>
 				<? foreach($photos as $key => $photo): ?>
 					<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>">
@@ -413,7 +413,7 @@
 		<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>>
 			<? if(!empty($body)): ?>
 				<?=$body->body;?>
-			<? else: ?>
+			<? elseif(bonus()): ?>
 				<?="<p>Enter article body here.</p>";?> 
 			<? endif; ?>
 		</div>

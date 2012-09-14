@@ -1083,6 +1083,12 @@ figure img {
 	width: 100%;
 }
 
+figure.bigphoto {
+	float: none;
+	margin: 80px 0 40px 0;
+	width: 100%;
+}
+
 .pin-it-button img {
 	width: inherit;
 	float: right;
