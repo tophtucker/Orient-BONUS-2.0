@@ -216,7 +216,7 @@ class Article extends CI_Controller {
 		$filename_large = $filename_root.'_large.jpg'; //width: 1000px
 		
 		// write full-size image
-		write_file('images/'.$article_date.'/'.$filename_original, base64_decode($img_fixed));
+		$write_result = write_file('images/'.$article_date.'/'.$filename_original, base64_decode($img_fixed));
 		
 		// resize to small
 		$img_config['image_library']	= 'gd2';
@@ -240,7 +240,7 @@ class Article extends CI_Controller {
 		$this->image_lib->resize();
 		
 		// add photo to database and return the response to the ajax request
-		exit($this->attachments_model->add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id));
+		exit($write_result." and ".$this->attachments_model->add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id));
 	}
 	
 	public function ajax_remove_photos($article_id)

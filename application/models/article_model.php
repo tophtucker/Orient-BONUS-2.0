@@ -61,7 +61,8 @@ class Article_model extends CI_Model {
 		$this->db->join("articleauthor", "articleauthor.article_id=article.id", "left");
 		$this->db->join("author", "author.id=articleauthor.author_id", "left");
 		
-		// "active" basically means "hasn't been deleted". we should almost never show inactive articles.
+		// "active" basically means "hasn't been deleted". we should almost never show inactive articles (or photos).
+		$this->db->where("photo.active", "1");
 		$this->db->where("article.active", "1");
 		// show draft (unpublished) articles only if logged into bonus.
 		if(!bonus()) $this->db->where("article.published", "1");

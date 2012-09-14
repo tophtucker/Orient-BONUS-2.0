@@ -1386,6 +1386,10 @@ button .buttontext {
 	float: left;
 }
 
+.cse .gsc-control-cse, .gsc-control-cse {
+	padding: 0;
+}
+
 @media all and (max-width: 480px) {
 	#bigsearch {
 		float: none;
