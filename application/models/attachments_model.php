@@ -62,7 +62,7 @@ class Attachments_model extends CI_Model {
     	}
     }
     
-    function add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id)
+    function add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id, $priority='1')
     {
     	$photographer = $this->article_model->get_author_by_name($credit);
 		if(!$photographer)
@@ -72,17 +72,18 @@ class Attachments_model extends CI_Model {
 		}
 		
 		$data = array(
-		   'filename_small' => $filename_small,
-		   'filename_large' => $filename_large,
-		   'filename_original' => $filename_original,
-		   'photographer_id' => $photographer->id,
-		   'caption' => $caption,
-		   'article_id' => $article_id
+		   'filename_small' 	=> $filename_small,
+		   'filename_large' 	=> $filename_large,
+		   'filename_original' 	=> $filename_original,
+		   'photographer_id' 	=> $photographer->id,
+		   'caption' 			=> $caption,
+		   'article_id' 		=> $article_id,
+		   'priority' 			=> $priority
 		);
 		return $this->db->insert('photo', $data);
     }
     
-    // TODO
+    // #TODO
     function edit_photo($credit, $caption)
     {
     	return true;

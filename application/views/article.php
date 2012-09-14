@@ -350,8 +350,15 @@
 		
 		<? if($photos): ?>
 		<figure id="articlemedia">
-			<? if(count($photos) == 1): ?>
-				<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photos[0]->filename_large?>">
+			<? if(count($photos) == 1 || bonus()): ?>
+				<? foreach($photos as $key => $photo): ?>
+					<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>">
+					<figcaption>
+						<p class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= $photo->photographer_name ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
+						<p class="photocaption"><?=$photo->caption?></p>
+						<? if(!bonus()):?><a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photo->filename_large) ?>&description=<?= urlencode(strip_tags($photo->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a><?endif;?>
+					</figcaption>
+				<? endforeach; ?>
 			<? else: ?>
 				<div id="swipeview_wrapper"></div>
 				<div id="swipeview_relative_nav">
@@ -363,29 +370,26 @@
 					<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>);hasInteracted=true"></li>
 					<? endforeach; ?>
 				</ul>
+				<figcaption>
+					<p class="photocredit"<? if(count($photos) > 1): ?> style="margin-top: 0;text-shadow:none;color:gray;"<? endif;?>><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
+					<p class="photocaption"><?=$photos[0]->caption?></p>
+					<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photos[0]->filename_large) ?>&description=<?= urlencode(strip_tags($photos[0]->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+				</figcaption>
 			<? endif; ?>
-			<figcaption>
-				<p class="photocredit"<? if(count($photos) > 1): ?> style="margin-top: 0;text-shadow:none;color:gray;"<? endif;?>><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
-				<p class="photocaption"><?=$photos[0]->caption?></p>
-				
-				<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photos[0]->filename_large) ?>&description=<?= urlencode(strip_tags($photos[0]->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
-				
-			</figcaption>
 		</figure>
-		<? else: ?>
-			<? if(bonus()): ?>
-				<style>
-					#dnd-holder { border: 2px dashed #ccc; box-sizing: border-box; width: 500px; height: 300px; background-size: cover;}
-					#dnd-holder.hover { border: 10px dashed #333; }
-				</style>
-				<figure id="articlemedia">
-					<div id="dnd-holder"></div>
-					<figcaption class="bonus">
-						<p id="photocredit" class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;" contenteditable="true">Credit</p>
-						<p id="photocaption" class="photocaption" contenteditable="true"><b>Caption:</b> caption.</p>
-					</figcaption>
-				</figure>
-			<? endif; ?>
+		<? endif; ?>
+		<? if(bonus()): ?>
+			<style>
+				#dnd-holder { border: 2px dashed #ccc; box-sizing: border-box; width: 500px; height: 300px; background-size: cover;}
+				#dnd-holder.hover { border: 10px dashed #333; }
+			</style>
+			<figure id="articlemedia">
+				<div id="dnd-holder"></div>
+				<figcaption class="bonus">
+					<p id="photocredit" class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;" contenteditable="true">Credit</p>
+					<p id="photocaption" class="photocaption" contenteditable="true"><b>Caption:</b> caption.</p>
+				</figcaption>
+			</figure>
 		<? endif; ?>
 		
 		<? if(bonus()): ?>

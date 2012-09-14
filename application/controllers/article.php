@@ -186,8 +186,24 @@ class Article extends CI_Controller {
 		$png_offset = 22;
 		$jpg_offset = 23;
 		
-		// atm we only support jpg :( #todo
-		$offset = $css_offset + $jpg_offset;
+		$offset = $css_offset;
+		$extension = "";
+		
+		if(strpos(substr($this->input->post("img"), $css_offset, 15),"image/jpeg"))
+		{
+			$offset += $jpg_offset;
+			$extension = ".jpg";
+		}
+		elseif(strpos(substr($this->input->post("img"), $css_offset, 15),"image/png"))
+		{
+			$offset += $png_offset;
+			$extension = ".png";
+		}
+		else
+		{
+			exit("Only JPG and PNG images are supported.");
+		}
+		
 		$offset_tail = $css_offset_tail;
 		$strlen_offset = $offset + $offset_tail;
 		
@@ -211,9 +227,9 @@ class Article extends CI_Controller {
 		
 		// prepare names
 		$filename_root = $article_id.'_'.$article_photo_number;
-		$filename_original = $filename_root.'.jpg';
-		$filename_small = $filename_root.'_small.jpg'; //width: 400px
-		$filename_large = $filename_root.'_large.jpg'; //width: 1000px
+		$filename_original = $filename_root.$extension;
+		$filename_small = $filename_root.'_small'.$extension; //width: 400px
+		$filename_large = $filename_root.'_large'.$extension; //width: 1000px
 		
 		// write full-size image
 		$write_result = write_file('images/'.$article_date.'/'.$filename_original, base64_decode($img_fixed));
@@ -240,7 +256,7 @@ class Article extends CI_Controller {
 		$this->image_lib->resize();
 		
 		// add photo to database and return the response to the ajax request
-		exit($this->attachments_model->add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id));
+		exit($this->attachments_model->add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id, $article_photo_number));
 	}
 	
 	public function ajax_remove_photos($article_id)
