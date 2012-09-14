@@ -240,7 +240,7 @@ class Article extends CI_Controller {
 		$this->image_lib->resize();
 		
 		// add photo to database and return the response to the ajax request
-		exit($write_result." and ".$this->attachments_model->add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id));
+		exit($this->attachments_model->add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id));
 	}
 	
 	public function ajax_remove_photos($article_id)
