@@ -62,11 +62,11 @@
 			<p>Phone: (207) 725-3300<br/>
 			Business Phone: (207) 725-3053</p>
 			
-			<p>General inquiries and subscriptions: <a href="orient@bowdoin.edu">orient@bowdoin.edu</a>.</p>
+			<p>General inquiries and subscriptions: <a href="mailto:orient@bowdoin.edu">orient@bowdoin.edu</a>.</p>
 			
-			<p>Business or advertising inquiries: <a href="orientads@bowdoin.edu">orientads@bowdoin.edu</a>.</p>
+			<p>Business or advertising inquiries: <a href="mailto:orientads@bowdoin.edu">orientads@bowdoin.edu</a>.</p>
 			
-			<p>Web inquiries: <a href="ctucker@bowdoin.edu">ctucker@bowdoin.edu</a>.</p>
+			<p>Web inquiries: <a href="mailto:ctucker@bowdoin.edu">ctucker@bowdoin.edu</a>.</p>
 			
 			<h3 id="ltte">Submit a letter to the editor</h3>
 			<ol>
