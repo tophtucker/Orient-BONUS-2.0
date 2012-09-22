@@ -107,8 +107,8 @@ class Article extends CI_Controller {
 		// and no, i don't know why i process the incoming post data in two places
 		// (here and inline in the array definition).
 		
-		$title 		= trim(urldecode($this->input->post("title")));
-		$subtitle 	= trim(urldecode($this->input->post("subtitle")));
+		$title 		= trim(strip_tags(urldecode($this->input->post("title")), '<b><i><u><strong><em>'));
+		$subtitle 	= trim(strip_tags(urldecode($this->input->post("subtitle")), '<b><i><u><strong><em>'));
 		$series 	= trim(strip_tags(urldecode($this->input->post("series"))));
 		$author 	= trim(strip_tags(urldecode($this->input->post("author"))));
 		$authorjob 	= trim(strip_tags(urldecode($this->input->post("authorjob"))));
@@ -208,8 +208,8 @@ class Article extends CI_Controller {
 		$strlen_offset = $offset + $offset_tail;
 		
 		$img = substr($this->input->post("img"), $offset, strlen($this->input->post("img"))-($strlen_offset));
-		$credit = $this->input->post("credit");
-		$caption = $this->input->post("caption");
+		$credit = trim(urldecode($this->input->post("credit")));
+		$caption = trim(urldecode($this->input->post("caption")));
 		
 		// bug: "When Base64 gets POSTed, all pluses are interpreted as spaces."
 		// this corrects for it.

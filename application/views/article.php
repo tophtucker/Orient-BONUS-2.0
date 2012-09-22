@@ -123,8 +123,8 @@
 					url: "<?=site_url()?>article/ajax_add_photo/<?=$article->date?>/<?=$article->id?>",
 					data: 
 						"img=" + $('#dnd-holder').css('background-image') + 
-						"&credit=" + $("#photocredit").html() +
-						"&caption=" + $("#photocaption").html(),
+						"&credit=" + urlencode($("#photocredit").html()) +
+						"&caption=" + urlencode($("#photocaption").html()),
 					success: function(result){
 						$('#dnd-holder').css('border', '0');
 						// set hasphoto to true; set photoadded to false? ugh.
@@ -175,10 +175,9 @@
 				url: "<?=site_url()?>article/ajax_remove_photos/<?=$article->id?>",
 				data: "remove=true",
 				success: function(result){
-					if(result=="success") {
-						//hide photos (gotta refresh to add again, as it works now)
-						$('#dnd-holder').hide();
-						$('#articlemedia').hide();
+					if(result=="Photos removed.") {
+						//hide photos
+						$('.singlephoto').hide();
 					}
 					//show alert
 					$("#savenotify").html(result);
@@ -349,38 +348,40 @@
 		</header>                
 		
 		<? if($photos): ?>
-		<figure id="articlemedia" <?= (empty($body->body) ? 'class="bigphoto"' : '') ?>>
 			<? if(count($photos) == 1 || bonus()): ?>
 				<? foreach($photos as $key => $photo): ?>
-					<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>">
-					<figcaption>
-						<p class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= $photo->photographer_name ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
-						<p class="photocaption"><?=$photo->caption?></p>
-						<? if(!bonus()):?><a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photo->filename_large) ?>&description=<?= urlencode(strip_tags($photo->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a><?endif;?>
-					</figcaption>
+					<figure id="articlemedia" class="singlephoto <?= (empty($body->body) ? 'bigphoto' : '') ?>">
+						<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>">
+						<figcaption>
+							<p class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= $photo->photographer_name ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
+							<p class="photocaption"><?=$photo->caption?></p>
+							<? if(!bonus()):?><a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photo->filename_large) ?>&description=<?= urlencode(strip_tags($photo->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a><?endif;?>
+						</figcaption>
+					</figure>
 				<? endforeach; ?>
 			<? else: ?>
-				<div id="swipeview_wrapper"></div>
-				<div id="swipeview_relative_nav">
-					<span id="prev" onclick="carousel.prev();hasInteracted=true">&laquo;</span>
-					<span id="next" onclick="carousel.next();hasInteracted=true">&raquo;</span>
-				</div>
-				<ul id="swipeview_nav">
-					<? foreach($photos as $key => $photo): ?>
-					<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>);hasInteracted=true"></li>
-					<? endforeach; ?>
-				</ul>
-				<figcaption>
-					<p class="photocredit"<? if(count($photos) > 1): ?> style="margin-top: 0;text-shadow:none;color:gray;"<? endif;?>><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
-					<p class="photocaption"><?=$photos[0]->caption?></p>
-					<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photos[0]->filename_large) ?>&description=<?= urlencode(strip_tags($photos[0]->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
-				</figcaption>
+				<figure id="articlemedia">
+					<div id="swipeview_wrapper"></div>
+					<div id="swipeview_relative_nav">
+						<span id="prev" onclick="carousel.prev();hasInteracted=true">&laquo;</span>
+						<span id="next" onclick="carousel.next();hasInteracted=true">&raquo;</span>
+					</div>
+					<ul id="swipeview_nav">
+						<? foreach($photos as $key => $photo): ?>
+						<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>);hasInteracted=true"></li>
+						<? endforeach; ?>
+					</ul>
+					<figcaption>
+						<p class="photocredit"<? if(count($photos) > 1): ?> style="margin-top: 0;text-shadow:none;color:gray;"<? endif;?>><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
+						<p class="photocaption"><?=$photos[0]->caption?></p>
+						<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photos[0]->filename_large) ?>&description=<?= urlencode(strip_tags($photos[0]->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+					</figcaption>
+				</figure>
 			<? endif; ?>
-		</figure>
 		<? endif; ?>
 		<? if(bonus()): ?>
 			<style>
-				#dnd-holder { border: 2px dashed #ccc; box-sizing: border-box; width: 500px; height: 300px; background-size: cover;}
+				#dnd-holder { border: 2px dashed #ccc; box-sizing: border-box; width: 500px; height: 300px; background-size: cover !important;}
 				#dnd-holder.hover { border: 10px dashed #333; }
 			</style>
 			<figure id="articlemedia">
