@@ -270,6 +270,13 @@ class Article extends CI_Controller {
 		exit("Photo added.");
 	}
 	
+	public function ajax_delete_photo($photo_id)
+	{
+		if(!bonus()) exit("Permission denied. Try refreshing and logging in again.");
+		$this->attachments_model->delete_photo($photo_id);
+		exit("Photo deleted.");
+	}
+	
 	public function ajax_remove_photos($article_id)
 	{
 		if(!bonus()) exit("Permission denied. Try refreshing and logging in again.");

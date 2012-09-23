@@ -95,22 +95,22 @@
     		$('#articlebody').css("color", "darkred");
 		});
 		
-		$('#photocredit').keydown(function() {
+		$('#photocreditbonus').keydown(function() {
     		photocreditedited=true;
-    		$('#photocredit').css("color", "darkred");
+    		$('#photocreditbonus').css("color", "darkred");
 		});
-		$('#photocredit').bind('paste', function() {
+		$('#photocreditbonus').bind('paste', function() {
     		photocreditedited=true;
-    		$('#photocredit').css("color", "darkred");
+    		$('#photocreditbonus').css("color", "darkred");
 		});
 		
-		$('#photocaption').keydown(function() {
+		$('#photocaptionbonus').keydown(function() {
     		photocaptionedited=true;
-    		$('#photocaption').css("color", "darkred");
+    		$('#photocaptionbonus').css("color", "darkred");
 		});
-		$('#photocaption').bind('paste', function() {
+		$('#photocaptionbonus').bind('paste', function() {
     		photocaptionedited=true;
-    		$('#photocaption').css("color", "darkred");
+    		$('#photocaptionbonus').css("color", "darkred");
 		});
 		
     	$("#savearticle").click(function() {
@@ -127,8 +127,8 @@
 					url: "<?=site_url()?>article/ajax_add_photo/<?=$article->date?>/<?=$article->id?>",
 					data: 
 						"img=" + $('#dnd-holder').css('background-image') + 
-						"&credit=" + urlencode($("#photocredit").html()) +
-						"&caption=" + urlencode($("#photocaption").html()),
+						"&credit=" + urlencode($("#photocreditbonus").html()) +
+						"&caption=" + urlencode($("#photocaptionbonus").html()),
 					success: function(result){
 						if(result=="Photo added.") {
 							refresh = true;
@@ -175,7 +175,7 @@
 					bodyedited=false;
 					photocreditedited=false;
 					photocaptionedited=false;
-					$('#articletitle, #articlesubtitle, #articlebody, #photocredit, #photocaption').css("color", "inherit");
+					$('#articletitle, #articlesubtitle, #articlebody, #photocreditbonus, #photocaptionbonus').css("color", "inherit");
 				}
 			}));
 			
@@ -186,7 +186,7 @@
 					window.location.reload(); 
 				}
 				else {
-					$("#savenotify").fadeOut(2000);
+					$("#savenotify").fadeOut(4000);
 				}
 			});
 									
@@ -207,7 +207,7 @@
 					//show alert
 					$("#savenotify").html(result);
 					$("#savenotify").show();
-					$("#savenotify").fadeOut(2000);
+					$("#savenotify").fadeOut(4000);
 				}
 			});
 		} );
@@ -229,7 +229,7 @@
 						//show alert
 						$("#savenotify").html(result);
 						$("#savenotify").show();
-						$("#savenotify").fadeOut(2000);
+						$("#savenotify").fadeOut(4000);
 					}
 				});
 			}
@@ -246,13 +246,33 @@
 				data: "remove=true",
 				success: function(result){
 					if(result=="Author removed.") {
-						var authorSelector = "#author"+articleAuthorId;
-						$(authorSelector).hide("fast");
+						$("#author"+articleAuthorId).hide("fast");
 					}
 					//show alert
 					$("#savenotify").html(result);
 					$("#savenotify").show();
-					$("#savenotify").fadeOut(2000);
+					$("#savenotify").fadeOut(4000);
+				}
+			});
+			
+		});
+		
+		$(".articlemedia .delete").click(function(event) {
+			
+			var photoId = event.target.id.replace("deletePhoto","");
+			
+			$.ajax({
+				type: "POST",
+				url: "<?=site_url()?>article/ajax_delete_photo/"+photoId,
+				data: "remove=true",
+				success: function(result){
+					if(result=="Photo deleted.") {
+						$("#photo"+photoId).hide("fast");
+					}
+					//show alert
+					$("#savenotify").html(result);
+					$("#savenotify").show();
+					$("#savenotify").fadeOut(4000);
 				}
 			});
 			
@@ -285,7 +305,7 @@
 	});
 	
 	$(function() {
-		$( "#photocredit" ).autocomplete({
+		$( "#photocreditbonus" ).autocomplete({
 			source: "<?=site_url()?>article/ajax_suggest/author/name"
 		});
 	});
@@ -396,17 +416,18 @@
 		<? if($photos): ?>
 			<? if(count($photos) == 1 || bonus()): ?>
 				<? foreach($photos as $key => $photo): ?>
-					<figure id="articlemedia" class="singlephoto <?= (empty($body->body) ? 'bigphoto' : '') ?>">
+					<figure id="photo<?=$photo->photo_id?>" class="articlemedia singlephoto <?= (empty($body->body) ? 'bigphoto' : '') ?>">
+						<? if(bonus()): ?><div id="deletePhoto<?=$photo->photo_id?>" class="delete">&times;</div><? endif; ?>
 						<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>">
 						<figcaption>
-							<p class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= $photo->photographer_name ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
-							<p class="photocaption"><?=$photo->caption?></p>
+							<p id="photocredit<?=$photo->photo_id?>" class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= $photo->photographer_name ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
+							<p id="photocaption<?=$photo->photo_id?>" class="photocaption"><?=$photo->caption?></p>
 							<? if(!bonus()):?><a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photo->filename_large) ?>&description=<?= urlencode(strip_tags($photo->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a><?endif;?>
 						</figcaption>
 					</figure>
 				<? endforeach; ?>
 			<? else: ?>
-				<figure id="articlemedia">
+				<figure class="articlemedia">
 					<div id="swipeview_wrapper"></div>
 					<div id="swipeview_relative_nav">
 						<span id="prev" onclick="carousel.prev();hasInteracted=true">&laquo;</span>
@@ -418,7 +439,7 @@
 						<? endforeach; ?>
 					</ul>
 					<figcaption>
-						<p class="photocredit"<? if(count($photos) > 1): ?> style="margin-top: 0;text-shadow:none;color:gray;"<? endif;?>><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
+						<p class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;"><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
 						<p class="photocaption"><?=$photos[0]->caption?></p>
 						<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photos[0]->filename_large) ?>&description=<?= urlencode(strip_tags($photos[0]->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
 					</figcaption>
@@ -430,11 +451,11 @@
 				#dnd-holder { border: 2px dashed #ccc; box-sizing: border-box; width: 500px; height: 300px; background-size: cover !important;}
 				#dnd-holder.hover { border: 10px dashed #333; }
 			</style>
-			<figure id="articlemedia">
+			<figure class="articlemedia">
 				<div id="dnd-holder"></div>
 				<figcaption class="bonus">
-					<p id="photocredit" class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;" contenteditable="true">Credit</p>
-					<p id="photocaption" class="photocaption" contenteditable="true"><b>Caption:</b> caption.</p>
+					<p id="photocreditbonus" class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;" contenteditable="true">Credit</p>
+					<p id="photocaptionbonus" class="photocaption" contenteditable="true"><b>Caption:</b> caption.</p>
 				</figcaption>
 			</figure>
 		<? endif; ?>

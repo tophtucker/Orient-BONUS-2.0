@@ -1097,6 +1097,10 @@ article header {
 	clear: left;
 }
 
+figure {
+	position: relative;
+}
+
 figure img {
 	width: 100%;
 }
@@ -1131,6 +1135,19 @@ figure p {
 .photocaption {
 	font-size: 14px;
 	margin: 5px 0 0 0;
+}
+
+.articlemedia .delete {
+	position: absolute;
+	right: 7px;
+	top: 0px;
+	color: white;
+	text-shadow: 0 0 10px black;
+}
+
+.articlemedia .delete:hover {
+	color: red;
+	cursor: pointer;
 }
 
 .lede {
@@ -1271,7 +1288,7 @@ button .buttontext {
 		margin: 10px 0;
 	}
 	
-	#articlemedia #swipeview_wrapper {
+	.articlemedia #swipeview_wrapper {
 		width: 100% !important;
 		height: 200px !important;
 	}

@@ -89,6 +89,13 @@ class Attachments_model extends CI_Model {
     	return true;
     }
     
+    function delete_photo($photo_id)
+    {
+    	$this->db->set('active', '0');
+		$this->db->where('id', $photo_id);
+		return $this->db->update('photo');
+    }
+    
     function remove_article_photos($article_id)
     {
     	$photo_count = $this->count_article_photos($article_id);
