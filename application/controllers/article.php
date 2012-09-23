@@ -102,6 +102,8 @@ class Article extends CI_Controller {
 			exit("Not logged in!");
 		}
 		
+		$statusMessage = '';
+		
 		// strip tags where appropriate,
 		// but we want to allow them in title, subtitle, & body.
 		// and no, i don't know why i process the incoming post data in two places
@@ -133,6 +135,7 @@ class Article extends CI_Controller {
 		if($body) 
 		{
 			$bodysuccess = $this->article_model->add_articlebody_version($id, $body, userid());
+			if($bodysuccess) $statusMessage .= "Body updated. ";
 		}
 		
 		$seriessuccess = true;
@@ -157,11 +160,11 @@ class Article extends CI_Controller {
 		
 		if($articlesuccess && $authorsuccess && $seriessuccess) 
 		{
-			exit("Success!");
+			exit("Article updated. ".$statusMessage);
 		}
 		else 
 		{
-			exit("Failure.");
+			exit("Article failed to update. ".$statusMessage);
 		}
 	}
 	
@@ -172,12 +175,19 @@ class Article extends CI_Controller {
 		redirect('/article/'.$article_id, 'refresh');
 	}
 	
+	public function ajax_remove_article_author($article_author_id)
+	{
+		if(!bonus()) exit("Permission denied. Try refreshing and logging in again.");
+		$this->article_model->remove_article_author($article_author_id);
+		exit("Author removed.");
+	}
+	
 	/**
-	  * Currently only supports jpg.
+	  * Currently only supports jpg & png.
 	  **/
 	public function ajax_add_photo($article_date, $article_id)
 	{
-		if(!bonus()) exit("Permission denied.");
+		if(!bonus()) exit("Permission denied. Try refreshing and logging in again.");
 		
 		$this->load->helper('file');
 		
@@ -255,28 +265,26 @@ class Article extends CI_Controller {
 		$this->image_lib->initialize($img_config2);
 		$this->image_lib->resize();
 		
-		// add photo to database and return the response to the ajax request
-		exit($this->attachments_model->add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id, $article_photo_number));
+		// add photo to database
+		$this->attachments_model->add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id, $article_photo_number);
+		exit("Photo added.");
 	}
 	
 	public function ajax_remove_photos($article_id)
 	{
-		if(!bonus()) exit("Permission denied.");
-		
+		if(!bonus()) exit("Permission denied. Try refreshing and logging in again.");
 		exit($this->attachments_model->remove_article_photos($article_id));
 	}
 	
 	public function ajax_delete_article($article_id)
 	{
-		if(!bonus()) exit("Permission denied.");
-		
-		//exit("Deleting articles doesn't work yet! Ask Toph to do it.");
+		if(!bonus()) exit("Permission denied. Try refreshing and logging in again.");
 		exit($this->article_model->delete_article($article_id));
 	}
 	
 	public function ajax_suggest($table, $field)
 	{
-		if(!bonus()) exit("Permission denied.");
+		if(!bonus()) exit("Permission denied. Try refreshing and logging in again.");
 
 		// this general-purpose function is potentially wildly insecure.
 		if(!($table == 'author' || $table == 'job' || $table == 'articletype' || $table == 'series')) exit("Disallowed.");

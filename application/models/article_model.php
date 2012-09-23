@@ -214,7 +214,7 @@ class Article_model extends CI_Model {
 	
 	function get_article_authors($id)
 	{	
-		$this->db->select("author.id as authorid, author.name as authorname, job.name as jobname");
+		$this->db->select("articleauthor.id as articleauthorid, author.id as authorid, author.name as authorname, job.name as jobname");
 		$this->db->where("article_id", $id);
 		$this->db->from("articleauthor");
 		$this->db->join("author", "author.id=articleauthor.author_id");
@@ -398,6 +398,12 @@ class Article_model extends CI_Model {
 		   'bio' => $bio
 		);
 		return $this->db->insert('author', $data);
+	}
+	
+	function remove_article_author($articleAuthorId)
+	{
+		$this->db->where('id',$articleAuthorId);
+		return $this->db->delete('articleauthor');
 	}
 	
 	function get_job_by_name($name)

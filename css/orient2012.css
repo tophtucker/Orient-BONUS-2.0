@@ -1018,6 +1018,7 @@ article header {
 
 .authorbox {
 	display: block;
+	position: relative;
 	float: left;
 	margin-right: 15px;
 }
@@ -1035,6 +1036,23 @@ article header {
 	font-weight:normal;
 	text-transform:uppercase;
 	color: gray;
+}
+
+.authorbox .delete {
+	position: absolute;
+	left: -9px;
+	top: -7px;
+	background: white;
+	display: none;
+}
+
+.authorbox:hover .delete, .authorbox .delete:hover {
+	display: inherit;
+}
+
+.authorbox .delete:hover {
+	color: red;
+	cursor: pointer;
 }
 
 .bonus .articleauthor, .bonus .articleauthorjob {

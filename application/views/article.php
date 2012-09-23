@@ -130,7 +130,9 @@
 						"&credit=" + urlencode($("#photocredit").html()) +
 						"&caption=" + urlencode($("#photocaption").html()),
 					success: function(result){
-						refresh = true;
+						if(result=="Photo added.") {
+							refresh = true;
+						}
 						statusMessage += result;
 						// set hasphoto to true; set photoadded to false? ugh.
 					}
@@ -166,7 +168,7 @@
 					
 					$("#savenotify").html(result);
 					$("#savenotify").show();
-					$("#savenotify").fadeOut(2000);
+					$("#savenotify").fadeOut(4000);
 					
 					titleedited=false;
 					subtitleedited=false;
@@ -213,7 +215,7 @@
 		$("#deletearticle").click(function(event) {
 			event.preventDefault()
 			
-			if(confirm("Are you sure you want to delete this article?")) {
+			if(confirm("Are you sure you want to delete this article? (If this article has already been published, it's probs not kosher to delete it.)")) {
 				//note: "data:" is totally unused, but what'd happen if it weren't there??? (well, test!)
 				$.ajax({
 					type: "POST",
@@ -233,6 +235,28 @@
 			}
 			
 		} );
+		
+		$(".authorbox .delete").click(function(event) {
+			
+			var articleAuthorId = event.target.id.replace("deleteAuthor","");
+			
+			$.ajax({
+				type: "POST",
+				url: "<?=site_url()?>article/ajax_remove_article_author/"+articleAuthorId,
+				data: "remove=true",
+				success: function(result){
+					if(result=="Author removed.") {
+						var authorSelector = "#author"+articleAuthorId;
+						$(authorSelector).hide("fast");
+					}
+					//show alert
+					$("#savenotify").html(result);
+					$("#savenotify").show();
+					$("#savenotify").fadeOut(2000);
+				}
+			});
+			
+		});
 		
     });
     
@@ -318,10 +342,9 @@
 				
 			</hgroup>
 			<? if($authors): foreach($authors as $key => $author): ?>
-				<div class="authorbox<? if(bonus()):?> bonus<? endif; ?>">
-					<? if(!bonus()): ?><a href="<?=site_url()?>author/<?=$author->authorid?>"><? endif; ?>
-					<p class="articleauthor"><?=$author->authorname?></p>
-					<? if(!bonus()): ?></a><? endif; ?>
+				<div id="author<?=$author->articleauthorid?>" class="authorbox<? if(bonus()):?> bonus<? endif; ?>">
+					<? if(bonus()): ?><div id="deleteAuthor<?=$author->articleauthorid?>" class="delete">&times;</div><? endif; ?>
+					<a href="<?=site_url()?>author/<?=$author->authorid?>"><p class="articleauthor"><?=$author->authorname?></p></a>
 					<p class="articleauthorjob"><?=$author->jobname?></p>
 				</div>
 			<? endforeach; endif; ?>
