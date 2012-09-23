@@ -151,7 +151,7 @@ class Article extends CI_Controller {
 			$authorsuccess = $this->article_model->add_article_author($id, $author, $authorjob);
 			if($authorsuccess)
 			{
-				exit("refresh");
+				exit("Refreshing...");
 			}
 		}
 		

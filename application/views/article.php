@@ -105,20 +105,24 @@
 		});
 		
 		$('#photocaption').keydown(function() {
-    		photocationedited=true;
+    		photocaptionedited=true;
     		$('#photocaption').css("color", "darkred");
 		});
 		$('#photocaption').bind('paste', function() {
-    		photocationedited=true;
+    		photocaptionedited=true;
     		$('#photocaption').css("color", "darkred");
 		});
 		
     	$("#savearticle").click(function() {
 			
+			var statusMessage = '';
+			var refresh = false;
+			var calls = [];
+			
 			// if an image was added, save it.
 			// $('#dnd-holder').length != 0 && $('#dnd-holder').attr('class') == 'backgrounded'
 			if(photoadded) {
-				$.ajax({
+				calls.push($.ajax({
 					type: "POST",
 					url: "<?=site_url()?>article/ajax_add_photo/<?=$article->date?>/<?=$article->id?>",
 					data: 
@@ -126,10 +130,11 @@
 						"&credit=" + urlencode($("#photocredit").html()) +
 						"&caption=" + urlencode($("#photocaption").html()),
 					success: function(result){
-						$('#dnd-holder').css('border', '0');
+						refresh = true;
+						statusMessage += result;
 						// set hasphoto to true; set photoadded to false? ugh.
 					}
-				});
+				}));
 			}
 			
 			var ajaxrequest = 
@@ -147,23 +152,41 @@
 					"&pullquote=" + urlencode($('textarea[name=pullquote]').val());
 			if(bodyedited) { ajaxrequest += "&body=" + urlencode($("#articlebody").html()); }
 			
-			// #TODO: if an image already exists, update its credit & caption (if edited).
-			
 			// write title, subtitle, author, authorjob, bonus-meta stuff
 			// (regardless of whether they've been edited. sloppy.)
 			// and body, only if it's been edited
-			$.ajax({
+			calls.push($.ajax({
 				type: "POST",
 				url: "<?=site_url()?>article/edit/<?=$article->id?>",
 				data: ajaxrequest,
 				success: function(result){
-					if(result=="refresh") { window.location.reload(); }
+					if(result=="Refreshing...") { refresh = true; }
+					
+					statusMessage += result;
+					
 					$("#savenotify").html(result);
 					$("#savenotify").show();
 					$("#savenotify").fadeOut(2000);
+					
+					titleedited=false;
+					subtitleedited=false;
+					bodyedited=false;
+					photocreditedited=false;
+					photocaptionedited=false;
+					$('#articletitle, #articlesubtitle, #articlebody, #photocredit, #photocaption').css("color", "inherit");
+				}
+			}));
+			
+			$.when.apply($, calls).then(function() {
+				$("#savenotify").html(statusMessage);
+				$("#savenotify").show();
+				if(refresh) { 
+					window.location.reload(); 
+				}
+				else {
+					$("#savenotify").fadeOut(2000);
 				}
 			});
-			
 									
 		} );
 		
@@ -491,7 +514,7 @@
 
 <? endif; ?>
 
-<? if(count($photos) > 1): ?>
+<? if(count($photos) > 1 && !bonus()): ?>
 	<!-- SwipeView. Only needed for slideshows. -->
 	<script type="text/javascript" src="<?= base_url() ?>js/swipeview-mwidmann.js"></script>
 	<script type="text/javascript">
