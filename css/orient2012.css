@@ -626,6 +626,10 @@ img {
 	margin: 0;
 }
 
+#carousel h4 {
+	margin-bottom:0;
+}
+
 #carousel .series {
 	font-size: 1em;
 }
