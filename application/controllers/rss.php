@@ -19,10 +19,16 @@ class Rss extends CI_Controller {
 	
 	public function index()
 	{
+		redirect('rss/latest', 'refresh');
+	}
+	
+	public function latest()
+	{
 		$data->articles = $this->article_model->get_articles_by_date(date("Y-m-d"), false, false, 50);
 		$data->title = "The Bowdoin Orient";
 		$data->url = "http://bowdoinorient.com/";
 		$data->description = "The nation’s oldest continuously published college weekly";
+		header("Content-Type: text/xml");
 		$this->load->view('rss', $data);
 	}
 	
@@ -52,6 +58,7 @@ class Rss extends CI_Controller {
 		$data->title = $section." - The Bowdoin Orient";
 		$data->url = "http://bowdoinorient.com/#".$section;
 		$data->description = "The nation’s oldest continuously published college weekly";
+		header("Content-Type: text/xml");
 		$this->load->view('rss', $data);
 	}
 		
@@ -69,6 +76,7 @@ class Rss extends CI_Controller {
 			$data->title = $author->name." - The Bowdoin Orient";
 			$data->url = "http://bowdoinorient.com/author/".$id;
 			$data->description = $author->bio;
+			header("Content-Type: text/xml");
 			$this->load->view('rss', $data);
 		}
 	}
@@ -87,6 +95,7 @@ class Rss extends CI_Controller {
 			$data->title = $series->name." - The Bowdoin Orient";
 			$data->url = "http://bowdoinorient.com/series/".$id;
 			$data->description = $series->description;
+			header("Content-Type: text/xml");
 			$this->load->view('rss', $data);
 		}
 	}

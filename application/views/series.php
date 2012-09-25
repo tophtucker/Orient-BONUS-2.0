@@ -24,6 +24,9 @@
 	<link rel="apple-touch-icon" href="<?=base_url()?>images/o-114.png"/>
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
 	
+	<!-- rss -->
+	<link rel="alternate" type="application/rss+xml" title="<?=$series->name?> - The Bowdoin Orient" href="<?=base_url()?>rss/series/<?=$series->id?>" />
+	
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	
