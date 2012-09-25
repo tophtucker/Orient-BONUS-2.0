@@ -11,7 +11,7 @@ function xmlclean($string) {
     <description><?= xmlclean($description) ?></description>
     <? foreach($articles as $article): ?>
     <item>
-       <guid><?= $article->id ?></guid>
+       <guid>http://bowdoinorient.com/article/<?= $article->id ?></guid>
        <title><?= xmlclean($article->title) ?></title>
        <link>http://bowdoinorient.com/article/<?= $article->id ?></link>
        <pubDate><?= gmdate(DATE_RSS, strtotime($article->date)); ?></pubDate>

@@ -28,7 +28,7 @@
 	<!-- rss -->
 	<link rel="alternate" type="application/rss+xml" title="The Bowdoin Orient" href="<?=base_url()?>rss/latest" />
 	<? foreach($sections as $section): ?>
-	<link rel="alternate" type="application/rss+xml" title="<?=$section->name?> - The Bowdoin Orient" href="<?=base_url()?>rss/section/<?=$section->id?>" />
+	<link rel="alternate" type="application/rss+xml" title="The Bowdoin Orient - <?=$section->name?>" href="<?=base_url()?>rss/section/<?=$section->id?>" />
 	<? endforeach; ?>
 	
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
