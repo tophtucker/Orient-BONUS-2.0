@@ -470,6 +470,34 @@ img {
 }
 */
 
+#articletitle[contenteditable]:hover:not(:focus)::before {
+  content: "Edit title: ";
+}
+
+#articlesubtitle[contenteditable]:hover:not(:focus)::before {
+  content: "Edit subtitle: ";
+}
+
+#series[contenteditable]:hover:not(:focus)::before {
+  content: "Edit series: ";
+}
+
+#addauthor[contenteditable]:hover:not(:focus)::before {
+  content: "Add author: ";
+}
+
+#addauthorjob[contenteditable]:hover:not(:focus)::before {
+  content: "Add author job: ";
+}
+
+#cke_articlebody {
+	z-index: 99;
+}
+
+.cke_inner, .cke_toolgroup, .cke_combo_button {
+	background: white !important;
+}
+
 /*
 //
 //

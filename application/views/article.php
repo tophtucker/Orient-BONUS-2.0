@@ -48,6 +48,10 @@
 	<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
 	
 	<? if(bonus()): ?>
+	
+	<!-- CK Editor -->
+	<script type="text/javascript" src="<?=base_url()?>js/ckeditor/ckeditor.js"></script>
+	
 	<script>
 	
 	var titleedited=false;
@@ -530,6 +534,16 @@
 
 <? if(bonus()): ?>
 
+<!-- CK Editor -->
+<script>
+
+	// We need to turn off the automatic editor creation first.
+	CKEDITOR.disableAutoInline = true;
+	var editor = CKEDITOR.inline( 'articlebody' );
+
+</script>
+
+<!-- drag-and-drop image -->
 <script>
 	// drag-and-drop image
 	var holder = document.getElementById('dnd-holder');
