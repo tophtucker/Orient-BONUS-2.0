@@ -22,7 +22,6 @@ body {
 	top: 0;
 	height: 45px;
 	width: 100%;
-	z-index: 99;
 	background: white;
 }
 
@@ -232,7 +231,6 @@ footer .bonusquoteattribution {
 	bottom: 0;
 	height: 25px;
 	width: 100%;
-	z-index: 98;
 	background: url(../images/starring.png);
 	color: white;
 	padding: 10px;
@@ -259,6 +257,34 @@ footer .bonusquoteattribution {
 	font-size: 12pt;
 	margin-right: 5px;
 	display: none;
+}
+
+/*
+// Z-INDICES
+*/
+
+figure {
+	z-index: 98;
+}
+
+#mainhead {
+	z-index: 99;
+}
+
+#bonusbar {
+	z-index: 99;
+}
+
+#cke_articlebody {
+	z-index: 100;
+}
+
+#datepicker {
+	z-index: 101;
+}
+
+#submittipform {
+	z-index: 101;
 }
 
 /*
@@ -490,10 +516,6 @@ img {
   content: "Add author job: ";
 }
 
-#cke_articlebody {
-	z-index: 99;
-}
-
 .cke_inner, .cke_toolgroup, .cke_combo_button {
 	background: white !important;
 }
@@ -553,7 +575,6 @@ img {
 	background: white;
 	border: solid 1px black;
 	position: absolute;
-	z-index: 99;
 	margin-top: 3px;
 	padding: 5px;
 	box-shadow: 0px 0px 5px black;
@@ -606,7 +627,6 @@ img {
 	right: 20px;
 	border: 1px solid black;
 	box-shadow: 0px 0px 10px black;
-	z-index: 1000;
 	font-family:myriad-pro-condensed,helvetica,arial;
 }
 
@@ -770,6 +790,11 @@ section h2 {
 	border-left: solid 1px lightgray;
 	margin: 0 10px 10px 0;
 	overflow: hidden;
+	
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+
 }
 
 .articleblock li.draft, .carouseltile.draft {
