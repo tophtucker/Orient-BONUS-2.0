@@ -537,10 +537,42 @@
 <!-- CK Editor -->
 <script>
 
+	CKEDITOR.on( 'instanceCreated', function( event ) {
+			var editor = event.editor,
+				element = editor.element;
+
+			// Customize editors for headers and tag list.
+			// These editors don't need features like smileys, templates, iframes etc.
+			if ( element.is( 'div' ) || element.getAttribute( 'id' ) == 'taglist' ) {
+				// Customize the editor configurations on "configLoaded" event,
+				// which is fired after the configuration file loading and
+				// execution. This makes it possible to change the
+				// configurations before the editor initialization takes place.
+				editor.on( 'configLoaded', function() {
+
+					// Remove unnecessary plugins to make the editor simpler.
+					editor.config.removePlugins = 'colorbutton,find,flash,font,' +
+						'forms,iframe,image,newpage,scayt,' +
+						'smiley,specialchar,stylescombo,templates,wsc,contextmenu,liststyle,tabletools';
+
+					// Rearrange the layout of the toolbar.
+					editor.config.toolbarGroups = [
+						{ name: 'editing',		groups: [ 'basicstyles', 'links' ], items: ['Format', 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv','-','JustifyLeft','JustifyCenter','JustifyRight'] },
+						{ name: 'undo' },
+						{ name: 'clipboard',	groups: [ 'clipboard' ], items: ['RemoveFormat'] },
+						{ name: 'showblocks', items: ['ShowBlocks']}
+					];
+				});
+			}
+		});
+
+	
 	// We need to turn off the automatic editor creation first.
 	CKEDITOR.disableAutoInline = true;
 	var editor = CKEDITOR.inline( 'articlebody' );
-
+	
+	
+	
 </script>
 
 <!-- drag-and-drop image -->
