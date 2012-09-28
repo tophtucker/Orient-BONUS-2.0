@@ -75,7 +75,7 @@
 				<li>Items were posted on the web at the same time as print publication. Thus, at the time of publication, the newspaper's position as a public forum included the web-based dissemination of content.</li>
 			</ul>
 			<p>Should a discussion of Orient content arise in a job interview situation, the editors would advise any former contributors to the Orient to explain how and why their views have changed, if that is the case.</p>
-			<p><em>October 2011</em></p>
+			<!--<p><em>October 2011</em></p>-->
 		
 		</div>
 	  

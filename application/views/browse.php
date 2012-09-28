@@ -163,7 +163,7 @@
 			
 			<ul class="articleblock">
 				<? foreach($articles[$section->name] as $article): ?>
-				<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?><? if(strtotime($issue->issue_date)-strtotime($article->date) > (7*24*60*60)): ?> old<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
+				<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?><? if(strtotime($date)-strtotime($article->date) > (7*24*60*60)): ?> old<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
 					<a href="<?=site_url()?>article/<?=$article->id?>">
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
