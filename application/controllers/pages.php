@@ -26,6 +26,20 @@ class Pages extends CI_Controller {
 		$this->load->view('about', $data);
 	}
 	
+	public function ethics()
+	{
+		$data->footerdata->quote = $this->attachments_model->get_random_quote();
+		$data->headerdata->date = date("Y-m-d");
+		$this->load->view('ethics', $data);
+	}
+	
+	public function nonremoval()
+	{
+		$data->footerdata->quote = $this->attachments_model->get_random_quote();
+		$data->headerdata->date = date("Y-m-d");
+		$this->load->view('nonremoval', $data);
+	}
+	
 	public function contact()
 	{
 		$data->footerdata->quote = $this->attachments_model->get_random_quote();

@@ -64,9 +64,17 @@
 					<div class="street-address">6200 College Station</div>
 					<div class="locality">Brunswick</span>, <span class="region">Maine</span> <span class="postal-code">04011</div>
 				</div>
-				<div class="staff"><span class="position">Editor in Chief:</span> <br>Linda Kinstler</div>
+				<!--<div class="staff"><span class="position">Editor in Chief:</span> <br>Linda Kinstler</div>-->
 			</div>
 		</div>
+		
+		<figure id="contents">
+			<h3>Related links</h3>
+			<ul>
+				<li><?=anchor('pages/ethics','Ethical Practices Policy')?></li>
+				<li><?=anchor('pages/nonremoval', 'Web Non-Removal Policy')?></li>
+			</ul>
+		</figure>
 		
 		<div id="articlebody" class="articlebody">
 

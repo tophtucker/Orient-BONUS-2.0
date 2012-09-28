@@ -379,6 +379,12 @@ p {
 	padding: 0 0 18px 0;
 }
 
+ol, #articlebody ul {
+	font-family: minion-pro,Georgia;
+	font-size: 15px;
+	line-height: 24px;
+}
+
 a {
 	color: darkblue;
 	text-decoration: none;
@@ -429,7 +435,7 @@ h2 {
 	font-family: minion-pro,Georgia;
 	font-weight: normal;
 	margin: 0;
-	clear: both;
+	clear: left;
 }
 
 .type, .series {
@@ -1149,13 +1155,14 @@ article header {
 	margin-bottom: 2px;
 }
 
-.articlebody h3 {
+.articlebody h3, figure#contents h3 {
 	font-variant: small-caps;
 	clear: left;
 }
 
 figure {
 	position: relative;
+	clear: right;
 }
 
 figure img {
@@ -1205,6 +1212,16 @@ figure p {
 .articlemedia .delete:hover {
 	color: red;
 	cursor: pointer;
+}
+
+figure#contents h3 {
+	margin:0;
+}
+
+figure#contents ul, figure#contents li {
+	list-style:none;
+	margin:0;
+	padding:0;
 }
 
 .lede {
@@ -1363,7 +1380,7 @@ button .buttontext {
 /* CONTACT BOX */
 /* /////////// */
 
-#contactbox {
+#contactbox, figure#contents {
 	float: right;
 	width: 250px;
 	padding: 20px;

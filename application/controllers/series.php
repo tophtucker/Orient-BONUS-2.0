@@ -12,7 +12,7 @@ class Series extends CI_Controller {
 	
 	public function index($id = '')
 	{
-		if(!$id) 
+		if(!$id || $id=='0') 
 		{
 			$this->error();
 		}
@@ -32,7 +32,7 @@ class Series extends CI_Controller {
 	{
 		$series = $this->series_model->get_series($id);
 		
-		if(!$series) 
+		if(!$series || $id==0) 
 		{
 			$this->error("No such series exists.");
 		}
