@@ -142,6 +142,7 @@
 				<? foreach($popular as $article): ?>
 				<li class="smalltile">
 					<a href="<?=site_url()?>article/<?=$article->id?>">
+					<div class="dateified"><?=dateify($article->date, $date)?></div>
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
@@ -165,6 +166,7 @@
 				<? foreach($articles[$section->name] as $article): ?>
 				<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?><? if(strtotime($date)-strtotime($article->date) > (7*24*60*60)): ?> old<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
 					<a href="<?=site_url()?>article/<?=$article->id?>">
+					<div class="dateified"><?=dateify($article->date, $date)?></div>
 					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
 					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>

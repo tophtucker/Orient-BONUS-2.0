@@ -810,6 +810,7 @@ section h2 {
 
 .articleblock li a {
 	display: block;
+	position: relative;
 	height: 100%;
 	width: 100%;
 	padding: 0;
@@ -854,6 +855,44 @@ section h2 {
 
 .old:hover {
 	opacity: 1;
+}
+
+.dateified {
+	display: block;
+	font-size: 10px;
+	position: absolute;
+	bottom: 0px;
+	text-align: right;
+	width: 100%;
+	text-shadow: 0 0 10px white;
+
+	/* Webkit */
+	background: -webkit-gradient(
+		linear,
+		right top,
+		left top,
+		color-stop(1, rgba(255,255,255,0.0)), /* Top */
+		color-stop(0, rgba(255,255,255,1.0)) /* Bottom */
+	);
+	
+	/* Gecko */
+	background: -moz-linear-gradient(
+		right,
+		rgba(255,255,255,1.0) 0%, /* Bottom */
+		rgba(255,255,255,0.0) 100% /* Top */
+	);
+}
+
+.dateified .today {
+	color: red !important;
+}
+
+.dateified .recent {
+	color: black !important;
+}
+
+.dateified .old {
+	color: gray !important;
 }
 
 /* homepage social media button responses */
