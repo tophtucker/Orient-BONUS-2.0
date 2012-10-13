@@ -54,12 +54,20 @@
 		</header>
 		
 		<div id="contactbox">
-			<p>Pay by PayPal or send a check:</p>
-
-			<p>The Bowdoin Orient
-			<br/>Attn: Business Team
-			<br/>6200 College Station 
-			<br/>Brunswick, ME 04011-8462</p>
+		
+			<!-- Begin MailChimp Signup Form -->
+			<div id="mc_embed_signup">
+			<form action="http://bowdoinorient.us4.list-manage.com/subscribe/post?u=eab94f63abe221b2ef4a4baec&amp;id=739fef0bb9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+				<h2>Weekly email newsletter</h2>
+			<div class="mc-field-group">
+				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
+				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+			</div>
+				
+			</form>
+			</div>
+			
+			<!--End mc_embed_signup-->
 		</div>
 		
 		<div id="articlebody" class="articlebody">
@@ -76,7 +84,7 @@
 					<li>Access to Bowdoin's newsmakers and leaders.</li>
 					<li>Context for a Bowdoin education.</li>
 				</ul>
-				
+			
 			<h3>Domestic Rates</h3>
 			
 			<table class="subscription-table three-col">
@@ -156,6 +164,13 @@
 
 				</tr>
 			</table>
+			
+			<h3>Or send a check:</h3>
+			<p>The Bowdoin Orient
+			<br/>Attn: Business Team
+			<br/>6200 College Station 
+			<br/>Brunswick, ME 04011-8462</p>
+
 
 		</div>
 	  
