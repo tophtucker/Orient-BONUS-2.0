@@ -51,6 +51,20 @@ class Browse extends CI_Controller {
 			$nextissue = $this->issue_model->get_adjacent_issue($volume, $issue_number, 1);
 			$previssue = $this->issue_model->get_adjacent_issue($volume, $issue_number, -1);
 			
+			// scribd
+			$scribd_thumb_url = false;
+			if($issue->scribd) {
+				$ch = curl_init();	
+				curl_setopt($ch, CURLOPT_URL, "http://api.scribd.com/api?method=thumbnail.get&api_key=34m5pzwzt3fqi0fod70cc&doc_id=".$issue->scribd);
+				curl_setopt($ch, CURLOPT_HEADER, 0);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				$scribd_thumb_response = curl_exec($ch);
+				curl_close($ch);
+				
+				$scribd_thumb = new SimpleXMLElement($scribd_thumb_response);
+				$scribd_thumb_url = $scribd_thumb->thumbnail_url;
+			}
+						
 			// featured articles for carousel
 			$featured = $this->article_model->get_articles_by_date($date, false, false, '10', true);
 			
@@ -86,6 +100,7 @@ class Browse extends CI_Controller {
 			
 			$data->date = $date;
 			$data->issue = $issue;
+			$data->scribd_thumb_url = $scribd_thumb_url;
 			$data->nextissue = $nextissue;
 			$data->previssue = $previssue;
 			$data->featured = $featured;

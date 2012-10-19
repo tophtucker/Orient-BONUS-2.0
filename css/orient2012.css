@@ -728,15 +728,47 @@ img {
 
 section {
 	width: 100%;
-	clear: both;
+	clear: left;
 	float: left;
 }
 
-section h2 {
+section h2, #sidebar h2 {
 	margin: 0 0 25px 0;
 	font-variant: small-caps;
 	font-weight: bold;
 	border-bottom: solid 1px lightgray;
+}
+
+.issuesection {
+	width: 80%;
+}
+
+/* sidebar */
+
+#sidebar {
+	float:right;
+	border-left: solid 1px lightgray;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding: 0 0 0 20px;
+	width:20%;
+	margin-top:65px;
+}
+
+#sidebar h2 {
+	margin-top: 20px;
+}
+
+.issue_thumb {
+	float:left;
+	margin-bottom:20px;
+}
+
+.scribd_block a {
+	display: block;
+	width: 100%;
+	height: 142px;
 }
 
 /* carousel tiles */
@@ -991,6 +1023,10 @@ section h2 {
 	
 	.hidetablet {
 		display: none !important;
+	}
+	
+	.issuesection {
+		width: 100%;
 	}
 	
 	#carousel {

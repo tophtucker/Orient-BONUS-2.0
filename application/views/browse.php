@@ -155,6 +155,46 @@
 		
 	</section>
 	
+	<!-- Below-the-fold sidebar -->
+	<div id="sidebar" class="hidetablet">
+			
+		<!-- Begin MailChimp Signup Form -->
+		<div id="mc_embed_signup">
+			<form action="http://bowdoinorient.us4.list-manage.com/subscribe/post?u=eab94f63abe221b2ef4a4baec&amp;id=739fef0bb9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+			<h2 style="margin-top:0">Weekly newsletter</h2>
+			<div class="mc-field-group">
+				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
+				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+			</div>
+		</div>
+		<!-- end MailChimp -->
+		
+		<!-- Scribd issue download -->
+		<? if($scribd_thumb_url): ?>
+		<h2>Download issue</h2>
+		<div class="scribd_block">
+			<a href="http://www.scribd.com/doc/<?=$issue->scribd?>" target="new">
+			<img src="<?=$scribd_thumb_url?>" class="issue_thumb">
+			Volume <?=$issue->volume;?><br/>
+			Number <?=$issue->issue_number;?><br/>
+			<?=date("F j, Y",strtotime($issue->issue_date))?>
+			</a>
+		</div>
+		<? endif; ?>
+		<!-- end Scribd -->
+		
+		<!-- Disqus recent comments -->
+		<div id="recentcomments" class="dsq-widget">
+			<h2 class="dsq-widget-title">Recent Comments</h2>
+			<script type="text/javascript" src="http://disqus.com/forums/bowdoinorient/recent_comments_widget.js?num_items=8&hide_avatars=1&avatar_size=24&excerpt_length=140"></script>
+		</div>
+		<!-- End Disqus -->
+		
+		<!-- Plancast events -->
+		<script type="text/javascript" src="http://plancast.com/goodies/widgets/sidebar/1/43729"></script>
+				
+	</div>
+	
 	<? foreach($sections as $section): ?>
 		
 		<? if(!empty($articles[$section->name])): ?>
@@ -184,6 +224,8 @@
 		<? endif; ?>
 	
 	<? endforeach; ?>
+	
+	
 	
 </div>
 

@@ -66,7 +66,7 @@ $(function() {
 	<span class="hidemobile">
 	<?if(isset($volume) && isset($issue_number)):?>
 		<? if(!empty($previssue)):?><a href="<?=site_url()?>browse/<?=$previssue->issue_date?>" class="issue-nav-arrow">&#x25C4;</a> <?endif;?>
-		<? if(isset($issue) && !empty($issue->scribd)): ?><a href="<?=$issue->scribd?>" class="scribd-link" target="new"><? endif; ?>Vol. <?=$volume?>, No. <?=$issue_number?><? if(isset($issue) && !empty($issue->scribd)): ?></a><? endif; ?> 
+		<? if(isset($issue) && !empty($issue->scribd)): ?><a href="http://www.scribd.com/doc/<?=$issue->scribd?>" class="scribd-link" target="new"><? endif; ?>Vol. <?=$volume?>, No. <?=$issue_number?><? if(isset($issue) && !empty($issue->scribd)): ?></a><? endif; ?> 
 		<? if(!empty($nextissue)):?><a href="<?=site_url()?>browse/<?=$nextissue->issue_date?>" class="issue-nav-arrow">&#x25BA;</a> <?endif;?>&middot;
 	<?endif;?>
 	</span>
