@@ -115,30 +115,49 @@
 						
 						<p class="stafftitle">Opinion Editor</p>
 						<p>Luke Drabyn</p>
+						
+						<p class="stafftitle">Calendar Editor</p>
+						<p>Carolyn Veilleux</p>
+						
 					</div>
 					<div class="column">
-						<p class="stafftitle">Senior Reporters</p>
+						<p class="stafftitle">Associate Editors</p>
 						<p>Dylan Hammer</p>
 						<p>Zohran Mamdani</p>
+						<p>Diana Lee</p>
+						
+						<p class="stafftitle">Senior Reporters</p>
+						<p>Peter Davis</p>
 						<p>Sam Miller</p>
-
-						<p class="stafftitle">Layout Editors</p>
-						<p>Ted Clark</p>
-						<p>Leo Shaw</p>
+						<p>Maeve O'Leary</p>
+						
+						<p class="stafftitle">Information Architect</p>
+						<p>Toph Tucker</p>
+						
+						<p class="stafftitle">Web Manager</p>
+						<p>Matthew Gutschenritter</p>
+						
+						<p class="stafftitle">Beats Editor</p>
+						<p>Sophia Cheng</p>
 					</div>
 					<div class="column">
-						<p class="stafftitle">Page Two Editor</p>
-						<p>Sophia Cheng</p>
+						<p class="stafftitle">Layout Editor</p>
+						<p>Ted Clark</p>
+						
+						<p class="stafftitle">Graphic Designer</p>
+						<p>Leo Shaw</p>
 						
 						<p class="stafftitle">Photo Editor</p>
 						<p>Kate Featherston</p>
+						
+						<p class="stafftitle">Asst. Photo Editor</p>
+						<p>Hy Khong</p>
 						
 						<p class="stafftitle">Business Managers</p>
 						<p>Maya Lloyd</p>
 						<p>Madison Whitley</p>
 
-						<p class="stafftitle">Information Architect</p>
-						<p>Toph Tucker</p>
+						
 					</div>
 				</div>
 				
@@ -146,6 +165,12 @@
 			
 			<div style="clear:both;"></div>
 			
+			<h3>History</h3>
+			<p>The Bowdoin Orient was established in 1871 as Bowdoin College's newspaper and literary magazine. Originally issued bi-weekly, it has been a weekly since April, 1899. It is considered to be the oldest continuously-published college weekly in the U.S., which means that it has been in publication every academic year that Bowdoin has been in session since it began publishing weekly (while other college weeklies stopped printing during certain war years).</p>
+			<p>In the beginning, the Orient was laid out in a smaller magazine format, and included literary material such as poems and fiction alongside its news. In 1897, the literary society formed its own publication, The Quill, and the Orient has since primarily focused on reporting news. In 1921, the Orient moved from the magazine format to a larger broadsheet layout and has changed between broadsheet and tabloid sizes frequently.</p>
+			<p>In 1912, The Bowdoin Publishing Company was established as the formal publisher of the Orient, and remained independent of the College for many years while using college facilities and working with faculty-member advisers. The Bowdoin Publishing Company was a legal, non-profit corporation in the State of Maine for many years (at least from 1968 to 1989), though it was most likely an independent corporation since its inception. In recent years, the Orient has printed with the presses of the <a href="http://www.timesrecord.com/">Brunswick Times Record</a>.</p>
+			<p>The Orient building has its own archives, with issues dating back to 1873, but it is missing several periods of time. The Hawthorne-Longfellow Library has a nearly complete archive of past Orient issues, both in print and on microform. Virtually all print issues are available from 1871 to the present in Special Collections and Archives. Bound copies from 1871 to 1921 can be found in the periodicals section of the library. Microform is available for issues 1921 to the present, and can be accessed at any time.</p>
+		
 			<h3>Website</h3>
 			<p>The new bowdoinorient.com has been rebuilt from scratch for a clean, modern experience across all devices, and to support an increasingly digital-first operation. The CMS is custom-built in the CodeIgniter PHP framework. With this redesign, it has moved from its longtime orient.bowdoin.edu address to bowdoinorient.com.</p>
 			<p>The website went online around 2000. It was previously redesigned in 2001, 2004 (becoming database-driven), and 2009 (with a complete visual overhaul).</p>
@@ -154,12 +179,6 @@
 			<p>Bowdoinorient.com requires a modern browser. If things look wrong, <a href="http://www.whatbrowser.org/en/browser/">it's time to upgrade</a>. (We recommended a WebKit-based browser like <a href="http://www.google.com/intl/en/chrome/">Chrome</a> or <a href="http://apple.com/safari">Safari</a>.)
 			<!-- Other browser ballots include WordPress's http://browsehappy.com/ and Microsoft's http://browserchoice.eu/ -->
 			
-			<h3>History</h3>
-			<p>The Bowdoin Orient was established in 1871 as Bowdoin College's newspaper and literary magazine. Originally issued bi-weekly, it has been a weekly since April, 1899. It is considered to be the oldest continuously-published college weekly in the U.S., which means that it has been in publication every academic year that Bowdoin has been in session since it began publishing weekly (while other college weeklies stopped printing during certain war years).</p>
-			<p>In the beginning, the Orient was laid out in a smaller magazine format, and included literary material such as poems and fiction alongside its news. In 1897, the literary society formed its own publication, The Quill, and the Orient has since primarily focused on reporting news. In 1921, the Orient moved from the magazine format to a larger broadsheet layout and has changed between broadsheet and tabloid sizes frequently.</p>
-			<p>In 1912, The Bowdoin Publishing Company was established as the formal publisher of the Orient, and remained independent of the College for many years while using college facilities and working with faculty-member advisers. The Bowdoin Publishing Company was a legal, non-profit corporation in the State of Maine for many years (at least from 1968 to 1989), though it was most likely an independent corporation since its inception. In recent years, the Orient printed with the presses of the Brunswick Times Record, though switched to using Central Maine Papers (publisher of The Kennebec Journal) in 2005 and increased the number of full-color pages per issue from two to four.</p>
-			<p>The Orient building has its own archives, with issues dating back to 1873, but it is missing several periods of time. The Hawthorne-Longfellow Library has a nearly complete archive of past Orient issues, both in print and on microform. Virtually all print issues are available from 1871 to the present in Special Collections and Archives. Bound copies from 1871 to 1921 can be found in the periodicals section of the library. Microform is available for issues 1921 to the present, and can be accessed at any time.</p>
-		
 		</div>
 	  
 	</article>
