@@ -81,6 +81,13 @@ class Pages extends CI_Controller {
 		}
 	}
 	
+	public function survey()
+	{
+		$data->footerdata->quote = $this->attachments_model->get_random_quote();
+		$data->headerdata->date = date("Y-m-d");
+		$this->load->view('survey', $data);
+	}
+	
 	public function archives()
 	{
 		
