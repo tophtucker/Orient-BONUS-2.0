@@ -6,7 +6,7 @@
 	<title>The Bowdoin Orient</title>
 	<link rel="shortcut icon" href="<?=base_url()?>images/o-32-transparent.png">
 	
-	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
+	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=2">
 	
 	<meta name="description" content="The Bowdoin Orient is a student-run publication dedicated to providing news and media relevant to the Bowdoin College community." />
 	
@@ -164,7 +164,7 @@
 			<h2 style="margin-top:0">Weekly newsletter</h2>
 			<div class="mc-field-group">
 				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
-				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+				<input type="submit" value="Subscribe, free" name="subscribe" id="mc-embedded-subscribe" class="button">
 			</div>
 		</div>
 		<!-- end MailChimp -->

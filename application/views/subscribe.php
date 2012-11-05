@@ -61,7 +61,7 @@
 				<h2>Weekly email newsletter</h2>
 			<div class="mc-field-group">
 				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
-				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+				<input type="submit" value="Subscribe, free" name="subscribe" id="mc-embedded-subscribe" class="button">
 			</div>
 				
 			</form>
