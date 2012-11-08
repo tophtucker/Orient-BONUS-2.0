@@ -54,5 +54,7 @@ $route['archives'] = "pages/archives";
 $route['subscribe'] = "pages/subscribe";
 $route['advertise'] = "pages/advertise";
 
+$route['election2012'] = "article/view/7677";
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

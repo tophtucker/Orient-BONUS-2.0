@@ -482,6 +482,23 @@
 			</figure>
 		<? endif; ?>
 		
+		<? if($article->id == '7677' && !bonus()): ?>
+			<figure>
+				<a class="twitter-timeline" href="https://twitter.com/bowdoinorient" data-widget-id="265950106606518272">Tweets by @bowdoinorient</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</figure>
+			
+			<figure id="contents" style="width:500px;box-sizing:border-box;text-align:left;">
+				<h3>Related links</h3>
+				<ul>
+					<li><a href="http://bowdoinorient.com/article/7668">76 percent of students to vote Obama, poll finds <em>(Nov. 2, 2012)</em></a></li>
+					<li><a href="http://bowdoinorient.com/article/3888">Students rejoice in Obama victory <em>(Nov. 7, 2008)</em></a></li>
+					<li><a href="http://bowdoinorient.com/article/3852">Poll: 84 percent support Obama <em>(Oct. 31, 2008)</em></a></li>
+					<li><a href="http://bowdoinorientexpress.com/post/1466735555/election-night-cutler-takes-early-lead-pingree-wins">OE: 2010 election liveblog <em>(Nov. 2, 2010)</em></a></li>
+				</ul>
+			</figure>
+		<? endif; ?>
+		
 		<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>>
 			<? if(!empty($body)): ?>
 				<?=$body->body;?>
