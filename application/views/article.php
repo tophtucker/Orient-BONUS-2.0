@@ -155,6 +155,7 @@
 					"&priority=" + urlencode($('input[name=priority]').val()) +
 					"&published=" + $('input[name=published]').prop('checked') +
 					"&featured=" + $('input[name=featured]').prop('checked') +
+					"&opinion=" + $('input[name=opinion]').prop('checked') +
 					"&pullquote=" + urlencode($('textarea[name=pullquote]').val());
 			if(bodyedited) { ajaxrequest += "&body=" + urlencode($("#articlebody").html()); }
 			
@@ -473,6 +474,7 @@
 					<li>Priority: <input type="text" name="priority" id="priority" size="2" value="<?=$article->priority?>" /></li>
 					<li>Published: <input type="checkbox" name="published" value="published" <? if($article->published): ?>checked="checked"<? endif; ?> /></li>
 					<li>Featured: <input type="checkbox" name="featured" value="featured" <? if($article->featured): ?>checked="checked"<? endif; ?> /></li>
+					<li>Opinion: <input type="checkbox" name="opinion" value="opinion" <? if($article->opinion): ?>checked="checked"<? endif; ?> /></li>
 				</ul>
 				<ul id="bonus-stats">
 					<li>Pullquote: <br/><textarea rows="6" cols="30" name="pullquote" id="pullquote"><?=$article->pullquote?></textarea></li>
