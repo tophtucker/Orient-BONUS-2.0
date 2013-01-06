@@ -6,7 +6,7 @@
 	<title>Survey - The Bowdoin Orient</title>
 	<link rel="shortcut icon" href="<?=base_url()?>images/favicon-o.png">
 	
-	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=1">
+	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=2">
 	
 	<!-- jQuery -->
 	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> -->
