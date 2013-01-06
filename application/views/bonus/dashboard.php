@@ -25,6 +25,8 @@
 		
 	<h3>Dashboard</h3>
 	
+	<h3><?=date("F j, Y h:i:s a",strtotime("Sunday 12 p.m."))?></h3>
+	
 	<h4>Tips</h4>
 	
 	<? if(!empty($tips)): ?>

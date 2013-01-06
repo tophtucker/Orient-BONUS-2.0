@@ -257,9 +257,9 @@ class Article_model extends CI_Model {
 		   'issue_number' => $issue_number,
 		   'section_id' => $section,
 		   'priority' => '10',
-		   'title' => "Enter title here",
+		   'title' => '',
 		   'subhead' => '',
-		   'pullquote' => '',
+		   'pullquote' => ''
 		);
 		$query = $this->db->insert('article', $data);
 		return $this->db->insert_id();
