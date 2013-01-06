@@ -8,6 +8,7 @@ class Article extends CI_Controller {
 		$this->load->model('issue_model', '', TRUE);
 		$this->load->model('article_model', '', TRUE);
 		$this->load->model('attachments_model', '', TRUE);
+		$this->load->model('tools_model', '', TRUE);
 	}
 	
 	public function index($id = '')
@@ -54,6 +55,7 @@ class Article extends CI_Controller {
 			$data->headerdata->volume = $article->volume;
 			$data->headerdata->issue_number = $article->issue_number;
 			$data->headerdata->section_id = $article->section_id;
+			$data->headerdata->alerts = $this->tools_model->get_alerts();
 						
 			$data->article = $article;
 			$data->body = $body;
@@ -118,6 +120,7 @@ class Article extends CI_Controller {
 		
 		$published = ($this->input->post("published") == 'true' ? '1' : '0');
 		$featured = ($this->input->post("featured") == 'true' ? '1' : '0');
+		$opinion = ($this->input->post("opinion") == 'true' ? '1' : '0');
 		
 		$data = array(
 			'title' 		=> $title,
@@ -129,6 +132,8 @@ class Article extends CI_Controller {
 			'priority'		=> trim(urldecode($this->input->post("priority"))),
 			'published'		=> $published,
 			'featured'		=> $featured,
+			'opinion'		=> $opinion,
+			'active'		=> '1'
 			);
 		$articlesuccess = $this->article_model->edit_article($id, $data);
 		

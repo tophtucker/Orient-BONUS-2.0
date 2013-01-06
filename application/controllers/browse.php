@@ -8,6 +8,7 @@ class Browse extends CI_Controller {
 		$this->load->model('issue_model', '', TRUE);
 		$this->load->model('article_model', '', TRUE);
 		$this->load->model('attachments_model', '', TRUE);
+		$this->load->model('tools_model', '', TRUE);
 	}
 	
 	public function index()
@@ -97,6 +98,7 @@ class Browse extends CI_Controller {
 			$data->headerdata->volume = $volume;
 			$data->headerdata->issue_number = $issue_number;
 			$data->headerdata->issue = $issue;
+			$data->headerdata->alerts = $this->tools_model->get_alerts();
 			
 			$data->date = $date;
 			$data->issue = $issue;

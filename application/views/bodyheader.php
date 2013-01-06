@@ -88,6 +88,16 @@ $(function() {
 	<button id="tipsubmit">Submit</button>
 </div>
 
+<? if(isset($alerts)): ?>
+	<div id="alertbar">
+		<? foreach($alerts as $alert): ?>
+			<div class="alert<?if($alert->urgent == '1'):?> urgent<?endif;?>">
+				&#9758; <?=$alert->message ?>
+			</div>
+		<? endforeach; ?>
+	</div>
+<? endif; ?>
+
 <script>
 
 $("#lastupdated").click(function () {

@@ -21,6 +21,15 @@ class Tools_model extends CI_Model {
 		$query = $this->db->get('tips');
 		return $query->result();
 	}
-        
+	
+	function get_alerts()
+	{
+		$this->db->where('active','1');
+		$this->db->where('start_date <= ', 'NOW()', false);
+		$this->db->where('end_date >= ', 'NOW()', false);
+		$query = $this->db->get('alerts');
+		return $query->result();
+    }
+       
 }
 ?>
