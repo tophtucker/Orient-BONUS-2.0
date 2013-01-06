@@ -41,19 +41,19 @@ h2 {
 	font-variant: small-caps; 
 }
 
-form {
+.loginform {
 	width: 50%;
 	margin: 30px auto;
 }
 
-input {
+.loginform input {
 	width: 100%;
 	font-size: 20pt;
 	padding: 5px;
 	margin-bottom: 20px;
 }
 
-button {
+.loginform button {
 	font-size: 20pt;
 	padding: 5px;
 	width:100px;

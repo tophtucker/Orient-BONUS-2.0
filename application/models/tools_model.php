@@ -30,6 +30,18 @@ class Tools_model extends CI_Model {
 		$query = $this->db->get('alerts');
 		return $query->result();
     }
-       
+    
+    function add_alert($data)
+    {
+    	return $this->db->insert('alerts', $data); 
+    }
+    
+    function delete_alert($id)
+    {
+    	$this->db->set('active','0');
+    	$this->db->where('id',$id);
+    	return $this->db->update('alerts');
+	}
+
 }
 ?>

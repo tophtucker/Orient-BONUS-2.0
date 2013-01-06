@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>BONUS</title>
+	<title>BONUS - Alerts</title>
 	<link rel="shortcut icon" href="<?=base_url()?>/images/favicon.png">
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>/css/bonus.css?v=1">
 	
@@ -23,17 +23,33 @@
 
 <div id="content">
 		
-	<h3>Dashboard</h3>
+	<h3>Add Alert</h3>
 	
-	<!--<h3><?=date("F j, Y h:i:s a",strtotime("Sunday 12 p.m."))?></h3>-->
-	<h4><?=anchor('bonus/alerts','Alerts')?></h4>
+	<?= form_open() ?>
+	Message (HTML): 
+	<br/><textarea width="30" height="2" name="message"></textarea>
+	<br/>Start date: <input type="datetime" name="start_date" value="<?=date("Y-m-d H:i:s",time())?>">
+	<br/>End date: <input type="datetime" name="end_date">
+	<br/>Urgent: <input type="checkbox" name="urgent" value="1"/>
+	<?= form_submit('submit',"Add alert") ?>
+	<?= form_close() ?>
 	
-	<h4>Tips</h4>
 	
-	<? if(!empty($tips)): ?>
-	<? foreach($tips as $tip): ?>
-	<p><?= $tip->tip ?> &mdash;<?=$tip->submitted; ?></p>
+	<h3>Existing alerts</h3>
+	
+	<? if(!empty($alerts)): ?>
+	<table>
+	<th><tr><td>Message</td><td>Urgent?</td><td>Start date</td><td>End date</td><td>Delete?</td></tr></th>
+	<? foreach($alerts as $alert): ?>
+	<tr>
+	<td><?=$alert->message; ?></td>
+	<td><?=$alert->urgent; ?></td>
+	<td><?=$alert->start_date; ?></td>
+	<td><?=$alert->end_date; ?></td>
+	<td><?=anchor('bonus/deletealert/'.$alert->id,'&times;')?></td>
+	<tr>
 	<? endforeach; ?>
+	</table>
 	<? endif; ?>
 
 </div>

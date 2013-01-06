@@ -66,6 +66,48 @@ class Bonus extends CI_Controller {
 		}
 	}
 	
+	function alerts()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			if (!empty($_POST))
+			{
+				$insertdata = array(
+					'message' 		=> $this->input->post("message"),
+					'start_date' 		=> $this->input->post("start_date"),
+					'end_date' 		=> $this->input->post("end_date"),
+					'urgent'		=> ($this->input->post("urgent") == '1' ? '1' : '0')
+				);
+				$this->tools_model->add_alert($insertdata);
+			}
+			
+			$this->load->helper(array('form'));
+			
+			$data->quote = $this->attachments_model->get_random_quote(false);
+			$data->alerts = $this->tools_model->get_alerts();
+			$this->load->view('bonus/alerts', $data);
+		}
+		else
+		{
+			//If no session, redirect to login page
+			redirect('bonus/login', 'refresh');
+		}
+	}
+	
+	function deletealert($id)
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$this->tools_model->delete_alert($id);
+			redirect('bonus/alerts');
+		}
+		else
+		{
+			//If no session, redirect to login page
+			redirect('bonus/login', 'refresh');
+		}
+	}
+	
 	function logout()
 	{
 		$this->session->unset_userdata('logged_in');
