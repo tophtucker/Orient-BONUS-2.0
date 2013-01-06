@@ -23,7 +23,7 @@ body {
 
 header {
 	display: block; 
-	width: 440px; 
+	width: 615px; 
 	margin: 0 auto;
 }
 
@@ -33,7 +33,9 @@ header {
 }
 
 #content {
-	text-align: center;
+	width:615px;
+	margin: 0 auto;
+	text-align: left;
 }
 
 h1 {
@@ -45,7 +47,7 @@ h2 {
 	font-size: 5em;
 	font-weight: bold;
 	margin: 10px 0 0 0;
-	text-align: center;
+	text-align: left;
 	line-height: 1em;
 }
 
@@ -54,7 +56,7 @@ h3 {
 	font-size: 3em;
 	font-weight: normal;
 	margin: 0 0 20px 0;
-	text-align: center;
+	text-align: left;
 }
 
 p {
@@ -77,7 +79,7 @@ p {
 
 <div id="content">
 	<!--<img src="<?=base_url()?>images/abandoned-newspaper-boxes-ap-noah-berger.jpeg">-->
-	<iframe width="615" height="346" src="http://www.youtube.com/embed/nP-zkIdyRHg?rel=0&modestbranding=1&theme=light" frameborder="0" allowfullscreen></iframe>
+	<iframe width="615" height="346" src="http://www.youtube.com/embed/Hj_zmQlKOgU?rel=0&modestbranding=1&theme=light" frameborder="0" allowfullscreen></iframe>
 	<h2>404</h2>
 	<h3>Page not found.</h3>
 	<p>We recently launched a new version of the site.</p>
