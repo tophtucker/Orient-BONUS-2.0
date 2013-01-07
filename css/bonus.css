@@ -113,10 +113,13 @@ a:hover {
 }
 
 .error {
+	margin-top: 10px;
+	font-family: Courier;
 	text-align: center;
-	font-size: 150%;
+	font-size: 200%;
 	color: red;
 	font-weight: bold;
+	letter-spacing: 3px;
 }
 
 /* FOOTER */

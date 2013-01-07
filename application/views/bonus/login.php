@@ -10,9 +10,33 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+	<script type="text/javascript">
+	var color = new String();
+	var shadow = new String();
+	var x=1;
+	function blink()
+	{
+	 if(x%2) 
+	 {
+	  color = "rgb(255,0,0)";
+	  shadow = "0 0 5px red";
+	 }else{
+	  color = "rgb(20,20,20)";
+	  shadow = "none";
+	 }
+
+	 formerror.style.color = color;
+	 formerror.style.textShadow = shadow;
+	 x++;
+	 if(x>2){x=1};
+	 setTimeout("blink()",800);
+	}
+	</script>
+
 </head>
 
-<body>
+<body onload="blink()">
 
 <div id="container">
 
@@ -22,7 +46,7 @@
 
 <div id="content">
 	
-	<?= validation_errors('<div class="error">', '</div>'); ?>
+	<?= validation_errors('<div id="formerror" class="error">', '</div>'); ?>
 	<?= form_open('bonus/verifylogin/',array('class' => 'loginform', 'id' => 'loginform')); ?>
 		<input type="text" size="20" id="username" name="username" placeholder="Username" autofocus/><br/>
 		<input type="password" size="20" id="passowrd" name="password" placeholder="Password"/><br/>
