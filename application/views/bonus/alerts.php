@@ -48,14 +48,20 @@
 	
 	<? if(!empty($alerts)): ?>
 	<table>
-	<th><tr><td>Message</td><td>Urgent?</td><td>Start date</td><td>End date</td><td>Delete?</td></tr></th>
+	<tr>
+		<th>Message</th>
+		<th>Urgent?</th>
+		<th>Start date</th>
+		<th>End date</th>
+		<th>Delete?</th>
+	</tr>
 	<? foreach($alerts as $alert): ?>
 	<tr>
-	<td><?=$alert->message; ?></td>
-	<td><?=$alert->urgent; ?></td>
-	<td><?=$alert->start_date; ?></td>
-	<td><?=$alert->end_date; ?></td>
-	<td><?=anchor('bonus/deletealert/'.$alert->id,'&times;')?></td>
+		<td><?=$alert->message; ?></td>
+		<td><?=$alert->urgent; ?></td>
+		<td><?=$alert->start_date; ?></td>
+		<td><?=$alert->end_date; ?></td>
+		<td><?=anchor('bonus/deletealert/'.$alert->id,'&times;',array('class'=>'delete','onClick'=>"return confirm('Are you sure you want to delete this alert?');"))?></td>
 	<tr>
 	<? endforeach; ?>
 	</table>

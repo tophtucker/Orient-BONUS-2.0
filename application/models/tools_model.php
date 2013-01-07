@@ -22,10 +22,10 @@ class Tools_model extends CI_Model {
 		return $query->result();
 	}
 	
-	function get_alerts()
+	function get_alerts($include_future = false)
 	{
 		$this->db->where('active','1');
-		$this->db->where('start_date <= ', 'NOW()', false);
+		if(!$include_future) $this->db->where('start_date <= ', 'NOW()', false);
 		$this->db->where('end_date >= ', 'NOW()', false);
 		$query = $this->db->get('alerts');
 		return $query->result();

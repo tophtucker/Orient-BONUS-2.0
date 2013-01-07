@@ -85,7 +85,7 @@ class Bonus extends CI_Controller {
 			$this->load->helper(array('form'));
 			
 			$data->quote = $this->attachments_model->get_random_quote(false);
-			$data->alerts = $this->tools_model->get_alerts();
+			$data->alerts = $this->tools_model->get_alerts(true);
 			$this->load->view('bonus/alerts', $data);
 		}
 		else
