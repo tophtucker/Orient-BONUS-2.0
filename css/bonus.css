@@ -22,7 +22,7 @@ footer {
 }
 
 #content {
-	background: black;
+	background: rgb(20,20,20);
 	border-top: solid 2px white;
 	border-bottom: solid 2px white;
 	padding: 20px;
@@ -159,7 +159,7 @@ nav ul li a {
 }
 
 nav ul li:hover {
-	background: rgb(10,10,10);
+	background: rgb(30,30,30);
 	box-shadow: 0 0 10px darkgray inset;
 	border-bottom: 2px dotted lightblue;
 }
