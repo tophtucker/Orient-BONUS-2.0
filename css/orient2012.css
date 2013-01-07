@@ -804,11 +804,11 @@ section h2, #sidebar h2 {
 	/* border-left: solid 1px lightgray; */
 }
 
-.carouseltile .authorbox {
+.carouseltile .authortile {
 	margin-top: 20px;
 }
 
-.carouseltile .authorbox .articleauthor {
+.carouseltile .authortile .articleauthor {
 	padding-bottom: 0;
 }
 
@@ -1178,11 +1178,35 @@ article header {
 	margin-top:10px;
 }
 
-.authorbox {
+#authorblock {
+	/* reserved for future use! */
+}
+
+#authorblock .opinion-notice {
+	font-family:myriad-pro-condensed,helvetica,arial;
+	font-style: italic;
+	margin-bottom: 15px;
+}
+
+#authorblock .opinion-icon {
+	display: block;
+	float: left;
+	margin-right: 3px;
+}
+
+.authortile {
 	display: block;
 	position: relative;
 	float: left;
 	margin-right: 15px;
+}
+
+.authortile.opinion {
+	/* reserved for future use! */
+}
+
+.authortile.opinion .articleauthor {
+	font-size: 110%;
 }
 
 .articleauthor {
@@ -1200,7 +1224,7 @@ article header {
 	color: gray;
 }
 
-.authorbox .delete {
+.authortile .delete {
 	position: absolute;
 	left: -9px;
 	top: -7px;
@@ -1208,11 +1232,11 @@ article header {
 	display: none;
 }
 
-.authorbox:hover .delete, .authorbox .delete:hover {
+.authortile:hover .delete, .authorbox .delete:hover {
 	display: inherit;
 }
 
-.authorbox .delete:hover {
+.authortile .delete:hover {
 	color: red;
 	cursor: pointer;
 }
@@ -1454,6 +1478,10 @@ button .buttontext {
 	
 	.articletitle {
 		font-size: 20pt;
+	}
+	
+	.toolbox {
+		display: none;
 	}
 	
 	figure {

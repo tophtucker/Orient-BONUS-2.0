@@ -241,7 +241,7 @@
 			
 		} );
 		
-		$(".authorbox .delete").click(function(event) {
+		$(".authortile .delete").click(function(event) {
 			
 			var articleAuthorId = event.target.id.replace("deleteAuthor","");
 			
@@ -365,19 +365,32 @@
 				<h3 id="articlesubtitle" class="articlesubtitle"<?if(bonus()):?> contenteditable="true"<?endif;?>><? if(isset($article->subhead)): ?><?=$article->subhead?><? endif; ?></h3>
 				
 			</hgroup>
-			<? if($authors): foreach($authors as $key => $author): ?>
-				<div id="author<?=$author->articleauthorid?>" class="authorbox<? if(bonus()):?> bonus<? endif; ?>">
-					<? if(bonus()): ?><div id="deleteAuthor<?=$author->articleauthorid?>" class="delete">&times;</div><? endif; ?>
-					<a href="<?=site_url()?>author/<?=$author->authorid?>"><p class="articleauthor"><?=$author->authorname?></p></a>
-					<p class="articleauthorjob"><?=$author->jobname?></p>
-				</div>
-			<? endforeach; endif; ?>
-			<? if(bonus()): ?>
-				<div class="authorbox bonus">
-					<p class="articleauthor" id="addauthor" contenteditable="true" style="color:darkred">+</p>
-					<p class="articleauthorjob" id="addauthorjob" contenteditable="true" style="color:red">+</p>
-				</div>
-			<? endif; ?>
+
+			<div id="authorblock">
+				<? if($series->name == "Editorial"): ?>
+					<object data="<?=base_url()?>images/icon-opinion.svg" type="image/svg+xml" class="opinion-icon" height="20" width="20" title="Plinio Fernandes, from The Noun Project"></object>
+					<div class="opinion-notice">This piece represents the opinion of <span style="font-style:normal;">The Bowdoin Orient</span> editorial board.</div>
+				<? endif; ?>
+				<? if($authors): ?>
+					<? if($article->opinion == '1'): ?>
+						<object data="<?=base_url()?>images/icon-opinion.svg" type="image/svg+xml" class="opinion-icon" height="20" width="20" title="Plinio Fernandes, from The Noun Project"></object>
+						<div class="opinion-notice">This piece represents the opinion of the author<?if(count($authors)>1):?>s<?endif;?>:</div>
+					<? endif; ?>
+					<? foreach($authors as $key => $author): ?>
+						<div id="author<?=$author->articleauthorid?>" class="authortile<? if(bonus()):?> bonus<? endif; ?> <?if($article->opinion == '1'):?>opinion<? endif; ?>">
+							<? if(bonus()): ?><div id="deleteAuthor<?=$author->articleauthorid?>" class="delete">&times;</div><? endif; ?>
+							<a href="<?=site_url()?>author/<?=$author->authorid?>"><p class="articleauthor"><?=$author->authorname?></p></a>
+							<p class="articleauthorjob"><?=$author->jobname?></p>
+						</div>
+					<? endforeach; ?>
+				<? endif; ?>
+				<? if(bonus()): ?>
+					<div class="authortile bonus">
+						<p class="articleauthor" id="addauthor" contenteditable="true" style="color:darkred">+</p>
+						<p class="articleauthorjob" id="addauthorjob" contenteditable="true" style="color:red">+</p>
+					</div>
+				<? endif; ?>
+			</div>
 			
 			<div class="toolbox">
 				
