@@ -18,7 +18,6 @@
 
 <header>
 	<h1>/BONUS</h1>
-	<h2>Bowdoin Orient Network Update System 2.0</h2>
 </header>
 
 <div id="content">
@@ -37,6 +36,7 @@
 	<p class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</p>
 	<p class="bonusquoteattribution">&mdash; <?=$quote->attribution?></p>
 	<p class="sunbug"><a href="<?=base_url()?>">&#x2600;</a></p>
+	<p class="about">Bowdoin Orient Network Update System 2.0</p>
 </footer>
 
 </div>

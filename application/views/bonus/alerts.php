@@ -18,12 +18,11 @@
 
 <header>
 	<h1>/BONUS</h1>
-	<h2>Bowdoin Orient Network Update System 2.0</h2>
 </header>
 
 <div id="content">
 		
-	<h3>Alerts</h3>
+	<h2>Alerts</h2>
 	
 	<nav>
 	<ul>
@@ -33,7 +32,7 @@
 	</ul>
 	</nav>	
 
-	<h4>Add Alert</h4>
+	<h3>Add Alert</h3>
 	
 	<?= form_open() ?>
 	Message (HTML): 
@@ -45,7 +44,7 @@
 	<?= form_close() ?>
 	
 	
-	<h4>Existing alerts</h4>
+	<h3>Existing alerts</h3>
 	
 	<? if(!empty($alerts)): ?>
 	<table>
@@ -68,6 +67,7 @@
 	<p class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</p>
 	<p class="bonusquoteattribution">&mdash; <?=$quote->attribution?></p>
 	<p class="sunbug"><a href="<?=base_url()?>">&#x2600;</a></p>
+	<p class="about">Bowdoin Orient Network Update System 2.0</p>
 </footer>
 
 </div>

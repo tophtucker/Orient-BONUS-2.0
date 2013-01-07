@@ -18,12 +18,11 @@
 
 <header>
 	<h1>/BONUS</h1>
-	<h2>Bowdoin Orient Network Update System 2.0</h2>
 </header>
 
 <div id="content">
 		
-	<h3>Authors</h3>
+	<h2>Authors</h2>
 	
 	<nav>
 	<ul>
@@ -33,7 +32,8 @@
 	</ul>
 	</nav>	
 
-	<h4>Merge Authors</h4>
+	<h3>Merge Authors</h3>
+	
 	<p>When adding an article or photo, BONUS users type a name and BONUS attempts to match the name to an existing author in the database. New authors are created in the background if a database entry does not exist.</p>
 
 	<p>Because users enter names in different ways, we end up with duplicates in the database, which means fractured and incomplete author pages.</p>
@@ -45,7 +45,6 @@
 	<li>Names of outside entities conventionally begin with "Courtesy of". This is awkward but OK.</li>
 	<li>Names should use proper mixed-case: "Toph Tucker", not "TOPH TUCKER".</li>
 	</ul>
-	
 	
 	<script>
 	function validateMergeForm()
@@ -83,6 +82,7 @@
 	<p class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</p>
 	<p class="bonusquoteattribution">&mdash; <?=$quote->attribution?></p>
 	<p class="sunbug"><a href="<?=base_url()?>">&#x2600;</a></p>
+	<p class="about">Bowdoin Orient Network Update System 2.0</p>
 </footer>
 
 </div>

@@ -18,12 +18,11 @@
 
 <header>
 	<h1>/BONUS</h1>
-	<h2>Bowdoin Orient Network Update System 2.0</h2>
 </header>
 
 <div id="content">
 	
-	<h3>Dashboard</h3>
+	<h2>Dashboard</h2>
 	
 	<nav>
 	<ul>
@@ -32,14 +31,13 @@
 	<li><?=anchor('bonus/alerts','Alerts')?></li>
 	</ul>
 	</nav>	
-	
-	<!--<h3><?=date("F j, Y h:i:s a",strtotime("Sunday 12 p.m."))?></h3>-->
-	
-	<h4>Tips</h4>
+		
+	<h3>Tips</h3>
 	
 	<? if(!empty($tips)): ?>
 	<? foreach($tips as $tip): ?>
-	<p><?= $tip->tip ?> &mdash;<?=$tip->submitted; ?></p>
+	<p><?= $tip->tip ?> 
+	<br/><i>&mdash;<?=date("F j, Y h:i:s a",strtotime($tip->submitted)) ?></i></p>
 	<? endforeach; ?>
 	<? endif; ?>
 
@@ -49,6 +47,7 @@
 	<p class="bonusquote">&ldquo;<?=$quote->quote?>&rdquo;</p>
 	<p class="bonusquoteattribution">&mdash; <?=$quote->attribution?></p>
 	<p class="sunbug"><a href="<?=base_url()?>">&#x2600;</a></p>
+	<p class="about">Bowdoin Orient Network Update System 2.0</p>
 </footer>
 
 </div>
