@@ -353,7 +353,6 @@
 		<header>
 			<hgroup>
 				
-				<? if($article->type): ?><h3 id="type" class="type"><?=$type->name?></h3> <? endif; ?>
 				<? if($article->series || bonus()): ?>
 					<h3 id="series" class="series"<?if(bonus()):?> contenteditable="true"<?endif;?>>
 						<? if(!bonus()): ?><a href="<?=site_url()?>series/<?=$series->id?>"><? endif; ?>
