@@ -34,13 +34,15 @@ class Author_model extends CI_Model {
 	
 	function get_authors_array()
 	{
+		// for bonus merge tool dropdown. shouldn't be used publicly, esp due to
+		// htmlentities encoding. 
 		$this->db->where('active','1');
 		$query = $this->db->get('author');
 		$authors = $query->result();
 		$authors_array = array();
 		foreach($authors as $author)
 		{
-			$authors_array[$author->id] = $author->name;
+			$authors_array[$author->id] = htmlspecialchars($author->name);
 		}
 		return $authors_array;
 	}
