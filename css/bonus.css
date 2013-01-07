@@ -3,7 +3,7 @@ body {
 	padding: 0;
 	color: white;
 	background: url(../images/starring.png);
-	font-family: minion-pro,Georgia;
+	font-family:myriad-pro,helvetica,arial;
 }
 
 #container {
@@ -12,29 +12,35 @@ body {
 }
 
 header {
-	margin-bottom: 40px;
-	border-bottom: solid 2px white;
 	padding: 20px;
 }
 
 footer {
-	margin-top: 40px;
 	padding: 20px;
-	border-top: solid 2px white;
 	text-align: center;
+	margin-bottom:20px;
+}
+
+#content {
+	background: black;
+	border-top: solid 2px white;
+	border-bottom: solid 2px white;
+	padding: 20px;
 }
 
 h1 {
 	margin: 0;
 	text-align: center; 
-	font-family: minion-pro,Georgia;
+	font-family: Courier;
 	font-weight: normal;
 	font-size: 630%; 
 	font-variant:small-caps;
 	text-shadow: #000 2px -2px 10px;
+	letter-spacing:25px
 }
 
 h2 {
+	font-family: Courier;
 	margin-top: -20px;
 	text-align: center; 
 	font-weight: normal; 
@@ -62,12 +68,13 @@ h2 {
 }
 
 .bonusquote {
-	font-size: 125%;
-	font-style: italic;
-	padding-bottom: 5px;
+	font-family: Courier;
+	font-size: 100%;
+	padding-bottom: 15px;
 }
 
 .bonusquoteattribution {
+	font-family: Courier;
 	font-size: 100%;
 	margin-left: 200px;
 	margin-bottom: 20px;
@@ -100,19 +107,66 @@ a:hover {
 }
 
 h3 {
-	text-align: center;
-	font-size: 20pt
+	display: block;
+	font-family: Courier;
+	float:left;
+	font-size: 22pt;
+	margin: 0 0 20px 0;
+	padding-bottom: 12px;
+	border-bottom: dotted 1px white;
 }
 
 h4 {
+	clear: both;
+	font-family: Courier;
 	text-transform: uppercase;
-	text-align: center;
 	font-weight: bold;
+	font-size: 16pt;
 }
 
 p {
-	text-align: center;
 	font-size: 12pt;
+	line-height: 16pt;
+}
+
+/*
+// NAVIGATION
+*/
+
+nav ul {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	height:45px;
+	float: right;
+	border-bottom: dotted 1px white;
+}
+
+nav ul li {
+	display: block;
+	list-style: none;
+	float: left;
+}
+
+nav ul li a {
+	display: block;
+	height:25px;
+	padding: 15px 10px 5px 10px;
+	font-family: Courier;
+	font-size: 13px;
+	text-transform: uppercase;
+	color: white;
+}
+
+nav ul li:hover {
+	background: rgb(10,10,10);
+	box-shadow: 0 0 10px darkgray inset;
+	border-bottom: 2px dotted lightblue;
+}
+
+nav ul li a:hover {
+	color: lightblue !important;
+	text-decoration: none;
 }
 
 /*

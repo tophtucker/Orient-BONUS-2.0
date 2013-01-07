@@ -17,16 +17,23 @@
 <div id="container">
 
 <header>
-	<h1>B.O.N.U.S.</h1>
+	<h1>>BONUS</h1>
 	<h2>Bowdoin Orient Network Update System 2.0</h2>
 </header>
 
 <div id="content">
-		
+	
 	<h3>Dashboard</h3>
 	
+	<nav>
+	<ul>
+	<li><?=anchor('bonus/dashboard','Dashboard')?></li>
+	<li><?=anchor('bonus/authors','Authors')?></li>
+	<li><?=anchor('bonus/alerts','Alerts')?></li>
+	</ul>
+	</nav>	
+	
 	<!--<h3><?=date("F j, Y h:i:s a",strtotime("Sunday 12 p.m."))?></h3>-->
-	<h4><?=anchor('bonus/alerts','Alerts')?></h4>
 	
 	<h4>Tips</h4>
 	

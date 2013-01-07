@@ -17,13 +17,23 @@
 <div id="container">
 
 <header>
-	<h1>B.O.N.U.S.</h1>
+	<h1>>BONUS</h1>
 	<h2>Bowdoin Orient Network Update System 2.0</h2>
 </header>
 
 <div id="content">
 		
-	<h3>Add Alert</h3>
+	<h3>Alerts</h3>
+	
+	<nav>
+	<ul>
+	<li><?=anchor('bonus/dashboard','Dashboard')?></li>
+	<li><?=anchor('bonus/authors','Authors')?></li>
+	<li><?=anchor('bonus/alerts','Alerts')?></li>
+	</ul>
+	</nav>	
+
+	<h4>Add Alert</h4>
 	
 	<?= form_open() ?>
 	Message (HTML): 
@@ -35,7 +45,7 @@
 	<?= form_close() ?>
 	
 	
-	<h3>Existing alerts</h3>
+	<h4>Existing alerts</h4>
 	
 	<? if(!empty($alerts)): ?>
 	<table>

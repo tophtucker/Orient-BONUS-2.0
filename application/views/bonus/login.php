@@ -17,7 +17,7 @@
 <div id="container">
 
 <header>
-	<h1>B.O.N.U.S.</h1>
+	<h1>>BONUS</h1>
 	<h2>Bowdoin Orient Network Update System 2.0</h2>
 </header>
 

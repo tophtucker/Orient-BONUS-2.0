@@ -7,6 +7,7 @@ class Bonus extends CI_Controller {
 		date_default_timezone_set('America/New_York');
 		$this->load->model('bonus_model', '', TRUE);
 		$this->load->model('attachments_model', '', TRUE);
+		$this->load->model('author_model', '', TRUE);
 		$this->load->model('tools_model', '', TRUE);
 		$this->load->library('user_agent');
 	}
@@ -100,6 +101,32 @@ class Bonus extends CI_Controller {
 		{
 			$this->tools_model->delete_alert($id);
 			redirect('bonus/alerts');
+		}
+		else
+		{
+			//If no session, redirect to login page
+			redirect('bonus/login', 'refresh');
+		}
+	}
+	
+	function authors()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			if (!empty($_POST))
+			{
+				if($this->input->post("form_name")=='merge_authors')
+				{
+					$this->author_model->merge_authors($this->input->post("merge_from"),$this->input->post("merge_into"));
+				}
+			}
+			
+			$this->load->helper(array('form'));
+			
+			$data->authors = $this->author_model->get_authors();
+			$data->authors_array = $this->author_model->get_authors_array();
+			$data->quote = $this->attachments_model->get_random_quote(false);
+			$this->load->view('bonus/authors', $data);
 		}
 		else
 		{
