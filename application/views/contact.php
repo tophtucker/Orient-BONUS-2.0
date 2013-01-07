@@ -53,8 +53,10 @@
 			</hgroup>			
 		</header>
 		
+		<img src="<?=base_url()?>images/connect-please.jpg" align="right" title="Katie Fitch, The Bowdoin Orient" id="connect-please">
+		
 		<div id="articlebody" class="articlebody">
-
+			
 			<p>The Bowdoin Orient<br/>
 			6200 College Station<br/>
 			Brunswick, ME 04011-8462</p>
