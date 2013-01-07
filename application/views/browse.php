@@ -143,8 +143,7 @@
 				<li class="smalltile">
 					<a href="<?=site_url()?>article/<?=$article->id?>">
 					<div class="dateified"><?=dateify($article->date, $date)?></div>
-					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
-					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
+					<h3><? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
 					<? if($article->subhead): ?><h4><?= $article->subhead ?></h4><? endif; ?>
 					<p><?=$article->pullquote?></p>
@@ -207,8 +206,7 @@
 				<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?><? if(strtotime($date)-strtotime($article->date) > (7*24*60*60)): ?> old<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
 					<a href="<?=site_url()?>article/<?=$article->id?>">
 					<div class="dateified"><?=dateify($article->date, $date)?></div>
-					<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
-					<? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
+					<h3><? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
 					<? if($article->subhead): ?><h4><?= $article->subhead ?></h4><? endif; ?>
 					<p><?=$article->pullquote?></p>
@@ -247,7 +245,6 @@ var	carousel,
 			<? if($key > 0): ?>,<? endif; ?>
 			'<div class="carouseltile <? if(!$article->published): ?>draft<?endif;?>">'+
 				<? if($article->series): ?>'<div class="series"><?=$article->series?></div>'+<? endif; ?>
-				<? if($article->type): ?>'<div class="type"><?=$article->type?></div>'+<? endif; ?>
 				'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'+
 				<? if($article->subhead): ?>'<h4 class="articlesubtitle"><?= addslashes(trim($article->subhead)) ?></h4>'+<? endif; ?>
 				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>">'+<? endif; ?>

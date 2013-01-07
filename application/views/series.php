@@ -66,8 +66,7 @@
 			<? foreach($articles as $article): ?>
 			<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
 				<a href="<?=site_url()?>article/<?=$article->id?>">
-				<h3><? if($article->type): ?><span class="type"><?=$article->type?>:</span> <? endif; ?>
-				<?=$article->title?></h3>
+				<h3><?=$article->title?></h3>
 				<? if($article->subhead): ?><h4><?= $article->subhead ?></h4><? endif; ?>
 				<p><?=$article->pullquote?></p>
 			</a></li>
