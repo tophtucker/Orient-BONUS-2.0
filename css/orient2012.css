@@ -1207,11 +1207,28 @@ article header {
 	margin-right: 15px;
 }
 
+.authortile .authorpic {
+	height: 50px;
+	float: left;
+}
+
+.authortile .authortext {
+	float: right;
+}
+
 .authortile.opinion {
-	/* reserved for future use! */
+	margin-bottom: 5px;
+}
+
+.authortile.opinion .authortext {
+	padding: 15px 5px 5px 5px;
 }
 
 .authortile.opinion .articleauthor {
+	font-size: 130%;
+}
+
+.authortile.opinion .articleauthorjob {
 	font-size: 110%;
 }
 
@@ -1353,6 +1370,14 @@ figure#contents ul, figure#contents li {
 	padding:0;
 }
 
+figure.authorpic {
+	border: 1px solid lightgray;
+	padding: 10px;
+	margin-top: -50px;
+	background: white;
+	width: 200px;
+}
+
 .lede {
 	/*font-variant: small-caps;*/
 	text-transform: uppercase;
@@ -1432,6 +1457,10 @@ button .buttontext {
 	
 	#articlebody h3 {
 		margin: 0;
+	}
+	
+	figure.authorpic {
+		display: none;
 	}
 	
 	aside {

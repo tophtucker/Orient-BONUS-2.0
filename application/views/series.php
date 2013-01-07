@@ -59,7 +59,7 @@
 
 <div id="content">
 			
-	<section id="articles" class="issuesection">
+	<section id="articles" class="seriessection">
 		<h2><?=$series->name?></h2>
 		
 		<ul class="articleblock">

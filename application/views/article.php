@@ -377,11 +377,16 @@
 						<div class="opinion-notice">This piece represents the opinion of the author<?if(count($authors)>1):?>s<?endif;?>:</div>
 					<? endif; ?>
 					<? foreach($authors as $key => $author): ?>
+						<a href="<?=site_url()?>author/<?=$author->authorid?>">
 						<div id="author<?=$author->articleauthorid?>" class="authortile<? if(bonus()):?> bonus<? endif; ?> <?if($article->opinion == '1'):?>opinion<? endif; ?>">
 							<? if(bonus()): ?><div id="deleteAuthor<?=$author->articleauthorid?>" class="delete">&times;</div><? endif; ?>
-							<a href="<?=site_url()?>author/<?=$author->authorid?>"><p class="articleauthor"><?=$author->authorname?></p></a>
-							<p class="articleauthorjob"><?=$author->jobname?></p>
+							<? if(!empty($author->photo) && $article->opinion): ?><img src="<?=base_url().'images/authors/'.$author->photo?>" class="authorpic"><? endif; ?>
+							<div class="authortext">
+								<p class="articleauthor"><?=$author->authorname?></p>
+								<p class="articleauthorjob"><?=$author->jobname?></p>
+							</div>
 						</div>
+						</a>
 					<? endforeach; ?>
 				<? endif; ?>
 				<? if(bonus()): ?>

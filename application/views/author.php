@@ -59,9 +59,19 @@
 
 <div id="content">
 			
-	<section id="articles" class="issuesection">
+	<section id="articles" class="authorsection">
+		
 		<h2><?=$author->name?></h2>
 		
+		<? if(!empty($author->bio)): ?>
+			<!-- #TODO: programmatic bio! -->
+			<?= $author->bio ?>
+		<? endif; ?>
+				
+		<? if(!empty($author->photo)): ?>
+			<figure class="authorpic"><img src="<?=base_url().'images/authors/'.$author->photo?>"></figure>
+		<? endif; ?>
+				
 		<ul class="articleblock">
 			<? foreach($articles as $article): ?>
 			<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
