@@ -1209,6 +1209,7 @@ article header {
 
 .authortile .authorpic {
 	height: 50px;
+	margin-right: 5px;
 	float: left;
 }
 
@@ -1221,7 +1222,7 @@ article header {
 }
 
 .authortile.opinion .authortext {
-	padding: 15px 5px 5px 5px;
+	padding: 15px 5px 5px 0;
 }
 
 .authortile.opinion .articleauthor {

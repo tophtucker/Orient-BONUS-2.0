@@ -6,7 +6,7 @@
 	<title>The Bowdoin Orient</title>
 	<link rel="shortcut icon" href="<?=base_url()?>images/o-32-transparent.png">
 	
-	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=3">
+	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=4">
 	
 	<meta name="description" content="The Bowdoin Orient is a student-run publication dedicated to providing news and media relevant to the Bowdoin College community." />
 	
