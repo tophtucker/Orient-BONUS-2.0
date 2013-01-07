@@ -37,6 +37,7 @@ class Author_model extends CI_Model {
 		// for bonus merge tool dropdown. shouldn't be used publicly, esp due to
 		// htmlentities encoding. 
 		$this->db->where('active','1');
+		$this->db->order_by('name','asc');
 		$query = $this->db->get('author');
 		$authors = $query->result();
 		$authors_array = array();
