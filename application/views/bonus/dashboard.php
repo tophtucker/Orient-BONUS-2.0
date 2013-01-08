@@ -34,12 +34,27 @@
 		
 	<h3>Tips</h3>
 	
-	<? if(!empty($tips)): ?>
-	<? foreach($tips as $tip): ?>
-	<p><?= $tip->tip ?> 
-	<br/><i>&mdash;<?=date("F j, Y h:i:s a",strtotime($tip->submitted)) ?></i></p>
-	<? endforeach; ?>
-	<? endif; ?>
+	<table>
+		<tr>
+			<th>Tip</th>
+			<th>From</th>
+		</tr>
+		<? if(!empty($tips)): ?>
+			<? foreach($tips as $tip): ?>
+				<tr>
+					<td><?= $tip->tip ?></td>
+					<td>
+						<?= date("F j, Y h:i:s a",strtotime($tip->submitted)) ?>
+						<? if(!empty($tip->user_location)): ?><br/><strong>From:</strong> <?= anchor($tip->user_location,$tip->user_location) ?><? endif; ?>
+						<? if(!empty($tip->user_referer)): ?><br/><strong>Via:</strong> <?= anchor($tip->user_referer,$tip->user_referer) ?><? endif; ?>
+						<? if(!empty($tip->user_ip)): ?><br/><strong>IP address:</strong> <?= $tip->user_ip ?><? endif; ?>
+						<? if(!empty($tip->user_host)): ?><br/><strong>IP host:</strong> <?= $tip->user_host ?><? endif; ?>
+						<? if(!empty($tip->user_agent)): ?><br/><strong>System info:</strong> <?= $tip->user_agent ?><? endif; ?>
+					</td>
+				</tr>
+			<? endforeach; ?>
+		<? endif; ?>
+	</table>
 
 </div>
 	

@@ -20,10 +20,18 @@ class Tools extends CI_Controller {
 	
 	public function ajax_submittip()
 	{
-		$tip = $this->input->post('tip');
-		if(strlen($tip) > 0) 
+		$data = array(
+			'tip' 			=> $this->input->post('tip'),
+			'user_location'	=> $this->input->post('user_location'),
+			'user_referer'	=> $this->input->post('user_referer'),
+			'user_ip'		=> $this->input->post('user_ip'),
+			'user_host'		=> $this->input->post('user_host'),
+			'user_agent'	=> $this->input->post('user_agent')
+			);
+		
+		if(strlen($data['tip']) > 0) 
 		{
-			$this->tools_model->submittip($tip);
+			$this->tools_model->submittip($data);
 			exit("true");
 		}
 		exit("false");

@@ -121,13 +121,23 @@ $(document).ready(function() {
     //if submit button is clicked
     $('#tipsubmit').click(function () {        
          
-        var tip = $('textarea[name=tip]');
+        var tip = $('textarea[name=tip]').val();        
+        var user_location = window.location.href;
+        var user_referer = "<? if(isset($_SERVER['HTTP_REFERER'])) { echo $_SERVER['HTTP_REFERER']; }?>";
+        var user_ip = "<? if(isset($_SERVER['REMOTE_ADDR'])) { echo $_SERVER['REMOTE_ADDR']; }?>";
+        var user_host = "<? if(isset($_SERVER['REMOTE_HOST'])) { echo $_SERVER['REMOTE_HOST']; }?>";
+        var user_agent = "<? if(isset($_SERVER['HTTP_USER_AGENT'])) { echo $_SERVER['HTTP_USER_AGENT']; }?>";
          
-        //start the ajax
+        //start the ajax request
         $.ajax({
             url: "<?=site_url()?>tools/ajax_submittip",
             type: "POST",
-            data: 'tip=' + encodeURIComponent(tip.val()),
+            data: 'tip=' + encodeURIComponent(tip)
+            		+ '&user_location=' + encodeURIComponent(user_location)
+            		+ '&user_referer=' + encodeURIComponent(user_referer)
+            		+ '&user_ip=' + encodeURIComponent(user_ip)
+            		+ '&user_host=' + encodeURIComponent(user_host)
+            		+ '&user_agent=' + encodeURIComponent(user_agent),
             cache: false,
             success: function (result) {
                 //if ajax_submittip returned 1/true (submit success)

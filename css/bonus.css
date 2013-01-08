@@ -166,6 +166,7 @@ th {
 td {
 	border-left: 1px dotted white;
 	padding: 5px;
+	vertical-align: top;
 }
 
 /*

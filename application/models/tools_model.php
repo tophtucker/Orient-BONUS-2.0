@@ -7,12 +7,9 @@ class Tools_model extends CI_Model {
         parent::__construct();
     }
     
-	function submittip($tip)
+	function submittip($data)
 	{
-		$data = array(
-		   'tip' => $tip
-		);
-		$this->db->insert('tips', $data); 
+		return $this->db->insert('tips', $data); 
 	}
 	
 	function get_tips()
