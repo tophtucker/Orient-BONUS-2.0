@@ -21,8 +21,12 @@ class Tools extends CI_Controller {
 	public function ajax_submittip()
 	{
 		$tip = $this->input->post('tip');
-		$this->tools_model->submittip($tip);
-		exit("true");
+		if(strlen($tip) > 0) 
+		{
+			$this->tools_model->submittip($tip);
+			exit("true");
+		}
+		exit("false");
 	}
 	
 	public function sitemap()

@@ -85,7 +85,7 @@ $(function() {
 	<span class="closebutton">&times;</span>
 	<strong>Submit an anonymous tip.</strong> Leave contact information if willing, or email <a href="mailto:orient@bowdoin.edu">orient@bowdoin.edu</a>.<br/>
 	<textarea name="tip"></textarea>
-	<button id="tipsubmit">Submit</button>
+	<button id="tipsubmit">Submit</button> <button id="cancel">Cancel</button> <span id="tipnotice"></span>
 </div>
 
 <? if(isset($alerts)): ?>
@@ -112,6 +112,10 @@ $("#submittipform .closebutton").click(function () {
 	$("#submittipform").hide();
 });
 
+$("#submittipform #cancel").click(function () {
+	$("#submittipform").hide();
+});
+
 $(document).ready(function() {
      
     //if submit button is clicked
@@ -128,10 +132,11 @@ $(document).ready(function() {
             success: function (result) {
                 //if ajax_submittip returned 1/true (submit success)
                 if (result=='true') {
-                    //hide the form
-                    $('#submittipform').hide();
-                //if process.php returned 0/false (send mail failed)
-                } else alert('Error! Sorry. Try emailing us: orient@bowdoin.edu');
+                    $("textarea[name=tip]").val(''); //empty form so it's ready for another tip
+                    $('#submittipform #tipnotice').html('Submitted.'); //success notice
+                    $('#submittipform').fadeOut("slow"); //hide the form
+                //if process.php returned 0/false (submit tip failed)
+                } else $('#submittipform #tipnotice').html('You can\’t submit an empty tip.');
             }       
         });
          
