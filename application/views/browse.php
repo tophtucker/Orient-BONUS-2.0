@@ -39,28 +39,15 @@
 	<!-- <script type="text/javascript" src="<?=base_url()?>js/jquery-1.8.0.min.js"></script> -->
 	<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.8.17.custom.min.js"></script>
 	
+	<!-- template js -->
+	<script type="text/javascript" src="<?=base_url()?>js/orient.js"></script>
+	
 	<!-- SwipeView (for carousel) -->
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/swipeview.css?v=1">
 
     <!-- for smooth scrolling -->
     <script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery.localscroll-1.2.7-min.js"></script>
-	
-	<!-- initiate jQuery and the LocalScroll plugin -->
-    <script>
- 
-    // When the document is loaded...
-    $(document).ready(function()
-    {
-        // Set up localScroll smooth scroller to scroll the whole document
-        $('#mainnav').localScroll({
-           target:'body',
-           duration: '1000' //uh, not sure this is working!
-        });
- 		
-    });
-    
-    </script>
 	
 	<!-- Google Analytics -->
 	<script type="text/javascript">

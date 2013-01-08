@@ -53,7 +53,7 @@
 			</hgroup>			
 		</header>
 		
-		<img src="<?=base_url()?>images/connect-please.jpg" align="right" title="Katie Fitch, The Bowdoin Orient" id="connect-please">
+		<img src="<?=base_url()?>images/connect-please.jpg" align="right" title="Katie Fitch, The Bowdoin Orient" id="connect-please" class="hidemobile">
 		
 		<div id="articlebody" class="articlebody">
 			

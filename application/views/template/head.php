@@ -7,6 +7,7 @@
 	<link rel="shortcut icon" href="<?=base_url()?>images/o-32-transparent.png">
 	
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient.css?v=4">
+	<script type="text/javascript" src="<?=base_url()?>js/orient.js"></script>
 	
 	<meta name="description" content="<?= $description ?>" />
 	
@@ -45,22 +46,6 @@
     <!-- for smooth scrolling -->
     <script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery.localscroll-1.2.7-min.js"></script>
-	
-	<!-- initiate jQuery and the LocalScroll plugin -->
-    <script>
- 
-    // When the document is loaded...
-    $(document).ready(function()
-    {
-        // Set up localScroll smooth scroller to scroll the whole document
-        $('#mainnav').localScroll({
-           target:'body',
-           duration: '1000' //uh, not sure this is working!
-        });
- 		
-    });
-    
-    </script>
 	
 	<!-- Google Analytics -->
 	<script type="text/javascript">

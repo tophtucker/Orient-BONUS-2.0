@@ -1147,12 +1147,6 @@ section h2, #sidebar h2 {
 	footer {
 		margin: 20px 10px;
 	}
-	
-	/* really bad form; this should be integrated as a figure or aside or something */
-	/* :( */
-	#connect-please {
-		display: none;
-	}
 
 }
 
@@ -1183,6 +1177,8 @@ article header {
 	font-size:22pt;
 	margin-top:10px;
 }
+
+/* AUTHOR AND DATE */
 
 #authorblock {
 	/* reserved for future use! */
@@ -1287,6 +1283,8 @@ article header {
 	font-family:myriad-pro-condensed,helvetica,arial;
 }
 
+/* TOOLBOX */
+
 .toolbox {
 	margin-top: -25px;
 	padding: 10px;
@@ -1319,6 +1317,50 @@ article header {
 	height: 23px;
 	margin-bottom: 5px;
 }
+
+/* TABLE OF CONTENTS */
+
+#toc_container {
+	color: darkgray;
+	font-family:myriad-pro,helvetica,arial;
+	font-size: 10pt;
+	position:absolute;
+	left:20px;
+	top:350px;
+	width:80px;
+	text-align:right;
+	margin-top: 60px;
+}
+.toc_header {
+	display:none;
+}
+.toc_content {
+	overflow: auto;
+}
+.toc_content a {
+	display: block;
+	color: darkgray;
+	text-decoration: none;
+	margin-left: 0 !important;
+	font-family: minion-pro,Garamond;
+	font-size: 13px;
+	text-transform: uppercase;
+	padding: 5px;
+}
+.toc_content a:hover {
+	color: darkblue;
+	border-right: 1px solid darkblue;
+}
+.toc_content a.indent {
+	list-style-type: none;
+}
+.toc_top {
+	float: right;
+}
+.toc_top a {
+}
+
+/* FIGURES */
 
 .articlebody h3, figure#contents h3 {
 	font-variant: small-caps;
@@ -1403,6 +1445,8 @@ figure.authorpic {
 	font-weight: bold;
 }
 
+/* ASIDES */
+
 aside {
 	width: 320px;
 	float:right;
@@ -1418,7 +1462,6 @@ aside {
 	font-size: 16px;
 }
 
-
 #articlefooter {
 	margin-top: 20px;
 }
@@ -1432,6 +1475,14 @@ button img {
 button .buttontext {
 }
 
+/* FOR NON-TABLETS */
+@media all and (min-width: 961px) {
+	
+	/* reserved for future use */
+	
+}
+
+/* FOR NON-IPHONES */
 @media all and (min-width: 481px) {
 
 	#mainstory {
@@ -1446,6 +1497,17 @@ button .buttontext {
 
 	#articlebody h3 {
 		margin-left: -25px;
+	}
+	
+	/* some rejiggering required so that, when you follow an anchor link, the header isn't hidden behind the fixed header */
+	/* i.e. an anchor offset so you get a good scroll offset — in this case, 50px, cuz that's the header height(ish). */
+	.articlebody h3 {
+		display: block;
+		position: relative; 
+		top: -50px;
+		padding-top: 50px;
+		margin-top: 18px;
+		margin-bottom: -32px;
 	}
 
 	figure {
@@ -1462,6 +1524,7 @@ button .buttontext {
 	
 }
 
+/* FOR TABLETS */
 @media all and (max-width: 960px) {
 	
 	#mainstory {
@@ -1475,7 +1538,7 @@ button .buttontext {
 	}
 	
 	#articlebody h3 {
-		margin: 0;
+		margin-left: 0;
 	}
 	
 	figure.authorpic {
@@ -1488,7 +1551,7 @@ button .buttontext {
 	
 }
 
-/* for smartphones (read: iPhones) */
+/* FOR SMARTPHONES (read: iPhones) */
 @media all and (max-width: 480px) {
 
 	#issuedate, #mainnav, #bonushook, #swipeview_relative_nav > #next, #swipeview_relative_nav > #prev {

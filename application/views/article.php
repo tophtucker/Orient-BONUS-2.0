@@ -6,7 +6,7 @@
 	<title><?=$article->title?> &mdash; The Bowdoin Orient</title>
 	<link rel="shortcut icon" href="<?=base_url()?>images/o-32-transparent.png">
 	
-	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient.css?v=3">
+	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient.css?v=4">
 	
 	<meta name="description" content="<?=htmlspecialchars($article->pullquote)?>" />
 	
@@ -31,12 +31,23 @@
 	<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.8.17.custom.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
 	
+	<!-- template js -->
+	<script type="text/javascript" src="<?=base_url()?>js/orient.js"></script>
+	
 	<!-- for mobile -->
 	<link rel="apple-touch-icon" href="<?=base_url()?>images/o-114.png"/>
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
-		
+	
+	<!-- TypeKit -->		
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	
+	<!-- for smooth scrolling -->
+    <script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-min.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>js/jquery.localscroll-1.2.7-min.js"></script>
+	
+	<!-- for table of contents -->
+	<script type="text/javascript" src="<?=base_url()?>js/jquery.jqTOC.js"></script>
 	
 	<!-- SwipeView (for slideshows) -->
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/swipeview.css?v=1">
@@ -643,6 +654,58 @@
 </script>
 
 <? endif; ?>
+
+<!-- Table of Contents -->
+<script>
+$(document).ready(function(){
+   $('#articlebody').jqTOC({
+		tocWidth: 100,
+		tocTitle: 'Content',
+		tocStart: 1,
+		tocEnd  : 4,
+		tocContainer : 'toc_container',
+		tocAutoClose : false,
+		tocShowOnClick : false,
+		tocTopLink   : ''
+   });
+    
+    // Set up localScroll smooth scroller to scroll the whole document
+	$('#toc_container').localScroll({
+	   target:'body',
+	   duration: '1000' //uh, not sure this is working!
+	});
+	
+	// not actually sure i want this to happen...
+	// should the url change as ppl navigate the article? i guess so, right?
+	$("#toc_container a").click(function () {
+		location.hash = $(this).attr('href');
+	});
+
+	// thanks hartbro! 
+	// http://blog.hartleybrody.com/creating-sticky-sidebar-widgets-that-scrolls-with-you/
+	function isScrolledTo(elem) {
+		var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
+		var docViewBottom = docViewTop + $(window).height();
+		var elemTop = $(elem).offset().top; //num of pixels above the elem
+		var elemBottom = elemTop + $(elem).height();
+		return ((elemTop <= docViewTop));
+	}
+	var catcher = $('.articledate');
+	var sticky = $('#toc_container');
+	$(window).scroll(function() {
+		if(isScrolledTo(sticky)) {
+			sticky.css('position','fixed');
+			sticky.css('top','0px');
+		}
+		var stopHeight = catcher.offset().top + catcher.height();
+		if ( stopHeight > sticky.offset().top) {
+			sticky.css('position','absolute');
+			sticky.css('top',stopHeight);
+		}
+	});
+   
+});
+</script>
 
 <? if(count($photos) > 1 && !bonus()): ?>
 	<!-- SwipeView. Only needed for slideshows. -->
