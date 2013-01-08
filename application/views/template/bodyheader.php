@@ -52,7 +52,8 @@ $(function() {
 						<input class="filterinput" type="text" placeholder="Search" name="q">
 					</form>
 				</li>
-				<li><a href="http://bowdoinorientexpress.com" style="font-family:helvetica;font-style:italic;" class="oebug"><img src="<?=base_url().'images/oe-compass-35.png'?>"></a></li>
+				<!--<li><a href="http://bowdoinorientexpress.com" style="font-family:helvetica;font-style:italic;" class="oebug"><img src="<?=base_url().'images/oe-compass-35.png'?>"></a></li>-->
+				<li style="border-left:1px solid lightgray"><a href="http://bowdoinorientexpress.com">Blog</a></li>
 			</ul>
 		</nav>
 	</div>
