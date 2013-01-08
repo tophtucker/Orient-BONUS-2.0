@@ -1205,6 +1205,17 @@ article header {
 	position: relative;
 	float: left;
 	margin-right: 15px;
+	margin-bottom: 18px;
+	box-sizing: border-box;
+	border-bottom: 1px solid white;
+}
+
+.authortile:hover {
+	border-bottom: 1px solid darkblue;
+}
+
+.authortile .articleauthor:hover {
+	color:darkblue !important;
 }
 
 .authortile .authorpic {
@@ -1218,7 +1229,7 @@ article header {
 }
 
 .authortile.opinion {
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 }
 
 .authortile.opinion .authortext {
@@ -1231,6 +1242,7 @@ article header {
 
 .authortile.opinion .articleauthorjob {
 	font-size: 110%;
+	padding-bottom: 0;
 }
 
 .articleauthor {
@@ -1246,6 +1258,7 @@ article header {
 	font-weight:normal;
 	text-transform:uppercase;
 	color: gray;
+	padding-bottom: 5px;
 }
 
 .authortile .delete {
@@ -1256,7 +1269,7 @@ article header {
 	display: none;
 }
 
-.authortile:hover .delete, .authorbox .delete:hover {
+.authortile:hover .delete, .authortile .delete:hover {
 	display: inherit;
 }
 

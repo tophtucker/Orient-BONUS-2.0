@@ -6,7 +6,7 @@
 	<title><?=$author->name?> &mdash; The Bowdoin Orient</title>
 	<link rel="shortcut icon" href="<?=base_url()?>images/o-32-transparent.png">
 	
-	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient2012.css?v=3">
+	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient.css?v=3">
 	
 	<meta name="description" content="<?=htmlspecialchars($author->bio)?>" />
 	
@@ -55,7 +55,7 @@
 
 <body>
 
-<? $this->load->view('bodyheader', $headerdata); ?>
+<? $this->load->view('template/bodyheader', $headerdata); ?>
 
 <div id="content">
 			
@@ -88,7 +88,7 @@
 	
 </div>
 
-<? $this->load->view('bodyfooter', $footerdata); ?>
+<? $this->load->view('template/bodyfooter', $footerdata); ?>
 
 <? $this->load->view('bonus/bonusbar', TRUE); ?>
 

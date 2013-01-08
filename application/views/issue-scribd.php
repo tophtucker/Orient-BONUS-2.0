@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<title>The Bowdoin Orient</title>
 	<link rel="shortcut icon" href="<?=base_url()?>/images/favicon.png">
-	<link rel="stylesheet" media="screen" href="<?=base_url()?>/css/orient2012.css?v=2">
+	<link rel="stylesheet" media="screen" href="<?=base_url()?>/css/orient.css?v=2">
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
