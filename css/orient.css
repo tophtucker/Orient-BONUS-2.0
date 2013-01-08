@@ -1178,6 +1178,10 @@ article header {
 	margin-top:10px;
 }
 
+#articlebodycontainer {
+	position: relative;
+}
+
 /* AUTHOR AND DATE */
 
 #authorblock {
@@ -1325,11 +1329,10 @@ article header {
 	font-family:myriad-pro,helvetica,arial;
 	font-size: 10pt;
 	position:absolute;
-	left:20px;
-	top:350px;
-	width:80px;
+	left:-100px;
+	top: 0px;
+	width:140px;
 	text-align:right;
-	margin-top: 60px;
 }
 .toc_header {
 	display:none;
@@ -1346,6 +1349,10 @@ article header {
 	font-size: 13px;
 	text-transform: uppercase;
 	padding: 5px;
+	border-right: 1px solid white;
+}
+.toc_content a.active {
+	color: black;
 }
 .toc_content a:hover {
 	color: darkblue;
@@ -1494,10 +1501,6 @@ button .buttontext {
 		width: 620px;
 		margin-left: 80px;
 	}
-
-	#articlebody h3 {
-		margin-left: -25px;
-	}
 	
 	/* some rejiggering required so that, when you follow an anchor link, the header isn't hidden behind the fixed header */
 	/* i.e. an anchor offset so you get a good scroll offset — in this case, 50px, cuz that's the header height(ish). */
@@ -1537,8 +1540,8 @@ button .buttontext {
 		margin-left: 0;
 	}
 	
-	#articlebody h3 {
-		margin-left: 0;
+	#toc_container {
+		display: none;
 	}
 	
 	figure.authorpic {

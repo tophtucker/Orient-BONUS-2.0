@@ -28,13 +28,14 @@ $.fn.jqTOC = function(settings) {
    if (document.getElementById(settings.tocContainer) == null)
       $('body').append('<div id="'+settings.tocContainer+'"></div>');
 
-   $('#'+settings.tocContainer).css('width',settings.tocWidth).append(
+   $('#'+settings.tocContainer).append(
       (settings.tocTitle?'<div class="toc_header">'+ settings.tocTitle + '</div>':'') +
       '<div class="toc_content"></div>'
    );
 
    var t = $('#'+settings.tocContainer+' .toc_content');
    var headerLevel,headerId;
+   var headerFound = false;
 
 // Find the highest level heading used within the range tocStart..tocEnd. Prevents indenting when no higher level exists.
    var start=settings.tocEnd;
@@ -46,6 +47,7 @@ $.fn.jqTOC = function(settings) {
       	&& headerLevel <= settings.tocEnd
       	&& this.nodeName.substr(1) < start
       ) {
+      	headerFound = true;
       	start = this.nodeName.substr(1);
      	}
 		if (start == settings.tocStart) {
@@ -53,6 +55,7 @@ $.fn.jqTOC = function(settings) {
 		}
 	});
 	settings.tocStart=start;
+	if(headerFound) { $(".toc_content").prepend('<a href="#top">Introduction</a>'); }
 
    this.children().each(function(i) {
       headerLevel = this.nodeName.substr(1);

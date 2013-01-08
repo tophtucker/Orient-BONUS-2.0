@@ -516,7 +516,7 @@
 			</figure>
 		<? endif; ?>
 		
-		<? if($article->id == '7677' && !bonus()): ?>
+		<? if($article->id == '7677' && !bonus()): // #TODO: HORRIBLE HACK THAT MUST BE REMOVED! GOTTA GET DB EMBEDDABLES ?>
 			<figure>
 				<a class="twitter-timeline" href="https://twitter.com/bowdoinorient" data-widget-id="265950106606518272">Tweets by @bowdoinorient</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -533,12 +533,21 @@
 			</figure>
 		<? endif; ?>
 		
-		<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>>
-			<? if(!empty($body)): ?>
-				<?=$body->body;?>
-			<? elseif(bonus()): ?>
-				<?="<p>Enter article body here.</p>";?> 
-			<? endif; ?>
+		
+		<div id="articlebodycontainer">
+		
+			<!-- placeholder for table of contents, to be injected by js -->
+			<div id="toc_container_catcher"></div>
+			<div id="toc_container"></div>		
+		
+			<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>>
+				<? if(!empty($body)): ?>
+					<?=$body->body;?>
+				<? elseif(bonus()): ?>
+					<?="<p>Enter article body here.</p>";?> 
+				<? endif; ?>
+			</div>
+		
 		</div>
 		
 		<div id="articlefooter">
@@ -686,22 +695,28 @@ $(document).ready(function(){
 	function isScrolledTo(elem) {
 		var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
 		var docViewBottom = docViewTop + $(window).height();
-		var elemTop = $(elem).offset().top; //num of pixels above the elem
+		var elemTop = $(elem).offset().top - 100; //num of pixels above the elem
 		var elemBottom = elemTop + $(elem).height();
 		return ((elemTop <= docViewTop));
 	}
-	var catcher = $('.articledate');
+	var catcher = $('#toc_container_catcher');
 	var sticky = $('#toc_container');
 	$(window).scroll(function() {
 		if(isScrolledTo(sticky)) {
 			sticky.css('position','fixed');
-			sticky.css('top','0px');
+			sticky.css('top','100px');
+			var bodyLeftOffset = $("#articlebodycontainer").offset().left - 100;
+			sticky.css('left',bodyLeftOffset+'px');
 		}
-		var stopHeight = catcher.offset().top + catcher.height();
+		var stopHeight = catcher.offset().top + catcher.height() - 100;
 		if ( stopHeight > sticky.offset().top) {
 			sticky.css('position','absolute');
-			sticky.css('top',stopHeight);
+			sticky.css('top','0');
+			sticky.css('left','-100px');
 		}
+		
+		// highlight active TOC section
+		
 	});
    
 });
