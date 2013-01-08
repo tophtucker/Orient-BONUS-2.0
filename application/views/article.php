@@ -399,6 +399,8 @@
 			
 			<div class="toolbox">
 				
+				<div class="rdbWrapper" data-show-read-now="1" data-show-read-later="1" data-show-send-to-kindle="0" data-show-print="0" data-show-email="0" data-orientation="0" data-version="1" data-bg-color="#ffffff"></div><script type="text/javascript">(function() {var s = document.getElementsByTagName("script")[0],rdb = document.createElement("script"); rdb.type = "text/javascript"; rdb.async = true; rdb.src = document.location.protocol + "//www.readability.com/embed.js"; s.parentNode.insertBefore(rdb, s); })();</script>
+				
 				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= current_url() ?>" data-via="bowdoinorient" data-lang="en">Tweet</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				<br/>
@@ -406,6 +408,7 @@
 				<div class="fb-like" data-href="<?= current_url() ?>" data-send="false" data-layout="button_count" data-width="115" data-show-faces="false" data-action="recommend"></div>
 				<br/>
 				
+				<? if(!bonus()): // don't show report error if you're logged in, just to save space ?>
 				<? //just concatenating authors, messily
 				$authorsString = '';
 				if($authors) { 
@@ -425,8 +428,9 @@
 						<img src="<?=base_url()?>images/reporterror-12-bw.png"><span class="buttontext"> Report error</span>
 					</button>
 				</a>
+				<? endif; ?>
 				
-				<? if(bonus()): ?>
+				<? if(bonus()): // only show views to logged-in staff, mostly bc display is too ugly to be public ?>
 					Views: <?=$article->views?> (<?=$article->views_bowdoin?>)<br/>
 				<? endif; ?>
 				

@@ -1275,10 +1275,10 @@ article header {
 }
 
 .toolbox {
-	margin-top: -10px;
+	margin-top: -25px;
 	padding: 10px;
 	border: 1px solid lightgray;
-	width: 115px;
+	width: 160px;
 	float: right;
 	font-family: myriad-pro, helvetica, arial;
 	font-size: 13px;
@@ -1300,6 +1300,11 @@ article header {
 
 .toolbox .fb-like {
 	margin-bottom: 2px;
+}
+
+.toolbox .rdbWrapper {
+	height: 23px;
+	margin-bottom: 5px;
 }
 
 .articlebody h3, figure#contents h3 {
