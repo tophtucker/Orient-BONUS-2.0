@@ -68,12 +68,8 @@ class Article_model extends CI_Model {
 		
 		// for carousel or whatever, may choose to just fetch featured articles
 		if($featured) $this->db->where("article.featured", "1");
-		
 		if($series) $this->db->where('article.series', $series);
-		
-		if($author) {
-			$this->db->where("articleauthor.author_id", $author);
-		}
+		if($author) $this->db->where("articleauthor.author_id", $author);
 		
 		// note: date_up_to is inclusive; date_since is exclusive
 		$this->db->where("article.date <=", $date_up_to);
@@ -97,7 +93,7 @@ class Article_model extends CI_Model {
 		}
     }
     
-    function get_popular_articles_by_date($date_up_to, $date_since = false, $limit = '10')
+    function get_popular_articles_by_date($date_up_to, $date_since = false, $limit = '10', $featured=false, $author=false, $series=false)
     {
     	$this->db->select("
     		article.id, 
@@ -117,10 +113,21 @@ class Article_model extends CI_Model {
 		$this->db->join("articletype", "articletype.id=article.type");
 		$this->db->join("photo", "photo.article_id=article.id", "left");
 		
+		if($author) {
+			// join author
+			$this->db->join("articleauthor", "articleauthor.article_id=article.id", "left");
+			$this->db->join("author", "author.id=articleauthor.author_id", "left");
+		}
+		
 		// "active" basically means "hasn't been deleted". we should almost never show inactive articles.
 		$this->db->where("article.active", "1");
 		// show draft (unpublished) articles only if logged into bonus.
 		if(!bonus()) $this->db->where("article.published", "1");
+		
+		// for carousel or whatever, may choose to just fetch featured articles
+		if($featured) $this->db->where("article.featured", "1");		
+		if($series) $this->db->where('article.series', $series);
+		if($author) $this->db->where("articleauthor.author_id", $author);
 		
 		// note: date_up_to is inclusive; date_since is exclusive
 		$this->db->where("article.date <=", $date_up_to);
@@ -218,7 +225,7 @@ class Article_model extends CI_Model {
 		$this->db->where("article_id", $id);
 		$this->db->from("articleauthor");
 		$this->db->join("author", "author.id=articleauthor.author_id");
-		$this->db->join("job", "job.id=articleauthor.job_id");
+		$this->db->join("job", "job.id=articleauthor.job_id", "left");
 		$query = $this->db->get();
 		if($query->num_rows() > 0)
 		{

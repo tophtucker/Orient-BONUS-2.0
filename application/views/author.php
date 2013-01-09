@@ -63,15 +63,76 @@
 		
 		<h2><?=$author->name?></h2>
 		
+		<? if(!empty($author->photo)): ?>
+			<figure class="authorpic"><img src="<?=base_url().'images/authors/'.$author->photo?>"></figure>
+		<? endif; ?>
+
 		<? if(!empty($author->bio)): ?>
 			<!-- #TODO: programmatic bio! -->
 			<?= $author->bio ?>
 		<? endif; ?>
-				
-		<? if(!empty($author->photo)): ?>
-			<figure class="authorpic"><img src="<?=base_url().'images/authors/'.$author->photo?>"></figure>
+		
+		<style>
+		.statblockcontainer {
+			float: left;
+			width: 25%;
+			margin: 0 0 20px 0;
+		}
+		.statblock {
+			padding: 0 10px;
+		}
+		</style>
+
+		<? if(!empty($collaborators)): ?>
+		<div class="statblockcontainer hidemobile">
+		<div class="statblock">
+			<p><strong>Collaborators:</strong><br/>
+			<? foreach($collaborators as $collaborator): ?>
+				<?= anchor('author/'.$collaborator->author_id, $collaborator->name); ?> (<?= anchor('article/'.$collaborator->article_id, $collaborator->title); ?>)<br/>
+			<? endforeach; ?>
+			</p>
+		</div>
+		</div>
 		<? endif; ?>
-				
+
+		<? if(!empty($popular)): ?>
+		<div class="statblockcontainer hidemobile">
+		<div class="statblock">
+			<p><strong>Popular:</strong><br/>
+			<? foreach($popular as $article): ?>
+				<?= anchor('article/'.$article->id, $article->title); ?><br/>
+			<? endforeach; ?>
+			</p>
+		</div>
+		</div>
+		<? endif; ?>
+		
+		<? if(!empty($longreads)): ?>
+		<div class="statblockcontainer hidemobile">
+		<div class="statblock">
+			<p><strong>Longest articles:</strong><br/>
+			<? foreach($longreads as $article): ?>
+				<?= anchor('article/'.$article->id, $article->title); ?><br/>
+			<? endforeach; ?>
+			</p>
+		</div>
+		</div>
+		<? endif; ?>
+		
+		<? if(!empty($series)): ?>
+		<div class="statblockcontainer hidemobile">
+		<div class="statblock">
+			<p><strong>Columns written for:</strong><br/>
+			<? foreach($series as $serie): ?>
+				<?= anchor('series/'.$serie->series, $serie->name); ?><br/>
+			<? endforeach; ?>
+			</p>
+		</div>
+		</div>
+		<? endif; ?>
+		
+		<div class="clear"></div>
+
 		<ul class="articleblock">
 			<? foreach($articles as $article): ?>
 			<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>

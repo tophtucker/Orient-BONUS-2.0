@@ -48,6 +48,54 @@ class Author_model extends CI_Model {
 		return $authors_array;
 	}
 	
+	function get_author_series($id)
+	{
+		$this->db->select('title, series, name');
+		$this->db->join('articleauthor', 'articleauthor.article_id = article.id');
+		$this->db->join('series', 'series.id = article.series');
+		$this->db->group_by('series');
+		$this->db->where('articleauthor.author_id', $id);
+		$this->db->where('name !=', '');
+		$query = $this->db->get('article');
+		return $query->result();
+	}
+	
+	function get_author_longreads($id)
+	{
+		$this->db->select('article.id, article.title, length(body) as bodylength');
+		$this->db->join('articlebody', 'articlebody.article_id = article.id');
+		$this->db->join('articleauthor', 'articleauthor.article_id = article.id');
+		$this->db->where('articleauthor.author_id', $id);
+		//$this->db->order_by('articlebody.timestamp', 'desc');
+		$this->db->order_by('bodylength', 'desc');
+		$this->db->group_by('article.id');
+		$this->db->limit('3');
+		$query = $this->db->get('article');
+		return $query->result();		
+	}
+	
+	function get_author_collaborators($id)
+	{
+		$this->db->select('article_id');
+		$this->db->where('author_id', $id);
+		$query = $this->db->get('articleauthor');
+		$article_ids_2d = $query->result();
+		
+		$article_ids = array();
+		foreach($article_ids_2d as $aid) {
+			$article_ids[] = $aid->article_id;
+		}
+		
+		$this->db->select('author.id as author_id, author.name, article.id as article_id, article.title');
+		$this->db->where_in('article_id', $article_ids);
+		$this->db->where('articleauthor.author_id !=', $id);
+		$this->db->join('author', 'author.id = articleauthor.author_id');
+		$this->db->join('article', 'article.id = articleauthor.article_id');
+		$this->db->group_by('author.id');
+		$query2 = $this->db->get('articleauthor');
+		return $query2->result();
+	}
+
 	function get_all_author_ids()
 	{
 		$this->db->select('id');
