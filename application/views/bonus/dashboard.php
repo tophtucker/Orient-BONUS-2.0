@@ -42,7 +42,7 @@
 		<? if(!empty($tips)): ?>
 			<? foreach($tips as $tip): ?>
 				<tr>
-					<td><?= $tip->tip ?></td>
+					<td><strong><?= $tip->prompt ?>: </strong><?= $tip->tip ?></td>
 					<td><small>
 						<?= date("F j, Y h:i:s a",strtotime($tip->submitted)) ?>
 						<? if(!empty($tip->user_location)): ?><br/><strong>From:</strong> <?= anchor($tip->user_location,$tip->user_location) ?><? endif; ?>
