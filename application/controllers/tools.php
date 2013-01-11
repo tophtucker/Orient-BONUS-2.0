@@ -26,7 +26,8 @@ class Tools extends CI_Controller {
 			'user_referer'	=> $this->input->post('user_referer'),
 			'user_ip'		=> $this->input->post('user_ip'),
 			'user_host'		=> $this->input->post('user_host'),
-			'user_agent'	=> $this->input->post('user_agent')
+			'user_agent'	=> $this->input->post('user_agent'),
+			'prompt'		=> $this->input->post('prompt')
 			);
 		
 		if(strlen($data['tip']) > 0) 

@@ -84,7 +84,7 @@ $(function() {
 
 <div id="submittipform">
 	<span class="closebutton">&times;</span>
-	<strong>Submit an anonymous tip.</strong> Leave contact information if willing, or email <a href="mailto:orient@bowdoin.edu">orient@bowdoin.edu</a>.<br/>
+	<!--<span id="tipprompt" style="font-weight: bold;">Submit an anonymous tip.</span>-->Submissions are anonymous. Leave contact information if willing, or email <a href="mailto:orient@bowdoin.edu">orient@bowdoin.edu</a>.<br/>
 	<textarea name="tip"></textarea>
 	<button id="tipsubmit">Submit</button> <button id="cancel">Cancel</button> <span id="tipnotice"></span>
 </div>
@@ -100,6 +100,12 @@ $(function() {
 <? endif; ?>
 
 <script>
+
+if(Math.random() > 0.5) 
+{
+	$('#submittip').html("Request an investigation");
+	//$('#tipprompt').html("Request an investigation anonymously."); //i cut this bit of copy entirely
+}
 
 $("#lastupdated").click(function () {
 	$("#datepicker").toggle();
@@ -122,12 +128,13 @@ $(document).ready(function() {
     //if submit button is clicked
     $('#tipsubmit').click(function () {        
          
-        var tip = $('textarea[name=tip]').val();        
+        var tip = $('textarea[name=tip]').val();
         var user_location = window.location.href;
         var user_referer = "<? if(isset($_SERVER['HTTP_REFERER'])) { echo $_SERVER['HTTP_REFERER']; }?>";
         var user_ip = "<? if(isset($_SERVER['REMOTE_ADDR'])) { echo $_SERVER['REMOTE_ADDR']; }?>";
         var user_host = "<? if(isset($_SERVER['REMOTE_HOST'])) { echo $_SERVER['REMOTE_HOST']; }?>";
         var user_agent = "<? if(isset($_SERVER['HTTP_USER_AGENT'])) { echo $_SERVER['HTTP_USER_AGENT']; }?>";
+        var prompt = $('#submittip').html();
          
         //start the ajax request
         $.ajax({
@@ -138,7 +145,8 @@ $(document).ready(function() {
             		+ '&user_referer=' + encodeURIComponent(user_referer)
             		+ '&user_ip=' + encodeURIComponent(user_ip)
             		+ '&user_host=' + encodeURIComponent(user_host)
-            		+ '&user_agent=' + encodeURIComponent(user_agent),
+            		+ '&user_agent=' + encodeURIComponent(user_agent)
+            		+ '&prompt=' + encodeURIComponent(prompt),
             cache: false,
             success: function (result) {
                 //if ajax_submittip returned 1/true (submit success)
