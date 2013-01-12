@@ -1645,13 +1645,21 @@ figure.authorpic {
 }
 
 .statblock {
-	float: left;
-	width: 25%;
-	margin: 0 0 20px 0;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	padding: 0 10px;
+}
+
+/* FOR NON-TABLETS */
+@media all and (min-width: 961px) {
+
+	.statblock {
+		float: left;
+		width: 25%;
+		margin: 0 0 20px 0;
+	}
+	
 }
 
 /* /////////// */

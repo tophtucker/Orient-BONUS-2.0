@@ -81,7 +81,7 @@
 	<section id="articles" class="authorsection">
 
 		<? if(!empty($popular)): ?>
-		<div class="statblock hidemobile">
+		<div class="statblock">
 			<h2>Popular</h2>
 			<ul class="articleblock">
 			<? foreach($popular as $article): ?>
@@ -92,7 +92,7 @@
 		<? endif; ?>
 		
 		<? if(!empty($longreads)): ?>
-		<div class="statblock hidemobile">
+		<div class="statblock">
 			<h2>Longreads</h2>
 			<ul class="articleblock">
 			<? foreach($longreads as $article): ?>
@@ -103,7 +103,7 @@
 		<? endif; ?>
 		
 		<? if(!empty($collaborators)): ?>
-		<div class="statblock hidemobile">
+		<div class="statblock">
 			<h2>Collaborators</h2>
 			<ul class="articleblock">
 			<? foreach($collaborators as $collaborator): ?>
@@ -114,7 +114,7 @@
 		<? endif; ?>
 		
 		<? if(!empty($series)): ?>
-		<div class="statblock hidemobile">
+		<div class="statblock">
 			<h2>Columns</h2>
 			<ul class="articleblock">
 			<? foreach($series as $serie): ?>
