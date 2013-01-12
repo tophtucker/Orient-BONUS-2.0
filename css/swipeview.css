@@ -19,6 +19,14 @@
 	/* -webkit-user-select:none; */
 }
 
+#swipeview_wrapper.author-swipeview {
+	height:420px;
+}
+
+#swipeview_wrapper.author-swipeview .swipeview-image {
+	height:360px;
+}
+
 #swipeview_wrapper .swipeview-image {
 	background-size: contain !important;
 	background-repeat:no-repeat !important;
@@ -33,7 +41,7 @@
 
 #swipeview_nav {
 	z-index:100;
-	width:200px;
+	width:100%;
 	height:20px;
 	padding:0;
 }

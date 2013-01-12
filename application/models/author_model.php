@@ -79,21 +79,61 @@ class Author_model extends CI_Model {
 		$this->db->select('article_id');
 		$this->db->where('author_id', $id);
 		$query = $this->db->get('articleauthor');
-		$article_ids_2d = $query->result();
 		
-		$article_ids = array();
-		foreach($article_ids_2d as $aid) {
-			$article_ids[] = $aid->article_id;
+		if($query->num_rows() > 0)
+		{
+			$article_ids_2d = $query->result();
+		
+			$article_ids = array();
+			foreach($article_ids_2d as $aid) {
+				$article_ids[] = $aid->article_id;
+			}
+		
+			$this->db->select('author.id as author_id, author.name, article.id as article_id, article.title, count(*) as collab_count');
+			$this->db->where_in('article_id', $article_ids);
+			$this->db->where('articleauthor.author_id !=', $id);
+			$this->db->join('author', 'author.id = articleauthor.author_id');
+			$this->db->join('article', 'article.id = articleauthor.article_id');
+			$this->db->group_by('author.id');
+			$query2 = $this->db->get('articleauthor');
+				
+			return $query2->result();
 		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function get_photographer_collaborators($id)
+	{
+		$this->db->select('article_id');
+		$this->db->where('photographer_id', $id);
+		$query = $this->db->get('photo');
 		
-		$this->db->select('author.id as author_id, author.name, article.id as article_id, article.title');
-		$this->db->where_in('article_id', $article_ids);
-		$this->db->where('articleauthor.author_id !=', $id);
-		$this->db->join('author', 'author.id = articleauthor.author_id');
-		$this->db->join('article', 'article.id = articleauthor.article_id');
-		$this->db->group_by('author.id');
-		$query2 = $this->db->get('articleauthor');
-		return $query2->result();
+		if($query->num_rows() > 0)
+		{
+			$article_ids_2d = $query->result();
+			
+			$article_ids = array();
+			foreach($article_ids_2d as $aid) {
+				$article_ids[] = $aid->article_id;
+			}
+			
+			$this->db->select('author.id as author_id, author.name, article.id as article_id, article.title, count(*) as collab_count');
+			$this->db->where_in('article_id', $article_ids);
+			$this->db->where('photo.photographer_id !=', $id);
+			$this->db->join('author', 'author.id = photo.photographer_id');
+			$this->db->join('article', 'article.id = photo.article_id');
+			$this->db->group_by('author.id');
+			$query2 = $this->db->get('photo');
+				
+			return $query2->result();
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	function get_author_stats($id)
@@ -121,8 +161,15 @@ class Author_model extends CI_Model {
 		$this->db->order_by('article.date_published', 'asc');
 		$this->db->limit('1');
 		$query = $this->db->get('articleauthor');
-		$result = $query->row();
-		$data['first_article'] = $result->date_published;
+		if($query->num_rows() > 0) 
+		{
+			$result = $query->row();
+			$data['first_article'] = $result->date_published;
+		}
+		else
+		{
+			$data['first_article'] = false;
+		}
 		
 		// latest article date
 		$this->db->select('article.date_published');
@@ -131,8 +178,49 @@ class Author_model extends CI_Model {
 		$this->db->order_by('article.date_published', 'desc');
 		$this->db->limit('1');
 		$query = $this->db->get('articleauthor');
-		$result = $query->row();
-		$data['latest_article'] = $result->date_published;
+		if($query->num_rows() > 0) 
+		{
+			$result = $query->row();
+			$data['latest_article'] = $result->date_published;
+		}
+		else
+		{
+			$data['latest_article'] = false;
+		}
+		
+		// earliest photo date
+		$this->db->select('article.date_published');
+		$this->db->join('article', 'article.id = photo.article_id');
+		$this->db->where('photo.photographer_id', $id);
+		$this->db->order_by('article.date_published', 'asc');
+		$this->db->limit('1');
+		$query = $this->db->get('photo');
+		if($query->num_rows() > 0) 
+		{
+			$result = $query->row();
+			$data['first_photo'] = $result->date_published;
+		}
+		else
+		{
+			$data['first_photo'] = false;
+		}
+		
+		// latest photo date
+		$this->db->select('article.date_published');
+		$this->db->join('article', 'article.id = photo.article_id');
+		$this->db->where('photo.photographer_id', $id);
+		$this->db->order_by('article.date_published', 'desc');
+		$this->db->limit('1');
+		$query = $this->db->get('photo');
+		if($query->num_rows() > 0) 
+		{
+			$result = $query->row();
+			$data['latest_photo'] = $result->date_published;
+		}
+		else
+		{
+			$data['latest_photo'] = false;
+		}
 		
 		/*
 		

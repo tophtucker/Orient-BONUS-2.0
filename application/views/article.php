@@ -732,9 +732,9 @@ $(document).ready(function(){
 				<? if($key > 0): ?>,<? endif; ?>
 				'<div class="swipeview-image" style="background:url(<?= base_url() ?>images/<?= $article->date ?>/<?= $photo->filename_large ?>)"></div>'
 					+'<figcaption>'
-					+ '<p class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;"><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>'
-					+ '<p class="photocaption"><?=$photos[0]->caption?></p>'
-					+ '<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photos[0]->filename_large) ?>&description=<?= urlencode(strip_tags($photos[0]->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>'
+					+ '<p class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;"><? if(!empty($photo->photographer_id)): ?><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->photographer_name))); ?><? else: ?><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->credit))); ?><? endif; ?></p>'
+					+ '<p class="photocaption"><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->caption))); ?></p>'
+					+ '<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photo->filename_large) ?>&description=<?= urlencode(strip_tags($photo->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>'
 					+'</figcaption>'
 			<? endforeach; ?>
 		];

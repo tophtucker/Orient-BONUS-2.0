@@ -35,6 +35,9 @@
 	<!-- <script type="text/javascript" src="<?=base_url()?>js/jquery-1.8.0.min.js"></script> -->
 	<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.8.17.custom.min.js"></script>
 	
+	<!-- SwipeView (for slideshows) -->
+	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/swipeview.css?v=1">
+	
 	<!-- Google Analytics -->
 	<script type="text/javascript">
 	
@@ -72,9 +75,26 @@
 			<? if($stats['photo_count']): ?><strong>Number of photos:</strong> <?= $stats['photo_count'] ?><br/><? endif; ?>
 			<? if($stats['first_article']): ?><strong>First article:</strong> <?= date("F j, Y",strtotime($stats['first_article'])) ?><br/><? endif; ?>
 			<? if($stats['latest_article']): ?><strong>Latest article:</strong> <?= date("F j, Y",strtotime($stats['latest_article'])) ?><br/><? endif; ?>
+			<? if($stats['first_photo']): ?><strong>First image:</strong> <?= date("F j, Y",strtotime($stats['first_photo'])) ?><br/><? endif; ?>
+			<? if($stats['latest_photo']): ?><strong>Latest image:</strong> <?= date("F j, Y",strtotime($stats['latest_photo'])) ?><br/><? endif; ?>
 			
 			<? if(!empty($author->bio)): ?><?= $author->bio ?><? endif; ?>
 		</div>
+		
+		<? if(count($photos) > 1): ?>
+			<figure class="articlemedia">
+				<div id="swipeview_wrapper" class="author-swipeview"></div>
+				<div id="swipeview_relative_nav">
+					<span id="prev" onclick="carousel.prev();hasInteracted=true">&laquo;</span>
+					<span id="next" onclick="carousel.next();hasInteracted=true">&raquo;</span>
+				</div>
+				<ul id="swipeview_nav">
+					<? foreach($photos as $key => $photo): ?>
+					<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key; ?>);hasInteracted=true"></li>
+					<? endforeach; ?>
+				</ul>
+			</figure>
+		<? endif; ?>
 		
 	</header>
 		
@@ -107,7 +127,7 @@
 			<h2>Collaborators</h2>
 			<ul class="articleblock">
 			<? foreach($collaborators as $collaborator): ?>
-				<li class="smalltile"><a href="<?=base_url()?>author/<?=$collaborator->author_id?>"><h3><?=$collaborator->name?></h3></a><p><?=$collaborator->title?><!-- $collaborator->article_id --></p></li>
+				<li class="smalltile"><a href="<?=base_url()?>author/<?=$collaborator->author_id?>" title="<?=$collaborator->collab_count?> collaboration<?= ($collaborator->collab_count > 1 ? 's, including' : ':') ?> '<?=$collaborator->title?>' "><h3><?=$collaborator->name?></h3></a><!-- $collaborator->article_id --></li>
 			<? endforeach; ?>
 			</ul>
 		</div>
@@ -126,8 +146,8 @@
 		
 		<div class="clear"></div>
 		
+		<? if(!empty($articles)): ?>
 		<h2>All articles</h2>
-
 		<ul class="articleblock">
 			<? foreach($articles as $article): ?>
 			<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
@@ -139,6 +159,7 @@
 			</a></li>
 			<? endforeach; ?>
 		</ul>
+		<? endif; ?>
 		
 	</section>
 	
@@ -147,6 +168,71 @@
 <? $this->load->view('template/bodyfooter', $footerdata); ?>
 
 <? $this->load->view('bonus/bonusbar', TRUE); ?>
+
+<? if(count($photos) > 1): ?>
+	<!-- SwipeView. Only needed for slideshows. -->
+	<script type="text/javascript" src="<?= base_url() ?>js/swipeview-mwidmann.js"></script>
+	<script type="text/javascript">
+	var	carousel,
+		el,
+		i,
+		page,
+		hasInteracted = false,
+		dots = document.querySelectorAll('#swipeview_nav li'),
+		slides = [
+			<? foreach($photos as $key => $photo): ?>
+				<? if($key > 0): ?>,<? endif; ?>
+				'<div class="swipeview-image" style="background:url(<?= base_url() ?>images/<?= $photo->date ?>/<?= $photo->filename_large ?>)"></div>'
+					+'<figcaption>'
+					+ '<p class="photocaption"><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->caption))); ?> <?= anchor("article/".$photo->article_id, addslashes(trim($photo->title))) ?></p>'
+					+'</figcaption>'
+			<? endforeach; ?>
+		];
+	
+	carousel = new SwipeView('#swipeview_wrapper', {
+		numberOfPages: slides.length,
+		hastyPageFlip: true
+	});
+	
+	// Load initial data
+	for (i=0; i<3; i++) {
+		page = i==0 ? slides.length-1 : i-1;
+	
+		el = document.createElement('span');
+		el.innerHTML = slides[page];
+		carousel.masterPages[i].appendChild(el)
+	}
+	
+	carousel.onFlip(function () {
+		var el,
+			upcoming,
+			i;
+	
+		for (i=0; i<3; i++) {
+			upcoming = carousel.masterPages[i].dataset.upcomingPageIndex;
+	
+			if (upcoming != carousel.masterPages[i].dataset.pageIndex) {
+				el = carousel.masterPages[i].querySelector('span');
+				el.innerHTML = slides[upcoming];
+			}
+		}
+		
+		document.querySelector('#swipeview_nav .selected').className = '';
+		dots[carousel.pageIndex].className = 'selected';
+	});
+	
+	
+	// timer for carousel autoplay
+	function loaded() {
+		var interval = setInterval(function () { 
+				if(!hasInteracted) carousel.next(); 
+			}, 5000); 
+		
+	}
+	document.addEventListener('DOMContentLoaded', loaded, false);
+	
+	</script>
+<? endif; ?>
 
 </body>
 

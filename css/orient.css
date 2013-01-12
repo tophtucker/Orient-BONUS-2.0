@@ -1632,7 +1632,7 @@ figure.authorpic {
 
 .authorstats {
 	float: left;
-	max-width: 700px;
+	max-width: 500px;
 	margin-bottom: 50px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;

@@ -34,6 +34,33 @@ class Attachments_model extends CI_Model {
     	}
     }
     
+	function get_author_photos($author_id)
+	{
+    	$this->db->select("
+    		photo.id as photo_id, 
+    		photo.filename_small, 
+    		photo.filename_large, 
+    		photo.credit, 
+    		photo.caption, 
+    		photo.article_id,
+    		article.title,
+    		article.date");
+    	$this->db->join("article", "article.id = photo.article_id", 'left');
+    	$this->db->from("photo");
+    	$this->db->where("photographer_id", $author_id);
+    	$this->db->where("photo.active", "1");
+    	$this->db->order_by("article.date", "desc");
+    	$query = $this->db->get();
+    	if($query->num_rows() > 0)
+    	{
+    		return $query->result();
+    	}
+    	else
+    	{
+    		return FALSE;
+    	}
+	}
+    
     function get_feature_photos($article_date, $section_id)
     {
     	$this->db->select("
