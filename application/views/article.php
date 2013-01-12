@@ -472,14 +472,9 @@
 					</div>
 					<ul id="swipeview_nav">
 						<? foreach($photos as $key => $photo): ?>
-						<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>);hasInteracted=true"></li>
+						<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key; ?>);hasInteracted=true"></li>
 						<? endforeach; ?>
 					</ul>
-					<figcaption>
-						<p class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;"><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>
-						<p class="photocaption"><?=$photos[0]->caption?></p>
-						<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photos[0]->filename_large) ?>&description=<?= urlencode(strip_tags($photos[0]->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
-					</figcaption>
 				</figure>
 			<? endif; ?>
 		<? endif; ?>
@@ -735,7 +730,12 @@ $(document).ready(function(){
 		slides = [
 			<? foreach($photos as $key => $photo): ?>
 				<? if($key > 0): ?>,<? endif; ?>
-				'<img src="<?= base_url() ?>images/<?= $article->date ?>/<?= $photo->filename_large ?>">'
+				'<div class="swipeview-image" style="background:url(<?= base_url() ?>images/<?= $article->date ?>/<?= $photo->filename_large ?>)"></div>'
+					+'<figcaption>'
+					+ '<p class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;"><? if(!empty($photos[0]->photographer_id)): ?><?= $photos[0]->photographer_name ?><? else: ?><?= $photos[0]->credit ?><? endif; ?></p>'
+					+ '<p class="photocaption"><?=$photos[0]->caption?></p>'
+					+ '<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photos[0]->filename_large) ?>&description=<?= urlencode(strip_tags($photos[0]->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>'
+					+'</figcaption>'
 			<? endforeach; ?>
 		];
 	

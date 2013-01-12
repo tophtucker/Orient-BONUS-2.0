@@ -1553,7 +1553,7 @@ button .buttontext {
 /* FOR SMARTPHONES (read: iPhones) */
 @media all and (max-width: 480px) {
 
-	#issuedate, #mainnav, #bonushook, #swipeview_relative_nav > #next, #swipeview_relative_nav > #prev {
+	#issuedate, #mainnav, #bonushook {
 		display: none;
 	}
 	
@@ -1604,12 +1604,7 @@ button .buttontext {
 		width: 100%;
 		margin: 10px 0;
 	}
-	
-	.articlemedia #swipeview_wrapper {
-		width: 100% !important;
-		height: 200px !important;
-	}
-	
+		
 	aside {
 		float: none;
 		width: 100%;
@@ -1653,13 +1648,18 @@ figure.authorpic {
 
 /* FOR NON-TABLETS */
 @media all and (min-width: 961px) {
-
 	.statblock {
 		float: left;
 		width: 25%;
 		margin: 0 0 20px 0;
 	}
-	
+}
+
+/* FOR SMARTPHONES (read: iPhones) */
+@media all and (max-width: 480px) {
+	.statblock {
+		padding: 0;
+	}
 }
 
 /* /////////// */
