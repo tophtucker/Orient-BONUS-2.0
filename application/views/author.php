@@ -71,13 +71,13 @@
 		<div class="authorstats">
 			<h2 class="authorname"><?=$author->name?></h2>
 			
-			<? if($stats['article_count']): ?><strong>Number of article:</strong> <?= $stats['article_count'] ?><br/><? endif; ?>
+			<? if($stats['article_count']): ?><strong>Number of articles:</strong> <?= $stats['article_count'] ?><br/><? endif; ?>
 			<? if($stats['photo_count']): ?><strong>Number of photos:</strong> <?= $stats['photo_count'] ?><br/><? endif; ?>
 			<? if($stats['first_article']): ?><strong>First article:</strong> <?= date("F j, Y",strtotime($stats['first_article'])) ?><br/><? endif; ?>
 			<? if($stats['latest_article']): ?><strong>Latest article:</strong> <?= date("F j, Y",strtotime($stats['latest_article'])) ?><br/><? endif; ?>
 			<? if($stats['first_photo']): ?><strong>First image:</strong> <?= date("F j, Y",strtotime($stats['first_photo'])) ?><br/><? endif; ?>
 			<? if($stats['latest_photo']): ?><strong>Latest image:</strong> <?= date("F j, Y",strtotime($stats['latest_photo'])) ?><br/><? endif; ?>
-			
+			<br/>
 			<? if(!empty($author->bio)): ?><?= $author->bio ?><? endif; ?>
 		</div>
 		

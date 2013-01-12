@@ -47,6 +47,7 @@ class Article_model extends CI_Model {
     		article.published,
     		article.featured,
     		author.name 'author',
+    		author.id 'author_id',
     		series.name 'series', 
     		articletype.name 'type', 
     		photo.filename_small"

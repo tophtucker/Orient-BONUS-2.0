@@ -457,7 +457,7 @@
 						<? if(bonus()): ?><div id="deletePhoto<?=$photo->photo_id?>" class="delete">&times;</div><? endif; ?>
 						<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>">
 						<figcaption>
-							<p id="photocredit<?=$photo->photo_id?>" class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= $photo->photographer_name ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
+							<p id="photocredit<?=$photo->photo_id?>" class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= anchor('author/'.$photo->photographer_id, $photo->photographer_name) ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
 							<p id="photocaption<?=$photo->photo_id?>" class="photocaption"><?=$photo->caption?></p>
 							<? if(!bonus()):?><a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photo->filename_large) ?>&description=<?= urlencode(strip_tags($photo->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a><?endif;?>
 						</figcaption>
@@ -659,6 +659,7 @@
 
 <? endif; ?>
 
+<? if(!bonus()): // just gets in the way during editing ?>
 <!-- Table of Contents -->
 <script>
 $(document).ready(function(){
@@ -716,6 +717,7 @@ $(document).ready(function(){
    
 });
 </script>
+<? endif; ?>
 
 <? if(count($photos) > 1 && !bonus()): ?>
 	<!-- SwipeView. Only needed for slideshows. -->

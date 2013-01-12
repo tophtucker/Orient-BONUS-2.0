@@ -235,7 +235,7 @@ var	carousel,
 				'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'+
 				<? if($article->subhead): ?>'<h4 class="articlesubtitle"><?= addslashes(trim($article->subhead)) ?></h4>'+<? endif; ?>
 				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>">'+<? endif; ?>
-				<? if(!empty($article->author)): ?>'<div class="authortile hidemobile"><p class="articleauthor"><?=addslashes($article->author)?></p></div>'+<? endif; ?>
+				<? if(!empty($article->author)): ?>'<a href="<?=base_url()?>author/<?=$article->author_id?>"><div class="authortile hidemobile"><p class="articleauthor"><?=addslashes($article->author)?></p></div></a>'+<? endif; ?>
 				'<p class="articledate hidemobile"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'+
 				'<p><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$article->pullquote))); ?></p>'+
 			'</div>'

@@ -971,6 +971,7 @@ section h2, #sidebar h2 {
 	
 	.articleblock li:nth-child(-n+5).backgrounded {
 		background-size:cover !important;
+		background-position:center !important; 
 	}
 
 	.articleblock li:nth-child(-n+5).backgrounded a {
@@ -1412,6 +1413,14 @@ figure p {
 	color: white;
 	margin: -20px 5px 0 0;
 	text-shadow: 0 0 10px black;
+}
+
+.photocredit a {
+	color: white;
+}
+
+.photocredit a:hover {
+	color: darkblue;
 }
 
 .photocaption {
