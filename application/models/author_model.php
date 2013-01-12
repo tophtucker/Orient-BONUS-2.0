@@ -69,7 +69,7 @@ class Author_model extends CI_Model {
 		//$this->db->order_by('articlebody.timestamp', 'desc');
 		$this->db->order_by('bodylength', 'desc');
 		$this->db->group_by('article.id');
-		$this->db->limit('3');
+		$this->db->limit('5');
 		$query = $this->db->get('article');
 		return $query->result();		
 	}
@@ -94,6 +94,84 @@ class Author_model extends CI_Model {
 		$this->db->group_by('author.id');
 		$query2 = $this->db->get('articleauthor');
 		return $query2->result();
+	}
+	
+	function get_author_stats($id)
+	{
+		$data = array();
+		
+		// count articles
+		$this->db->select('count(*) as articlecount');
+		$this->db->where('author_id', $id);
+		$query = $this->db->get('articleauthor');
+		$result = $query->row();
+		$data['article_count'] = $result->articlecount;
+		
+		// count photos
+		$this->db->select('count(*) as photocount');
+		$this->db->where('photographer_id', $id);
+		$query = $this->db->get('photo');
+		$result = $query->row();
+		$data['photo_count'] = $result->photocount;
+		
+		// earliest article date
+		$this->db->select('article.date_published');
+		$this->db->join('article', 'article.id = articleauthor.article_id');
+		$this->db->where('articleauthor.author_id', $id);
+		$this->db->order_by('article.date_published', 'asc');
+		$this->db->limit('1');
+		$query = $this->db->get('articleauthor');
+		$result = $query->row();
+		$data['first_article'] = $result->date_published;
+		
+		// latest article date
+		$this->db->select('article.date_published');
+		$this->db->join('article', 'article.id = articleauthor.article_id');
+		$this->db->where('articleauthor.author_id', $id);
+		$this->db->order_by('article.date_published', 'desc');
+		$this->db->limit('1');
+		$query = $this->db->get('articleauthor');
+		$result = $query->row();
+		$data['latest_article'] = $result->date_published;
+		
+		/*
+		
+		author lifetime wordcount, which would be great, would look something like this:
+		
+		SELECT SUM( LENGTH(name) - LENGTH(REPLACE(name, ' ', ''))+1)
+		FROM articlebody;
+		http://www.mwasif.com/tag/mysql-word-count/
+
+		SELECT articlebody.*, COUNT(*) AS count
+		   FROM articlebody
+		   JOIN (SELECT max(`timestamp`) AS `timestamp`
+					  FROM articlebody 
+					  GROUP by `timestamp`) P2 ON P2.timestamp = articlebody.timestamp
+		   GROUP BY articlebody.article_id
+		   ORDER BY articlebody.timestamp ASC 
+		   LIMIT 10;
+		http://stackoverflow.com/questions/190702/mysql-select-n-rows-but-with-only-unique-values-in-one-column
+		
+		unfortunately, it's hella slow. f me for breaking bodies into a separate table. :-/
+		maybe a little redundancy wouldn't be bad and i really should be saving the latest body in `article`.
+		f it, imma do that. eventually.
+		<3, toph
+		
+		*/
+		
+		return $data;
+	}
+	
+	function get_series_contributors($id)
+	{
+		$this->db->select('author.id, author.name, count(*) as contrib_count');
+		$this->db->join('articleauthor', 'articleauthor.author_id = author.id');
+		$this->db->join('article', 'article.id = articleauthor.article_id');
+		$this->db->where('article.series', $id);
+		$this->db->group_by('author_id');
+		$this->db->order_by('contrib_count', 'desc');
+		$query = $this->db->get('author');
+		return $query->result();
 	}
 
 	function get_all_author_ids()

@@ -965,6 +965,10 @@ section h2, #sidebar h2 {
 		padding-top: 65px;
 	}
 	
+	section.authorsection {
+		padding-top: 0;
+	}
+	
 	.articleblock li:nth-child(-n+5).backgrounded {
 		background-size:cover !important;
 	}
@@ -1162,11 +1166,11 @@ article header p {
 	line-height: 10px;
 }
 
-article header {
+article header, .authorheader {
 	margin: 30px 0 25px 0;
 }
 
-.articletitle {
+.articletitle, .authorname {
 	font-family: schoolbook-web-condensed,Georgia;
 	font-size: 36pt;
 }
@@ -1438,14 +1442,6 @@ figure#contents ul, figure#contents li {
 	padding:0;
 }
 
-figure.authorpic {
-	border: 1px solid lightgray;
-	padding: 10px;
-	margin-top: -50px;
-	background: white;
-	width: 200px;
-}
-
 .lede {
 	/*font-variant: small-caps;*/
 	text-transform: uppercase;
@@ -1621,6 +1617,41 @@ button .buttontext {
 		text-align: center;
 	}
 
+}
+
+/* //////////////// */
+/*  AUTHOR PROFILE  */
+/* //////////////// */
+
+figure.authorpic {
+	border: 1px solid lightgray;
+	margin: 0 20px 30px 0;
+	padding: 10px;
+	background: white;
+	width: 200px;
+	float: left;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.authorstats {
+	float: left;
+	max-width: 700px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.statblock {
+	float: left;
+	width: 25%;
+	margin: 0 0 20px 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding: 0 10px;
 }
 
 /* /////////// */

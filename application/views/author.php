@@ -59,79 +59,74 @@
 
 <div id="content">
 			
-	<section id="articles" class="authorsection">
-		
-		<h2><?=$author->name?></h2>
-		
+	<header class="authorheader">
+				
 		<? if(!empty($author->photo)): ?>
 			<figure class="authorpic"><img src="<?=base_url().'images/authors/'.$author->photo?>"></figure>
 		<? endif; ?>
-
-		<? if(!empty($author->bio)): ?>
-			<!-- #TODO: programmatic bio! -->
-			<?= $author->bio ?>
-		<? endif; ?>
+				
+		<div class="authorstats">
+			<h2 class="authorname"><?=$author->name?></h2>
+			
+			<? if($stats['article_count']): ?><strong>Number of article:</strong> <?= $stats['article_count'] ?><br/><? endif; ?>
+			<? if($stats['photo_count']): ?><strong>Number of photos:</strong> <?= $stats['photo_count'] ?><br/><? endif; ?>
+			<? if($stats['first_article']): ?><strong>First article:</strong> <?= date("F j, Y",strtotime($stats['first_article'])) ?><br/><? endif; ?>
+			<? if($stats['latest_article']): ?><strong>Latest article:</strong> <?= date("F j, Y",strtotime($stats['latest_article'])) ?><br/><? endif; ?>
+			
+			<? if(!empty($author->bio)): ?><?= $author->bio ?><? endif; ?>
+		</div>
 		
-		<style>
-		.statblockcontainer {
-			float: left;
-			width: 25%;
-			margin: 0 0 20px 0;
-		}
-		.statblock {
-			padding: 0 10px;
-		}
-		</style>
-
-		<? if(!empty($collaborators)): ?>
-		<div class="statblockcontainer hidemobile">
-		<div class="statblock">
-			<p><strong>Collaborators:</strong><br/>
-			<? foreach($collaborators as $collaborator): ?>
-				<?= anchor('author/'.$collaborator->author_id, $collaborator->name); ?> (<?= anchor('article/'.$collaborator->article_id, $collaborator->title); ?>)<br/>
-			<? endforeach; ?>
-			</p>
-		</div>
-		</div>
-		<? endif; ?>
+	</header>
+		
+	<section id="articles" class="authorsection">
 
 		<? if(!empty($popular)): ?>
-		<div class="statblockcontainer hidemobile">
-		<div class="statblock">
-			<p><strong>Popular:</strong><br/>
+		<div class="statblock hidemobile">
+			<h2>Popular</h2>
+			<ul class="articleblock">
 			<? foreach($popular as $article): ?>
-				<?= anchor('article/'.$article->id, $article->title); ?><br/>
+				<li class="smalltile"><a href="<?=base_url()?>article/<?=$article->id?>"><h3><?=$article->title?></h3></a></li>
 			<? endforeach; ?>
-			</p>
-		</div>
+			</ul>
 		</div>
 		<? endif; ?>
 		
 		<? if(!empty($longreads)): ?>
-		<div class="statblockcontainer hidemobile">
-		<div class="statblock">
-			<p><strong>Longest articles:</strong><br/>
+		<div class="statblock hidemobile">
+			<h2>Longreads</h2>
+			<ul class="articleblock">
 			<? foreach($longreads as $article): ?>
-				<?= anchor('article/'.$article->id, $article->title); ?><br/>
+				<li class="smalltile"><a href="<?=base_url()?>article/<?=$article->id?>"><h3><?=$article->title?></h3></a></li>
 			<? endforeach; ?>
-			</p>
+			</ul>
 		</div>
+		<? endif; ?>
+		
+		<? if(!empty($collaborators)): ?>
+		<div class="statblock hidemobile">
+			<h2>Collaborators</h2>
+			<ul class="articleblock">
+			<? foreach($collaborators as $collaborator): ?>
+				<li class="smalltile"><a href="<?=base_url()?>author/<?=$collaborator->author_id?>"><h3><?=$collaborator->name?></h3></a><p><?=$collaborator->title?><!-- $collaborator->article_id --></p></li>
+			<? endforeach; ?>
+			</ul>
 		</div>
 		<? endif; ?>
 		
 		<? if(!empty($series)): ?>
-		<div class="statblockcontainer hidemobile">
-		<div class="statblock">
-			<p><strong>Columns written for:</strong><br/>
+		<div class="statblock hidemobile">
+			<h2>Columns</h2>
+			<ul class="articleblock">
 			<? foreach($series as $serie): ?>
-				<?= anchor('series/'.$serie->series, $serie->name); ?><br/>
+				<li class="smalltile"><a href="<?=base_url()?>series/<?=$serie->series?>"><h3><?=$serie->name?></h3></a></li>
 			<? endforeach; ?>
-			</p>
-		</div>
+			</ul>
 		</div>
 		<? endif; ?>
 		
 		<div class="clear"></div>
+		
+		<h2>All articles</h2>
 
 		<ul class="articleblock">
 			<? foreach($articles as $article): ?>

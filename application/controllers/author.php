@@ -43,10 +43,11 @@ class Author extends CI_Controller {
 			$data->author = $author;
 			
 			$data->articles = $this->article_model->get_articles_by_date(date("Y-m-d"), false, false, false, false, $id);
-			$data->popular = $this->article_model->get_popular_articles_by_date(date("Y-m-d"), false, '3',   false, $id, false);
+			$data->popular = $this->article_model->get_popular_articles_by_date(date("Y-m-d"), false, '5',   false, $id, false);
 			$data->series = $this->author_model->get_author_series($id);
 			$data->longreads = $this->author_model->get_author_longreads($id);
 			$data->collaborators = $this->author_model->get_author_collaborators($id);
+			$data->stats = $this->author_model->get_author_stats($id);
 						
 			$this->load->view('author', $data);
 		}
