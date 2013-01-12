@@ -71,7 +71,7 @@ $(function() {
 		<? if(!empty($nextissue)):?><a href="<?=site_url()?>browse/<?=$nextissue->issue_date?>" class="issue-nav-arrow">&#x25BA;</a> <?endif;?>&middot;
 	<?endif;?>
 	</span>
-	<a href="<?=base_url()?>random">Random</a>
+	<a href="<?=base_url()?>random">Random <img src="<?=base_url()?>images/icon-shuffle.svg" type="image/svg+xml" class="" height="15" width="15" style="margin-bottom: -3px;" title="Dmitry Baranovskiy, from The Noun Project"></a>
 	<span class="onlymobile">&middot; <?=anchor('search', 'Search'); ?></span>
 	<span id="pages" class="hidemobile">
 		<?=anchor('about', 'About'); ?> &middot; 
