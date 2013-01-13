@@ -8,6 +8,7 @@ class Series extends CI_Controller {
 		$this->load->model('series_model','',TRUE);
 		$this->load->model('article_model', '', TRUE);
 		$this->load->model('attachments_model', '', TRUE);
+		$this->load->model('author_model', '', TRUE);
 	}
 	
 	public function index($id = '')
@@ -42,7 +43,8 @@ class Series extends CI_Controller {
 			$data->headerdata->date = date("Y-m-d");
 			$data->series = $series;
 			$data->articles = $this->article_model->get_articles_by_date(date("Y-m-d"), false, false, false, false, false, $id);
-						
+			$data->contributors = $this->author_model->get_series_contributors($id);
+			
 			$this->load->view('series', $data);
 		}
 	}

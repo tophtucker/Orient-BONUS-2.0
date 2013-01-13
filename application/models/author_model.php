@@ -252,7 +252,7 @@ class Author_model extends CI_Model {
 	
 	function get_series_contributors($id)
 	{
-		$this->db->select('author.id, author.name, count(*) as contrib_count');
+		$this->db->select('author.id as author_id, author.name, count(*) as contrib_count');
 		$this->db->join('articleauthor', 'articleauthor.author_id = author.id');
 		$this->db->join('article', 'article.id = articleauthor.article_id');
 		$this->db->where('article.series', $id);

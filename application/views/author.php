@@ -100,12 +100,31 @@
 		
 	<section id="articles" class="authorsection">
 
+		<?php
+		// calculated widths of divs depending on how many columns we'll have
+		$columns = 0;
+		$colwidth = 100;
+		if(!empty($popular)) $columns++;
+		if(!empty($longreads)) $columns++;
+		if(!empty($collaborators)) $columns++;
+		if(!empty($series)) $columns++;
+		if($columns) $colwidth=(1/$columns)*100;
+		?>
+		<style>
+		/* FOR NON-TABLETS */
+			@media all and (min-width: 961px) {
+			.statblock {
+				width: <?=$colwidth?>%;
+			}
+		}
+		</style>
+
 		<? if(!empty($popular)): ?>
 		<div class="statblock">
 			<h2>Popular</h2>
 			<ul class="articleblock">
 			<? foreach($popular as $article): ?>
-				<li class="smalltile"><a href="<?=base_url()?>article/<?=$article->id?>"><h3><?=$article->title?></h3></a></li>
+				<li class="smalltile fullwidth"><a href="<?=base_url()?>article/<?=$article->id?>"><h3><?=$article->title?></h3></a></li>
 			<? endforeach; ?>
 			</ul>
 		</div>
@@ -116,7 +135,7 @@
 			<h2>Longreads</h2>
 			<ul class="articleblock">
 			<? foreach($longreads as $article): ?>
-				<li class="smalltile"><a href="<?=base_url()?>article/<?=$article->id?>"><h3><?=$article->title?></h3></a></li>
+				<li class="smalltile fullwidth"><a href="<?=base_url()?>article/<?=$article->id?>"><h3><?=$article->title?></h3></a></li>
 			<? endforeach; ?>
 			</ul>
 		</div>
@@ -127,7 +146,7 @@
 			<h2>Collaborators</h2>
 			<ul class="articleblock">
 			<? foreach($collaborators as $collaborator): ?>
-				<li class="smalltile"><a href="<?=base_url()?>author/<?=$collaborator->author_id?>" title="<?=$collaborator->collab_count?> collaboration<?= ($collaborator->collab_count > 1 ? 's, including' : ':') ?> '<?=$collaborator->title?>' "><h3><?=$collaborator->name?></h3></a><!-- $collaborator->article_id --></li>
+				<li class="smalltile fullwidth"><a href="<?=base_url()?>author/<?=$collaborator->author_id?>" title="<?=$collaborator->collab_count?> collaboration<?= ($collaborator->collab_count > 1 ? 's, including' : ':') ?> '<?=$collaborator->title?>' "><h3><?=$collaborator->name?></h3></a><!-- $collaborator->article_id --></li>
 			<? endforeach; ?>
 			</ul>
 		</div>
@@ -138,7 +157,7 @@
 			<h2>Columns</h2>
 			<ul class="articleblock">
 			<? foreach($series as $serie): ?>
-				<li class="smalltile"><a href="<?=base_url()?>series/<?=$serie->series?>"><h3><?=$serie->name?></h3></a></li>
+				<li class="smalltile fullwidth"><a href="<?=base_url()?>series/<?=$serie->series?>"><h3><?=$serie->name?></h3></a></li>
 			<? endforeach; ?>
 			</ul>
 		</div>
