@@ -983,8 +983,17 @@ section h2, #sidebar h2 {
 	
 	.articleblock li.backgrounded, .articleblock.threetier li:nth-child(-n+5).backgrounded {
 		background-size:cover !important;
-		background-position:center !important; 
+		background-position:center !important;
 	}
+	
+	/* one day... but i'd need to separate headline and container & i hate endless nesting containers
+	.articleblock li.backgrounded {
+		-webkit-filter: blur(2px);
+	}
+	.articleblock li.backgrounded:hover {
+		-webkit-filter: none;
+	}
+	*/
 
 	.articleblock li.backgrounded a, .articleblock.threetier li:nth-child(-n+5).backgrounded a {
 		color: white;
