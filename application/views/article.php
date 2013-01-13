@@ -455,7 +455,7 @@
 				<? foreach($photos as $key => $photo): ?>
 					<figure id="photo<?=$photo->photo_id?>" class="articlemedia singlephoto <?= (empty($body->body) ? 'bigphoto' : '') ?>">
 						<? if(bonus()): ?><div id="deletePhoto<?=$photo->photo_id?>" class="delete">&times;</div><? endif; ?>
-						<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>">
+						<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>" class="singlephoto">
 						<figcaption>
 							<p id="photocredit<?=$photo->photo_id?>" class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= anchor('author/'.$photo->photographer_id, $photo->photographer_name) ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
 							<p id="photocaption<?=$photo->photo_id?>" class="photocaption"><?=$photo->caption?></p>
@@ -479,12 +479,13 @@
 			<? endif; ?>
 		<? endif; ?>
 		<? if(bonus()): ?>
-			<style>
-				#dnd-holder { border: 2px dashed #ccc; box-sizing: border-box; width: 500px; height: 300px; background-size: cover !important;}
-				#dnd-holder.hover { border: 10px dashed #333; }
-			</style>
 			<figure class="articlemedia">
-				<div id="dnd-holder"></div>
+				<div id="dnd-holder">
+					<div id="dnd-instructions">
+						<img src="<?=base_url()?>images/icon-uploadphoto-lightgray.png" type="image/svg+xml" height="50" width="50" title=""></object>
+						<br/>Drag and drop a JPG or PNG image file here.
+					</div>
+				</div>
 				<figcaption class="bonus">
 					<p id="photocreditbonus" class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;" contenteditable="true">Credit</p>
 					<p id="photocaptionbonus" class="photocaption" contenteditable="true"><b>Caption:</b> caption.</p>
@@ -648,6 +649,7 @@
 				holder.style.background = 'url(' + event.target.result + ')';
 				holder.style.borderColor = 'darkred';
 				holder.className += "backgrounded";
+				$('#dnd-instructions').remove();
 				$('figcaption.bonus').show();
 			};
 			reader.readAsDataURL(file);

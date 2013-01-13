@@ -372,6 +372,32 @@ figcaption.bonus {
 	display: none;
 }
 
+#dnd-holder { 
+	border: 2px dashed #ccc; 
+	box-sizing: border-box; 
+	width: 500px; 
+	height: 300px; 
+	background-size: cover !important;
+	z-index: 2;
+}
+
+#dnd-holder.hover { 
+	border: 2px dashed darkred;
+}
+
+/* it's a thought haha. gotta better connote that it's unsaved?
+#dnd-holder.backgrounded { -webkit-filter: blur(2px); } */
+
+#dnd-instructions {
+	position: absolute;
+	font-family:myriad-pro,helvetica,arial;
+	text-align: center;
+	width: 100%;
+	z-index: 1;
+	padding-top: 100px;
+	color: lightgray;	
+}
+
 /* 
 // TEMPLATE ELEMENTS 
 */
@@ -1415,7 +1441,7 @@ figure {
 	clear: right;
 }
 
-figure img {
+figure .singlephoto {
 	width: 100%;
 }
 
