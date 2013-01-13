@@ -151,8 +151,10 @@ class Bonus extends CI_Controller {
 		//This method will have the credentials validation
 		$this->load->library('form_validation');
 		
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
+		// note: not running xss_clean because it was corrupting the input for certain usernames/passwords
+		// this is potentially dangerous, i guess? i dunno dude.
+		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_database');
 		
 		if($this->form_validation->run() == FALSE)
 		{
