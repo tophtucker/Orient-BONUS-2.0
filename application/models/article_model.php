@@ -155,7 +155,11 @@ class Article_model extends CI_Model {
     	$this->db->where("id", $id);
     	
     	// "active" basically means "hasn't been deleted". we should almost never show inactive articles.
-		$this->db->where("active", "1");
+    	// problem is, you gotta be able to see it when you first create it,
+    	// and articles are currently being created with active='0' so that if people back out,
+    	// they haven't left any (visible) garbage behind.
+    	// so when you're logged in you can still navigate directly to inactive articles. ugh. 
+		if(!bonus()) $this->db->where("active", "1");
     	
 		$query = $this->db->get("article");
 		if($query->num_rows() > 0)
@@ -242,9 +246,10 @@ class Article_model extends CI_Model {
 	{
 		// boot if trying to access anything other than allowed tables
 		// (this could be a major security risk if we're sloppy)
-		if($table != ('articletype' || 'author' || 'job' || 'series')) return false; 
+		if($table != ('author' || 'job' || 'series')) return false; 
 		
 		$this->db->select($field." as value");
+		$this->db->where('active', '1'); //table had better have an `active` field!
 		$this->db->like($field, $term);
 		$query = $this->db->get($table);
 		if($query->num_rows() > 0)
@@ -267,7 +272,8 @@ class Article_model extends CI_Model {
 		   'priority' => '10',
 		   'title' => '',
 		   'subhead' => '',
-		   'pullquote' => ''
+		   'pullquote' => '',
+		   'opinion' => ($section == '2' ? '1' : '0')
 		);
 		$query = $this->db->insert('article', $data);
 		return $this->db->insert_id();
@@ -387,6 +393,7 @@ class Article_model extends CI_Model {
 	{
 		$this->db->where('name', $name);
 		$query = $this->db->get('author');
+		
 		if($query->num_rows() > 0)
 		{
 			return $query->row();

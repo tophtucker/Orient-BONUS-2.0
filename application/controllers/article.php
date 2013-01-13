@@ -223,8 +223,8 @@ class Article extends CI_Controller {
 		$strlen_offset = $offset + $offset_tail;
 		
 		$img = substr($this->input->post("img"), $offset, strlen($this->input->post("img"))-($strlen_offset));
-		$credit = trim(urldecode($this->input->post("credit")));
-		$caption = trim(urldecode($this->input->post("caption")));
+		$credit = substr(trim(strip_tags(urldecode($this->input->post("credit")), '<b><i><u><strong><em>')),0,100); //limited to 100 due to db
+		$caption = trim(strip_tags(urldecode($this->input->post("caption")), '<b><i><u><strong><em><a>'));
 		
 		// bug: "When Base64 gets POSTed, all pluses are interpreted as spaces."
 		// this corrects for it.
@@ -299,7 +299,7 @@ class Article extends CI_Controller {
 		if(!bonus()) exit("Permission denied. Try refreshing and logging in again.");
 
 		// this general-purpose function is potentially wildly insecure.
-		if(!($table == 'author' || $table == 'job' || $table == 'articletype' || $table == 'series')) exit("Disallowed.");
+		if(!($table == 'author' || $table == 'job' || $table == 'series')) exit("Disallowed.");
 		
 		$term = $this->input->get('term', true);
 		$suggestions = $this->article_model->get_suggestions($table, $field, $term);

@@ -347,6 +347,7 @@ figure {
 	margin: 0;
 	padding: 5px 0 0 0;
 	width: 125px;
+	position: absolute;
 }
 
 .ui-autocomplete .ui-menu-item {
