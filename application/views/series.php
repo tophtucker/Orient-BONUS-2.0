@@ -106,7 +106,7 @@
 		<? endif; ?>
 		
 		<h2>All articles</h2>
-		<ul class="articleblock">
+		<ul class="articleblock twotier">
 			<? foreach($articles as $article): ?>
 			<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
 				<a href="<?=site_url()?>article/<?=$article->id?>">

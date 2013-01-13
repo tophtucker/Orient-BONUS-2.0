@@ -124,9 +124,9 @@
 		
 		<!-- popular articles -->
 		<div id="popular">
-			<h2>Popular</h2>
+			<h2>Latest</h2>
 			<ul class="articleblock">
-				<? foreach($popular as $article): ?>
+				<? foreach($latest as $article): ?>
 				<li class="smalltile">
 					<a href="<?=site_url()?>article/<?=$article->id?>">
 					<div class="dateified"><?=dateify($article->date, $date)?></div>
@@ -181,6 +181,7 @@
 				
 	</div>
 	
+	<!-- SECTIONS -->
 	<? foreach($sections as $section): ?>
 		
 		<? if(!empty($articles[$section->name])): ?>
@@ -188,7 +189,7 @@
 		<section id="<?=$section->name?>" class="issuesection">
 			<h2><?=$section->name?></h2>
 			
-			<ul class="articleblock">
+			<ul class="articleblock twotier">
 				<? foreach($articles[$section->name] as $article): ?>
 				<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?><? if(strtotime($date)-strtotime($article->date) > (7*24*60*60)): ?> old<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
 					<a href="<?=site_url()?>article/<?=$article->id?>">
@@ -209,9 +210,7 @@
 		<? endif; ?>
 	
 	<? endforeach; ?>
-	
-	
-	
+		
 </div>
 
 <? $this->load->view('template/bodyfooter', $footerdata); ?>
@@ -228,7 +227,7 @@ var	carousel,
 	hasInteracted = false,
 	dots = document.querySelectorAll('#swipeview_nav li'),
 	slides = [
-		<? foreach($featured as $key => $article): ?>
+		<? foreach($popular as $key => $article): ?>
 			<? if($key > 0): ?>,<? endif; ?>
 			'<div class="carouseltile <? if(!$article->published): ?>draft<?endif;?>">'+
 				<? if($article->series): ?>'<div class="series"><?=$article->series?></div>'+<? endif; ?>

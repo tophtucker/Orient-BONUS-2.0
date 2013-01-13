@@ -1,3 +1,21 @@
+	<? if(!empty($featured)): ?>
+	<!-- FEATURED ARTICLES -->
+	<section id="Featured" class="featured">
+		<h2>★ Featured</h2>
+		<ul class="articleblock">
+			<? foreach($featured as $article): ?>
+			<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?> medtile"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
+				<a href="<?=site_url()?>article/<?=$article->id?>">
+				<h3><? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
+				<?=$article->title?></h3>
+				<? if($article->subhead): ?><h4><?= $article->subhead ?></h4><? endif; ?>
+				<p><?=$article->pullquote?></p>
+			</a></li>
+			<? endforeach; ?>
+		</ul>
+	</section>
+	<? endif; ?>
+
 	<footer id="bodyfooter">
 		
 		<div id="vcard" class="vcard">

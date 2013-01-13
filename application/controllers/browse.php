@@ -66,13 +66,16 @@ class Browse extends CI_Controller {
 				$scribd_thumb_url = $scribd_thumb->thumbnail_url;
 			}
 						
-			// featured articles for carousel
-			$featured = $this->article_model->get_articles_by_date($date, false, false, '10', true);
+			// latest articles
+			$latest = $this->article_model->get_articles_by_date($date, false, false, '10');
 			
-			// popular articles
+			// featured articles for footer
+			$featured = $this->article_model->get_articles_by_date($date, false, false, '5', true);
+			
+			// popular articles for carousel
 			$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_week_ago, $limit = '10');
-			if(count($popular) < 10)
-			{
+			// elasticity: zoom out to most popular of past five months if we've gone stale
+			if(count($popular) < 10) {
 				$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_fivemonths_ago, $limit = '10');
 			}
 			
@@ -84,7 +87,7 @@ class Browse extends CI_Controller {
 			
 			foreach($sections as $section)
 			{
-				// get articles
+				// get section articles
 				$articles[$section->name] = $this->article_model->get_articles_by_date($date, $date_week_ago, $section->id);
 				if(count($articles[$section->name]) < 10) 
 				{
@@ -105,6 +108,7 @@ class Browse extends CI_Controller {
 			$data->scribd_thumb_url = $scribd_thumb_url;
 			$data->nextissue = $nextissue;
 			$data->previssue = $previssue;
+			$data->latest = $latest;
 			$data->featured = $featured;
 			$data->popular = $popular;
 			$data->sections = $sections;

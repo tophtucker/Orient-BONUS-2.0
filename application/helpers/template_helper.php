@@ -98,7 +98,7 @@ function dateify($date, $epoch='') {
 	}elseif ($secs >= $minute && $secs < $hour) { $output = "<span class='recent'>".round($secs/$minute)." minute";
 	}elseif ($secs >= $hour && $secs < $day) { $output = "<span class='recent'>".round($secs/$hour)." hour";
 	}elseif ($secs >= $day && $secs < $week) { $output = "<span class='recent'>".round($secs/$day)." day";
-	}elseif ($secs >= $week && $secs < $month) { return "<span class='old'>".$date_formatted; }
+	}elseif ($secs >= $week && $secs < $month) { return "<span class='old'>".$date_formatted."</span>"; }
 	
 	$output = (substr($output,0,2)<>"1 ") ? $output."s" : $output;
 	$output .= " ago</span>";

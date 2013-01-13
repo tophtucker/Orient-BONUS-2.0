@@ -39,6 +39,7 @@ $(function() {
 					<li><a href="#Features">Features</a></li>
 					<li><a href="#Arts & Entertainment">A&E</a></li>
 					<li><a href="#Sports">Sports</a></li>
+					<li><a href="#Featured">★</a></li>
 				<? endif; ?>
 				<? if($this->uri->segment(1) == "article" && !empty($section_id)): ?>
 					<li class="<?= ($section_id == "1" ? "active" : "inactive"); ?>"><a href="<?=site_url()."browse/".$date?>#News">News</a></li>
@@ -46,6 +47,7 @@ $(function() {
 					<li class="<?= ($section_id == "3" ? "active" : "inactive"); ?>"><a href="<?=site_url()."browse/".$date?>#Features">Features</a></li>
 					<li class="<?= ($section_id == "4" ? "active" : "inactive"); ?>"><a href="<?=site_url()."browse/".$date?>#Arts & Entertainment">A&E</a></li>
 					<li class="<?= ($section_id == "5" ? "active" : "inactive"); ?>"><a href="<?=site_url()."browse/".$date?>#Sports">Sports</a></li>
+					<li><a href="#Featured">★</a></li>
 				<? endif; ?>
 				<li>
 					<form action="<?=site_url()?>search" id="cse-search-box" method="get">
