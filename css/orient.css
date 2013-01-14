@@ -243,6 +243,7 @@ footer .bonusquoteattribution {
 #bonushook p, #bonusbar p {
 	font-size: 32px;
 	font-family:myriad-pro,helvetica,arial;
+	line-height: 1;
 }
 
 #bonusbar a {
@@ -1472,11 +1473,6 @@ figure.bigphoto {
 	float: none;
 	margin: 80px 0 40px 0;
 	width: 100%;
-}
-
-.pin-it-button img {
-	width: inherit;
-	float: right;
 }
 
 figure p {

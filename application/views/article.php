@@ -55,9 +55,6 @@
 	<!-- MediaBugs script (for reporting errors to third party auditor) -->
 	<script type="text/javascript" src="http://mediabugs.org/widget/widget.js"></script>
 	
-	<!-- Pinterest script -->
-	<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
-	
 	<? if(bonus()): ?>
 	
 	<!-- CK Editor -->
@@ -459,7 +456,6 @@
 						<figcaption>
 							<p id="photocredit<?=$photo->photo_id?>" class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= anchor('author/'.$photo->photographer_id, $photo->photographer_name) ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
 							<p id="photocaption<?=$photo->photo_id?>" class="photocaption"><?=$photo->caption?></p>
-							<? if(!bonus()):?><a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photo->filename_large) ?>&description=<?= urlencode(strip_tags($photo->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a><?endif;?>
 						</figcaption>
 					</figure>
 				<? endforeach; ?>
@@ -738,7 +734,6 @@ $(document).ready(function(){
 					+'<figcaption>'
 					+ '<p class="photocredit nonoverlap"><? if(!empty($photo->photographer_id)): ?><?= anchor('author/'.$photo->photographer_id, addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->photographer_name)))); ?><? else: ?><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->credit))); ?><? endif; ?></p>'
 					+ '<p class="photocaption"><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->caption))); ?></p>'
-					+ '<a href="http://pinterest.com/pin/create/button/?url=<?= urlencode(current_url()) ?>&media=<?= urlencode(base_url().'images/'.$article->date.'/'.$photo->filename_large) ?>&description=<?= urlencode(strip_tags($photo->caption)) ?>" class="pin-it-button hidemobile" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>'
 					+'</figcaption>'
 			<? endforeach; ?>
 		];

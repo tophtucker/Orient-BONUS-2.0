@@ -1,7 +1,7 @@
 <?if(bonus()):?>
 
 	<div id="bonusbar">
-	<p>&#x235f; BONUS Bar / 
+	<p>&#x235f; / 
 	<a href="<?=site_url()?>">Home</a> / 
 	<a href="<?=site_url()?>bonus/dashboard">Dashboard</a> / 
 	<a href="<?=site_url()?>bonus/logout/">Logout of <?=username()?></a>
