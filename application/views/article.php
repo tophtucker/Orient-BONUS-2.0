@@ -393,8 +393,8 @@
 							<? if(bonus()): ?><div id="deleteAuthor<?=$author->articleauthorid?>" class="delete">&times;</div><? endif; ?>
 							<? if(!empty($author->photo) && $article->opinion): ?><img src="<?=base_url().'images/authors/'.$author->photo?>" class="authorpic"><? endif; ?>
 							<div class="authortext">
-								<p class="articleauthor"><?=$author->authorname?></p>
-								<p class="articleauthorjob"><?=$author->jobname?></p>
+								<div class="articleauthor"><?=$author->authorname?></div>
+								<div class="articleauthorjob"><?=$author->jobname?></div>
 							</div>
 						</div>
 						</a>
@@ -703,14 +703,14 @@ $(document).ready(function(){
 		if(isScrolledTo(sticky)) {
 			sticky.css('position','fixed');
 			sticky.css('top','100px');
-			var bodyLeftOffset = $("#articlebodycontainer").offset().left - 100;
+			var bodyLeftOffset = $("#articlebodycontainer").offset().left - 200;
 			sticky.css('left',bodyLeftOffset+'px');
 		}
-		var stopHeight = catcher.offset().top + catcher.height() - 100;
+		var stopHeight = catcher.offset().top + catcher.height() - 200;
 		if ( stopHeight > sticky.offset().top) {
 			sticky.css('position','absolute');
 			sticky.css('top','0');
-			sticky.css('left','-100px');
+			sticky.css('left','-200px');
 		}
 		
 		// highlight active TOC section

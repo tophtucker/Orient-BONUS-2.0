@@ -242,7 +242,7 @@ footer .bonusquoteattribution {
 
 #bonushook p, #bonusbar p {
 	font-size: 32px;
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 }
 
 #bonusbar a {
@@ -251,7 +251,7 @@ footer .bonusquoteattribution {
 
 #bonusbar #savearticle {
 	float: right;
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 	font-size: 16px;
 	margin-right: 20px;
 }
@@ -343,7 +343,7 @@ figure {
 */
 
 .ui-autocomplete {
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 	margin: 0;
 	padding: 5px 0 0 0;
 	width: 125px;
@@ -404,16 +404,15 @@ figcaption.bonus {
 
 p {
 	font-family: minion-pro,Georgia;
-	font-size: 15px;
-	line-height: 24px;
-	margin: 0;
-	padding: 0 0 18px 0;
+	font-size: 12pt;
+	line-height: 1.5;
+	margin: 0 0 1.5em 0;
 }
 
 ol, #articlebody ul {
 	font-family: minion-pro,Georgia;
-	font-size: 15px;
-	line-height: 24px;
+	font-size: 12pt;
+	line-height: 1.5;
 }
 
 a {
@@ -470,14 +469,14 @@ h2 {
 }
 
 .type, .series {
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 	font-weight:bold;
 	font-size: 70%;
 	text-transform: uppercase;
 }
 
 #carousel .type, #carousel .series, h3.type, h3.series {
-	font-size: 1.2em;
+	font-size: 14pt;
 	color: gray;
 }
 
@@ -647,7 +646,7 @@ img {
 #datepicker .ui-datepicker-title {
 	text-align: center;
 	font-size: 1.5em;
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 }
 
 #datepicker .ui-datepicker-header {
@@ -664,12 +663,14 @@ img {
 	right: 20px;
 	border: 1px solid black;
 	box-shadow: 0px 0px 10px black;
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-size: 10pt;
+	font-family:myriad-pro,helvetica,arial;
 }
 
 #submittipform textarea {
 	width: 290px;
 	height: 140px;
+	margin-top: 5px;
 }
 
 #submittipform button {
@@ -722,19 +723,6 @@ img {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-}
-
-#carousel h3 {
-	font-size: 1.9em;
-	margin: 0;
-}
-
-#carousel h4 {
-	margin-bottom:0;
-}
-
-#carousel .series {
-	font-size: 1em;
 }
 
 #carousel #swipeview-slider span {
@@ -830,9 +818,12 @@ section h2, #sidebar h2 {
 .carouseltile h3 {
 	font-family: schoolbook-web-condensed,Georgia;
 	font-weight: normal;
-	font-size: 1.8em;
-	margin-top: 0;
-	/* border-left: solid 1px lightgray; */
+	font-size: 24pt;	
+	margin: 0;
+}
+
+.carouseltile h4 {
+	margin-bottom:0;
 }
 
 .carouseltile .authortile {
@@ -1007,6 +998,9 @@ section h2, #sidebar h2 {
 .featured .articleblock li:nth-child(-n+1) {
 	border-left: none;
 }
+.featured .articleblock li p {
+	font-size: 10pt;
+}
 
 /* homepage social media button responses */
 @media all and (max-width: 1069px) {
@@ -1079,16 +1073,24 @@ section h2, #sidebar h2 {
 	}
 
 	.articleblock.twotier li:nth-child(-n+1) a {
-		font-size: 30px;
+		/*font-size: 30px;*/
+	}
+	
+	.articleblock.twotier li:nth-child(-n+1) h3 {
+		font-size: 22pt;
 	}
 	
 	.articleblock.twotier li:nth-child(-n+1) h4 {
 		display: inherit;
-		font-family:myriad-pro-condensed,helvetica,arial;
-		font-weight:normal;
-		font-size:16pt;
+		font-family: myriad-pro,helvetica,arial;
+		font-weight: normal;
+		font-size: 16pt;
 		margin-top:-5px;
 		padding: 0 10px;
+	}
+	
+	.articleblock.twotier li:nth-child(-n+1) p {
+		font-size: 12pt;
 	}
 	
 	/* low-priority items */
@@ -1243,12 +1245,8 @@ section h2, #sidebar h2 {
 //
 */
 
-article header p {
-	line-height: 10px;
-}
-
 article header, .authorheader {
-	margin: 30px 0 25px 0;
+	margin: 30px 0 35px 0;
 }
 
 .articletitle, .authorname {
@@ -1257,7 +1255,7 @@ article header, .authorheader {
 }
 
 .articlesubtitle {
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 	font-weight:normal;
 	font-size:22pt;
 	margin-top:10px;
@@ -1274,7 +1272,7 @@ article header, .authorheader {
 }
 
 #authorblock .opinion-notice {
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 	font-style: italic;
 	margin-bottom: 15px;
 }
@@ -1290,8 +1288,9 @@ article header, .authorheader {
 	position: relative;
 	float: left;
 	margin-right: 15px;
-	margin-bottom: 18px;
+	margin-bottom: 0;
 	border-bottom: 1px solid white;
+	font-size: 11pt;
 }
 
 .authortile:hover {
@@ -1317,7 +1316,7 @@ article header, .authorheader {
 }
 
 .authortile.opinion .authortext {
-	padding: 15px 5px 5px 0;
+	padding: 0;
 }
 
 .authortile.opinion .articleauthor {
@@ -1330,15 +1329,15 @@ article header, .authorheader {
 }
 
 .articleauthor {
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 	font-weight:bold;
 	text-transform:uppercase;
-	padding-bottom:6px;
+	padding-bottom:0;
 	color: #333 !important;
 }
 
 .articleauthorjob {
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 	font-weight:normal;
 	text-transform:uppercase;
 	color: gray;
@@ -1368,7 +1367,8 @@ article header, .authorheader {
 
 .articledate {
 	clear: left;
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-size: 11pt;
+	font-family: myriad-pro,helvetica,arial;
 }
 
 /* TOOLBOX */
@@ -1409,14 +1409,16 @@ article header, .authorheader {
 /* TABLE OF CONTENTS */
 
 #toc_container {
-	color: darkgray;
-	font-family:myriad-pro,helvetica,arial;
-	font-size: 10pt;
 	position:absolute;
-	left:-100px;
+	left:-200px;
 	top: 0px;
-	width:140px;
-	text-align:right;
+	width:160px;
+	font-family: minion-pro,Garamond;
+	font-size: 10pt;
+	text-transform: uppercase;
+	/*font-variant: small-caps;*/
+	text-align: right;
+	color: darkgray;
 }
 .toc_header {
 	display:none;
@@ -1429,9 +1431,6 @@ article header, .authorheader {
 	color: darkgray;
 	text-decoration: none;
 	margin-left: 0 !important;
-	font-family: minion-pro,Garamond;
-	font-size: 13px;
-	text-transform: uppercase;
 	padding: 5px;
 	border-right: 1px solid white;
 }
@@ -1454,7 +1453,9 @@ article header, .authorheader {
 /* FIGURES */
 
 .articlebody h3, figure#contents h3 {
+	font-size: 15pt;
 	font-variant: small-caps;
+	margin: 0.7em 0;
 	clear: left;
 }
 
@@ -1482,7 +1483,7 @@ figure p {
 	margin: 0;
 	padding: 0;
 	line-height: 16px;
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 }
 
 .photocredit {
@@ -1588,12 +1589,13 @@ button .buttontext {
 
 	#mainstory {
 		margin: 0 auto;
-		width: 920px;
+		width: 890px;
 	}
 	
 	#articlebody, #articlefooter {
-		width: 620px;
-		margin-left: 80px;
+		/* width: 620px;
+		margin-left: 80px; */
+		margin-right: 220px;
 	}
 	
 	/* some rejiggering required so that, when you follow an anchor link, the header isn't hidden behind the fixed header */
