@@ -445,6 +445,14 @@ class Article_model extends CI_Model {
 		return $this->db->insert('job', $data);
 	}
 	
+	function set_bigphoto($article_id, $bigphoto)
+	{
+		$bigphoto_value = ($bigphoto ? '1' : '0');
+		$this->db->set('bigphoto', $bigphoto_value);
+		$this->db->where('id', $article_id);
+		return $this->db->update('article');
+	}
+	
 	function get_id_by_triplet($date, $section_id, $priority)
 	{
 		$this->db->select('id');

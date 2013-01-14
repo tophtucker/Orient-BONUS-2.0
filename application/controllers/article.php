@@ -291,6 +291,20 @@ class Article extends CI_Controller {
 		exit($this->attachments_model->remove_article_photos($article_id));
 	}
 	
+	public function ajax_bigphoto($article_id)
+	{
+		if($this->input->post("bigphoto") == 'true')
+		{
+			$this->article_model->set_bigphoto($article_id, true);
+			exit("Bigphoto enabled.");
+		}
+		if($this->input->post("bigphoto") == 'false')
+		{
+			$this->article_model->set_bigphoto($article_id, false);
+			exit("Bigphoto disabled.");
+		}
+	}
+	
 	public function ajax_delete_article($article_id)
 	{
 		if(!bonus()) exit("Permission denied. Try refreshing and logging in again.");

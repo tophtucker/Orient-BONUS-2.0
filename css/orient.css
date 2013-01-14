@@ -502,6 +502,10 @@ h2 {
 	clear: both;
 }
 
+.hide {
+	display: none;
+}
+
 .nopad {
 	padding: 0;
 }
@@ -1490,7 +1494,7 @@ figure .singlephoto {
 
 figure.bigphoto {
 	float: none;
-	margin: 80px 0 40px 0;
+	margin: 0px 0 30px 0;
 	width: 100%;
 }
 
@@ -1543,6 +1547,20 @@ figure p {
 
 .articlemedia .delete:hover {
 	color: red;
+	cursor: pointer;
+}
+
+.articlemedia .bigphotoEnable, .articlemedia .bigphotoDisable {
+	position: absolute;
+	left: 3px;
+	top: 0;
+	color: white;
+	text-shadow: 0 0 10px black;
+}
+
+.articlemedia .bigphotoEnable:hover, .articlemedia .bigphotoDisable:hover {
+	color: darkblue;
+	text-shadow: 0 0 10px white;
 	cursor: pointer;
 }
 

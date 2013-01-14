@@ -38,7 +38,7 @@
 	<link rel="apple-touch-icon" href="<?=base_url()?>images/o-114.png"/>
 	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
 	
-	<!-- TypeKit -->		
+	<!-- TypeKit -->
 	<script type="text/javascript" src="http://use.typekit.com/rmt0nbm.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	
@@ -291,6 +291,48 @@
 			
 		});
 		
+		$(".articlemedia .bigphotoEnable").click(function(event) {
+			
+			$.ajax({
+				type: "POST",
+				url: "<?=site_url()?>article/ajax_bigphoto/"+<?=$article->id?>,
+				data: "bigphoto=true",
+				success: function(result){
+					if(result=="Bigphoto enabled.") {
+						$(".singlephoto").addClass("bigphoto");
+						$(".bigphotoEnable").hide();
+						$(".bigphotoDisable").show();
+					}
+					//show alert
+					$("#savenotify").html(result);
+					$("#savenotify").show();
+					$("#savenotify").fadeOut(4000);
+				}
+			});
+			
+		});
+		
+		$(".articlemedia .bigphotoDisable").click(function(event) {
+			
+			$.ajax({
+				type: "POST",
+				url: "<?=site_url()?>article/ajax_bigphoto/"+<?=$article->id?>,
+				data: "bigphoto=false",
+				success: function(result){
+					if(result=="Bigphoto disabled.") {
+						$(".singlephoto").removeClass("bigphoto");
+						$(".bigphotoDisable").hide();
+						$(".bigphotoEnable").show();
+					}
+					//show alert
+					$("#savenotify").html(result);
+					$("#savenotify").show();
+					$("#savenotify").fadeOut(4000);
+				}
+			});
+			
+		});
+		
     });
     
     // ugh, i forget what this is even for.
@@ -452,8 +494,12 @@
 		<? if($photos): ?>
 			<? if(count($photos) == 1 || bonus()): ?>
 				<? foreach($photos as $key => $photo): ?>
-					<figure id="photo<?=$photo->photo_id?>" class="articlemedia singlephoto <?= (empty($body->body) ? 'bigphoto' : '') ?>">
-						<? if(bonus()): ?><div id="deletePhoto<?=$photo->photo_id?>" class="delete">&times;</div><? endif; ?>
+					<figure id="photo<?=$photo->photo_id?>" class="articlemedia singlephoto <?= ($article->bigphoto ? 'bigphoto' : '') ?>">
+						<? if(bonus()): ?>
+							<div id="deletePhoto<?=$photo->photo_id?>" class="delete">&times;</div>
+							<div class="bigphotoEnable <?= ($article->bigphoto ? 'hide' : '') ?>">&#8689;</div>
+							<div class="bigphotoDisable <?= ($article->bigphoto ? '' : 'hide') ?>">&#8690;</div>
+						<? endif; ?>
 						<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>" class="singlephoto">
 						<figcaption>
 							<p id="photocredit<?=$photo->photo_id?>" class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= anchor('author/'.$photo->photographer_id, $photo->photographer_name) ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
@@ -462,7 +508,7 @@
 					</figure>
 				<? endforeach; ?>
 			<? else: ?>
-				<figure class="articlemedia">
+				<figure class="articlemedia <?= ($article->bigphoto ? 'bigphoto' : '') ?>">
 					<div id="swipeview_wrapper"></div>
 					<div id="swipeview_relative_nav">
 						<span id="prev" onclick="carousel.prev();hasInteracted=true">&laquo;</span>

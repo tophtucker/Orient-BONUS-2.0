@@ -19,6 +19,16 @@
 	/* -webkit-user-select:none; */
 }
 
+/* BIGPHOTO */ 
+.articlemedia.bigphoto #swipeview_wrapper {
+	width:100%;
+	height: 700px;
+	float: none;
+}
+.articlemedia.bigphoto #swipeview_wrapper .swipeview-image {
+	height: 650px;
+}
+
 #swipeview_wrapper.author-swipeview {
 	height:420px;
 }
