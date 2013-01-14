@@ -47,7 +47,7 @@ $(function() {
 					<li class="<?= ($section_id == "3" ? "active" : "inactive"); ?>"><a href="<?=site_url()."browse/".$date?>#Features">Features</a></li>
 					<li class="<?= ($section_id == "4" ? "active" : "inactive"); ?>"><a href="<?=site_url()."browse/".$date?>#Arts & Entertainment">A&E</a></li>
 					<li class="<?= ($section_id == "5" ? "active" : "inactive"); ?>"><a href="<?=site_url()."browse/".$date?>#Sports">Sports</a></li>
-					<li><a href="#Featured">★</a></li>
+					<li class="inactive"><a href="#Featured">★</a></li>
 				<? endif; ?>
 				<li>
 					<form action="<?=site_url()?>search" id="cse-search-box" method="get">
