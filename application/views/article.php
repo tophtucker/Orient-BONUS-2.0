@@ -359,7 +359,7 @@
 	<article id="mainstory">
 		
 		<header>
-			<hgroup>
+			<hgroup class="articletitle-group">
 				
 				<? if($article->series || bonus()): ?>
 					<h3 id="series" class="series"<?if(bonus()):?> contenteditable="true"<?endif;?>>
@@ -403,7 +403,10 @@
 						<p class="articleauthorjob" id="addauthorjob" contenteditable="true" style="color:red">+</p>
 					</div>
 				<? endif; ?>
+				
 			</div>
+			
+			<p class="articledate"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>
 			
 			<div class="toolbox">
 				
@@ -444,7 +447,6 @@
 				
 			</div>
 			
-			<p class="articledate"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>
 		</header>                
 		
 		<? if($photos): ?>

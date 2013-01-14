@@ -83,7 +83,7 @@
 				<span id="next" onclick="carousel.next();hasInteracted=true">&raquo;</span>
 			</div>
 			<ul id="swipeview_nav">
-				<? foreach($featured as $key => $article): ?>
+				<? foreach($popular as $key => $article): ?>
 				<li <? if($key==0): ?>class="selected"<? endif; ?> onclick="carousel.goToPage(<?=$key?>);hasInteracted=true"></li>
 				<? endforeach; ?>
 			</ul>			
@@ -122,8 +122,8 @@
 			</script>
 		</div>
 		
-		<!-- popular articles -->
-		<div id="popular">
+		<!-- latest articles -->
+		<div id="latest">
 			<h2>Latest</h2>
 			<ul class="articleblock">
 				<? foreach($latest as $article): ?>
@@ -229,15 +229,19 @@ var	carousel,
 	slides = [
 		<? foreach($popular as $key => $article): ?>
 			<? if($key > 0): ?>,<? endif; ?>
-			'<div class="carouseltile <? if(!$article->published): ?>draft<?endif;?>">'+
-				<? if($article->series): ?>'<div class="series"><?=$article->series?></div>'+<? endif; ?>
-				'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'+
-				<? if($article->subhead): ?>'<h4 class="articlesubtitle"><?= addslashes(trim($article->subhead)) ?></h4>'+<? endif; ?>
-				<? if(!empty($article->filename_small)): ?>'<img src="<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>">'+<? endif; ?>
-				<? if(!empty($article->author)): ?>'<a href="<?=base_url()?>author/<?=$article->author_id?>"><div class="authortile hidemobile"><p class="articleauthor"><?=addslashes($article->author)?></p></div></a>'+<? endif; ?>
-				'<p class="articledate hidemobile"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'+
-				'<p><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$article->pullquote))); ?></p>'+
-			'</div>'
+			'<div class="carouseltile <? if(!$article->published): ?>draft<?endif;?>">'
+				+'<div class="articletitle-group">'
+				<? if($article->series): ?>+'<div class="series"><?=anchor('series/'.$article->series_id,$article->series); ?></div>'<? endif; ?>
+				+'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'
+				<? if($article->subhead): ?>+'<h4 class="articlesubtitle"><?= addslashes(trim($article->subhead)) ?></h4>'<? endif; ?>
+				+'</div>'
+				<? if(!empty($article->filename_small)): ?>+'<img src="<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>">'<? endif; ?>
+				+'<div class="article-author-date">'
+				<? if(!empty($article->author)): ?>+'<a href="<?=base_url()?>author/<?=$article->author_id?>"><div class="authortile hidemobile"><p class="articleauthor"><?=addslashes($article->author)?></p></div></a>'<? endif; ?>
+				+'<p class="articledate hidemobile"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'
+				+'</div>'
+				+'<p><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$article->pullquote))); ?></p>'
+			+'</div>'
 		<? endforeach; ?>
 	];
 

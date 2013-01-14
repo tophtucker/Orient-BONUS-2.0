@@ -73,10 +73,10 @@ class Browse extends CI_Controller {
 			$featured = $this->article_model->get_articles_by_date($date, false, false, '5', true);
 			
 			// popular articles for carousel
-			$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_week_ago, $limit = '10');
+			$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_week_ago, '10');
 			// elasticity: zoom out to most popular of past five months if we've gone stale
 			if(count($popular) < 10) {
-				$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_fivemonths_ago, $limit = '10');
+				$popular = $this->article_model->get_popular_articles_by_date($last_updated, $last_updated_fivemonths_ago, '10');
 			}
 			
 			// get random quote

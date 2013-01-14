@@ -489,6 +489,11 @@ h2 {
 	color: gray;
 }
 
+#carousel .type a, #carousel .series a:hover {
+	color: darkblue;
+	text-decoration: underline;
+}
+
 .smallcaps {
 	font-variant: small-caps;
 }
@@ -734,7 +739,7 @@ img {
 	height: 100%;
 }
 
-#popular {
+#latest {
 	float: right;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -743,7 +748,7 @@ img {
 	padding: 0 20px;
 }
 
-#popular .smalltile {
+#latest .smalltile {
 	width: 47% !important;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -820,6 +825,14 @@ section h2, #sidebar h2 {
 	height: 100%;
 }
 
+.carouseltile .articletitle-group {
+	margin-bottom: 20px;
+}
+
+.carouseltile .article-author-date {
+	margin-bottom: 20px;
+}
+
 .carouseltile h3 {
 	font-family: schoolbook-web-condensed,Georgia;
 	font-weight: normal;
@@ -828,15 +841,17 @@ section h2, #sidebar h2 {
 }
 
 .carouseltile h4 {
-	margin-bottom:0;
+	font-size: 18pt;
+	margin:0;
 }
 
 .carouseltile .authortile {
-	margin-top: 20px;
+	margin: 0;
 }
 
 .carouseltile .authortile .articleauthor {
 	padding-bottom: 0;
+	margin-bottom: 0;
 }
 
 .carouseltile img {
@@ -1147,7 +1162,7 @@ section h2, #sidebar h2 {
 		font-size: 1.4em;
 	}
 	
-	#popular {
+	#latest {
 		width: 50%;
 	}
 	
@@ -1198,13 +1213,13 @@ section h2, #sidebar h2 {
 		margin-bottom: 30px;
 	}
 	
-	#popular {
+	#latest {
 		clear: both;
 		padding: 0;
 		width: 100%;
 	}
 	
-	#popular li {
+	#latest li {
 		height: 92px !important;
 	}
 	
@@ -1379,7 +1394,7 @@ article header, .authorheader {
 /* TOOLBOX */
 
 .toolbox {
-	margin-top: -25px;
+	margin-top: -120px;
 	padding: 10px;
 	border: 1px solid lightgray;
 	width: 160px;
