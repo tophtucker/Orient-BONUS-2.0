@@ -440,9 +440,9 @@
 					<? endforeach; ?>
 				<? endif; ?>
 				<? if(bonus()): ?>
-					<div class="authortile bonus">
-						<p class="articleauthor" id="addauthor" contenteditable="true" style="color:darkred">+</p>
-						<p class="articleauthorjob" id="addauthorjob" contenteditable="true" style="color:red">+</p>
+					<div class="authortile bonus <?if($article->opinion == '1'):?>opinion<? endif; ?>">
+						<div class="articleauthor" id="addauthor" contenteditable="true" style="color:darkred">+</div>
+						<div class="articleauthorjob" id="addauthorjob" contenteditable="true" style="color:red">+</div>
 					</div>
 				<? endif; ?>
 				
