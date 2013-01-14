@@ -410,6 +410,10 @@ p {
 	margin: 0 0 1.5em 0;
 }
 
+#articlebody p {
+	font-size: 14pt;
+}
+
 ol, #articlebody ul {
 	font-family: minion-pro,Georgia;
 	font-size: 12pt;
@@ -1454,7 +1458,7 @@ article header, .authorheader {
 /* FIGURES */
 
 .articlebody h3, figure#contents h3 {
-	font-size: 15pt;
+	font-size: 16pt;
 	font-variant: small-caps;
 	margin: 0.7em 0;
 	clear: left;
