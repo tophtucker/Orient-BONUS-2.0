@@ -256,6 +256,7 @@
 		
 		$(".authortile .delete").click(function(event) {
 			
+			event.preventDefault();
 			var articleAuthorId = event.target.id.replace("deleteAuthor","");
 			
 			$.ajax({
