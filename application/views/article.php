@@ -100,6 +100,10 @@
 		
 		$('#articlebody').keydown(function() {
     		bodyedited=true;
+    		window.onbeforeunload = "You have unsaved changes.";
+    		window.onbeforeunload = function(e) {
+				return "You have unsaved changes.";
+			};
     		$('#articlebody').css("color", "darkred");
 		});
 		$('#articlebody').bind('paste', function() {
@@ -188,6 +192,7 @@
 					bodyedited=false;
 					photocreditedited=false;
 					photocaptionedited=false;
+					window.onbeforeunload = null; // remove message blocking navigation away from page
 					$('#articletitle, #articlesubtitle, #articlebody, #photocreditbonus, #photocaptionbonus').css("color", "inherit");
 				}
 			}));
@@ -690,6 +695,10 @@
 				reader = new FileReader();
 			reader.onload = function (event) {
 				photoadded=true;
+				window.onbeforeunload = "You have unsaved changes.";
+				window.onbeforeunload = function(e) {
+					return "You have unsaved changes.";
+				};
 				holder.style.background = 'url(' + event.target.result + ')';
 				holder.style.borderColor = 'darkred';
 				holder.className += "backgrounded";
