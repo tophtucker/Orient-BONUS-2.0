@@ -25,6 +25,7 @@ class API_model extends CI_Model {
 		$articles_query = $this->db->query("
 			select
 				article.id,
+				article.priority,
 				article.title,
 				article.pullquote,
 				author.name,

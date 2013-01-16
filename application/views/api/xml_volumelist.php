@@ -5,7 +5,7 @@
 	<? foreach($volumes as $volume): ?>
 	
 	<volume id="<?=$volume->id; ?>">
-		<numeral><?=$volume->arabic; ?></numeral>
+		<numeral><?=$volume->roman; ?></numeral>
 	</volume>
 	
 	<? endforeach; ?>

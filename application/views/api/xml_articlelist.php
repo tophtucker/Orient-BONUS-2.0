@@ -10,7 +10,7 @@
 	
 	<? foreach($articles as $article): ?>
 	
-		<article id="<?=$article->id ?>">
+		<article id="<?=$article->priority ?>">
 			<title><![CDATA[
 <?=$article->title; ?>
 ]]></title>
