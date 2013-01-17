@@ -365,12 +365,23 @@
 		});
 	});
 	
+	
 	$(function() {
 		$( "#photocreditbonus" ).autocomplete({
 			source: "<?=site_url()?>article/ajax_suggest/author/name"
 		});
 	});
 	
+	<? foreach($photos as $photo): ?>
+	
+	$(function() {
+		$( "#photocredit<?=$photo->photo_id?>" ).autocomplete({
+			source: "<?=site_url()?>article/ajax_suggest/author/name"
+		});
+	});
+	
+	<? endforeach; ?>
+		
 	$(function() {
 		$( "#series" ).autocomplete({
 			source: "<?=site_url()?>article/ajax_suggest/series/name"
@@ -508,8 +519,20 @@
 						<? endif; ?>
 						<img src="<?=base_url()?>images/<?=$article->date?>/<?=$photo->filename_large?>" class="singlephoto">
 						<figcaption>
-							<p id="photocredit<?=$photo->photo_id?>" class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= anchor('author/'.$photo->photographer_id, $photo->photographer_name) ?><? else: ?><?= $photo->credit ?><? endif; ?></p>
-							<p id="photocaption<?=$photo->photo_id?>" class="photocaption"><?=$photo->caption?></p>
+							<? if(!empty($photo->photographer_id)): ?>
+								<?if(bonus()):?>
+									<p id="photocredit<?=$photo->photo_id?>" class="photocredit" contenteditable="true"><?= $photo->photographer_name; ?></p>
+								<?else:?>
+									<p id="photocredit<?=$photo->photo_id?>" class="photocredit">
+										<?= anchor('author/'.$photo->photographer_id, $photo->photographer_name) ?>
+									</p>
+								<?endif;?>
+							<? else: ?>
+								<p id="photocredit<?=$photo->photo_id?>" class="photocredit">
+									<?= $photo->credit ?>
+								</p>
+							<? endif; ?>
+							<p id="photocaption<?=$photo->photo_id?>" class="photocaption" <?if(bonus()):?>contenteditable="true"<?endif;?>><?=$photo->caption?></p>
 						</figcaption>
 					</figure>
 				<? endforeach; ?>
