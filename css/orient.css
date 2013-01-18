@@ -241,7 +241,7 @@ footer .bonusquoteattribution {
 }
 
 #bonushook p, #bonusbar p {
-	font-size: 32px;
+	font-size: 24px;
 	font-family:myriad-pro,helvetica,arial;
 	line-height: 1;
 }
@@ -260,7 +260,7 @@ footer .bonusquoteattribution {
 #bonusbar #savenotify {
 	float: right;
 	font-size: 12pt;
-	margin-right: 5px;
+	margin: 5px;
 	display: none;
 }
 
@@ -375,7 +375,9 @@ figcaption.bonus {
 
 #dnd-holder { 
 	border: 2px dashed #ccc; 
-	box-sizing: border-box; 
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	width: 500px; 
 	height: 300px; 
 	background-size: cover !important;
@@ -1490,6 +1492,7 @@ figure {
 
 figure .singlephoto {
 	width: 100%;
+	margin-bottom: -5px;
 }
 
 figure.bigphoto {
@@ -1506,7 +1509,11 @@ figure p {
 }
 
 figcaption {
-	margin-top: -5px;
+	/* reserved for future use */
+}
+
+figcaption p {
+	line-height: 1;
 }
 
 .photocredit {

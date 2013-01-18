@@ -110,10 +110,21 @@ class Attachments_model extends CI_Model {
 		return $this->db->insert('photo', $data);
     }
     
-    // #TODO
-    function edit_photo($credit, $caption)
+    function edit_photo($photo_id, $credit, $caption)
     {
-    	return true;
+    	$photographer = $this->article_model->get_author_by_name($credit);
+		if(!$photographer)
+		{
+			$this->article_model->add_author($credit);
+			$photographer = $this->article_model->get_author_by_name($credit);
+		}
+		
+		$data = array(
+			'photographer_id'	=> $photographer->id,
+			'caption'			=> $caption
+		);
+		$this->db->where('id', $photo_id);
+		return $this->db->update('photo', $data);
     }
     
     function delete_photo($photo_id)

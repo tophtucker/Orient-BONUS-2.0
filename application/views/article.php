@@ -155,6 +155,21 @@
 				}));
 			}
 			
+			<? if(!empty($photos)): ?>
+				var photoEdits = {};
+				<? foreach($photos as $photo): ?>			
+					var thisPhotoEdits = {};
+					thisPhotoEdits["credit"] = $("#photocredit<?=$photo->photo_id?>").html();
+					thisPhotoEdits["caption"] = $("#photocaption<?=$photo->photo_id?>").html(); 
+					photoEdits["<?=$photo->photo_id?>"] = thisPhotoEdits;
+				<? endforeach; ?>
+				console.log(photoEdits);
+				var photoEditsJSON = JSON.stringify(photoEdits);
+				console.log(photoEditsJSON);
+			<? else: ?>
+				var photoEditsJSON = false;
+			<? endif; ?>
+			
 			var ajaxrequest = 
 					"title=" + urlencode($("#articletitle").html()) + 
 					"&subtitle=" + urlencode($("#articlesubtitle").html()) +
@@ -169,7 +184,8 @@
 					"&featured=" + $('input[name=featured]').prop('checked') +
 					"&opinion=" + $('input[name=opinion]').prop('checked') +
 					"&pullquote=" + urlencode($('textarea[name=pullquote]').val());
-			if(bodyedited) { ajaxrequest += "&body=" + urlencode($("#articlebody").html()); }
+			if(photoEditsJSON)	{ ajaxrequest += "&photoEdits=" + urlencode(photoEditsJSON); }
+			if(bodyedited) 		{ ajaxrequest += "&body=" + urlencode($("#articlebody").html()); }
 			
 			// write title, subtitle, author, authorjob, bonus-meta stuff
 			// (regardless of whether they've been edited. sloppy.)
@@ -372,15 +388,15 @@
 		});
 	});
 	
-	<? foreach($photos as $photo): ?>
-	
-	$(function() {
-		$( "#photocredit<?=$photo->photo_id?>" ).autocomplete({
-			source: "<?=site_url()?>article/ajax_suggest/author/name"
-		});
-	});
-	
-	<? endforeach; ?>
+	<? if(!empty($photos)): ?>
+		<? foreach($photos as $photo): ?>
+		$(function() {
+			$( "#photocredit<?=$photo->photo_id?>" ).autocomplete({
+				source: "<?=site_url()?>article/ajax_suggest/author/name"
+			});
+		});	
+		<? endforeach; ?>
+	<? endif; ?>
 		
 	$(function() {
 		$( "#series" ).autocomplete({

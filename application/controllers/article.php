@@ -120,6 +120,22 @@ class Article extends CI_Controller {
 		$author 	= trim(strip_tags(urldecode($this->input->post("author"))));
 		$authorjob 	= trim(strip_tags(urldecode($this->input->post("authorjob"))));
 		$body 		= trim(urldecode($this->input->post("body")));
+		$photoEditsJSON = urldecode($this->input->post("photoEdits"));
+		
+		
+		$photoEditSuccess = true;
+		if($photoEditsJSON) 
+		{
+			$photoEdits = json_decode($photoEditsJSON);
+			foreach($photoEdits as $key => $photoEdit)
+			{
+				$photo_id = $key;
+				$credit = substr(trim(strip_tags(urldecode($photoEdit->credit), '<b><i><u><strong><em>')),0,100); //limited to 100 due to db
+				$caption = trim(strip_tags(urldecode($photoEdit->caption), '<b><i><u><strong><em><a>'));
+				$photoEditSuccess = ($photoEditSuccess && $this->attachments_model->edit_photo($photo_id, $credit, $caption));
+			}
+		}
+		
 		
 		$published = ($this->input->post("published") == 'true' ? '1' : '0');
 		$featured = ($this->input->post("featured") == 'true' ? '1' : '0');
