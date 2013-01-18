@@ -16,7 +16,7 @@
 body {
 	margin: 0;
 	padding: 20px;
-	font-family:myriad-pro-condensed,helvetica,arial;
+	font-family:myriad-pro,helvetica,arial;
 	background: url(<?=base_url()?>images/graphy.png);
 	background-position: 50% 50%;
 }

@@ -79,15 +79,34 @@
 	
 	$(document).ready(function()
     {
+    	// SET TOOLTIPS
+    	$("#series, #articletitle, #articlesubtitle, #addauthor, #addauthorjob, #photocreditbonus, #photocaptionbonus, #articlebody").each(function() {
+			if($("#"+$(this).attr("id")).html().trim() == "" || $("#"+$(this).attr("id")).html().trim() == "<br>" || $("#"+$(this).attr("id")).html().trim() == "<p></p>") {
+				$("#"+$(this).attr("id")).addClass("tooltip");
+			}
+			$("#"+$(this).attr("id")).focus(function() {
+				$(this).removeClass("tooltip");
+			});
+			$("#"+$(this).attr("id")).blur(function() {
+				if($(this).html().trim() == "" || $(this).html().trim() == "<br>" || $(this).html().trim() == "<p></p>") {
+					$(this).addClass("tooltip");
+				}
+			});
+		});
+    	
+    	// DETECT CHANGES AND SUCH
     
     	$('#articletitle').keydown(function() {
     		titleedited=true;
     		$('#articletitle').css("color", "darkred");
 		});
+		$('#articletitle').keyup(function() {
+			document.title = $('#articletitle').html() + " — The Bowdoin Orient";
+		});
 		$("#articletitle").bind('paste', function() {
 			titleedited=true;
     		$('#articletitle').css("color", "darkred");
-		});	
+		});
 		
 		$('#articlesubtitle').keydown(function() {
     		subtitleedited=true;
@@ -163,9 +182,7 @@
 					thisPhotoEdits["caption"] = $("#photocaption<?=$photo->photo_id?>").html(); 
 					photoEdits["<?=$photo->photo_id?>"] = thisPhotoEdits;
 				<? endforeach; ?>
-				console.log(photoEdits);
 				var photoEditsJSON = JSON.stringify(photoEdits);
-				console.log(photoEditsJSON);
 			<? else: ?>
 				var photoEditsJSON = false;
 			<? endif; ?>
@@ -202,6 +219,15 @@
 					$("#savenotify").html(result);
 					$("#savenotify").show();
 					$("#savenotify").fadeOut(4000);
+					
+					if($('input[name=published]').prop('checked'))
+					{
+						$("#articletitle").removeClass("draft");
+					}
+					else
+					{
+						$("#articletitle").addClass("draft");
+					}
 					
 					titleedited=false;
 					subtitleedited=false;
@@ -437,15 +463,15 @@
 			<hgroup class="articletitle-group">
 				
 				<? if($article->series || bonus()): ?>
-					<h3 id="series" class="series"<?if(bonus()):?> contenteditable="true"<?endif;?>>
+					<h3 id="series" class="series"<?if(bonus()):?> contenteditable="true" title="Series"<?endif;?>>
 						<? if(!bonus()): ?><a href="<?=site_url()?>series/<?=$series->id?>"><? endif; ?>
 						<?=$series->name?>
 						<? if(!bonus()): ?></a><? endif; ?>
 					</h3>
 				<? endif; ?>
 				
-				<h2 id="articletitle" class="articletitle"<?if(bonus()):?> contenteditable="true"<?endif;?>><?=$article->title?></h2>
-				<h3 id="articlesubtitle" class="articlesubtitle"<?if(bonus()):?> contenteditable="true"<?endif;?>><? if(isset($article->subhead)): ?><?=$article->subhead?><? endif; ?></h3>
+				<h2 id="articletitle" class="articletitle <?= ($article->published ? '' : 'draft'); ?>"<?if(bonus()):?> contenteditable="true" title="Title"<?endif;?>><?=$article->title?></h2>
+				<h3 id="articlesubtitle" class="articlesubtitle"<?if(bonus()):?> contenteditable="true" title="Subtitle"<?endif;?>><? if(isset($article->subhead)): ?><?=$article->subhead?><? endif; ?></h3>
 				
 			</hgroup>
 
@@ -474,8 +500,8 @@
 				<? endif; ?>
 				<? if(bonus()): ?>
 					<div class="authortile bonus <?if($article->opinion == '1'):?>opinion<? endif; ?>">
-						<div class="articleauthor" id="addauthor" contenteditable="true" style="color:darkred">+</div>
-						<div class="articleauthorjob" id="addauthorjob" contenteditable="true" style="color:red">+</div>
+						<div class="articleauthor" id="addauthor" contenteditable="true" title="Author"></div>
+						<div class="articleauthorjob" id="addauthorjob" contenteditable="true" title="Author job"></div>
 					</div>
 				<? endif; ?>
 				
@@ -537,7 +563,7 @@
 						<figcaption>
 							<? if(!empty($photo->photographer_id)): ?>
 								<?if(bonus()):?>
-									<p id="photocredit<?=$photo->photo_id?>" class="photocredit" contenteditable="true"><?= $photo->photographer_name; ?></p>
+									<p id="photocredit<?=$photo->photo_id?>" class="photocredit" contenteditable="true" title="Photographer"><?= $photo->photographer_name; ?></p>
 								<?else:?>
 									<p id="photocredit<?=$photo->photo_id?>" class="photocredit">
 										<?= anchor('author/'.$photo->photographer_id, $photo->photographer_name) ?>
@@ -548,7 +574,7 @@
 									<?= $photo->credit ?>
 								</p>
 							<? endif; ?>
-							<p id="photocaption<?=$photo->photo_id?>" class="photocaption" <?if(bonus()):?>contenteditable="true"<?endif;?>><?=$photo->caption?></p>
+							<p id="photocaption<?=$photo->photo_id?>" class="photocaption" <?if(bonus()):?>contenteditable="true" title="Caption"<?endif;?>><?=$photo->caption?></p>
 						</figcaption>
 					</figure>
 				<? endforeach; ?>
@@ -576,8 +602,8 @@
 					</div>
 				</div>
 				<figcaption class="bonus">
-					<p id="photocreditbonus" class="photocredit" contenteditable="true">Credit</p>
-					<p id="photocaptionbonus" class="photocaption" contenteditable="true"><b>Caption:</b> caption.</p>
+					<p id="photocreditbonus" class="photocredit" contenteditable="true" title="Photographer"></p>
+					<p id="photocaptionbonus" class="photocaption" contenteditable="true" title="Caption"></p>
 				</figcaption>
 			</figure>
 		<? endif; ?>
@@ -594,7 +620,7 @@
 					<li>Opinion: <input type="checkbox" name="opinion" value="opinion" <? if($article->opinion): ?>checked="checked"<? endif; ?> /></li>
 				</ul>
 				<ul id="bonus-stats">
-					<li>Pullquote: <br/><textarea rows="6" cols="30" name="pullquote" id="pullquote"><?=$article->pullquote?></textarea></li>
+					<li>Pullquote: <br/><textarea rows="9" cols="30" name="pullquote" id="pullquote"><?=$article->pullquote?></textarea></li>
 					<li><a href="#" class="delete" id="removephotos">Remove article photos</a></li>
 					<li><a href="#" class="delete" id="deletearticle">Delete article</a></li>
 				</ul>
@@ -625,11 +651,9 @@
 			<div id="toc_container_catcher"></div>
 			<div id="toc_container"></div>		
 		
-			<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true"<?endif;?>>
+			<div id="articlebody" class="articlebody"<?if(bonus()):?> contenteditable="true" title="Article body"<?endif;?>>
 				<? if(!empty($body)): ?>
 					<?=$body->body;?>
-				<? elseif(bonus()): ?>
-					<?="<p>Enter article body here.</p>";?> 
 				<? endif; ?>
 			</div>
 		
