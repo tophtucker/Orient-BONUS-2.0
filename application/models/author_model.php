@@ -109,6 +109,7 @@ class Author_model extends CI_Model {
 	{
 		$this->db->select('article_id');
 		$this->db->where('photographer_id', $id);
+		$this->db->where('active', '1');
 		$query = $this->db->get('photo');
 		
 		if($query->num_rows() > 0)
@@ -123,6 +124,9 @@ class Author_model extends CI_Model {
 			$this->db->select('author.id as author_id, author.name, article.id as article_id, article.title, count(*) as collab_count');
 			$this->db->where_in('article_id', $article_ids);
 			$this->db->where('photo.photographer_id !=', $id);
+			$this->db->where('photo.active', '1');
+			$this->db->where('author.active', '1');
+			$this->db->where('article.active', '1');
 			$this->db->join('author', 'author.id = photo.photographer_id');
 			$this->db->join('article', 'article.id = photo.article_id');
 			$this->db->group_by('author.id');
@@ -143,6 +147,9 @@ class Author_model extends CI_Model {
 		// count articles
 		$this->db->select('count(*) as articlecount');
 		$this->db->where('author_id', $id);
+		$this->db->where('article.active', '1');
+		$this->db->where('article.published', '1');
+		$this->db->join('article', 'article.id=articleauthor.article_id');
 		$query = $this->db->get('articleauthor');
 		$result = $query->row();
 		$data['article_count'] = $result->articlecount;
@@ -150,6 +157,7 @@ class Author_model extends CI_Model {
 		// count photos
 		$this->db->select('count(*) as photocount');
 		$this->db->where('photographer_id', $id);
+		$this->db->where('active', '1');
 		$query = $this->db->get('photo');
 		$result = $query->row();
 		$data['photo_count'] = $result->photocount;
@@ -158,6 +166,7 @@ class Author_model extends CI_Model {
 		$this->db->select('article.date_published');
 		$this->db->join('article', 'article.id = articleauthor.article_id');
 		$this->db->where('articleauthor.author_id', $id);
+		$this->db->where('article.active', '1');
 		$this->db->order_by('article.date_published', 'asc');
 		$this->db->limit('1');
 		$query = $this->db->get('articleauthor');
@@ -175,6 +184,7 @@ class Author_model extends CI_Model {
 		$this->db->select('article.date_published');
 		$this->db->join('article', 'article.id = articleauthor.article_id');
 		$this->db->where('articleauthor.author_id', $id);
+		$this->db->where('article.active', '1');
 		$this->db->order_by('article.date_published', 'desc');
 		$this->db->limit('1');
 		$query = $this->db->get('articleauthor');
@@ -192,6 +202,8 @@ class Author_model extends CI_Model {
 		$this->db->select('article.date_published');
 		$this->db->join('article', 'article.id = photo.article_id');
 		$this->db->where('photo.photographer_id', $id);
+		$this->db->where('article.active', '1');
+		$this->db->where('photo.active', '1');
 		$this->db->order_by('article.date_published', 'asc');
 		$this->db->limit('1');
 		$query = $this->db->get('photo');
@@ -209,6 +221,8 @@ class Author_model extends CI_Model {
 		$this->db->select('article.date_published');
 		$this->db->join('article', 'article.id = photo.article_id');
 		$this->db->where('photo.photographer_id', $id);
+		$this->db->where('article.active', '1');
+		$this->db->where('photo.active', '1');
 		$this->db->order_by('article.date_published', 'desc');
 		$this->db->limit('1');
 		$query = $this->db->get('photo');
@@ -245,6 +259,8 @@ class Author_model extends CI_Model {
 		f it, imma do that. eventually.
 		<3, toph
 		
+		UPDATE: wait this is totally doable, i had some breakthrough and then i lost it oops.
+		
 		*/
 		
 		return $data;
@@ -256,6 +272,8 @@ class Author_model extends CI_Model {
 		$this->db->join('articleauthor', 'articleauthor.author_id = author.id');
 		$this->db->join('article', 'article.id = articleauthor.article_id');
 		$this->db->where('article.series', $id);
+		$this->db->where('article.active', '1');
+		$this->db->where('article.published', '1');
 		$this->db->group_by('author_id');
 		$this->db->order_by('contrib_count', 'desc');
 		$query = $this->db->get('author');
