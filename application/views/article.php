@@ -560,7 +560,7 @@
 					</div>
 				</div>
 				<figcaption class="bonus">
-					<p id="photocreditbonus" class="photocredit" style="margin-top: 0;text-shadow:none;color:gray;" contenteditable="true">Credit</p>
+					<p id="photocreditbonus" class="photocredit" contenteditable="true">Credit</p>
 					<p id="photocaptionbonus" class="photocaption" contenteditable="true"><b>Caption:</b> caption.</p>
 				</figcaption>
 			</figure>
@@ -813,7 +813,7 @@ $(document).ready(function(){
 				<? if($key > 0): ?>,<? endif; ?>
 				'<div class="swipeview-image" style="background:url(<?= base_url() ?>images/<?= $article->date ?>/<?= $photo->filename_large ?>)"></div>'
 					+'<figcaption>'
-					+ '<p class="photocredit nonoverlap"><? if(!empty($photo->photographer_id)): ?><?= anchor('author/'.$photo->photographer_id, addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->photographer_name)))); ?><? else: ?><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->credit))); ?><? endif; ?></p>'
+					+ '<p class="photocredit"><? if(!empty($photo->photographer_id)): ?><?= anchor('author/'.$photo->photographer_id, addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->photographer_name)))); ?><? else: ?><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->credit))); ?><? endif; ?></p>'
 					+ '<p class="photocaption"><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$photo->caption))); ?></p>'
 					+'</figcaption>'
 			<? endforeach; ?>

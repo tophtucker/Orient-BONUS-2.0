@@ -1505,26 +1505,19 @@ figure p {
 	font-family:myriad-pro,helvetica,arial;
 }
 
+figcaption {
+	margin-top: -5px;
+}
+
 .photocredit {
 	font-size: 12px;
 	font-style: italic;
 	text-align: right;
-	color: white;
-	margin: -20px 5px 0 0;
-	text-shadow: 0 0 10px black;
-}
-
-.photocredit.nonoverlap {
-	margin-top: 0 !important;
-	text-shadow:none;
-	color:gray;
+	margin: 0;
+	color: gray;
 }
 
 .photocredit a {
-	color: white;
-}
-
-.photocredit.nonoverlap a {
 	color:gray;
 }
 
@@ -1534,7 +1527,7 @@ figure p {
 
 .photocaption {
 	font-size: 14px;
-	margin: 5px 0 0 0;
+	margin: 0;
 }
 
 .articlemedia .delete {
