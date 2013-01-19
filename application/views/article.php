@@ -569,6 +569,8 @@
 										<?= anchor('author/'.$photo->photographer_id, $photo->photographer_name) ?>
 									</p>
 								<?endif;?>
+							<? elseif(empty($photo->credit) && bonus()): ?>
+								<p id="photocredit<?=$photo->photo_id?>" class="photocredit" contenteditable="true" title="Photographer"></p>
 							<? else: ?>
 								<p id="photocredit<?=$photo->photo_id?>" class="photocredit">
 									<?= $photo->credit ?>

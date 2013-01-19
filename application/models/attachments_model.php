@@ -114,15 +114,24 @@ class Attachments_model extends CI_Model {
     
     function edit_photo($photo_id, $credit, $caption)
     {
-    	$photographer = $this->article_model->get_author_by_name($credit);
-		if(!$photographer)
-		{
-			$this->article_model->add_author($credit);
+    	$credit = trim(str_replace("&nbsp;", ' ', $credit));
+    	if(empty($credit) || !$credit || $credit == '&nbsp;')
+    	{
+    		$photographer_id = '';
+    	}
+    	else
+    	{
 			$photographer = $this->article_model->get_author_by_name($credit);
+			if(!$photographer)
+			{
+				$this->article_model->add_author($credit);
+				$photographer = $this->article_model->get_author_by_name($credit);
+			}
+			$photographer_id = $photographer->id;
 		}
 		
 		$data = array(
-			'photographer_id'	=> $photographer->id,
+			'photographer_id'	=> $photographer_id,
 			'caption'			=> $caption
 		);
 		$this->db->where('id', $photo_id);

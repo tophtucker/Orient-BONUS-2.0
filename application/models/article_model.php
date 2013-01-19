@@ -393,6 +393,8 @@ class Article_model extends CI_Model {
 	
 	function get_author_by_name($name)
 	{
+		if(!$name || empty($name)) return false;
+		
 		$this->db->where('name', $name);
 		$query = $this->db->get('author');
 		
@@ -425,6 +427,8 @@ class Article_model extends CI_Model {
 	
 	function get_job_by_name($name)
 	{
+		if(!$name || empty($name)) return false;
+		
 		$this->db->where('name', $name);
 		$query = $this->db->get('job');
 		if($query->num_rows() > 0)
