@@ -1155,8 +1155,12 @@ section h2, #sidebar h2 {
 		width: 50%;
 	}
 	
-	#carousel h3 {
-		font-size: 1.4em;
+	.carouseltile h3 {
+		font-size: 20pt;
+	}
+	
+	.carouseltile h4 {
+		font-size: 16pt;
 	}
 	
 	#latest {
@@ -1731,6 +1735,10 @@ button .buttontext {
 	
 	.articletitle {
 		font-size: 20pt;
+	}
+	
+	.articlesubtitle {
+		font-size: 16pt;
 	}
 	
 	.toolbox {
