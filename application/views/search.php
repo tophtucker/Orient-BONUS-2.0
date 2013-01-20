@@ -55,7 +55,7 @@
 		
 		<div id="bigsearch">
 			<form action="<?=site_url()?>search" id="cse-search-box" method="get">
-				<input class="filterinput" type="text" placeholder="<?=$query?>" name="q">
+				<input class="filterinput" type="text" value="<?=$query?>" name="q" autofocus>
 			</form>
 		</div>
 		
@@ -92,6 +92,8 @@
 				}
 			  }, true);
 			</script>
+			
+			<p><?=anchor('advsearch','Advanced search')?></p>
 			 
 		</div>
 	  

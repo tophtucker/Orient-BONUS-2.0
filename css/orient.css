@@ -1943,6 +1943,24 @@ figure.authorpic {
 	}
 }
 
+#adv-search {
+	font-size: 13pt;
+	font-family:myriad-pro,helvetica,arial;
+}
+
+#adv-search input {
+	font-size: 13pt;
+	font-family:myriad-pro,helvetica,arial;
+	padding: 3px;	
+}
+
+#adv-search #submit {
+	font-size: 13pt;
+	font-family:myriad-pro,helvetica,arial;
+	padding: 3px;		
+	margin-top: 10px;
+}
+
 /* ///////// */
 /* SUBSCRIBE */
 /* ///////// */

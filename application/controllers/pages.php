@@ -69,6 +69,20 @@ class Pages extends CI_Controller {
 		$this->load->view('search', $data);
 	}
 	
+	public function advsearch()
+	{
+		if($this->input->get())
+		{
+			$data->searchdata = $this->input->get();
+			$data->articles = $this->article_model->advsearch($this->input->get());
+		}
+		
+		$this->load->helper('form');
+		$data->footerdata->quote = $this->attachments_model->get_random_quote();
+		$data->headerdata->date = date("Y-m-d");
+		$this->load->view('advsearch', $data);
+	}
+	
 	public function phpinfo()
 	{
 		if(!bonus()) 

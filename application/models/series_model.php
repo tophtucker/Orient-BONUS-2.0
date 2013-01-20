@@ -33,5 +33,31 @@ class Series_model extends CI_Model {
 		return $query->result();
 	}
 	
+	function get_series_by_name($series_name, $loose=false)
+	{
+		if(!$loose) $this->db->where('name', $series_name);
+		if($loose) $this->db->like('name', $series_name);
+		
+		$query = $this->db->get('series');
+		if($query->num_rows() > 0)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function add_series($name, $photo='', $description='')
+	{
+		$data = array(
+		   'name' => $name,
+		   'photo' => $photo,
+		   'description' => $description
+		);
+		return $this->db->insert('series', $data);
+	}
+
 }
 ?>

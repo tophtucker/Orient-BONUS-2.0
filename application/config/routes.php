@@ -48,6 +48,7 @@ $route['author/(:num)'] = "author/view/$1";
 $route['series/(:num)'] = "series/view/$1";
 
 $route['search'] = "pages/search";
+$route['advsearch'] = "pages/advsearch";
 $route['about'] = "pages/about";
 $route['contact'] = "pages/contact";
 $route['archives'] = "pages/archives";

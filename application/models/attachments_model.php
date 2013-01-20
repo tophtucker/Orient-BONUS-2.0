@@ -93,11 +93,13 @@ class Attachments_model extends CI_Model {
     
     function add_photo($filename_small, $filename_large, $filename_original, $credit, $caption, $article_id, $priority='1')
     {
-    	$photographer = $this->article_model->get_author_by_name($credit);
+		$this->load->model('author_model', '', TRUE);
+		
+    	$photographer = $this->author_model->get_author_by_name($credit);
 		if(!$photographer)
 		{
-			$this->article_model->add_author($credit);
-			$photographer = $this->article_model->get_author_by_name($credit);
+			$this->author_model->add_author($credit);
+			$photographer = $this->author_model->get_author_by_name($credit);
 		}
 		
 		$data = array(
@@ -114,6 +116,8 @@ class Attachments_model extends CI_Model {
     
     function edit_photo($photo_id, $credit, $caption)
     {
+		$this->load->model('author_model', '', TRUE);
+		
     	$credit = trim(str_replace("&nbsp;", ' ', $credit));
     	if(empty($credit) || !$credit || $credit == '&nbsp;')
     	{
@@ -121,11 +125,11 @@ class Attachments_model extends CI_Model {
     	}
     	else
     	{
-			$photographer = $this->article_model->get_author_by_name($credit);
+			$photographer = $this->author_model->get_author_by_name($credit);
 			if(!$photographer)
 			{
-				$this->article_model->add_author($credit);
-				$photographer = $this->article_model->get_author_by_name($credit);
+				$this->author_model->add_author($credit);
+				$photographer = $this->author_model->get_author_by_name($credit);
 			}
 			$photographer_id = $photographer->id;
 		}

@@ -79,7 +79,7 @@ function relativedate($secs) {
 
 function dateify($date, $epoch='') {
 	
-	if(empty($epoch)) $epoch = date();
+	if(empty($epoch)) $epoch = date("Y-m-d");
 	
 	$secs = strtotime($epoch)-strtotime($date);
 	$date_formatted = date("F j",strtotime($date));

@@ -323,11 +323,12 @@ class Article_model extends CI_Model {
 	
 	function add_article_series($article_id, $series_name)
 	{
-		$series = $this->get_series_by_name($series_name);
+        $this->load->model('series_model', '', TRUE);
+		$series = $this->series_model->get_series_by_name($series_name);
 		if(!$series)
 		{
-			$this->add_series($series_name);
-			$series = $get_series_by_name($series_name);
+			$this->series_model->add_series($series_name);
+			$series = $this->series_model->get_series_by_name($series_name);
 		}
 		
 		$this->db->where('id',$article_id);
@@ -341,45 +342,23 @@ class Article_model extends CI_Model {
 		$this->db->set('series','0');
 		return $this->db->update('article');		
 	}
-	
-	function get_series_by_name($series_name)
-	{
-		$this->db->where('name', $series_name);
-		$query = $this->db->get('series');
-		if($query->num_rows() > 0)
-		{
-			return $query->row();
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	function add_series($name, $photo='', $description='')
-	{
-		$data = array(
-		   'name' => $name,
-		   'photo' => $photo,
-		   'description' => $description
-		);
-		return $this->db->insert('series', $data);
-	}
-	
+		
 	function add_article_author($article_id, $author_name, $authorjob_name)
 	{
-		$author = $this->get_author_by_name($author_name);
+		$this->load->model('author_model', '', TRUE);
+		
+		$author = $this->author_model->get_author_by_name($author_name);
 		if(!$author)
 		{
-			$this->add_author($author_name);
-			$author = $this->get_author_by_name($author_name);
+			$this->author_model->add_author($author_name);
+			$author = $this->author_model->get_author_by_name($author_name);
 		}
 		
-		$authorjob = $this->get_job_by_name($authorjob_name);
+		$authorjob = $this->author_model->get_job_by_name($authorjob_name);
 		if(!$authorjob)
 		{
-			$this->add_job($authorjob_name);
-			$authorjob = $this->get_job_by_name($authorjob_name);
+			$this->author_model->add_job($authorjob_name);
+			$authorjob = $this->author_model->get_job_by_name($authorjob_name);
 		}
 		
 		$data = array(
@@ -390,71 +369,101 @@ class Article_model extends CI_Model {
 		
 		return $this->db->insert('articleauthor', $data); 
 	}
-	
-	function get_author_by_name($name)
-	{
-		if(!$name || empty($name)) return false;
 		
-		$this->db->where('name', $name);
-		$query = $this->db->get('author');
-		
-		if($query->num_rows() > 0)
-		{
-			return $query->row();
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	function add_author($name, $photo='', $job='0', $classyear='', $bio='')
-	{
-		$data = array(
-		   'name' => $name,
-		   'photo' => $photo,
-		   'job' => $job,
-		   'bio' => $bio
-		);
-		return $this->db->insert('author', $data);
-	}
-	
 	function remove_article_author($articleAuthorId)
 	{
 		$this->db->where('id',$articleAuthorId);
 		return $this->db->delete('articleauthor');
 	}
-	
-	function get_job_by_name($name)
-	{
-		if(!$name || empty($name)) return false;
 		
-		$this->db->where('name', $name);
-		$query = $this->db->get('job');
-		if($query->num_rows() > 0)
-		{
-			return $query->row();
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	function add_job($name)
-	{
-		$data = array(
-		   'name' => $name ,
-		);
-		return $this->db->insert('job', $data);
-	}
-	
 	function set_bigphoto($article_id, $bigphoto)
 	{
 		$bigphoto_value = ($bigphoto ? '1' : '0');
 		$this->db->set('bigphoto', $bigphoto_value);
 		$this->db->where('id', $article_id);
 		return $this->db->update('article');
+	}
+	
+	// for the love of god, either use a finite date span or a limit!
+	function advsearch($data)
+	{
+		$this->load->model('author_model', '', TRUE);
+		$this->load->model('series_model', '', TRUE);
+		
+		if($data['author']) 
+		{
+			$author = $this->author_model->get_author_by_name($data['author'], true);
+			if(!$author) return false;
+		}
+		
+		if($data['series']) 
+		{
+			$series = $this->series_model->get_series_by_name($data['series'], true);
+			if(!$series) return false;
+		}
+
+    	$this->db->select("
+    		article.id, 
+    		article.date, 
+    		article.title, 
+    		article.subhead, 
+    		article.pullquote, 
+    		article.published,
+    		article.featured,
+    		author.name 'author',
+    		author.id 'author_id',
+    		series.id 'series_id',
+    		series.name 'series', 
+    		articletype.name 'type', 
+    		photo.filename_small"
+    		);
+		$this->db->from("article");
+		
+		$this->db->join("series", "series.id=article.series");
+		$this->db->join("articletype", "articletype.id=article.type");
+		$this->db->join("photo", "photo.article_id=article.id and `photo`.`active`='1'", "left");
+		
+		// join author
+		$this->db->join("articleauthor", "articleauthor.article_id=article.id", "left");
+		$this->db->join("author", "author.id=articleauthor.author_id", "left");
+		
+		// "active" basically means "hasn't been deleted". we should almost never show inactive articles (or photos).
+		$this->db->where("article.active", "1");
+		// show draft (unpublished) articles only if logged into bonus.
+		if(!bonus()) $this->db->where("article.published", "1");
+		
+		// title search
+		// would preferably be expanded into indexed fulltext search
+		// (or at least pullquote?)
+		$this->db->like('title', $data['title']);
+		
+		// for carousel or whatever, may choose to just fetch featured articles
+		if(!empty($data['featured']) && $data['featured']=='featured') $this->db->where("article.featured", "1");
+		
+		if($data['author']) $this->db->where("articleauthor.author_id", $author->id);
+		if($data['series']) $this->db->where('article.series', $series->id);
+				
+		// note: both are inclusive
+		
+		if($data['since']) $this->db->where("article.date >=", date("Y-m-d H:i:s",strtotime($data['since'])));
+		if($data['until']) $this->db->where("article.date <=", date("Y-m-d H:i:s",strtotime($data['until'])));
+		
+		$this->db->limit('100');
+		
+		$this->db->group_by("article.id");
+		
+		$this->db->order_by("article.date", "desc");
+
+		$query = $this->db->get();
+		
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}		
 	}
 	
 	function get_id_by_triplet($date, $section_id, $priority)

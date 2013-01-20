@@ -48,6 +48,59 @@ class Author_model extends CI_Model {
 		return $authors_array;
 	}
 	
+	function get_author_by_name($name, $loose=false)
+	{
+		if(!$name || empty($name)) return false;
+		
+		if(!$loose) $this->db->where('name', $name);
+		if($loose) $this->db->like('name', $name);
+		$query = $this->db->get('author');
+		
+		if($query->num_rows() > 0)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function add_author($name, $photo='', $job='0', $classyear='', $bio='')
+	{
+		$data = array(
+		   'name' => $name,
+		   'photo' => $photo,
+		   'job' => $job,
+		   'bio' => $bio
+		);
+		return $this->db->insert('author', $data);
+	}
+	
+	function get_job_by_name($name)
+	{
+		if(!$name || empty($name)) return false;
+		
+		$this->db->where('name', $name);
+		$query = $this->db->get('job');
+		if($query->num_rows() > 0)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function add_job($name)
+	{
+		$data = array(
+		   'name' => $name ,
+		);
+		return $this->db->insert('job', $data);
+	}
+	
 	function get_author_series($id)
 	{
 		$this->db->select('title, series, name');
