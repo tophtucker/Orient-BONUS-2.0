@@ -57,13 +57,13 @@
 		
 			<form action="<?=site_url()?>advsearch" id="adv-search" method="get">
 			
-				<input class="" type="text" placeholder="Title" name="title" autofocus style="width:358px;" <? if(!empty($searchdata['title'])):?>value="<?= $searchdata['title'] ?>"<?endif;?>>
+				<input class="" type="text" placeholder="Title" name="title" autofocus <? if(!empty($searchdata['title'])):?>value="<?= $searchdata['title'] ?>"<?endif;?>>
 				
 				<br/><input class="" type="text" placeholder="Author" name="author" <? if(!empty($searchdata['author'])):?>value="<?= $searchdata['author'] ?>"<?endif;?>>
 				<input class="" type="text" placeholder="Series" name="series" <? if(!empty($searchdata['series'])):?>value="<?= $searchdata['series'] ?>"<?endif;?>>
 				
-				<br/><input class="" type="text" placeholder="Since date" name="since" <? if(!empty($searchdata['since'])):?>value="<?= $searchdata['since'] ?>"<?endif;?>>
-				<input class="" type="text" placeholder="Until date" name="until" <? if(!empty($searchdata['until'])):?>value="<?= $searchdata['until'] ?>"<?endif;?>>
+				<br/><input class="" type="date" placeholder="Since date" name="since" <? if(!empty($searchdata['since'])):?>value="<?= $searchdata['since'] ?>"<?endif;?>>
+				– <input class="" type="date" placeholder="Until date" name="until" <? if(!empty($searchdata['until'])):?>value="<?= $searchdata['until'] ?>"<?endif;?>>
 				
 				<br/>Featured: <?= form_checkbox('featured', 'featured', (!empty($searchdata['featured']))); ?>
 				
