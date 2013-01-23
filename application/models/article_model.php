@@ -174,6 +174,15 @@ class Article_model extends CI_Model {
 		}
 	}
 	
+	function is_published($id)
+	{
+		$this->db->select('published');
+		$this->db->where('id',$id);
+		$query = $this->db->get('article');
+		$result = $query->row();
+		return ($result->published == '1' ? true : false);
+	}
+	
 	function get_random()
 	{
 		// weighted by popularity; truncates the head of the list (offset of 10) because
@@ -275,7 +284,8 @@ class Article_model extends CI_Model {
 		   'title' => '',
 		   'subhead' => '',
 		   'pullquote' => '',
-		   'opinion' => ($section == '2' ? '1' : '0')
+		   'opinion' => ($section == '2' ? '1' : '0'),
+		   'date_created' => date("Y-m-d H:i:s")
 		);
 		$query = $this->db->insert('article', $data);
 		return $this->db->insert_id();
@@ -283,6 +293,7 @@ class Article_model extends CI_Model {
 	
 	function edit_article($id, $data)
 	{
+		$data['date_updated'] = date("Y-m-d H:i:s");
 		$this->db->where("id", $id);
 		return $this->db->update("article", $data);
 	}

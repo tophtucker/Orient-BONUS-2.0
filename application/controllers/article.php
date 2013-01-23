@@ -140,7 +140,7 @@ class Article extends CI_Controller {
 		$published = ($this->input->post("published") == 'true' ? '1' : '0');
 		$featured = ($this->input->post("featured") == 'true' ? '1' : '0');
 		$opinion = ($this->input->post("opinion") == 'true' ? '1' : '0');
-		
+				
 		$data = array(
 			'title' 		=> $title,
 			'subhead' 		=> $subtitle,
@@ -154,6 +154,10 @@ class Article extends CI_Controller {
 			'opinion'		=> $opinion,
 			'active'		=> '1'
 			);
+		
+		// if the article is just now being published, set publication
+		if(!$this->article_model->is_published($id) && $published) $data['date_published'] = date("Y-m-d H:i:s");
+		
 		$articlesuccess = $this->article_model->edit_article($id, $data);
 		
 		if($body) 
