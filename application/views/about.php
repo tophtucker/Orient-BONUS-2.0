@@ -86,44 +86,45 @@
 			<div id="stafftable">
 
 				<div id="topstaff">
-					<div id="eic">
+					<!--<div id="eic">
 						<div style="width:100%"><p><span class="bigshot">Linda Kinstler,</span> <span class="bigshot-title">Editor in Chief</span></p></div>
-					</div>
+					</div> -->
 					<div id="topeditors">
-						<div style="width:33%"><p><span class="bigshot">Erica Berry,</span><br/> <span class="bigshot-title">Executive Editor</span></p></div>
-						<div style="width:33%"><p><span class="bigshot">Claire Aasen,</span><br/> <span class="bigshot-title">Managing Editor</span></p></div>
-						<div style="width:33%"><p><span class="bigshot">Eliza Novick-Smith,</span><br/> <span class="bigshot-title">Managing Editor</span></p></div>
-						<div style="width:33%"><p><span class="bigshot">Diana Lee,</span><br/> <span class="bigshot-title">Associate Editor</span></p></div>
-						<div style="width:33%"><p><span class="bigshot">Nora Biette-Timmons,</span><br/> <span class="bigshot-title">Editor-at-Large</span></p></div>
-						<div style="width:33%"><p><span class="bigshot">Sam Weyrauch,</span><br/> <span class="bigshot-title">Editor-at-Large</span></p></div>
+						<div style="width:50%"><p><span class="bigshot">Linda Kinstler,</span><br/> <span class="bigshot-title">Editor in Chief</span></p></div>
+						<div style="width:50%"><p><span class="bigshot">Sam Weyrauch,</span><br/> <span class="bigshot-title">Executive Editor</span></p></div>
+						<div style="width:50%"><p><span class="bigshot">Nora Biette-Timmons,</span><br/> <span class="bigshot-title">Managing Editor</span></p></div>
+						<div style="width:50%"><p><span class="bigshot">Garrett Casey,</span><br/> <span class="bigshot-title">Managing Editor</span></p></div>
 					</div>
 				</div>
 				<hr style="width:50%; margin: 0 auto;">
 				<div id="lowerstaff">
 					<div class="column">
 						<p class="stafftitle">News Editor</p>
-						<p>Garrett Casey</p>
+						<p>Marisa McGarry</p>
 						
 						<p class="stafftitle">Features Editor</p>
-						<p>Kate Witteman</p>
+						<p>Natalie Clark</p>
 						
 						<p class="stafftitle">A&amp;E Editor</p>
-						<p>Nate Torda</p>
+						<p>Maggie Bryan</p>
 						
 						<p class="stafftitle">Sports Editor</p>
 						<p>Ron Cervantes</p>
 						
 						<p class="stafftitle">Opinion Editor</p>
-						<p>Luke Drabyn</p>
+						<p>Natalie Kass-Kaufman</p>
 						
 						<p class="stafftitle">Calendar Editor</p>
 						<p>Carolyn Veilleux</p>
 						
+						<p class="stafftitle">Beats Editor</p>
+						<p>Sophia Cheng</p>
+						
 					</div>
 					<div class="column">
 						<p class="stafftitle">Associate Editors</p>
-						<p>Dylan Hammer</p>
-						<p>Zohran Mamdani</p>
+						<p>Sam Miller</p>
+						<p>Kate Witteman</p>
 						<p>Diana Lee</p>
 						
 						<p class="stafftitle">Senior Reporters</p>
@@ -134,11 +135,10 @@
 						<p class="stafftitle">Information Architect</p>
 						<p>Toph Tucker</p>
 						
-						<p class="stafftitle">Web Manager</p>
-						<p>Matthew Gutschenritter</p>
+						<p class="stafftitle">Business Managers</p>
+						<p>Maya Lloyd</p>
+						<p>Madison Whitley</p>
 						
-						<p class="stafftitle">Beats Editor</p>
-						<p>Sophia Cheng</p>
 					</div>
 					<div class="column">
 						<p class="stafftitle">Layout Editor</p>
@@ -153,10 +153,14 @@
 						<p class="stafftitle">Asst. Photo Editor</p>
 						<p>Hy Khong</p>
 						
-						<p class="stafftitle">Business Managers</p>
-						<p>Maya Lloyd</p>
-						<p>Madison Whitley</p>
+						<p class="stafftitle">Editors-at-Large</p>
+						<p>Claire Aasen</p>
+						<p>Erica Berry</p>
+						<p>Dylan Hammer</p>
+						<p>Eliza Novick-Smith</p>
 
+						<p class="stafftitle">Web Editor</p>
+						<p>Matthew Gutschenritter</p>
 						
 					</div>
 				</div>
