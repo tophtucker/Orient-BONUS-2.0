@@ -72,7 +72,7 @@
 		
 		<div id="articlebody" class="articlebody">
 		
-				<p>Find out what's really happening on the Bowdoin campus by subscribing to the student-run newspaper, <em>The Bowdoin Orient</em>. The <em>Orient</em> covers news, features, student opinion, arts &amp; entertainment, sports, and weekly events. We will be printing 25 issues throughout the 2011–2012 academic year.</p>
+				<p>Find out what's really happening on the Bowdoin campus by subscribing to the student-run newspaper, <em>The Bowdoin Orient</em>. The <em>Orient</em> covers news, features, student opinion, arts &amp; entertainment, sports, and weekly events. We will be printing 25 issues throughout the 2012–2013 academic year.</p>
 				
 				<p>Your subscription to the Orient will offer you:</p>
 				

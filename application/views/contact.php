@@ -72,7 +72,7 @@
 			
 			<h3 id="ltte">Submit a letter to the editor</h3>
 			<ol>
-				<li>Letters should be recieved by 7:00 p.m. on the Wednesday of the week of publication.</li>
+				<li>Letters should be recieved by 7 p.m. on the Wednesday of the week of publication.</li>
 				<li>Letters must be signed. We will not publish unsigned letters.</li>
 				<li>Letters should not exceed 200 words.</li>
 			</ol>
