@@ -100,6 +100,10 @@
 	text-shadow:0px 0px 20px #000;
 }
 
+/* BIGPHOTO */
+.articlemedia.bigphoto #swipeview_relative_nav { margin-top: -450px; }
+.articlemedia.bigphoto #swipeview_relative_nav span#next { margin-left: 850px; }
+
 .articlemedia #swipeview_relative_nav span {
 	opacity: 0;
 }
