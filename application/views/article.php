@@ -462,6 +462,63 @@
 		<header>
 			<hgroup class="articletitle-group">
 				
+				<!-- NEXT / PREV -->
+				<style>
+				.article_header_nav {
+					position: relative;
+				}
+				
+				.article_header_nav ul {
+					position: absolute;
+				}
+				
+				.article_header_nav ul.leftmargin {
+					left:-240px;					
+				}
+				
+				.article_header_nav ul.rightmargin {
+					right:-240px;					
+				}
+				
+				.article_header_nav ul li {
+					opacity: .5;
+				}
+				
+				.article_header_nav ul li:hover {
+					opacity: 1;
+				}
+				</style>
+				<div class="article_header_nav hidetablet hidemobile">
+					<? if(!empty($series_previous)): ?>
+					<ul class="articleblock leftmargin">
+						<? foreach($series_previous as $s_prev): ?>
+						<li class="<? if(!empty($s_prev->filename_small)): ?> backgrounded<? endif; ?><? if(!$s_prev->published): ?> draft<? endif; ?>"<? if(!empty($s_prev->filename_small)): ?> style="background:url('<?=base_url().'images/'.$s_prev->date.'/'.$s_prev->filename_small?>')"<? endif; ?>>
+							<a href="<?=site_url()?>article/<?=$s_prev->id?>">
+							<!--<div class="dateified"><?=dateify($s_prev->date)?></div>-->
+							<h3><? if($s_prev->series): ?><span class="series"><?=$s_prev->series?>:</span> <? endif; ?>
+							<?=$s_prev->title?></h3>
+							<? if($s_prev->subhead): ?><h4><?= $s_prev->subhead ?></h4><? endif; ?>
+							<p><?=$s_prev->pullquote?></p>
+						</a></li>
+						<? endforeach; ?>
+					</ul>
+					<? endif;?> 
+					<? if(!empty($series_next)): ?>
+					<ul class="articleblock rightmargin">
+						<? foreach($series_next as $s_next): ?>
+						<li class="<? if(!empty($s_next->filename_small)): ?> backgrounded<? endif; ?><? if(!$s_next->published): ?> draft<? endif; ?>"<? if(!empty($s_next->filename_small)): ?> style="background:url('<?=base_url().'images/'.$s_next->date.'/'.$s_next->filename_small?>')"<? endif; ?>>
+							<a href="<?=site_url()?>article/<?=$s_next->id?>">
+							<!--<div class="dateified"><?=dateify($s_next->date)?></div>-->
+							<h3><? if($s_next->series): ?><span class="series"><?=$s_next->series?>:</span> <? endif; ?>
+							<?=$s_next->title?></h3>
+							<? if($s_next->subhead): ?><h4><?= $s_next->subhead ?></h4><? endif; ?>
+							<p><?=$s_next->pullquote?></p>
+						</a></li>
+						<? endforeach; ?>
+					</ul>
+					<? endif; ?>
+				</div>
+				
 				<? if($article->series || bonus()): ?>
 					<h3 id="series" class="series"<?if(bonus()):?> contenteditable="true" title="Series"<?endif;?>>
 						<? if(!bonus()): ?><a href="<?=site_url()?>series/<?=$series->id?>"><? endif; ?>

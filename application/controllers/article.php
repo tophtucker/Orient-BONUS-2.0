@@ -51,6 +51,13 @@ class Article extends CI_Controller {
 			// get random quote
 			$data->footerdata->quote = $this->attachments_model->get_random_quote();
 			
+			// adjacent articles
+			if($series->name) 
+			{
+				$data->series_previous = $this->article_model->get_articles_by_date($article->date, false, false, '1', false, false, $series->id, $id);
+				$data->series_next = $this->article_model->get_articles_by_date(false, $article->date, false, '1', false, false, $series->id, $id, 'asc');
+			}
+			
 			// featured articles for footer
 			$data->featured = $this->article_model->get_articles_by_date($article->date, false, false, '5', true);
 			
