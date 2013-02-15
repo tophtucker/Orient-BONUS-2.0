@@ -127,6 +127,10 @@
 		});
 		$('#articlebody').bind('paste', function() {
     		bodyedited=true;
+    		window.onbeforeunload = "You have unsaved changes.";
+    		window.onbeforeunload = function(e) {
+				return "You have unsaved changes.";
+			};
     		$('#articlebody').css("color", "darkred");
 		});
 		
@@ -799,7 +803,17 @@
 	CKEDITOR.disableAutoInline = true;
 	var editor = CKEDITOR.inline( 'articlebody' );
 	
-	
+	editor.on('paste', function(evt) {
+		// Update the text
+		// evt.editor.setData(evt.editor.getData() + ' your additional comments.');
+		bodyedited=true;
+		window.onbeforeunload = "You have unsaved changes.";
+		window.onbeforeunload = function(e) {
+			return "You have unsaved changes.";
+		};
+		$('#articlebody').css("color", "darkred");
+
+	}, editor.element.$);
 	
 </script>
 
