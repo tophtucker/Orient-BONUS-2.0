@@ -87,7 +87,8 @@ class Article_model extends CI_Model {
 		$this->db->order_by("article.priority", "asc");
 
 		$query = $this->db->get();
-		
+		//echo $this->db->last_query();
+		//if($date_since != false && $limit==1) exit($this->db->last_query());
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
