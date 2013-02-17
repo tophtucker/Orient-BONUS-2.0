@@ -233,35 +233,79 @@ footer .bonusquoteattribution {
 #bonusbar {
 	position: fixed;
 	bottom: 0;
-	height: 25px;
+	height: 45px;
 	width: 100%;
 	background: url(../images/starring.png);
 	color: white;
 	padding: 10px;
-}
-
-#bonushook p, #bonusbar p {
-	font-size: 24px;
+	border-top: 1px solid white;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	font-family:myriad-pro,helvetica,arial;
 	line-height: 1;
+}
+
+#bonushook, #bonusbarnav {
+	font-size: 24px;
+}
+
+#bonustools {
+	float: right;
+	margin: 0 5px;
+}
+
+#bonustools input {
+	background: #333;
+	color: white;
+	border: 1px white solid;
+	font-family:myriad-pro,helvetica,arial;
+	padding: 3px;
+	text-align: center;
 }
 
 #bonusbar a {
 	color: lightblue;
 }
 
-#bonusbar #savearticle {
+#bonusbar button {
 	float: right;
 	font-family:myriad-pro,helvetica,arial;
 	font-size: 16px;
-	margin-right: 20px;
+	margin-left: 10px;
+	border: 1px solid white;
+	width: 70px;
+}
+
+#bonusbar button:hover {
+	-moz-box-shadow:    inset 0 0 10px #fff;
+	-webkit-box-shadow: inset 0 0 10px #fff;
+	box-shadow:         inset 0 0 10px #fff;
+}
+
+#bonusbar button:active {
+	-moz-box-shadow:    inset 0 0 20px #000000;
+	-webkit-box-shadow: inset 0 0 20px #000000;
+	box-shadow:         inset 0 0 20px #000000;
+}
+
+#bonusbar button#savearticle {
+	background: #555;
+	color: white;
+}
+
+#bonusbar button#publisharticle {
+	background: darkgreen;
+	color: white;
 }
 
 #bonusbar #savenotify {
-	float: right;
-	font-size: 12pt;
-	margin: 5px;
+	margin-right: 10px;
 	display: none;
+}
+
+#bonusbar .delete {
+	color: red;
 }
 
 /*

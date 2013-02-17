@@ -93,6 +93,9 @@
 				}
 			});
 		});
+		
+		// SET PUBLISHED
+		window.published = <?= $article->published ? 'true' : 'false' ?>;
     	
     	// DETECT CHANGES AND SUCH
     
@@ -152,6 +155,20 @@
     		$('#photocaptionbonus').css("color", "darkred");
 		});
 		
+		$("#publisharticle").click(function() {
+			window.publish = true;
+			window.published = true;
+			$("#savearticle").click();
+		});
+		
+		$("#unpublish").click(function() {
+			if(confirm("Are you sure you want to unpublish this article? Unless you, like, JUST published it, that's probs not kosher.")) {
+				window.unpublish = true;
+				window.published = false;
+				$("#savearticle").click();
+			}
+		});
+		
     	$("#savearticle").click(function() {
 			
 			var statusMessage = '';
@@ -201,10 +218,9 @@
 					"&issue_number=" + urlencode($('input[name=issue_number]').val()) +
 					"&section_id=" + urlencode($('input[name=section_id]').val()) +
 					"&priority=" + urlencode($('input[name=priority]').val()) +
-					"&published=" + $('input[name=published]').prop('checked') +
+					"&published=" + window.published +
 					"&featured=" + $('input[name=featured]').prop('checked') +
-					"&opinion=" + $('input[name=opinion]').prop('checked') +
-					"&pullquote=" + urlencode($('textarea[name=pullquote]').val());
+					"&opinion=" + $('input[name=opinion]').prop('checked');
 			if(photoEditsJSON)	{ ajaxrequest += "&photoEdits=" + urlencode(photoEditsJSON); }
 			if(bodyedited) 		{ ajaxrequest += "&body=" + urlencode($("#articlebody").html()); }
 			
@@ -224,13 +240,17 @@
 					$("#savenotify").show();
 					$("#savenotify").fadeOut(4000);
 					
-					if($('input[name=published]').prop('checked'))
+					if(window.published)
 					{
 						$("#articletitle").removeClass("draft");
+						$("#publisharticle").hide();
+						$("#unpublish").show();
 					}
 					else
 					{
 						$("#articletitle").addClass("draft");
+						$("#publisharticle").show();
+						$("#unpublish").hide();
 					}
 					
 					titleedited=false;
@@ -246,6 +266,9 @@
 			$.when.apply($, calls).then(function() {
 				$("#savenotify").html(statusMessage);
 				$("#savenotify").show();
+				if(window.publish) {
+ 					window.location = "<?=site_url()?>"; 
+				}
 				if(refresh) { 
 					window.location.reload(); 
 				}
@@ -537,12 +560,15 @@
 			</hgroup>
 
 			<div id="authorblock">
+				<? if(bonus() && $series->name != "Editorial"): ?>
+					<div class="opinion-notice"><input type="checkbox" name="opinion" value="opinion" <? if($article->opinion): ?>checked="checked"<? endif; ?> /> Does this piece represent the opinion of the author?</div>
+				<? endif; ?>
 				<? if($series->name == "Editorial"): ?>
 					<object data="<?=base_url()?>images/icon-opinion.svg" type="image/svg+xml" class="opinion-icon" height="20" width="20" title="Plinio Fernandes, from The Noun Project"></object>
 					<div class="opinion-notice">This piece represents the opinion of <span style="font-style:normal;">The Bowdoin Orient</span> editorial board.</div>
 				<? endif; ?>
 				<? if($authors): ?>
-					<? if($article->opinion == '1'): ?>
+					<? if($article->opinion == '1' && !bonus()): ?>
 						<object data="<?=base_url()?>images/icon-opinion.svg" type="image/svg+xml" class="opinion-icon" height="20" width="20" title="Plinio Fernandes, from The Noun Project"></object>
 						<div class="opinion-notice">This piece represents the opinion of the author<?if(count($authors)>1):?>s<?endif;?>:</div>
 					<? endif; ?>
@@ -668,25 +694,6 @@
 					<p id="photocreditbonus" class="photocredit" contenteditable="true" title="Photographer"></p>
 					<p id="photocaptionbonus" class="photocaption" contenteditable="true" title="Caption"></p>
 				</figcaption>
-			</figure>
-		<? endif; ?>
-		
-		<? if(bonus()): ?>
-			<figure id="bonus-meta">
-				<ul id="bonus-tools">
-					<li>Volume: <input type="text" name="volume" id="volume" size="2" value="<?=$article->volume?>" /></li>
-					<li>Issue number: <input type="text" name="issue_number" id="issue_number" size="2" value="<?=$article->issue_number?>" /></li>
-					<li>Section: <input type="text" name="section_id" id="section_id" size="2" value="<?=$article->section_id?>" /></li>
-					<li>Priority: <input type="text" name="priority" id="priority" size="2" value="<?=$article->priority?>" /></li>
-					<li>Published: <input type="checkbox" name="published" value="published" <? if($article->published): ?>checked="checked"<? endif; ?> /></li>
-					<li>Featured: <input type="checkbox" name="featured" value="featured" <? if($article->featured): ?>checked="checked"<? endif; ?> /></li>
-					<li>Opinion: <input type="checkbox" name="opinion" value="opinion" <? if($article->opinion): ?>checked="checked"<? endif; ?> /></li>
-				</ul>
-				<ul id="bonus-stats">
-					<li>Pullquote: <br/><textarea rows="9" cols="30" name="pullquote" id="pullquote"><?=$article->pullquote?></textarea></li>
-					<li><a href="#" class="delete" id="removephotos">Remove article photos</a></li>
-					<li><a href="#" class="delete" id="deletearticle">Delete article</a></li>
-				</ul>
 			</figure>
 		<? endif; ?>
 		

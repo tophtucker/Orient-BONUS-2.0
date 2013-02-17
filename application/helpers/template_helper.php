@@ -115,4 +115,10 @@ function isMobile() {
 	return false;
 }
 
+// strnposr() - Find the position of nth needle in haystack.
+// http://www.php.net/manual/en/function.strpos.php#106407
+function strnposr($haystack, $needle, $occurrence, $pos = 0) {
+    return ($occurrence<2)?strpos($haystack, $needle, $pos):strnposr($haystack,$needle,$occurrence-1,strpos($haystack, $needle, $pos) + 1);
+}
+
 ?>

@@ -151,7 +151,6 @@ class Article extends CI_Controller {
 		$data = array(
 			'title' 		=> $title,
 			'subhead' 		=> $subtitle,
-			'pullquote'		=> trim(urldecode($this->input->post("pullquote"))),
 			'volume' 		=> trim(urldecode($this->input->post("volume"))),
 			'issue_number' 	=> trim(urldecode($this->input->post("issue_number"))),
 			'section_id'	=> trim(urldecode($this->input->post("section_id"))),
@@ -161,6 +160,14 @@ class Article extends CI_Controller {
 			'opinion'		=> $opinion,
 			'active'		=> '1'
 			);
+		
+		// If body was updated, set pullquote to first three paragraphs.
+		// Yes, this is sloppy is so many ways. FML.
+		if($body) 
+		{
+			$thirdgraf = strnposr($body, "</p>", 3) + 4;
+			$data['pullquote'] = strip_tags(substr($body, 0, $thirdgraf),"<p>");
+		}
 		
 		// if the article is just now being published, set publication
 		if(!$this->article_model->is_published($id) && $published) $data['date_published'] = date("Y-m-d H:i:s");

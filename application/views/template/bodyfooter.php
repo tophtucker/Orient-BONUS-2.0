@@ -1,7 +1,9 @@
 	<? if(!empty($featured)): ?>
 	<!-- FEATURED ARTICLES -->
 	<section id="Featured" class="featured">
-		<h2>★ Featured</h2>
+		<h2>★ Featured 
+			<? if(substr(uri_string(),0,8)=="article/" && bonus()): ?> <input type="checkbox" name="featured" value="featured" <? if($article->featured): ?>checked="checked"<? endif; ?> /><?endif;?>
+		</h2>
 		<ul class="articleblock">
 			<? foreach($featured as $article): ?>
 			<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?> medtile"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
