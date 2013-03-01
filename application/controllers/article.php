@@ -118,14 +118,16 @@ class Article extends CI_Controller {
 		
 		// strip tags where appropriate,
 		// but we want to allow them in title, subtitle, & body.
+		// also strip out stupid non-breaking spaces (&nbsp;)
+		// preg_replace('/\&nbsp\;/', ' ', $contentFromPost); 
 		// and no, i don't know why i process the incoming post data in two places
 		// (here and inline in the array definition).
 		
-		$title 		= trim(strip_tags(urldecode($this->input->post("title")), '<b><i><u><strong><em>'));
-		$subtitle 	= trim(strip_tags(urldecode($this->input->post("subtitle")), '<b><i><u><strong><em>'));
-		$series 	= trim(strip_tags(urldecode($this->input->post("series"))));
-		$author 	= trim(strip_tags(urldecode($this->input->post("author"))));
-		$authorjob 	= trim(strip_tags(urldecode($this->input->post("authorjob"))));
+		$title 		= trim(preg_replace('/\&nbsp\;/', ' ',strip_tags(urldecode($this->input->post("title")), '<b><i><u><strong><em>')));
+		$subtitle 	= trim(preg_replace('/\&nbsp\;/', ' ',strip_tags(urldecode($this->input->post("subtitle")), '<b><i><u><strong><em>')));
+		$series 	= trim(preg_replace('/\&nbsp\;/', ' ',strip_tags(urldecode($this->input->post("series")))));
+		$author 	= trim(preg_replace('/\&nbsp\;/', ' ',strip_tags(urldecode($this->input->post("author")))));
+		$authorjob 	= trim(preg_replace('/\&nbsp\;/', ' ',strip_tags(urldecode($this->input->post("authorjob")))));
 		$body 		= trim(urldecode($this->input->post("body")));
 		$photoEditsJSON = urldecode($this->input->post("photoEdits"));
 		
@@ -137,8 +139,8 @@ class Article extends CI_Controller {
 			foreach($photoEdits as $key => $photoEdit)
 			{
 				$photo_id = $key;
-				$credit = substr(trim(strip_tags(urldecode($photoEdit->credit), '<b><i><u><strong><em>')),0,100); //limited to 100 due to db
-				$caption = trim(strip_tags(urldecode($photoEdit->caption), '<b><i><u><strong><em><a>'));
+				$credit = substr(trim(preg_replace('/\&nbsp\;/', ' ',strip_tags(urldecode($photoEdit->credit), '<b><i><u><strong><em>'))),0,100); //limited to 100 due to db
+				$caption = trim(preg_replace('/\&nbsp\;/', ' ',strip_tags(urldecode($photoEdit->caption), '<b><i><u><strong><em><a>')));
 				$photoEditSuccess = ($photoEditSuccess && $this->attachments_model->edit_photo($photo_id, $credit, $caption));
 			}
 		}

@@ -148,7 +148,7 @@
 		<!-- Begin MailChimp Signup Form -->
 		<div id="mc_embed_signup">
 			<form action="http://bowdoinorient.us4.list-manage.com/subscribe/post?u=eab94f63abe221b2ef4a4baec&amp;id=739fef0bb9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-			<h2 style="margin-top:0">Weekly newsletter</h2>
+			<h2 style="margin-top:0;margin-bottom:5px;">Weekly newsletter</h2>
 			<div class="mc-field-group">
 				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
 				<input type="submit" value="Subscribe, free" name="subscribe" id="mc-embedded-subscribe" class="button">
