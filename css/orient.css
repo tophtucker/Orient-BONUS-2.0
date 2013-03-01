@@ -268,33 +268,43 @@ footer .bonusquoteattribution {
 	color: lightblue;
 }
 
-#bonusbar button {
-	float: right;
+button.bonusbutton {
 	font-family:myriad-pro,helvetica,arial;
 	font-size: 16px;
 	margin-left: 10px;
 	border: 1px solid white;
-	width: 70px;
 }
 
-#bonusbar button:hover {
+button.bonusbutton:hover {
 	-moz-box-shadow:    inset 0 0 10px #fff;
 	-webkit-box-shadow: inset 0 0 10px #fff;
 	box-shadow:         inset 0 0 10px #fff;
 }
 
-#bonusbar button:active {
+button.bonusbutton:active {
 	-moz-box-shadow:    inset 0 0 20px #000000;
 	-webkit-box-shadow: inset 0 0 20px #000000;
 	box-shadow:         inset 0 0 20px #000000;
 }
 
-#bonusbar button#savearticle {
+button.bonusbutton#savearticle {
+	float: right;
+	width: 70px;
 	background: #555;
 	color: white;
 }
 
-#bonusbar button#publisharticle {
+button.bonusbutton#publisharticle {
+	float: right;
+	width: 70px;
+	background: darkgreen;
+	color: white;
+}
+
+button.bonusbutton#addarticlebutton {
+	float: right;
+	width: 100px;
+	margin-right: 6px;
 	background: darkgreen;
 	color: white;
 }
@@ -570,6 +580,11 @@ h2 {
 }
 
 .addarticle {
+	position: relative;
+	float: right;
+}
+
+.addarticle a {
 	color: red !important;
 }
 
@@ -933,7 +948,9 @@ section h2, #sidebar h2 {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-
+	
+	
+	
 }
 
 .articleblock li.draft, .carouseltile.draft {
@@ -974,13 +991,19 @@ section h2, #sidebar h2 {
 	display: none;
 }
 
-.articleblock li p {
-	margin: 0;
-	padding: 0 10px;
-	font-size: 60%;
+.articleblock li .excerpt {
+	padding: 0 10px;	
+	font-size: 8pt;
 	line-height: 140%;
 	color:#555;
 }
+
+.articleblock li p {
+	margin: 0 0 10px 0;
+	font-size: 8pt;
+	line-height: 140%;
+	color:#555;
+} 
 
 .fullwidth {
 	width: 100% !important;

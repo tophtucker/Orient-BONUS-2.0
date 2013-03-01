@@ -153,6 +153,7 @@
 				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
 				<input type="submit" value="Subscribe, free" name="subscribe" id="mc-embedded-subscribe" class="button">
 			</div>
+			</form>
 		</div>
 		<!-- end MailChimp -->
 		
@@ -188,6 +189,7 @@
 		<? if(!empty($articles[$section->name])): ?>
 		
 		<section id="<?=$section->name?>" class="issuesection">
+			<? if(bonus()): ?><a href="<?=site_url()?>article/add/<?=$issue->volume?>/<?=$issue->issue_number?>/<?=$section->id?>"><button class="bonusbutton" id="addarticlebutton">Add article</button></a><? endif; ?>
 			<h2><?=$section->name?></h2>
 			
 			<ul class="articleblock twotier">
@@ -198,12 +200,9 @@
 					<h3><? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
 					<? if($article->subhead): ?><h4><?= $article->subhead ?></h4><? endif; ?>
-					<p><?=$article->pullquote?></p>
+					<div class="excerpt"><?=$article->pullquote?></div>
 				</a></li>
 				<? endforeach; ?>
-				<? if(bonus()): ?>
-				<li class=""><a href="<?=site_url()?>article/add/<?=$issue->volume?>/<?=$issue->issue_number?>/<?=$section->id?>"><h3 class="addarticle">+ Add article</h3></a></li>
-				<? endif; ?>
 			</ul>
 			
 		</section>

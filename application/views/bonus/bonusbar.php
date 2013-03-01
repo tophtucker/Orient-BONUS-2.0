@@ -4,16 +4,16 @@
 	<span id="bonusbarnav">
 		&#x235f; / 	
 		<?if(substr(uri_string(),0,6)=="bonus/"):?>
-		<a href="<?=site_url()?>">Home</a> / 
+		<a href="<?=site_url()?>">Home</a> 
 		<?else:?>
-		<a href="<?=site_url()?>bonus/dashboard">Dashboard</a> / 
+		<a href="<?=site_url()?>bonus/dashboard">Dashboard</a> 
 		<?endif;?>
-		<a href="<?=site_url()?>bonus/logout/">Logout of <?=username()?></a>
+		<a href="<?=site_url()?>bonus/logout/"><button class="bonusbutton">Logout of <?=username()?></button></a>
 	</span>
 
 	<?if(substr(uri_string(),0,8)=="article/"):?>
-		<button id="publisharticle" style="<? if($article->published): ?>display:none;<?endif;?>">Publish</button>
-		<button id="savearticle">Save</button>
+		<button id="publisharticle" class="bonusbutton" style="<? if($article->published): ?>display:none;<?endif;?>">Publish</button>
+		<button id="savearticle" class="bonusbutton">Save</button>
 		<span id="bonustools">
 			<span id="savenotify"></span>
 			Vol. <input type="text" name="volume" id="volume" size="2" value="<?=$article->volume?>" />
