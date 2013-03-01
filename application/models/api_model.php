@@ -27,7 +27,7 @@ class API_model extends CI_Model {
 				article.id,
 				article.priority,
 				article.title,
-				article.pullquote,
+				article.excerpt,
 				author.name,
 				photo.filename_small
 			from article

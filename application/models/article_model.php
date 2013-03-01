@@ -42,8 +42,8 @@ class Article_model extends CI_Model {
     		article.id, 
     		article.date, 
     		article.title, 
-    		article.subhead, 
-    		article.pullquote, 
+    		article.subtitle, 
+    		article.excerpt, 
     		article.published,
     		article.featured,
     		author.name 'author',
@@ -105,8 +105,8 @@ class Article_model extends CI_Model {
     		article.id, 
     		article.date, 
     		article.title, 
-    		article.subhead, 
-    		article.pullquote,
+    		article.subtitle, 
+    		article.excerpt,
     		article.published,
     		article.featured,
     		author.name 'author',
@@ -286,8 +286,8 @@ class Article_model extends CI_Model {
 		   'section_id' => $section,
 		   'priority' => '10',
 		   'title' => '',
-		   'subhead' => '',
-		   'pullquote' => '',
+		   'subtitle' => '',
+		   'excerpt' => '',
 		   'opinion' => ($section == '2' ? '1' : '0'),
 		   'date_created' => date("Y-m-d H:i:s")
 		);
@@ -421,8 +421,8 @@ class Article_model extends CI_Model {
     		article.id, 
     		article.date, 
     		article.title, 
-    		article.subhead, 
-    		article.pullquote, 
+    		article.subtitle, 
+    		article.excerpt, 
     		article.published,
     		article.featured,
     		author.name 'author',
@@ -449,7 +449,7 @@ class Article_model extends CI_Model {
 		
 		// title search
 		// would preferably be expanded into indexed fulltext search
-		// (or at least pullquote?)
+		// (or at least excerpt?)
 		$this->db->like('title', $data['title']);
 		
 		// for carousel or whatever, may choose to just fetch featured articles

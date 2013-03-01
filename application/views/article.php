@@ -9,11 +9,11 @@
 	
 	<link rel="stylesheet" media="screen" href="<?=base_url()?>css/orient.css?v=4">
 	
-	<meta name="description" content="<?=htmlspecialchars($article->pullquote)?>" />
+	<meta name="description" content="<?=htmlspecialchars(strip_tags($article->excerpt))?>" />
 	
 	<!-- Facebook Open Graph tags -->
 	<meta property="og:title" content="<?=htmlspecialchars($article->title)?>" />
-	<meta property="og:description" content="<?=htmlspecialchars($article->pullquote)?>" />
+	<meta property="og:description" content="<?=htmlspecialchars(strip_tags($article->excerpt))?>" />
 	<meta property="og:type" content="article" />
 	<? if($photos): ?>
 		<meta property="og:image" content="<?=base_url()?>images/<?=$article->date?>/<?=$photos[0]->filename_large?>" />
@@ -525,8 +525,8 @@
 							<!--<div class="dateified"><?=dateify($s_prev->date)?></div>-->
 							<h3><? if($s_prev->series): ?><span class="series"><?=$s_prev->series?>:</span> <? endif; ?>
 							<?=$s_prev->title?></h3>
-							<? if($s_prev->subhead): ?><h4><?= $s_prev->subhead ?></h4><? endif; ?>
-							<p><?=$s_prev->pullquote?></p>
+							<? if($s_prev->subtitle): ?><h4><?= $s_prev->subtitle ?></h4><? endif; ?>
+							<div class="excerpt"><?=$s_prev->excerpt?></div>
 						</a></li>
 						<? endforeach; ?>
 					</ul>
@@ -539,8 +539,8 @@
 							<!--<div class="dateified"><?=dateify($s_next->date)?></div>-->
 							<h3><? if($s_next->series): ?><span class="series"><?=$s_next->series?>:</span> <? endif; ?>
 							<?=$s_next->title?></h3>
-							<? if($s_next->subhead): ?><h4><?= $s_next->subhead ?></h4><? endif; ?>
-							<p><?=$s_next->pullquote?></p>
+							<? if($s_next->subtitle): ?><h4><?= $s_next->subtitle ?></h4><? endif; ?>
+							<div class="excerpt"><?=$s_next->excerpt?></div>
 						</a></li>
 						<? endforeach; ?>
 					</ul>
@@ -556,7 +556,7 @@
 				<? endif; ?>
 				
 				<h2 id="articletitle" class="articletitle <?= ($article->published ? '' : 'draft'); ?>"<?if(bonus()):?> contenteditable="true" title="Title"<?endif;?>><?=$article->title?></h2>
-				<h3 id="articlesubtitle" class="articlesubtitle"<?if(bonus()):?> contenteditable="true" title="Subtitle"<?endif;?>><? if(isset($article->subhead)): ?><?=$article->subhead?><? endif; ?></h3>
+				<h3 id="articlesubtitle" class="articlesubtitle"<?if(bonus()):?> contenteditable="true" title="Subtitle"<?endif;?>><? if(isset($article->subtitle)): ?><?=$article->subtitle?><? endif; ?></h3>
 				
 			</hgroup>
 

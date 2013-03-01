@@ -111,8 +111,8 @@
 			<li class="<? if(!empty($article->filename_small)): ?> backgrounded<? endif; ?><? if(!$article->published): ?> draft<? endif; ?>"<? if(!empty($article->filename_small)): ?> style="background:url('<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>')"<? endif; ?>>
 				<a href="<?=site_url()?>article/<?=$article->id?>">
 				<h3><?=$article->title?></h3>
-				<? if($article->subhead): ?><h4><?= $article->subhead ?></h4><? endif; ?>
-				<p><?=$article->pullquote?></p>
+				<? if($article->subtitle): ?><h4><?= $article->subtitle ?></h4><? endif; ?>
+				<div class="excerpt"><?=$article->excerpt?></div>
 			</a></li>
 			<? endforeach; ?>
 		</ul>

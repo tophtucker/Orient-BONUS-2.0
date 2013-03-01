@@ -15,7 +15,7 @@ function xmlclean($string) {
        <title><?= xmlclean($article->title) ?></title>
        <link>http://bowdoinorient.com/article/<?= $article->id ?></link>
        <pubDate><?= gmdate(DATE_RSS, strtotime($article->date)); ?></pubDate>
-       <description><?= xmlclean($article->pullquote) ?></description>
+       <description><?= xmlclean($article->excerpt) ?></description>
     </item>
     <? endforeach; ?>
   </channel>

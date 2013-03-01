@@ -86,25 +86,6 @@ class Article extends CI_Controller {
 		}
 		$article_id = $this->article_model->add_blank_article($volume, $issue_number, $section);
 		redirect('/article/'.$article_id, 'refresh');
-		
-		/*
-		$this->load->model('issue_model', '', TRUE);
-		$issue = $this->issue_model->get_issue($volume, $issue_number);
-		
-		$data->article->date = $issue->issue_date;
-		$data->article->volume = $volume;
-		$data->article->issue_number = $issue_number;
-		$data->article->title = "Title";
-		$data->article->subhead = '';
-		
-		$data->body->body = '<p>Body</p>';
-		$data->type = false;
-		$data->series = false;
-		$data->authors = false;
-		$data->photos = false;
-				
-		$this->load->view('article', $data);
-		*/
 	}
 		
 	public function edit($id)
@@ -152,7 +133,7 @@ class Article extends CI_Controller {
 				
 		$data = array(
 			'title' 		=> $title,
-			'subhead' 		=> $subtitle,
+			'subtitle' 		=> $subtitle,
 			'volume' 		=> trim(urldecode($this->input->post("volume"))),
 			'issue_number' 	=> trim(urldecode($this->input->post("issue_number"))),
 			'section_id'	=> trim(urldecode($this->input->post("section_id"))),
@@ -163,12 +144,12 @@ class Article extends CI_Controller {
 			'active'		=> '1'
 			);
 		
-		// If body was updated, set pullquote to first three paragraphs.
+		// If body was updated, set excerpt to first three paragraphs.
 		// Yes, this is sloppy is so many ways. FML.
 		if($body) 
 		{
 			$thirdgraf = strnposr($body, "</p>", 3) + 4;
-			$data['pullquote'] = strip_tags(substr($body, 0, $thirdgraf),"<p>");
+			$data['excerpt'] = strip_tags(substr($body, 0, $thirdgraf),"<p>");
 		}
 		
 		// if the article is just now being published, set publication

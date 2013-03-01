@@ -103,7 +103,7 @@ $articleQuery =
 		a3.photo AS author3photo,		
 		j.name AS jobname,		
 		ar.title AS title,
-		ar.subhead,		
+		ar.subtitle,		
 		ar.text,
 		at.id AS typenumber,
 		at.name AS type,
@@ -147,7 +147,7 @@ if ($row = mysql_fetch_array($result)) {
 	$articleJob = $row["jobname"];
 	$articleTypeNumber = $row["typenumber"];
 	$articleType = $row["type"];
-	$articleSubhead = $row["subhead"];	
+	$articleSubtitle = $row["subtitle"];	
 	$articleTitle = $row["title"];	
 	$articleText = $row["text"];
 	$articleSeries = $row["series"];
@@ -289,8 +289,8 @@ global $title, $volumeNumber, $issueNumber, $date, $section, $priority, $article
 				<p style="margin:0"><?php echo strtoupper($articleSeries); ?></p>
 			<?php } ?>
 		<h2 class='top bottom' style="margin:0 0 5px 0;"><strong><?php echo $articleTitle; ?></strong></h2>
-		<?php if ($articleSubhead) { 
-			echo "<h2 class='top bottom' style='font-size:150%'>" . $articleSubhead . "</h2><br/>";
+		<?php if ($articleSubtitle) { 
+			echo "<h2 class='top bottom' style='font-size:150%'>" . $articleSubtitle . "</h2><br/>";
 		}
 		?>
 		

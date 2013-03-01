@@ -84,8 +84,8 @@
 					<div class="dateified"><?=date("F j, Y",strtotime($article->date))?></div>
 					<h3><? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
-					<? if($article->subhead): ?><h4><?= $article->subhead ?></h4><? endif; ?>
-					<p><?=$article->pullquote?></p>
+					<? if($article->subtitle): ?><h4><?= $article->subtitle ?></h4><? endif; ?>
+					<div class="excerpt"><?=$article->excerpt?></div>
 				</a></li>
 				<? endforeach; ?>
 			</ul>

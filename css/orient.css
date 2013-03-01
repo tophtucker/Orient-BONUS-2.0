@@ -1145,7 +1145,7 @@ section h2, #sidebar h2 {
 		background: rgba(50,50,50,1);
 	}
 	
-	.articleblock li.backgrounded p, .articleblock.threetier li:nth-child(-n+5).backgrounded p {
+	.articleblock li.backgrounded .excerpt, .articleblock.threetier li:nth-child(-n+5).backgrounded .excerpt {
 		display: none;
 	}
 	

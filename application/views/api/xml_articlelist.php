@@ -18,7 +18,7 @@
 			<thumb><?php if(!empty($article->filename_small)) echo "http://bowdoinorient.com/images/".$issue_date."/".$article->filename_small; ?></thumb>
 			<summary>
 <![CDATA[
-<?=$article->pullquote; ?>
+<?=$article->excerpt; ?>
 ]]></summary>
 		</article>
 		

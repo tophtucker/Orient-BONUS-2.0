@@ -133,8 +133,8 @@
 					<div class="dateified"><?=dateify($article->date, $date)?></div>
 					<h3><? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
-					<? if($article->subhead): ?><h4><?= $article->subhead ?></h4><? endif; ?>
-					<p><?=$article->pullquote?></p>
+					<? if($article->subtitle): ?><h4><?= $article->subtitle ?></h4><? endif; ?>
+					<div class="excerpt"><?=$article->excerpt?></div>
 				</a></li>
 				<? endforeach; ?>
 			</ul>
@@ -198,8 +198,8 @@
 					<div class="dateified"><?=dateify($article->date, $date)?></div>
 					<h3><? if($article->series): ?><span class="series"><?=$article->series?>:</span> <? endif; ?>
 					<?=$article->title?></h3>
-					<? if($article->subhead): ?><h4><?= $article->subhead ?></h4><? endif; ?>
-					<div class="excerpt"><?=$article->pullquote?></div>
+					<? if($article->subtitle): ?><h4><?= $article->subtitle ?></h4><? endif; ?>
+					<div class="excerpt"><?=$article->excerpt?></div>
 				</a></li>
 				<? endforeach; ?>
 			</ul>
@@ -231,15 +231,15 @@ var	carousel,
 			'<div class="carouseltile <? if(!$article->published): ?>draft<?endif;?>">'
 				+'<div class="articletitle-group">'
 				<? if($article->series): ?>+'<div class="series"><?=anchor('series/'.$article->series_id,$article->series); ?></div>'<? endif; ?>
-				+'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim($article->title)) ?></h3></a>'
-				<? if($article->subhead): ?>+'<h4 class="articlesubtitle"><?= addslashes(trim($article->subhead)) ?></h4>'<? endif; ?>
+				+'<a href="<?=site_url()?>article/<?=$article->id?>"><h3><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r")," ",$article->title))); ?></h3></a>'
+				<? if($article->subtitle): ?>+'<h4 class="articlesubtitle"><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r")," ",$article->subtitle))); ?></h4>'<? endif; ?>
 				+'</div>'
 				<? if(!empty($article->filename_small)): ?>+'<img src="<?=base_url().'images/'.$article->date.'/'.$article->filename_small?>">'<? endif; ?>
 				+'<div class="article-author-date">'
 				<? if(!empty($article->author)): ?>+'<a href="<?=base_url()?>author/<?=$article->author_id?>"><div class="authortile hidemobile"><p class="articleauthor"><?=addslashes($article->author)?></p></div></a>'<? endif; ?>
 				+'<p class="articledate hidemobile"><time pubdate datetime="<?=$article->date?>"><?=date("F j, Y",strtotime($article->date))?></time></p>'
 				+'</div>'
-				+'<p><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$article->pullquote))); ?></p>'
+				+'<div class="excerpt"><?= addslashes(trim(str_replace(array("\r\n", "\n", "\r"),"<br/>",$article->excerpt))); ?></div>'
 			+'</div>'
 		<? endforeach; ?>
 	];
