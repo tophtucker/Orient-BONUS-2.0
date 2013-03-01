@@ -189,8 +189,7 @@
 		<? if(!empty($articles[$section->name])): ?>
 		
 		<section id="<?=$section->name?>" class="issuesection">
-			<? if(bonus()): ?><a href="<?=site_url()?>article/add/<?=$issue->volume?>/<?=$issue->issue_number?>/<?=$section->id?>"><button class="bonusbutton" id="addarticlebutton">Add article</button></a><? endif; ?>
-			<h2><?=$section->name?></h2>
+			<h2><?=$section->name?><? if(bonus()): ?><a href="<?=site_url()?>article/add/<?=$issue->volume?>/<?=$issue->issue_number?>/<?=$section->id?>"><button class="bonusbutton" id="addarticlebutton">Add article</button></a><? endif; ?></h2>
 			
 			<ul class="articleblock twotier">
 				<? foreach($articles[$section->name] as $article): ?>

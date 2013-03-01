@@ -302,9 +302,9 @@ button.bonusbutton#publisharticle {
 }
 
 button.bonusbutton#addarticlebutton {
-	float: right;
+	/*float: right;*/
 	width: 100px;
-	margin-right: 6px;
+	margin-top: -5px;
 	background: darkgreen;
 	color: white;
 }
